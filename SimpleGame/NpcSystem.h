@@ -18,15 +18,25 @@ struct Npc
 // Authored prototype residents, not death-generated NPCs or an AI service.
 class NpcSystem
 {
-public:
+  public:
     explicit NpcSystem(const std::filesystem::path& saveDirectory);
-    const std::vector<Npc>& Residents() const { return residents_; }
+
+    const std::vector<Npc>& Residents() const
+    {
+        return residents_;
+    }
+
     int Nearest(double x, double y, const World& world) const;
     bool CanWalk(double x, double y, const World& world) const;
     bool IsPresent(const Npc& npc, const World& world) const;
     std::vector<std::wstring> Conversation(int index, const World& world);
-    const std::string& Error() const { return error_; }
-private:
+
+    const std::string& Error() const
+    {
+        return error_;
+    }
+
+  private:
     bool Save();
     void Load();
     std::vector<Npc> residents_;

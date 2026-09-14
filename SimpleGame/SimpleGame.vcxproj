@@ -162,21 +162,40 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="..\프로토타입_실행안내.txt" />
+    <Text Include="..\레벨1_플레이안내.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneRenderer.h" />
+    <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="PostProcessor.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="NpcSystem.h" />
+    <ClInclude Include="LevelOne.h" />
+    <ClInclude Include="LevelOneView.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneRenderer.cpp" />
+    <ClCompile Include="SceneMesh.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="SoulNpc.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="PostProcessor.cpp" />
     <ClCompile Include="World.cpp" />
+    <ClCompile Include="LevelOne.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="LevelOneSave.cpp" />
+    <ClCompile Include="LevelOneView.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="NpcSystem.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
@@ -193,10 +212,26 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\Scene.vs" />
+    <None Include="Shaders\Scene.fs" />
+    <None Include="Shaders\Fullscreen.vs" />
+    <None Include="Shaders\Prefilter.fs" />
+    <None Include="Shaders\Blur.fs" />
+    <None Include="Shaders\Composite.fs" />
     <None Include="Shaders\SolidRect.fs" />
     <None Include="Shaders\SolidRect.vs" />
   </ItemGroup>
+  <PropertyGroup>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  <ItemGroup>
+    <RuntimeShader Include="$(ProjectDir)Shaders\*.vs;$(ProjectDir)Shaders\*.fs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="CopyRuntimeShaders" AfterTargets="Build">
+    <MakeDir Directories="$(TargetDir)Shaders" />
+    <Copy SourceFiles="@(RuntimeShader)" DestinationFolder="$(TargetDir)Shaders" SkipUnchangedFiles="true" />
+  </Target>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>

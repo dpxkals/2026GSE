@@ -19,7 +19,7 @@ struct PostProcessSettings
 // Initialize/Shutdown must run while the GL context is current.
 class PostProcessor
 {
-public:
+  public:
     PostProcessor() = default;
     PostProcessor(const PostProcessor&) = delete;
     PostProcessor& operator=(const PostProcessor&) = delete;
@@ -27,18 +27,44 @@ public:
     void Shutdown();
     bool Begin(int width, int height);
     void Composite();
-    PostProcessSettings& Settings() { return settings_; }
-    const PostProcessSettings& Settings() const { return settings_; }
-    bool Available() const { return ready_ && (width_ == 0 || targetsReady_); }
-private:
-    struct Target { GLuint framebuffer = 0, texture = 0; };
-    struct PrefilterUniforms { GLint source, texel, extract, threshold; } prefilter_{};
-    struct BlurUniforms { GLint source, step; } blur_{};
+
+    PostProcessSettings& Settings()
+    {
+        return settings_;
+    }
+
+    const PostProcessSettings& Settings() const
+    {
+        return settings_;
+    }
+
+    bool Available() const
+    {
+        return ready_ && (width_ == 0 || targetsReady_);
+    }
+
+  private:
+    struct Target
+    {
+        GLuint framebuffer = 0, texture = 0;
+    };
+
+    struct PrefilterUniforms
+    {
+        GLint source, texel, extract, threshold;
+    } prefilter_{};
+
+    struct BlurUniforms
+    {
+        GLint source, step;
+    } blur_{};
+
     struct CompositeUniforms
     {
         GLint scene, bloomImage, blurredImage, bloomStrength, blurStrength;
         GLint vignetteStrength, exposure;
     } composite_{};
+
     bool ResizeTargets(int width, int height);
     static bool CreateTarget(Target& target, int width, int height);
     void ReleaseTargets();

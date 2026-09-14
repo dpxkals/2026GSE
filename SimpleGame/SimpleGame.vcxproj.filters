@@ -19,9 +19,13 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\프로토타입_실행안내.txt" />
+    <Text Include="..\레벨1_플레이안내.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneRenderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="PostProcessor.h">
@@ -31,6 +35,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="NpcSystem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelOne.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelOneView.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
@@ -47,6 +57,15 @@
     <ClCompile Include="SceneRenderer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="SceneMesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SoulNpc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="PostProcessor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -54,6 +73,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="NpcSystem.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelOne.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelOneSave.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelOneView.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
@@ -68,6 +96,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\SolidRect.fs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="Shaders\Scene.vs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="Shaders\Scene.fs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="Shaders\Fullscreen.vs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="Shaders\Prefilter.fs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="Shaders\Blur.fs">
+      <Filter>소스 파일\Shaders</Filter>
+    </None>
+    <None Include="Shaders\Composite.fs">
       <Filter>소스 파일\Shaders</Filter>
     </None>
     <None Include="Shaders\SolidRect.vs">
