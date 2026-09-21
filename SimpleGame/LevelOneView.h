@@ -21,6 +21,9 @@ class LevelOneView
     static void DrawSoul(
         SceneRenderer& renderer, const SoulNpc& soul, Point2 point, float zoom, double time);
     static void Numbers(SceneRenderer& renderer, const LevelOne& level, const Projection& project);
+    static void DrawNumber(SceneRenderer& renderer,
+                           const FloatingNumber& number,
+                           const Projection& project);
     static void HUD(SceneRenderer& renderer,
                     const LevelOne& level,
                     int width,

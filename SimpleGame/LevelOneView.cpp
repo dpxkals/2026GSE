@@ -245,6 +245,18 @@ void LevelOneView::Numbers(SceneRenderer& renderer,
     }
 }
 
+void LevelOneView::DrawNumber(SceneRenderer& renderer,
+                              const FloatingNumber& number,
+                              const Projection& project)
+{
+    Point2 p = project(number.position.x, number.position.y, float(35 + (0.75 - number.life) * 30));
+    renderer.Text(p.x - 8,
+                  p.y,
+                  std::to_string(number.amount),
+                  number.playerHit ? Color{1.0f, 0.32f, 0.22f, 1} : Gold,
+                  1.5f);
+}
+
 void LevelOneView::HUD(SceneRenderer& renderer,
                        const LevelOne& level,
                        int width,

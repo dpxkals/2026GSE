@@ -29,6 +29,7 @@ class NpcSystem
     int Nearest(double x, double y, const World& world) const;
     bool CanWalk(double x, double y, const World& world) const;
     bool IsPresent(const Npc& npc, const World& world) const;
+    void SetPosition(int id, double x, double y);
     std::vector<std::wstring> Conversation(int index, const World& world);
 
     const std::string& Error() const

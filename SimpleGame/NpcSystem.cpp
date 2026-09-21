@@ -21,6 +21,19 @@ bool NpcSystem::IsPresent(const Npc& npc, const World& world) const
     return world.CanWalk(npc.x, npc.y);
 }
 
+void NpcSystem::SetPosition(int id, double x, double y)
+{
+    for (auto& npc : residents_)
+    {
+        if (npc.id == id)
+        {
+            npc.x = x;
+            npc.y = y;
+            return;
+        }
+    }
+}
+
 int NpcSystem::Nearest(double x, double y, const World& world) const
 {
     int result = -1;

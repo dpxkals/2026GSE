@@ -43,7 +43,7 @@ void LevelOne::Die()
     // Birth, life snapshot and resurrection share ONE atomic checkpoint.
     // Souls are non-solid; repeated deaths never block a corridor or spawn point.
     life_ = {};
-    player_.position = {};
+    SetPlayerPosition({});
     player_.health = player_.MaxHealth();
     invulnerable_ = 2.0;
     projectiles_.clear();

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "FrameProfiler.h"
 #include "SceneRenderer.h"
 #include "ShaderProgram.h"
 #include <algorithm>
@@ -182,7 +183,7 @@ void SceneRenderer::Flush()
     glBindBuffer(GL_ARRAY_BUFFER, vbo_);
     glBufferData(
         GL_ARRAY_BUFFER, vertices_.size() * sizeof(Vertex), vertices_.data(), GL_STREAM_DRAW);
-    glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(vertices_.size()));
+    FrameProfiler::DrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(vertices_.size()));
     glBindVertexArray(0);
     glUseProgram(0);
     glBindTexture(GL_TEXTURE_2D, 0);

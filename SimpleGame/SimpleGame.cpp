@@ -13,10 +13,12 @@ but WITHOUT ANY WARRANTY.
 #define NOMINMAX
 #endif
 #include "SceneRenderer.h"
+#include "FrameProfiler.h"
 #include "World.h"
 #include "NpcSystem.h"
 #include "LevelOne.h"
 #include "LevelOneView.h"
+#include "WorldActors.h"
 #include "Dependencies/freeglut.h"
 #include <Windows.h>
 #include <algorithm>
@@ -38,7 +40,6 @@ namespace
     std::unique_ptr<LevelOne> levelOne;
     int speakingNpc = -1;
     int speakingSoul = -1;
-    std::map<ChunkKey, float> propOpacity;
     double renderDelta = 0.016;
     size_t dialoguePage = 0;
     std::vector<std::wstring> dialoguePages;
@@ -419,7 +420,8 @@ namespace
         std::ostringstream status;
         status << std::fixed << std::setprecision(1) << "X " << playerX << "  Y " << playerY
                << "   CHUNKS " << world->Chunks().size() << "   QUEUED " << world->Pending()
-               << "   MESH CACHE " << renderer.MeshCount() << "   SEED " << world->Seed();
+               << "   ACTORS " << levelOne->Scene().Size() << "   MESH CACHE "
+               << renderer.MeshCount() << "   SEED " << world->Seed();
         renderer.Text(40, 70, status.str(), muted, 1.3f);
         float mx = float(width) - 156, my = 109;
         renderer.Rect(mx - 10, my - 7, 142, 138, {0.025f, 0.045f, 0.05f, 0.88f});
@@ -485,265 +487,361 @@ namespace
         DialogueHUD();
     }
 
-    void RenderScene()
+    bool VisibleActor(const Actor& actor)
     {
-        if (!running || !world)
-        {
-            return;
-        }
-        renderer.Begin(width, height);
+        auto position = actor.Position();
+        Point2 p = Project(position.x, position.y);
+        return p.x > -120 && p.x < width + 120 && p.y > -20 && p.y < height + 180;
+    }
 
-        struct Object
+    const Npc* Resident(std::uint64_t id)
+    {
+        for (const Npc& npc : npcs->Residents())
         {
-            double x, y;
-            const Tile* tile;
-            const Npc* npc = nullptr;
-            const Enemy* enemy = nullptr;
-            const ItemDrop* drop = nullptr;
-            const Projectile* shot = nullptr;
-            const SoulNpc* soul = nullptr;
-        };
-
-        std::vector<Object> objects;
-        std::set<std::string> terrainKeys;
-        std::set<ChunkKey> visibleProps;
-        for (const auto& entry : world->Chunks())
-        {
-            WorldInt bx = entry.first.first * ChunkSize, by = entry.first.second * ChunkSize;
-            std::string terrainKey = "terrain:" + std::to_string(entry.first.first) + ":" +
-                                     std::to_string(entry.first.second);
-            terrainKeys.insert(terrainKey);
-            Point2 chunkOrigin = Project(double(bx), double(by));
-            if (renderer.BeginMesh(terrainKey, chunkOrigin, zoom))
+            if (npc.id == id)
             {
+                return &npc;
+            }
+        }
+        return nullptr;
+    }
+
+    void ConfigureActorRenderers()
+    {
+        auto& scene = levelOne->Scene();
+        scene.SetRenderer(
+            "terrain",
+            [](Actor& base)
+            {
+                auto& actor = static_cast<TerrainActor&>(base);
+                auto key = actor.Source();
+                auto found = world->Chunks().find(key);
+                if (found == world->Chunks().end())
+                {
+                    return;
+                }
+                WorldInt bx = key.first * ChunkSize, by = key.second * ChunkSize;
+                auto position = actor.Position();
+                Point2 origin = Project(position.x, position.y);
+                std::string meshKey =
+                    "terrain:" + std::to_string(key.first) + ":" + std::to_string(key.second);
+                if (renderer.BeginMesh(meshKey, Project(double(bx), double(by)), zoom))
+                {
+                    for (int y = 0; y < ChunkSize; ++y)
+                    {
+                        for (int x = 0; x < ChunkSize; ++x)
+                        {
+                            GroundTile(
+                                bx + x, by + y, found->second.tiles[y * ChunkSize + x], true);
+                        }
+                    }
+                    renderer.EndMesh();
+                }
+                renderer.DrawMesh(meshKey, origin, zoom, actor.opacity);
                 for (int y = 0; y < ChunkSize; ++y)
                 {
                     for (int x = 0; x < ChunkSize; ++x)
                     {
-                        GroundTile(bx + x, by + y, entry.second.tiles[y * ChunkSize + x], true);
-                    }
-                }
-                renderer.EndMesh();
-            }
-            renderer.DrawMesh(terrainKey, chunkOrigin, zoom);
-            for (int y = 0; y < ChunkSize; ++y)
-            {
-                for (int x = 0; x < ChunkSize; ++x)
-                {
-                    const Tile& tile = entry.second.tiles[y * ChunkSize + x];
-                    Point2 p = Project(bx + x + 0.5, by + y + 0.5);
-                    if (tile.ground == Ground::Water && p.x > -80 && p.x < width + 80 &&
-                        p.y > -80 && p.y < height + 80)
-                    {
+                        const Tile& tile = found->second.tiles[y * ChunkSize + x];
+                        if (tile.ground != Ground::Water)
+                        {
+                            continue;
+                        }
+                        Point2 p = Project(position.x + x + 0.5, position.y + y + 0.5);
+                        if (p.x < -80 || p.x > width + 80 || p.y < -80 || p.y > height + 80)
+                        {
+                            continue;
+                        }
                         float drift = float(std::sin(elapsed * 1.2 + tile.variation)) * 3 * zoom;
                         renderer.Line({p.x - 10 * zoom + drift, p.y},
                                       {p.x + 8 * zoom + drift, p.y},
                                       zoom,
                                       {0.32f, 0.47f, 0.48f, 0.35f});
                     }
-                    if (tile.prop != Prop::None && p.x > -120 && p.x < width + 120 && p.y > -20 &&
-                        p.y < height + 160)
+                }
+                if (showChunks)
+                {
+                    Point2 a = origin, b = Project(position.x + ChunkSize, position.y),
+                           c = Project(position.x + ChunkSize, position.y + ChunkSize),
+                           d = Project(position.x, position.y + ChunkSize);
+                    for (auto edge : {std::pair<Point2, Point2>{a, b}, {b, c}, {c, d}, {d, a}})
                     {
-                        objects.push_back({bx + x + 0.5, by + y + 0.5, &tile});
+                        renderer.Line(edge.first, edge.second, 1.4f, {0.65f, 0.80f, 0.52f, 0.65f});
+                    }
+                }
+            });
+        scene.SetRenderer(
+            "prop",
+            [](Actor& base)
+            {
+                auto& actor = static_cast<PropActor&>(base);
+                auto source = actor.Source();
+                const Tile* tile = world->Find(source.first, source.second);
+                if (!tile || !VisibleActor(actor))
+                {
+                    return;
+                }
+                auto position = actor.Position();
+                Point2 p = Project(position.x, position.y);
+                std::string meshKey = "prop:" + std::to_string(int(tile->prop)) + ":" +
+                                      std::to_string(tile->variation);
+                if (renderer.BeginMesh(meshKey, p, zoom))
+                {
+                    switch (tile->prop)
+                    {
+                        case Prop::Tree:
+                            Tree(p, tile->variation);
+                            break;
+                        case Prop::Rock:
+                            renderer.Ellipse(p, 20 * zoom, 7 * zoom, {0.01f, 0.03f, 0.03f, 0.3f});
+                            Box(p, 14, 7, 10 + float(tile->variation), {0.38f, 0.42f, 0.38f, 1});
+                            break;
+                        case Prop::Ruin:
+                            Ruin(p);
+                            break;
+                        case Prop::Beacon:
+                            BeaconBase(p);
+                            break;
+                        default:
+                            break;
+                    }
+                    renderer.EndMesh();
+                }
+                Point2 body = Project(playerX, playerY, 20);
+                Point2 head = Project(playerX, playerY, 36);
+                bool inFront =
+                    position.x + position.y > playerX + playerY ||
+                    (position.x + position.y == playerX + playerY && position.x >= playerX);
+                bool covers = inFront && (renderer.MeshCovers(meshKey, p, zoom, body) ||
+                                          renderer.MeshCovers(meshKey, p, zoom, head));
+                float& opacity = actor.opacity;
+                float desired = covers ? 0.25f : 1.0f;
+                opacity += (desired - opacity) * float(1.0 - std::exp(-renderDelta * 12.0));
+                renderer.DrawMesh(meshKey, p, zoom, opacity);
+                if (tile->prop == Prop::Beacon && tile->lit)
+                {
+                    BeaconFlame(p);
+                }
+            });
+        scene.SetRenderer("player",
+                          [](Actor& actor)
+                          {
+                              auto p = actor.Position();
+                              if (levelOne->InvulnerableTime() <= 0.0 || int(elapsed * 12) % 2 == 0)
+                              {
+                                  Player(Project(p.x, p.y));
+                              }
+                          });
+        scene.SetRenderer("npc",
+                          [](Actor& actor)
+                          {
+                              if (const auto* npc = Resident(actor.recordId))
+                              {
+                                  if (VisibleActor(actor) && npcs->IsPresent(*npc, *world))
+                                  {
+                                      auto p = actor.Position();
+                                      DrawNpc(Project(p.x, p.y), *npc);
+                                  }
+                              }
+                          });
+        scene.SetRenderer("enemy",
+                          [](Actor& actor)
+                          {
+                              if (const auto* enemy = levelOne->FindEnemy(actor.recordId))
+                              {
+                                  if (VisibleActor(actor))
+                                  {
+                                      auto p = actor.Position();
+                                      LevelOneView::DrawEnemy(renderer,
+                                                              *enemy,
+                                                              Project(p.x, p.y),
+                                                              zoom,
+                                                              enemy->id == levelOne->Target());
+                                  }
+                              }
+                          });
+        scene.SetRenderer("drop",
+                          [](Actor& actor)
+                          {
+                              if (const auto* drop = levelOne->FindDrop(actor.recordId))
+                              {
+                                  if (VisibleActor(actor))
+                                  {
+                                      auto p = actor.Position();
+                                      LevelOneView::DrawDrop(
+                                          renderer, *drop, Project(p.x, p.y), zoom);
+                                  }
+                              }
+                          });
+        scene.SetRenderer("projectile",
+                          [](Actor& actor)
+                          {
+                              if (const auto* shot = levelOne->FindProjectile(actor.recordId))
+                              {
+                                  if (VisibleActor(actor))
+                                  {
+                                      auto p = actor.Position();
+                                      LevelOneView::DrawShot(
+                                          renderer, *shot, Project(p.x, p.y), zoom);
+                                  }
+                              }
+                          });
+        scene.SetRenderer(
+            "soul",
+            [](Actor& actor)
+            {
+                if (const auto* soul = levelOne->FindSoul(actor.recordId))
+                {
+                    auto p = actor.Position();
+                    if (VisibleActor(actor) &&
+                        world->Find(WorldInt(std::floor(p.x)), WorldInt(std::floor(p.y))))
+                    {
+                        LevelOneView::DrawSoul(renderer, *soul, Project(p.x, p.y), zoom, elapsed);
+                    }
+                }
+            });
+        scene.SetRenderer("number",
+                          [](Actor& actor)
+                          {
+                              if (const auto* number = levelOne->FindNumber(actor.recordId))
+                              {
+                                  LevelOneView::DrawNumber(renderer, *number, Project);
+                              }
+                          });
+        scene.SetRenderer("overlay",
+                          [](Actor&)
+                          {
+                              LevelOneView::Ground(
+                                  renderer, *levelOne, Project, zoom, showAttackRange);
+                          });
+        scene.SetRenderer("hud",
+                          [](Actor&)
+                          {
+                              HUD();
+                          });
+        scene.SetRenderer(
+            "beacon-glow",
+            [](Actor& actor)
+            {
+                auto source = actor.Position();
+                const Tile* tile =
+                    world->Find(WorldInt(std::floor(source.x)), WorldInt(std::floor(source.y)));
+                if (tile && tile->prop == Prop::Beacon && tile->lit && VisibleActor(actor))
+                {
+                    Point2 p = Project(source.x, source.y);
+                    for (int i = 5; i >= 1; --i)
+                    {
+                        renderer.Ellipse(p,
+                                         (25 + i * 10) * zoom,
+                                         (12 + i * 5) * zoom,
+                                         {0.91f, 0.59f, 0.19f, 0.035f});
+                    }
+                }
+            });
+    }
+
+    void SynchronizeScene()
+    {
+        levelOne->SynchronizeActors();
+        auto& scene = levelOne->Scene();
+        Actor& root = scene.Ensure("world", "group");
+        std::set<std::string> terrainKeys, propKeys, meshKeys, npcKeys;
+        for (const auto& entry : world->Chunks())
+        {
+            auto key = entry.first;
+            WorldInt bx = key.first * ChunkSize, by = key.second * ChunkSize;
+            std::string terrainKey =
+                "terrain/" + std::to_string(key.first) + "/" + std::to_string(key.second);
+            terrainKeys.insert(terrainKey);
+            meshKeys.insert("terrain:" + std::to_string(key.first) + ":" +
+                            std::to_string(key.second));
+            Actor* terrain = scene.Find(terrainKey);
+            if (!terrain)
+            {
+                terrain = &scene.Add(std::make_unique<TerrainActor>(key), root.GetId());
+                scene.SetPosition(terrain->GetId(), {double(bx), double(by)});
+            }
+            for (int y = 0; y < ChunkSize; ++y)
+            {
+                for (int x = 0; x < ChunkSize; ++x)
+                {
+                    const auto& tile = entry.second.tiles[y * ChunkSize + x];
+                    if (tile.prop == Prop::None)
+                    {
+                        continue;
+                    }
+                    std::string propKey =
+                        "prop/" + std::to_string(bx + x) + "/" + std::to_string(by + y);
+                    propKeys.insert(propKey);
+                    if (!scene.Find(propKey))
+                    {
+                        Actor& prop = scene.Add(std::make_unique<PropActor>(bx + x, by + y),
+                                                terrain->GetId());
+                        scene.SetPosition(prop.GetId(), {bx + x + 0.5, by + y + 0.5});
+                        if (tile.prop == Prop::Beacon)
+                        {
+                            auto& glow =
+                                scene.Ensure(propKey + "/glow", "beacon-glow", prop.GetId());
+                            glow.layer = RenderLayer::GroundOverlay;
+                            scene.SetPosition(glow.GetId(), prop.Position());
+                        }
+                    }
+                    if (tile.prop == Prop::Beacon)
+                    {
+                        propKeys.insert(propKey + "/glow");
                     }
                 }
             }
         }
-        renderer.RetainTerrainMeshes(terrainKeys);
-        LevelOneView::Ground(renderer, *levelOne, Project, zoom, showAttackRange);
-        if (showChunks)
+        scene.Retain("terrain/", terrainKeys);
+        scene.Retain("prop/", propKeys);
+        renderer.RetainTerrainMeshes(meshKeys);
+        auto& residents = scene.Ensure("residents", "group");
+        for (const auto& npc : npcs->Residents())
         {
-            for (const auto& entry : world->Chunks())
+            auto id = npc.id;
+            auto key = "npc/" + std::to_string(id);
+            npcKeys.insert(key);
+            if (!scene.Find(key))
             {
-                double x = double(entry.first.first * ChunkSize),
-                       y = double(entry.first.second * ChunkSize);
-                Point2 a = Project(x, y), b = Project(x + ChunkSize, y),
-                       c = Project(x + ChunkSize, y + ChunkSize), d = Project(x, y + ChunkSize);
-                for (auto edge : {std::pair<Point2, Point2>{a, b}, {b, c}, {c, d}, {d, a}})
-                {
-                    renderer.Line(edge.first, edge.second, 1.4f, {0.65f, 0.80f, 0.52f, 0.65f});
-                }
-                renderer.Text(a.x,
-                              a.y + 4,
-                              std::to_string(entry.first.first) + ":" +
-                                  std::to_string(entry.first.second),
-                              gold,
-                              1.3f);
+                Actor& actor = scene.Ensure(key, "npc", residents.GetId());
+                actor.recordId = id;
+                actor.BindPosition(
+                    [id]()
+                    {
+                        const auto* npc = Resident(id);
+                        return npc ? ActorPosition{npc->x, npc->y} : ActorPosition{};
+                    },
+                    [id](ActorPosition p)
+                    {
+                        npcs->SetPosition(id, p.x, p.y);
+                    });
             }
         }
-        for (const Object& o : objects)
+        scene.Retain("npc/", npcKeys);
+        scene.Ensure("overlay", "overlay").layer = RenderLayer::GroundOverlay;
+        scene.Ensure("hud", "hud").layer = RenderLayer::UI;
+    }
+
+    void RenderScene()
+    {
+        if (!running || !world || !levelOne)
         {
-            if (o.tile->prop == Prop::Beacon && o.tile->lit)
-            {
-                Point2 p = Project(o.x, o.y);
-                for (int i = 5; i >= 1; --i)
-                {
-                    renderer.Ellipse(p,
-                                     (25 + i * 10) * zoom,
-                                     (12 + i * 5) * zoom,
-                                     {0.91f, 0.59f, 0.19f, 0.035f});
-                }
-            }
+            return;
         }
-        objects.push_back({playerX, playerY, nullptr});
-        for (const Npc& npc : npcs->Residents())
-        {
-            Point2 p = Project(npc.x, npc.y);
-            if (npcs->IsPresent(npc, *world) && p.x > -80 && p.x < width + 80 && p.y > -20 &&
-                p.y < height + 100)
-            {
-                objects.push_back({npc.x, npc.y, nullptr, &npc});
-            }
-        }
-        auto visible = [](WorldPoint position)
-        {
-            Point2 p = Project(position.x, position.y);
-            return p.x > -100 && p.x < width + 100 && p.y > -20 && p.y < height + 160;
-        };
-        for (const SoulNpc& soul : levelOne->Souls())
-        {
-            if (visible(soul.position) && world->Find(WorldInt(std::floor(soul.position.x)),
-                                                      WorldInt(std::floor(soul.position.y))))
-            {
-                objects.push_back({soul.position.x,
-                                   soul.position.y,
-                                   nullptr,
-                                   nullptr,
-                                   nullptr,
-                                   nullptr,
-                                   nullptr,
-                                   &soul});
-            }
-        }
-        for (const Enemy& enemy : levelOne->Enemies())
-        {
-            if (visible(enemy.position))
-            {
-                objects.push_back({enemy.position.x, enemy.position.y, nullptr, nullptr, &enemy});
-            }
-        }
-        for (const ItemDrop& drop : levelOne->Drops())
-        {
-            if (visible(drop.position))
-            {
-                objects.push_back(
-                    {drop.position.x, drop.position.y, nullptr, nullptr, nullptr, &drop});
-            }
-        }
-        for (const Projectile& shot : levelOne->Projectiles())
-        {
-            if (visible(shot.position))
-            {
-                objects.push_back(
-                    {shot.position.x, shot.position.y, nullptr, nullptr, nullptr, nullptr, &shot});
-            }
-        }
-        std::sort(objects.begin(),
-                  objects.end(),
-                  [](const Object& a, const Object& b)
-                  {
-                      double da = a.x + a.y, db = b.x + b.y;
-                      if (da != db)
-                      {
-                          return da < db;
-                      }
-                      return a.x < b.x;
-                  });
-        for (const Object& object : objects)
-        {
-            Point2 p = Project(object.x, object.y);
-            if (object.soul)
-            {
-                LevelOneView::DrawSoul(renderer, *object.soul, p, zoom, elapsed);
-                continue;
-            }
-            if (object.enemy)
-            {
-                LevelOneView::DrawEnemy(
-                    renderer, *object.enemy, p, zoom, object.enemy->id == levelOne->Target());
-                continue;
-            }
-            if (object.drop)
-            {
-                LevelOneView::DrawDrop(renderer, *object.drop, p, zoom);
-                continue;
-            }
-            if (object.shot)
-            {
-                LevelOneView::DrawShot(renderer, *object.shot, p, zoom);
-                continue;
-            }
-            if (object.npc)
-            {
-                DrawNpc(p, *object.npc);
-                continue;
-            }
-            if (!object.tile)
-            {
-                if (levelOne->InvulnerableTime() <= 0.0 || int(elapsed * 12) % 2 == 0)
-                {
-                    Player(p);
-                }
-                continue;
-            }
-            std::string meshKey = "prop:" + std::to_string(int(object.tile->prop)) + ":" +
-                                  std::to_string(object.tile->variation);
-            if (renderer.BeginMesh(meshKey, p, zoom))
-            {
-                switch (object.tile->prop)
-                {
-                    case Prop::Tree:
-                        Tree(p, object.tile->variation);
-                        break;
-                    case Prop::Rock:
-                        renderer.Ellipse(p, 20 * zoom, 7 * zoom, {0.01f, 0.03f, 0.03f, 0.3f});
-                        Box(p, 14, 7, 10 + float(object.tile->variation), {0.38f, 0.42f, 0.38f, 1});
-                        break;
-                    case Prop::Ruin:
-                        Ruin(p);
-                        break;
-                    case Prop::Beacon:
-                        BeaconBase(p);
-                        break;
-                    default:
-                        break;
-                }
-                renderer.EndMesh();
-            }
-            Point2 body = Project(playerX, playerY, 20);
-            Point2 head = Project(playerX, playerY, 36);
-            bool inFront = object.x + object.y > playerX + playerY ||
-                           (object.x + object.y == playerX + playerY && object.x >= playerX);
-            bool covers = inFront && (renderer.MeshCovers(meshKey, p, zoom, body) ||
-                                      renderer.MeshCovers(meshKey, p, zoom, head));
-            ChunkKey propKey{WorldInt(std::floor(object.x)), WorldInt(std::floor(object.y))};
-            visibleProps.insert(propKey);
-            float& opacity = propOpacity.try_emplace(propKey, 1.0f).first->second;
-            float desired = covers ? 0.25f : 1.0f;
-            opacity += (desired - opacity) * float(1.0 - std::exp(-renderDelta * 12.0));
-            renderer.DrawMesh(meshKey, p, zoom, opacity);
-            if (object.tile->prop == Prop::Beacon && object.tile->lit)
-            {
-                BeaconFlame(p);
-            }
-        }
-        for (auto it = propOpacity.begin(); it != propOpacity.end();)
-        {
-            if (visibleProps.find(it->first) == visibleProps.end())
-            {
-                it = propOpacity.erase(it);
-            }
-            else
-            {
-                ++it;
-            }
-        }
-        LevelOneView::Numbers(renderer, *levelOne, Project);
-        // Post-process the rendered world, then draw all dialogue and HUD at full clarity.
+        FrameProfiler::Instance().BeginFrame();
+        SynchronizeScene();
+        renderer.Begin(width, height);
+        auto& scene = levelOne->Scene();
+        scene.Render(RenderLayer::Ground);
+        scene.Render(RenderLayer::GroundOverlay);
+        scene.Render(RenderLayer::World, VisibleActor);
+        scene.Render(RenderLayer::Effects);
         renderer.FinishWorld();
-        HUD();
+        scene.Render(RenderLayer::UI);
         renderer.Flush();
         glutSwapBuffers();
+        FrameProfiler::Instance().EndFrame();
     }
 
     void ClearInput()
@@ -1092,6 +1190,7 @@ int main(int argc, char** argv)
     }
     npcs = std::make_unique<NpcSystem>(savePath);
     levelOne = std::make_unique<LevelOne>(savePath, world->Seed());
+    ConfigureActorRenderers();
     playerX = cameraX = levelOne->Player().position.x;
     playerY = cameraY = levelOne->Player().position.y;
     std::wcout << L"World save directory: " << savePath.c_str() << L'\n';

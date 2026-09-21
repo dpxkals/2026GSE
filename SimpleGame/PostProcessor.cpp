@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "FrameProfiler.h"
 #include "PostProcessor.h"
 #include "ShaderProgram.h"
 #include <algorithm>
@@ -147,7 +148,7 @@ void PostProcessor::Draw(GLuint framebuffer, int width, int height, GLuint progr
     glViewport(0, 0, width, height);
     glUseProgram(program);
     glBindVertexArray(vao_);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    FrameProfiler::DrawArrays(GL_TRIANGLES, 0, 3);
 }
 
 void PostProcessor::Filter(

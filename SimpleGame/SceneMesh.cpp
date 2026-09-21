@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "FrameProfiler.h"
 #include "SceneRenderer.h"
 #include <algorithm>
 #include <cmath>
@@ -91,7 +92,7 @@ void SceneRenderer::DrawMesh(const std::string& key, Point2 origin, float scale,
     glUniform1i(textured_, false);
     glUniform1i(linearOutput_, hdrWorld_);
     glBindVertexArray(found->second.vao);
-    glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(found->second.vertices.size()));
+    FrameProfiler::DrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(found->second.vertices.size()));
     glBindVertexArray(0);
     glUseProgram(0);
 }
