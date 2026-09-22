@@ -7,14 +7,31 @@
 
 bool SceneRenderer::BeginMesh(const std::string& key, Point2 origin, float scale)
 {
+    auto& profile = FrameProfiler::Instance();
+    profile.Add(FrameProfiler::MeshRequests);
     if (meshes_.find(key) != meshes_.end())
     {
+        profile.Add(FrameProfiler::MemoryHits);
         return false;
     }
+    if (!recordingKey_.empty() || key.empty() || !std::isfinite(scale) || scale <= 0.0f)
+    {
+        profile.Add(FrameProfiler::CacheErrors);
+        return false;
+    }
+    Mesh cached;
+    if (LoadMesh(key, cached))
+    {
+        meshes_.emplace(key, std::move(cached));
+        return false;
+    }
+    profile.Add(FrameProfiler::CacheMisses);
+    profile.Event("miss", key);
     Flush();
     recordingKey_ = key;
     recordingOrigin_ = origin;
     recordingScale_ = scale;
+    meshBuildStart_ = std::chrono::steady_clock::now();
     return true;
 }
 
@@ -31,34 +48,15 @@ void SceneRenderer::EndMesh()
         vertex.x = (vertex.x - recordingOrigin_.x) / recordingScale_;
         vertex.y = (vertex.y - recordingOrigin_.y) / recordingScale_;
     }
-    glGenVertexArrays(1, &mesh.vao);
-    glGenBuffers(1, &mesh.vbo);
-    if (mesh.vao && mesh.vbo)
-    {
-        glBindVertexArray(mesh.vao);
-        glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
-        glBufferData(GL_ARRAY_BUFFER,
-                     mesh.vertices.size() * sizeof(Vertex),
-                     mesh.vertices.data(),
-                     GL_STATIC_DRAW);
-        GLint allocated = 0;
-        glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &allocated);
-        if (allocated == mesh.vertices.size() * sizeof(Vertex))
-        {
-            ConfigureAttributes();
-        }
-        else
-        {
-            glDeleteBuffers(1, &mesh.vbo);
-            mesh.vbo = 0;
-        }
-    }
-    if (!mesh.vao || !mesh.vbo)
-    {
-        std::cerr << "Mesh GPU allocation failed; using cached CPU geometry: " << recordingKey_
-                  << '\n';
-    }
-    glBindVertexArray(0);
+    auto& profile = FrameProfiler::Instance();
+    profile.Add(FrameProfiler::MeshBuilds);
+    profile.Event(
+        "build", recordingKey_, mesh.vertices.size(), mesh.vertices.size() * sizeof(Vertex));
+    profile.Add(FrameProfiler::MeshBuildMs,
+                std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() -
+                                                          meshBuildStart_)
+                    .count());
+    SaveMesh(recordingKey_, mesh);
     meshes_.emplace(recordingKey_, std::move(mesh));
     recordingKey_.clear();
     vertices_.clear();
@@ -66,35 +64,7 @@ void SceneRenderer::EndMesh()
 
 void SceneRenderer::DrawMesh(const std::string& key, Point2 origin, float scale, float opacity)
 {
-    auto found = meshes_.find(key);
-    if (found == meshes_.end())
-    {
-        return;
-    }
-    Flush();
-    if (!found->second.vao || !found->second.vbo)
-    {
-        for (auto vertex : found->second.vertices)
-        {
-            vertex.x = origin.x + vertex.x * scale;
-            vertex.y = origin.y + vertex.y * scale;
-            vertex.a *= opacity;
-            vertices_.push_back(vertex);
-        }
-        Flush();
-        return;
-    }
-    glUseProgram(program_);
-    glUniform2f(viewport_, float(width_), float(height_));
-    glUniform2f(meshOffset_, origin.x, origin.y);
-    glUniform1f(meshScale_, scale);
-    glUniform1f(meshOpacity_, opacity);
-    glUniform1i(textured_, false);
-    glUniform1i(linearOutput_, hdrWorld_);
-    glBindVertexArray(found->second.vao);
-    FrameProfiler::DrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(found->second.vertices.size()));
-    glBindVertexArray(0);
-    glUseProgram(0);
+    QueueMesh(key, {origin.x, origin.y, scale, scale, 1, 1, 1, opacity, 1});
 }
 
 bool SceneRenderer::MeshCovers(const std::string& key,
@@ -149,6 +119,8 @@ void SceneRenderer::RetainTerrainMeshes(const std::set<std::string>& keys)
     {
         if (it->first.compare(0, 8, "terrain:") == 0 && keys.find(it->first) == keys.end())
         {
+            FrameProfiler::Instance().Add(FrameProfiler::Evictions);
+            FrameProfiler::Instance().Event("evict", it->first, it->second.vertices.size());
             ReleaseMesh(it->second);
             it = meshes_.erase(it);
         }

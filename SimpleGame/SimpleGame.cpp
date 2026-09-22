@@ -19,6 +19,7 @@ but WITHOUT ANY WARRANTY.
 #include "LevelOne.h"
 #include "LevelOneView.h"
 #include "WorldActors.h"
+#include "WorldView.h"
 #include "Dependencies/freeglut.h"
 #include <Windows.h>
 #include <algorithm>
@@ -31,6 +32,7 @@ but WITHOUT ANY WARRANTY.
 #include <memory>
 #include <sstream>
 #include <vector>
+#include <stdexcept>
 
 namespace
 {
@@ -38,6 +40,7 @@ namespace
     std::unique_ptr<World> world;
     std::unique_ptr<NpcSystem> npcs;
     std::unique_ptr<LevelOne> levelOne;
+    std::filesystem::path gameplaySaveDirectory;
     int speakingNpc = -1;
     int speakingSoul = -1;
     double renderDelta = 0.016;
@@ -423,24 +426,7 @@ namespace
                << "   ACTORS " << levelOne->Scene().Size() << "   MESH CACHE "
                << renderer.MeshCount() << "   SEED " << world->Seed();
         renderer.Text(40, 70, status.str(), muted, 1.3f);
-        float mx = float(width) - 156, my = 109;
-        renderer.Rect(mx - 10, my - 7, 142, 138, {0.025f, 0.045f, 0.05f, 0.88f});
-        renderer.Text(mx, my, "STREAM MAP", muted, 1.5f);
-        WorldInt cx = World::ChunkOf(WorldInt(std::floor(playerX)));
-        WorldInt cy = World::ChunkOf(WorldInt(std::floor(playerY)));
-        for (int y = -4; y <= 4; ++y)
-        {
-            for (int x = -4; x <= 4; ++x)
-            {
-                bool loaded = world->Chunks().find({cx + x, cy + y}) != world->Chunks().end();
-                Color c = loaded ? Color{0.24f, 0.39f, 0.34f, 1} : Color{0.09f, 0.14f, 0.15f, 1};
-                if (x == 0 && y == 0)
-                {
-                    c = gold;
-                }
-                renderer.Rect(mx + (x + 4) * 13, my + 24 + (y + 4) * 10, 11, 8, c);
-            }
-        }
+        WorldView::MiniMap(renderer, *world, *levelOne, *npcs, width, height, renderDelta);
         renderer.Rect(0, float(height) - 64, float(width), 64, {0.025f, 0.045f, 0.05f, 0.94f});
         if (showHelp)
         {
@@ -453,7 +439,7 @@ namespace
             renderer.Text(
                 24,
                 float(height) - 25,
-                "F1 CHUNKS  F2 POST  F3 BLOOM  F4 VIGNETTE  F5 BLUR  F6 RESET  H HELP  HOME ORIGIN  ESC EXIT",
+                "F1 CHUNKS  F2 POST  F3 BLOOM  F4 VIGNETTE  F5 BLUR  F6 FX RESET  F9 NEW RUN  HOME ORIGIN",
                 muted,
                 1.2f);
         }
@@ -491,7 +477,7 @@ namespace
     {
         auto position = actor.Position();
         Point2 p = Project(position.x, position.y);
-        return p.x > -120 && p.x < width + 120 && p.y > -20 && p.y < height + 180;
+        return p.x > -160 && p.x < width + 160 && p.y > -40 && p.y < height + 300;
     }
 
     const Npc* Resident(std::uint64_t id)
@@ -504,6 +490,21 @@ namespace
             }
         }
         return nullptr;
+    }
+
+    std::string TerrainMeshKey(ChunkKey key, const Chunk& chunk)
+    {
+        // Include actual geometry inputs: editing/regenerating a chunk invalidates its cache.
+        std::uint64_t signature = 14695981039346656037ull;
+        for (const auto& tile : chunk.tiles)
+        {
+            for (auto value : {int(tile.ground), int(tile.prop), tile.variation})
+            {
+                signature = (signature ^ std::uint64_t(value)) * 1099511628211ull;
+            }
+        }
+        return "terrain:" + std::to_string(key.first) + ":" + std::to_string(key.second) + ":" +
+               std::to_string(chunk.generationVersion) + ":" + std::to_string(signature);
     }
 
     void ConfigureActorRenderers()
@@ -523,8 +524,7 @@ namespace
                 WorldInt bx = key.first * ChunkSize, by = key.second * ChunkSize;
                 auto position = actor.Position();
                 Point2 origin = Project(position.x, position.y);
-                std::string meshKey =
-                    "terrain:" + std::to_string(key.first) + ":" + std::to_string(key.second);
+                std::string meshKey = TerrainMeshKey(key, found->second);
                 if (renderer.BeginMesh(meshKey, Project(double(bx), double(by)), zoom))
                 {
                     for (int y = 0; y < ChunkSize; ++y)
@@ -601,6 +601,13 @@ namespace
                             break;
                         case Prop::Beacon:
                             BeaconBase(p);
+                            break;
+                        case Prop::Cottage:
+                        case Prop::Chapel:
+                        case Prop::Watchtower:
+                        case Prop::Well:
+                        case Prop::Graves:
+                            WorldView::Structure(renderer, p, zoom, tile->prop, tile->variation);
                             break;
                         default:
                             break;
@@ -753,8 +760,7 @@ namespace
             std::string terrainKey =
                 "terrain/" + std::to_string(key.first) + "/" + std::to_string(key.second);
             terrainKeys.insert(terrainKey);
-            meshKeys.insert("terrain:" + std::to_string(key.first) + ":" +
-                            std::to_string(key.second));
+            meshKeys.insert(TerrainMeshKey(key, entry.second));
             Actor* terrain = scene.Find(terrainKey);
             if (!terrain)
             {
@@ -829,19 +835,49 @@ namespace
         {
             return;
         }
-        FrameProfiler::Instance().BeginFrame();
-        SynchronizeScene();
-        renderer.Begin(width, height);
+        auto& profile = FrameProfiler::Instance();
+        profile.BeginFrame();
+        {
+            FrameProfiler::Scope timer(FrameProfiler::SyncMs);
+            SynchronizeScene();
+        }
         auto& scene = levelOne->Scene();
-        scene.Render(RenderLayer::Ground);
-        scene.Render(RenderLayer::GroundOverlay);
-        scene.Render(RenderLayer::World, VisibleActor);
-        scene.Render(RenderLayer::Effects);
-        renderer.FinishWorld();
-        scene.Render(RenderLayer::UI);
-        renderer.Flush();
-        glutSwapBuffers();
-        FrameProfiler::Instance().EndFrame();
+        {
+            FrameProfiler::Scope timer(FrameProfiler::SubmitMs);
+            renderer.Begin(width, height);
+            profile.SetPass(FrameProfiler::GroundDraws);
+            scene.Render(RenderLayer::Ground);
+            renderer.Flush();
+            profile.SetPass(FrameProfiler::OverlayDraws);
+            scene.Render(RenderLayer::GroundOverlay);
+            renderer.Flush();
+            profile.SetPass(FrameProfiler::WorldDraws);
+            scene.Render(RenderLayer::World, VisibleActor);
+            renderer.Flush();
+            profile.SetPass(FrameProfiler::EffectsDraws);
+            scene.Render(RenderLayer::Effects);
+            renderer.FinishWorld();
+            profile.SetPass(FrameProfiler::UiDraws);
+            scene.Render(RenderLayer::UI);
+            renderer.Flush();
+        }
+        {
+            FrameProfiler::Scope timer(FrameProfiler::SwapMs);
+            glutSwapBuffers();
+        }
+        renderer.ReportMetrics();
+        profile.Set(FrameProfiler::Actors, double(scene.Size()));
+        profile.Set(FrameProfiler::Chunks, double(world->Chunks().size()));
+        profile.Set(FrameProfiler::PendingChunks, world->Pending());
+        profile.Set(FrameProfiler::Width, width);
+        profile.Set(FrameProfiler::Height, height);
+        profile.Set(FrameProfiler::Zoom, zoom);
+        profile.Set(FrameProfiler::PostEnabled,
+                    renderer.Effects().enabled && renderer.PostProcessingAvailable());
+        profile.Set(FrameProfiler::BloomEnabled, renderer.Effects().bloom);
+        profile.Set(FrameProfiler::EdgeBlurEnabled, renderer.Effects().edgeBlur);
+        profile.Set(FrameProfiler::VignetteEnabled, renderer.Effects().vignette);
+        profile.EndFrame();
     }
 
     void ClearInput()
@@ -1060,8 +1096,115 @@ namespace
         }
     }
 
+    void ResetPlayData()
+    {
+        if (!world || !levelOne || !npcs || gameplaySaveDirectory.empty())
+        {
+            return;
+        }
+        ClearInput();
+        moving = false;
+        const bool wasPaused = paused;
+        paused = true;
+        int answer = MessageBoxW(
+            nullptr,
+            L"플레이 진행을 초기화하고 거점에서 다시 시작할까요?\n\n"
+            L"초기화: 레벨, 경험치, 강화, 처치 수, 보스 진행, 적과 아이템, 영혼 NPC, 주민 대화 기록\n"
+            L"유지: 월드 시드, 생성된 지형과 건물, 봉화 점등 상태\n\n"
+            L"기존 진행 파일은 Backups 폴더에 보관됩니다.",
+            L"F9 · 테스트용 새 플레이",
+            MB_YESNO | MB_ICONWARNING | MB_DEFBUTTON2);
+        lastTick = std::chrono::steady_clock::now();
+        if (answer != IDYES)
+        {
+            paused = wasPaused;
+            return;
+        }
+        const wchar_t* files[] = {L"level_one.dat", L"residents_v1.dat"};
+        std::filesystem::path backup;
+        bool originalsChanged = false;
+        try
+        {
+            if (!world->Error().empty() || !npcs->Error().empty() || !levelOne->Save())
+            {
+                throw std::runtime_error("Resolve existing save errors before resetting.");
+            }
+            auto stamp = std::chrono::duration_cast<std::chrono::microseconds>(
+                             std::chrono::system_clock::now().time_since_epoch())
+                             .count();
+            backup = gameplaySaveDirectory / L"Backups" / ("play_reset_" + std::to_string(stamp));
+            std::filesystem::create_directories(backup);
+            // Both backups must succeed before either active file is removed.
+            for (const auto* file : files)
+            {
+                std::filesystem::copy_file(gameplaySaveDirectory / file, backup / file);
+            }
+            originalsChanged = true;
+            for (const auto* file : files)
+            {
+                std::filesystem::remove(gameplaySaveDirectory / file);
+            }
+            auto freshNpcs = std::make_unique<NpcSystem>(gameplaySaveDirectory);
+            auto freshLevel = std::make_unique<LevelOne>(gameplaySaveDirectory, world->Seed());
+            if (!freshNpcs->Error().empty() || !freshLevel->Error().empty())
+            {
+                throw std::runtime_error(freshNpcs->Error() + " " + freshLevel->Error());
+            }
+            levelOne.swap(freshLevel);
+            npcs.swap(freshNpcs);
+        }
+        catch (const std::exception& error)
+        {
+            std::cerr << "[PlayReset] " << error.what() << '\n';
+            if (originalsChanged)
+            {
+                for (const auto* file : files)
+                {
+                    std::error_code restoreError;
+                    std::filesystem::copy_file(backup / file,
+                                               gameplaySaveDirectory / file,
+                                               std::filesystem::copy_options::overwrite_existing,
+                                               restoreError);
+                    if (restoreError)
+                    {
+                        std::cerr << "[PlayReset] Restore failed: " << restoreError.message()
+                                  << '\n';
+                    }
+                }
+            }
+            paused = true;
+            MessageBoxW(nullptr,
+                        L"초기화에 실패했습니다. 콘솔과 Backups 폴더를 확인하세요.",
+                        L"플레이 초기화 오류",
+                        MB_OK | MB_ICONERROR);
+            lastTick = std::chrono::steady_clock::now();
+            return;
+        }
+        ConfigureActorRenderers();
+        speakingNpc = speakingSoul = -1;
+        dialoguePages.clear();
+        dialoguePage = 0;
+        playerX = cameraX = levelOne->Player().position.x;
+        playerY = cameraY = levelOne->Player().position.y;
+        elapsed = stepPhase = 0.0;
+        message = "NEW RUN - WORLD SEED PRESERVED";
+        messageUntil = 6.0;
+        paused = false;
+        ClearInput();
+        world->Stream(playerX, playerY, 2);
+        lastTick = std::chrono::steady_clock::now();
+        std::wcout << L"[PlayReset] Completed. Backup: " << backup.c_str() << L'\n';
+        FrameProfiler::Instance().Event("play_reset", std::to_string(world->Seed()));
+        glutPostRedisplay();
+    }
+
     void SpecialDown(int key, int, int)
     {
+        if (key == GLUT_KEY_F9)
+        {
+            ResetPlayData();
+            return;
+        }
         auto& effects = renderer.Effects();
         switch (key)
         {
@@ -1177,6 +1320,7 @@ int main(int argc, char** argv)
     }
     auto savePath = std::filesystem::path(executable).parent_path() / L"SaveData" /
                     (naturalWorld ? L"Level01_natural_v2" : L"Level01_v1");
+    gameplaySaveDirectory = savePath;
     world = std::make_unique<World>(savePath);
     if (!world->Error().empty())
     {
@@ -1189,6 +1333,11 @@ int main(int argc, char** argv)
         return 1;
     }
     npcs = std::make_unique<NpcSystem>(savePath);
+    renderer.SetMeshCacheDirectory(savePath / L"MeshCache" / std::to_string(world->Seed()));
+    FrameProfiler::Instance().OpenLog(
+        std::filesystem::path(executable).parent_path() / L"Logs",
+        "seed=" + std::to_string(world->Seed()) +
+            (naturalWorld ? ";mode=Level01_natural_v2" : ";mode=Level01_v1"));
     levelOne = std::make_unique<LevelOne>(savePath, world->Seed());
     ConfigureActorRenderers();
     playerX = cameraX = levelOne->Player().position.x;
@@ -1197,6 +1346,7 @@ int main(int argc, char** argv)
     std::cout << "WASD / arrows: move | F: talk | E: light beacon | wheel / +/-: zoom\n"
               << "F1: chunk edges | H: help | Home: origin | Esc: exit\n"
               << "F2: post on/off | F3: bloom | F4: vignette | F5: edge blur | F6: reset FX\n"
+              << "F9: reset play data (confirmation + backup); keep world seed and terrain\n"
               << "[ / ]: exposure down/up (0.1 to 4.0); HDR is tone-mapped to SDR output.\n"
               << "Level 01: auto fire within 6 tiles | R: range | P: pause | 24 kills: boss\n";
     world->Stream(playerX, playerY, 2);

@@ -24,7 +24,12 @@ enum class Prop
     Tree,
     Rock,
     Ruin,
-    Beacon
+    Beacon,
+    Cottage,
+    Chapel,
+    Watchtower,
+    Well,
+    Graves
 };
 
 struct Tile
@@ -38,7 +43,7 @@ struct Tile
 struct Chunk
 {
     std::array<Tile, ChunkSize * ChunkSize> tiles;
-    int generationVersion = 3;
+    int generationVersion = 5;
 };
 
 class World
@@ -76,6 +81,7 @@ class World
     }
 
     static WorldInt ChunkOf(WorldInt tile);
+    static double PropHalfExtent(Prop prop);
     std::uint64_t Hash(WorldInt x, WorldInt y) const;
     std::uint64_t Seed() const;
     bool ClearLine(double fromX, double fromY, double toX, double toY) const;

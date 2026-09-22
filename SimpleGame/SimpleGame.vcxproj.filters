@@ -52,6 +52,9 @@
     <ClInclude Include="WorldActors.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="WorldView.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="GameplayTypes.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -79,6 +82,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SceneMesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBatch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldView.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMeshCache.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">

@@ -7,6 +7,8 @@
 #include <map>
 #include <tuple>
 #include <set>
+#include <filesystem>
+#include <chrono>
 
 struct Point2
 {
@@ -40,6 +42,8 @@ class SceneRenderer
     }
 
     void Flush();
+    void SetMeshCacheDirectory(const std::filesystem::path& directory);
+    void ReportMetrics() const;
     bool BeginMesh(const std::string& key, Point2 origin, float scale);
     void EndMesh();
     void DrawMesh(const std::string& key, Point2 origin, float scale, float opacity = 1.0f);
@@ -83,6 +87,27 @@ class SceneRenderer
         GLuint vbo = 0;
         std::vector<Vertex> vertices;
     };
+
+    struct MeshInstance
+    {
+        float x, y, sx, sy;
+        float r, g, b, a, energy;
+        float shearX = 0.0f, shearY = 0.0f;
+    };
+
+    void QueueMesh(const std::string& key, const MeshInstance& instance);
+    void DrainInstances();
+    void FlushVertices();
+    void UploadMesh(Mesh& mesh);
+    bool LoadMesh(const std::string& key, Mesh& mesh);
+    void SaveMesh(const std::string& key, const Mesh& mesh);
+    std::filesystem::path CachePath(const std::string& key) const;
+    std::filesystem::path cacheDirectory_;
+    std::string pendingMesh_;
+    std::vector<MeshInstance> instances_;
+    GLuint instanceVbo_ = 0;
+    GLint instanced_ = -1;
+    std::chrono::steady_clock::time_point meshBuildStart_;
 
     void ConfigureAttributes();
     void ReleaseMesh(Mesh& mesh);

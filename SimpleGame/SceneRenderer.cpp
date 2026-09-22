@@ -85,6 +85,7 @@ bool SceneRenderer::Initialize()
     meshOffset_ = glGetUniformLocation(program_, "meshOffset");
     meshScale_ = glGetUniformLocation(program_, "meshScale");
     meshOpacity_ = glGetUniformLocation(program_, "meshOpacity");
+    instanced_ = glGetUniformLocation(program_, "instanced");
     textured_ = glGetUniformLocation(program_, "textured");
     linearOutput_ = glGetUniformLocation(program_, "linearOutput");
     glUseProgram(program_);
@@ -92,13 +93,14 @@ bool SceneRenderer::Initialize()
     glUseProgram(0);
     glGenVertexArrays(1, &vao_);
     glGenBuffers(1, &vbo_);
+    glGenBuffers(1, &instanceVbo_);
     glBindVertexArray(vao_);
     glBindBuffer(GL_ARRAY_BUFFER, vbo_);
     ConfigureAttributes();
     glBindVertexArray(0);
     vertices_.reserve(150000);
     bool initialized = vao_ && vbo_ && viewport_ >= 0 && linearOutput_ >= 0 && meshOffset_ >= 0 &&
-                       meshScale_ >= 0 && meshOpacity_ >= 0;
+                       meshScale_ >= 0 && meshOpacity_ >= 0 && instanced_ >= 0;
     if (initialized)
     {
         postProcessor_.Initialize(); // failure falls back to the direct path
@@ -108,6 +110,8 @@ bool SceneRenderer::Initialize()
 
 void SceneRenderer::Shutdown()
 {
+    instances_.clear();
+    pendingMesh_.clear();
     postProcessor_.Shutdown();
     for (auto& entry : meshes_)
     {
@@ -123,6 +127,11 @@ void SceneRenderer::Shutdown()
     if (vbo_)
     {
         glDeleteBuffers(1, &vbo_);
+    }
+    if (instanceVbo_)
+    {
+        glDeleteBuffers(1, &instanceVbo_);
+        instanceVbo_ = 0;
     }
     if (vao_)
     {
@@ -158,6 +167,7 @@ void SceneRenderer::Begin(int width, int height)
 void SceneRenderer::FinishWorld()
 {
     Flush();
+    FrameProfiler::Instance().SetPass(FrameProfiler::PostDraws);
     postProcessor_.Composite();
     hdrWorld_ = false;
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -166,11 +176,22 @@ void SceneRenderer::FinishWorld()
 
 void SceneRenderer::Flush()
 {
+    if (!recordingKey_.empty())
+    {
+        return;
+    }
+    DrainInstances();
+    FlushVertices();
+}
+
+void SceneRenderer::FlushVertices()
+{
     if (!recordingKey_.empty() || vertices_.empty())
     {
         return;
     }
     glUseProgram(program_);
+    glUniform1i(instanced_, false);
     glUniform2f(viewport_, float(width_), float(height_));
     glUniform2f(meshOffset_, 0.0f, 0.0f);
     glUniform1f(meshScale_, 1.0f);
@@ -183,6 +204,8 @@ void SceneRenderer::Flush()
     glBindBuffer(GL_ARRAY_BUFFER, vbo_);
     glBufferData(
         GL_ARRAY_BUFFER, vertices_.size() * sizeof(Vertex), vertices_.data(), GL_STREAM_DRAW);
+    FrameProfiler::Instance().Add(FrameProfiler::UploadBytes,
+                                  double(vertices_.size() * sizeof(Vertex)));
     FrameProfiler::DrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(vertices_.size()));
     glBindVertexArray(0);
     glUseProgram(0);
@@ -193,6 +216,30 @@ void SceneRenderer::Flush()
 
 void SceneRenderer::Triangle(Point2 a, Point2 b, Point2 c, Color color)
 {
+    if (recordingKey_.empty())
+    {
+        const std::string key = "primitive:tri";
+        if (BeginMesh(key, {0, 0}, 1.0f))
+        {
+            Triangle({0, 0}, {1, 0}, {0, 1}, {1, 1, 1, 1});
+            EndMesh();
+        }
+        // Any triangle is an affine instance of the same three immutable vertices.
+        QueueMesh(key,
+                  {a.x,
+                   a.y,
+                   b.x - a.x,
+                   c.y - a.y,
+                   color.r,
+                   color.g,
+                   color.b,
+                   color.a,
+                   color.energy,
+                   c.x - a.x,
+                   b.y - a.y});
+        return;
+    }
+    FrameProfiler::Instance().Add(FrameProfiler::GeneratedVertices, 3);
     for (Point2 p : {a, b, c})
     {
         vertices_.push_back({p.x, p.y, color.r, color.g, color.b, color.a, 0, 0, color.energy});
@@ -228,6 +275,17 @@ void SceneRenderer::Line(Point2 a, Point2 b, float width, Color color)
 
 void SceneRenderer::Ellipse(Point2 p, float rx, float ry, Color color)
 {
+    if (recordingKey_.empty())
+    {
+        const std::string key = "primitive:ellipse:20";
+        if (BeginMesh(key, {0, 0}, 1.0f))
+        {
+            Ellipse({0, 0}, 1.0f, 1.0f, {1, 1, 1, 1});
+            EndMesh();
+        }
+        QueueMesh(key, {p.x, p.y, rx, ry, color.r, color.g, color.b, color.a, color.energy});
+        return;
+    }
     const int segments = 20;
     for (int i = 0; i < segments; ++i)
     {
@@ -251,6 +309,18 @@ void SceneRenderer::Text(float x, float y, const std::string& text, Color color,
             continue;
         }
         const unsigned char* glyph = Glyph(c);
+        if (recordingKey_.empty())
+        {
+            const std::string key = "glyph:ascii:" + std::to_string(static_cast<unsigned char>(c));
+            if (BeginMesh(key, {0, 0}, 1.0f))
+            {
+                Text(0, 0, std::string(1, c), {1, 1, 1, 1}, 1.0f);
+                EndMesh();
+            }
+            QueueMesh(key, {x, y, scale, scale, color.r, color.g, color.b, color.a, color.energy});
+            x += 6 * scale;
+            continue;
+        }
         for (int col = 0; col < 5; ++col)
         {
             for (int row = 0; row < 7; ++row)

@@ -176,6 +176,7 @@
     <ClInclude Include="SceneGraph.h" />
     <ClInclude Include="FrameProfiler.h" />
     <ClInclude Include="WorldActors.h" />
+    <ClInclude Include="WorldView.h" />
     <ClInclude Include="GameplayTypes.h" />
     <ClInclude Include="GameplayBehaviors.h" />
     <ClInclude Include="ActorRecords.h" />
@@ -187,6 +188,12 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneRenderer.cpp" />
     <ClCompile Include="SceneMesh.cpp" />
+    <ClCompile Include="SceneBatch.cpp" />
+    <ClCompile Include="WorldView.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="SceneMeshCache.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="SoulNpc.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>

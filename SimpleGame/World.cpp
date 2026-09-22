@@ -11,6 +11,7 @@
 #include <stdexcept>
 #include <vector>
 #include <random>
+#include <iostream>
 
 namespace
 {
@@ -112,6 +113,28 @@ std::filesystem::path World::Path(ChunkKey key) const
 Chunk World::Generate(ChunkKey key) const
 {
     Chunk chunk;
+    auto protectedGround = [this](WorldInt x, WorldInt y)
+    {
+        double main = 6.0 * std::sin(x * 0.032) + 5.0 * (Noise(x / 38.0, 17.0) - 0.5);
+        double side = 7.0 * std::sin(y * 0.024) + 5.0 * (Noise(31.0, y / 44.0) - 0.5);
+        double width = 1.05 + Noise(x / 15.0, y / 15.0) * 0.7;
+        return std::hypot(double(x), double(y)) < 5.3 || std::abs(y - main) < width ||
+               std::abs(x - side) < width * 0.8;
+    };
+    auto buildingFits = [&](WorldInt x, WorldInt y)
+    {
+        for (int dy = -1; dy <= 1; ++dy)
+        {
+            for (int dx = -1; dx <= 1; ++dx)
+            {
+                if (protectedGround(x + dx, y + dy))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    };
     // Ecology patches are world-space, independent of the 16x16 streaming grid.
     // Solid, convex obstacle islands have a walkable grass margin. No visible
     // boundary road or per-chunk cross is needed to keep the outdoors connected.
@@ -146,10 +169,8 @@ Chunk World::Generate(ChunkKey key) const
             auto patchHash = Hash(px + 7123, py - 8191);
             int centerX = 3 + int(patchHash % 5);
             int centerY = 3 + int((patchHash >> 8) % 5);
-            double patchMoisture =
-                Noise((px * patchSize + centerX) / 23.0, (py * patchSize + centerY) / 23.0);
-            int radiusX = 1 + int((patchHash >> 16) % 3);
-            int radiusY = 1 + int((patchHash >> 24) % 3);
+            int radiusX = 2 + int((patchHash >> 16) % 3);
+            int radiusY = 2 + int((patchHash >> 24) % 3);
             radiusX = (std::min)(radiusX, (std::min)(centerX - 1, 9 - centerX));
             radiusY = (std::min)(radiusY, (std::min)(centerY - 1, 9 - centerY));
             int lx = int(wx - px * patchSize), ly = int(wy - py * patchSize);
@@ -159,28 +180,64 @@ Chunk World::Generate(ChunkKey key) const
             int kind = int((patchHash >> 32) % 12);
             if (island && !trail && !camp)
             {
-                if (kind < 3)
+                if (kind == 0)
                 {
                     tile.ground = Ground::Water;
                 }
-                else if (kind < 9 && patchMoisture > 0.35)
+                else if (kind < 8)
                 {
                     // Filled clusters cannot enclose a walkable pocket.
-                    tile.prop = hash % 11 == 0 ? Prop::Rock : Prop::Tree;
+                    tile.prop = hash % 19 == 0 ? Prop::Rock : Prop::Tree;
                 }
-                else if (kind == 9 && lx == centerX && ly == centerY)
+                else if (kind == 8 && lx == centerX && ly == centerY)
                 {
                     tile.prop = Prop::Ruin;
                 }
-                else if (kind == 10 && lx == centerX && ly == centerY)
+                else if (kind == 9 && lx == centerX && ly == centerY)
                 {
                     tile.prop = Prop::Beacon;
+                }
+                else if (kind >= 10)
+                {
+                    // A single-tile solid landmark surrounded by an open yard.
+                    // No enclosing fences and no obstacles on trails or in the camp.
+                    tile.ground = Ground::Stone;
+                    if (lx == centerX && ly == centerY && buildingFits(wx, wy))
+                    {
+                        tile.prop =
+                            static_cast<Prop>(int(Prop::Cottage) + int((patchHash >> 40) % 5));
+                    }
                 }
             }
             if (trail || camp)
             {
                 tile.ground = Ground::Dirt;
                 tile.prop = Prop::None;
+            }
+
+            // Authored landmarks surrounding, but never blocking, the central safe area.
+            struct Landmark
+            {
+                WorldInt x, y;
+                Prop prop;
+            };
+
+            const Landmark landmarks[] = {{-8, -8, Prop::Cottage},
+                                          {8, -8, Prop::Watchtower},
+                                          {-8, 8, Prop::Chapel},
+                                          {8, 8, Prop::Graves},
+                                          {6, 5, Prop::Well}};
+            for (const auto& landmark : landmarks)
+            {
+                if (std::abs(wx - landmark.x) <= 2 && std::abs(wy - landmark.y) <= 2)
+                {
+                    tile.prop = Prop::None;
+                    tile.ground = trail || camp ? Ground::Dirt : Ground::Stone;
+                    if (wx == landmark.x && wy == landmark.y && buildingFits(wx, wy))
+                    {
+                        tile.prop = landmark.prop;
+                    }
+                }
             }
             if (wx == 2 && wy == 1)
             {
@@ -257,7 +314,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
         std::uint64_t seed = 0;
         WorldInt x = 0, y = 0;
         if (!(in >> magic >> version >> seed >> x >> y) || magic != "GSE_CHUNK" ||
-            (version != 2 && version != 3) || seed != seed_ || x != key.first || y != key.second)
+            (version < 2 || version > 5) || seed != seed_ || x != key.first || y != key.second)
         {
             throw std::runtime_error("Invalid chunk header; original file preserved");
         }
@@ -266,11 +323,72 @@ bool World::Read(ChunkKey key, Chunk& chunk)
         {
             int ground, prop, variation, lit;
             if (!(in >> ground >> prop >> variation >> lit) || ground < 0 || ground > 3 ||
-                prop < 0 || prop > 4 || variation < 0 || variation > 6 || lit < 0 || lit > 1)
+                prop < 0 || prop > (version >= 4 ? int(Prop::Graves) : int(Prop::Beacon)) ||
+                variation < 0 || variation > 6 || lit < 0 || lit > 1)
             {
                 throw std::runtime_error("Invalid chunk data; original file preserved");
             }
             tile = {static_cast<Ground>(ground), static_cast<Prop>(prop), variation, lit != 0};
+        }
+        in.close();
+        if (version < 5)
+        {
+            // Preserve a recoverable copy before the first successful v5 replacement.
+            auto backupDirectory = directory_ / L"Backups" / L"before_environment_v5";
+            std::filesystem::create_directories(backupDirectory);
+            std::filesystem::copy_file(Path(key),
+                                       backupDirectory / Path(key).filename(),
+                                       std::filesystem::copy_options::skip_existing);
+            Chunk updated = Generate(key);
+            for (size_t i = 0; i < chunk.tiles.size(); ++i)
+            {
+                if (chunk.tiles[i].prop == Prop::Beacon)
+                {
+                    // Beacon coordinates and their lit state are persistent discoveries.
+                    updated.tiles[i] = chunk.tiles[i];
+                    int bx = int(i % ChunkSize), by = int(i / ChunkSize);
+                    for (int dy = -1; dy <= 1; ++dy)
+                    {
+                        for (int dx = -1; dx <= 1; ++dx)
+                        {
+                            int tx = bx + dx, ty = by + dy;
+                            if (tx < 0 || tx >= ChunkSize || ty < 0 || ty >= ChunkSize)
+                            {
+                                continue;
+                            }
+                            auto& nearbyTile = updated.tiles[ty * ChunkSize + tx];
+                            if (nearbyTile.prop >= Prop::Cottage)
+                            {
+                                nearbyTile.prop = Prop::None;
+                            }
+                        }
+                    }
+                }
+            }
+            if (!Save(key, updated))
+            {
+                return false;
+            }
+            auto trees = [](const Chunk& value)
+            {
+                return std::count_if(value.tiles.begin(),
+                                     value.tiles.end(),
+                                     [](const Tile& tile)
+                                     {
+                                         return tile.prop == Prop::Tree;
+                                     });
+            };
+            std::ofstream audit(backupDirectory / L"migration.log", std::ios::app);
+            audit << key.first << ':' << key.second << " version=" << version
+                  << "->5 trees=" << trees(chunk) << "->" << trees(updated) << '\n';
+            audit.close();
+            if (!audit)
+            {
+                std::cerr << "[WorldMigration] Could not append migration.log\n";
+            }
+            chunk = std::move(updated);
+            std::cout << "[WorldMigration] " << key.first << ":" << key.second << " v" << version
+                      << " -> v5; original backed up\n";
         }
         ++loaded_;
         return true;
@@ -352,23 +470,29 @@ const Tile* World::Find(WorldInt x, WorldInt y) const
     return &it->second.tiles[ly * ChunkSize + lx];
 }
 
+double World::PropHalfExtent(Prop prop)
+{
+    return prop == Prop::Cottage || prop == Prop::Chapel || prop == Prop::Watchtower ? 1.15 : 0.5;
+}
+
 bool World::CanWalk(double x, double y) const
 {
     // Circle against blocked tile AABBs, including unavailable chunks.
     constexpr double radius = 0.19;
     WorldInt bx = static_cast<WorldInt>(std::floor(x));
     WorldInt by = static_cast<WorldInt>(std::floor(y));
-    for (WorldInt ty = by - 1; ty <= by + 1; ++ty)
+    for (WorldInt ty = by - 2; ty <= by + 2; ++ty)
     {
-        for (WorldInt tx = bx - 1; tx <= bx + 1; ++tx)
+        for (WorldInt tx = bx - 2; tx <= bx + 2; ++tx)
         {
             const Tile* tile = Find(tx, ty);
             if (tile && tile->ground != Ground::Water && tile->prop == Prop::None)
             {
                 continue;
             }
-            double nx = (std::max)(double(tx), (std::min)(x, double(tx + 1)));
-            double ny = (std::max)(double(ty), (std::min)(y, double(ty + 1)));
+            double extent = tile ? PropHalfExtent(tile->prop) : 0.5;
+            double nx = std::clamp(x, tx + 0.5 - extent, tx + 0.5 + extent);
+            double ny = std::clamp(y, ty + 0.5 - extent, ty + 0.5 + extent);
             double dx = x - nx, dy = y - ny;
             if (dx * dx + dy * dy < radius * radius)
             {
