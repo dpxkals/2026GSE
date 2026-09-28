@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "LevelOne.h"
 #include "GameplayBehaviors.h"
+#include "WorldSimulation.h"
 #include <algorithm>
 #include <cmath>
 #include <queue>
@@ -63,7 +64,30 @@ void LevelOne::SetPlayerPosition(WorldPoint position)
 void LevelOne::AutoFire(const World& world)
 {
     target_ = 0;
-    if (InCamp(player_.position) || phase_ == LevelPhase::Cleared)
+    if (simulation_)
+    {
+        auto npc = simulation_->PlayerTarget(player_.position, player_.AttackRange(), world);
+        if (npc.kind != CombatKind::None)
+        {
+            if (shotTimer_ <= 0)
+            {
+                double distance =
+                    (std::max)(0.001, Gameplay::Distance(player_.position, npc.position));
+                Projectile shot{player_.position,
+                                (npc.position.x - player_.position.x) / distance * 12,
+                                (npc.position.y - player_.position.y) / distance * 12,
+                                player_.AttackRange(),
+                                player_.Damage(),
+                                false};
+                shot.npcTarget = npc.id;
+                projectiles_.push_back(shot);
+                shotTimer_ = player_.ShotCooldown();
+                ++life_.shots;
+            }
+            return;
+        }
+    }
+    if (InCamp(player_.position) || (phase_ == LevelPhase::Cleared && !simulation_))
     {
         return;
     }

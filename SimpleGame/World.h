@@ -43,7 +43,7 @@ struct Tile
 struct Chunk
 {
     std::array<Tile, ChunkSize * ChunkSize> tiles;
-    int generationVersion = 5;
+    int generationVersion = 6;
 };
 
 class World

@@ -176,6 +176,9 @@
     <ClInclude Include="SceneGraph.h" />
     <ClInclude Include="FrameProfiler.h" />
     <ClInclude Include="WorldActors.h" />
+    <ClInclude Include="VillageLayout.h" />
+    <ClInclude Include="WorldSimulation.h" />
+    <ClInclude Include="SocietyView.h" />
     <ClInclude Include="WorldView.h" />
     <ClInclude Include="GameplayTypes.h" />
     <ClInclude Include="GameplayBehaviors.h" />
@@ -189,6 +192,26 @@
     <ClCompile Include="SceneRenderer.cpp" />
     <ClCompile Include="SceneMesh.cpp" />
     <ClCompile Include="SceneBatch.cpp" />
+    <ClCompile Include="WorldSimulation.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="WorldSimulationCombat.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="WorldSimulationSave.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="LevelOneSociety.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="SocietyView.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="WorldView.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
@@ -200,7 +223,10 @@
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="PostProcessor.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="World.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="LevelOne.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>

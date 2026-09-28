@@ -52,6 +52,9 @@
     <ClInclude Include="WorldActors.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="VillageLayout.h"><Filter>헤더 파일</Filter></ClInclude>
+    <ClInclude Include="WorldSimulation.h"><Filter>헤더 파일</Filter></ClInclude>
+    <ClInclude Include="SocietyView.h"><Filter>헤더 파일</Filter></ClInclude>
     <ClInclude Include="WorldView.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -87,6 +90,11 @@
     <ClCompile Include="SceneBatch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="WorldSimulation.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="WorldSimulationCombat.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="WorldSimulationSave.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="LevelOneSociety.cpp"><Filter>소스 파일</Filter></ClCompile>
+    <ClCompile Include="SocietyView.cpp"><Filter>소스 파일</Filter></ClCompile>
     <ClCompile Include="WorldView.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>

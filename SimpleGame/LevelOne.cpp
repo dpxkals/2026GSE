@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "LevelOne.h"
 #include "GameplayBehaviors.h"
+#include "VillageLayout.h"
 #include <algorithm>
 #include <cmath>
 
 bool LevelOne::InCamp(WorldPoint position)
 {
-    return std::hypot(position.x - 0.5, position.y - 0.5) < 3.8;
+    return VillageAt(position) >= 0;
 }
 
 void LevelOne::Announce(const std::wstring& text)
@@ -17,6 +18,10 @@ void LevelOne::Announce(const std::wstring& text)
 
 std::wstring LevelOne::Objective() const
 {
+    if (simulation_)
+    {
+        return L"마을 생활: 사냥 · 거래 · 성장 · 약탈과 선택";
+    }
     if (phase_ == LevelPhase::Cleared)
     {
         return L"레벨 1 완료 — 잿빛 파수꾼을 쓰러뜨렸습니다.";
@@ -30,6 +35,10 @@ std::wstring LevelOne::Objective() const
 
 std::wstring LevelOne::Hint() const
 {
+    if (simulation_)
+    {
+        return L"주민 곁에서 T 거래 / Y 성장 · 클릭 관찰 · Ctrl+클릭 공격";
+    }
     if (phase_ == LevelPhase::Cleared)
     {
         return L"파밍 훈련을 마쳤습니다. 남은 보상을 줍거나 거점으로 돌아가세요.";
@@ -120,7 +129,7 @@ void LevelOne::Update(double dt, const World& world, const NpcSystem& npcs)
                 urgentSave_ = true;
             }
         }
-        else if (spawnTimer_ <= 0.0)
+        else if (spawnTimer_ <= 0.0 && !simulation_)
         {
             int activeCount = 0;
             for (const Enemy& enemy : enemies_)
@@ -139,7 +148,7 @@ void LevelOne::Update(double dt, const World& world, const NpcSystem& npcs)
     {
         player_.health = (std::min)(player_.MaxHealth(), player_.health + 5.0 * dt);
     }
-    if (phase_ != LevelPhase::Cleared)
+    if (phase_ != LevelPhase::Cleared || simulation_)
     {
         SynchronizeActors();
         scene_.Update(UpdatePhase::Player, dt);

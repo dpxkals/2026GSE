@@ -111,8 +111,20 @@ namespace Gameplay
                 shot.remainingRange = 0.0;
                 break;
             }
-            if (shot.hostile)
+            if (shot.npcTarget)
             {
+                if (services.hitNpc && services.hitNpc(shot))
+                {
+                    shot.remainingRange = 0.0;
+                }
+            }
+            else if (shot.hostile)
+            {
+                if (services.hitNpc && services.hitNpc(shot))
+                {
+                    shot.remainingRange = 0.0;
+                    continue;
+                }
                 if (Distance(shot.position, services.player) < 0.32)
                 {
                     services.hurt(shot.damage);
@@ -127,6 +139,7 @@ namespace Gameplay
                     if (enemy.health > 0.0 && Distance(shot.position, enemy.position) <= radius)
                     {
                         enemy.health -= shot.damage;
+                        enemy.lastHitNpc = 0;
                         enemy.hitFlash = 0.15;
                         services.damageNumber(
                             {enemy.position, int(std::round(shot.damage)), false, 0.75});

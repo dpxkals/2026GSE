@@ -79,6 +79,7 @@ struct Enemy
     double windup = 0.0;
     WorldPoint attackPoint;
     double hitFlash = 0.0;
+    std::uint64_t lastHitNpc = 0;
 };
 
 enum class DropKind
@@ -106,6 +107,7 @@ struct Projectile
     double damage = 0.0;
     bool hostile = false;
     std::uint64_t runtimeId = 0;
+    std::uint64_t npcTarget = 0;
 };
 
 struct FloatingNumber

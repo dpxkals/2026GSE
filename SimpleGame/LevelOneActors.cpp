@@ -2,6 +2,7 @@
 #include "LevelOne.h"
 #include "ActorRecords.h"
 #include "GameplayBehaviors.h"
+#include "WorldSimulation.h"
 #include <cmath>
 #include <set>
 
@@ -54,7 +55,7 @@ void LevelOne::SynchronizeActors()
         player.BindUpdate(
             [this](double)
             {
-                if (activeWorld_ && phase_ != LevelPhase::Cleared)
+                if (activeWorld_ && (phase_ != LevelPhase::Cleared || simulation_))
                 {
                     AutoFire(*activeWorld_);
                 }
@@ -182,13 +183,34 @@ void LevelOne::StepEnemy(std::uint64_t id, double dt)
     {
         return;
     }
+    std::uint64_t npcTarget = 0;
+    WorldPoint destination = player_.position;
+    double closest =
+        InCamp(player_.position) ? 18.0 : Gameplay::Distance(enemy->position, destination);
+    if (simulation_)
+    {
+        for (const auto& citizen : simulation_->People())
+        {
+            double distance = Gameplay::Distance(enemy->position, citizen.position);
+            if (citizen.health > 0 && !InCamp(citizen.position) && distance < closest)
+            {
+                closest = distance;
+                npcTarget = citizen.id;
+                destination = citizen.position;
+            }
+        }
+    }
     Gameplay::EnemyServices services{
         *activeWorld_,
         *activeNpcs_,
-        player_.position,
+        destination,
         InCamp,
-        [this](WorldPoint point) -> std::optional<WorldPoint>
+        [this, npcTarget, destination](WorldPoint point) -> std::optional<WorldPoint>
         {
+            if (npcTarget)
+            {
+                return destination;
+            }
             Cell cell{WorldInt(std::floor(point.x)), WorldInt(std::floor(point.y))};
             auto found = routes_.find(cell);
             if (found == routes_.end())
@@ -197,9 +219,16 @@ void LevelOne::StepEnemy(std::uint64_t id, double dt)
             }
             return WorldPoint{found->second.next.first + 0.5, found->second.next.second + 0.5};
         },
-        [this](double damage)
+        [this, npcTarget, id](double damage)
         {
-            Hurt(damage);
+            if (npcTarget && simulation_)
+            {
+                simulation_->HurtNpc(npcTarget, damage, id);
+            }
+            else
+            {
+                Hurt(damage);
+            }
         },
         [this](Projectile shot)
         {
@@ -215,17 +244,24 @@ void LevelOne::StepProjectile(std::uint64_t id, double dt)
     {
         return;
     }
-    Gameplay::ProjectileServices services{*activeWorld_,
-                                          player_.position,
-                                          enemies_,
-                                          [this](double damage)
-                                          {
-                                              Hurt(damage);
-                                          },
-                                          [this](FloatingNumber number)
-                                          {
-                                              numbers_.push_back(number);
-                                          }};
+    Gameplay::ProjectileServices services{
+        *activeWorld_,
+        player_.position,
+        enemies_,
+        [this](double damage)
+        {
+            Hurt(damage);
+        },
+        [this](FloatingNumber number)
+        {
+            numbers_.push_back(number);
+        },
+        [this](Projectile& projectile)
+        {
+            return simulation_ &&
+                   (projectile.hostile ? simulation_->HitHostileProjectile(projectile)
+                                       : simulation_->HitProjectile(projectile, player_.position));
+        }};
     Gameplay::UpdateProjectile(*shot, dt, services);
     if (shot->remainingRange <= 0.0001)
     {

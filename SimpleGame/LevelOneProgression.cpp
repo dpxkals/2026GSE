@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "LevelOne.h"
 #include "GameplayBehaviors.h"
+#include "WorldSimulation.h"
 #include <algorithm>
 #include <cmath>
 #include <queue>
@@ -35,6 +36,10 @@ void LevelOne::Drop(DropKind kind, WorldPoint position, int amount)
 
 void LevelOne::Defeat(const Enemy& enemy)
 {
+    if (simulation_)
+    {
+        simulation_->PlayerMonsterKilled();
+    }
     if (enemy.kind == EnemyKind::Boss)
     {
         phase_ = LevelPhase::Cleared;
@@ -69,7 +74,8 @@ void LevelOne::Defeat(const Enemy& enemy)
 
 void LevelOne::Hurt(double amount)
 {
-    if (invulnerable_ > 0.0 || InCamp(player_.position) || phase_ == LevelPhase::Cleared)
+    if (invulnerable_ > 0.0 || InCamp(player_.position) ||
+        (phase_ == LevelPhase::Cleared && !simulation_))
     {
         return;
     }

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "World.h"
+#include "VillageLayout.h"
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
@@ -115,6 +116,17 @@ Chunk World::Generate(ChunkKey key) const
     Chunk chunk;
     auto protectedGround = [this](WorldInt x, WorldInt y)
     {
+        for (const auto& village : Villages())
+        {
+            if (std::hypot(x + 0.5 - village.center.x, y + 0.5 - village.center.y) < 5.3)
+            {
+                return true;
+            }
+        }
+        if (x >= 0 && x <= 26 && std::abs(double(y) - x * (10.0 / 26.0)) < 1.4)
+        {
+            return true;
+        }
         double main = 6.0 * std::sin(x * 0.032) + 5.0 * (Noise(x / 38.0, 17.0) - 0.5);
         double side = 7.0 * std::sin(y * 0.024) + 5.0 * (Noise(31.0, y / 44.0) - 0.5);
         double width = 1.05 + Noise(x / 15.0, y / 15.0) * 0.7;
@@ -164,6 +176,13 @@ Chunk World::Generate(ChunkKey key) const
             bool trail = std::abs(wy - mainTrail) < trailWidth ||
                          std::abs(wx - sideTrail) < trailWidth * 0.8;
             bool camp = std::hypot(double(wx), double(wy)) < 5.3;
+            for (const auto& village : Villages())
+            {
+                camp = camp ||
+                       std::hypot(wx + 0.5 - village.center.x, wy + 0.5 - village.center.y) < 5.3;
+            }
+            trail =
+                trail || (wx >= 0 && wx <= 26 && std::abs(double(wy) - wx * (10.0 / 26.0)) < 1.4);
 
             WorldInt px = patchOf(wx), py = patchOf(wy);
             auto patchHash = Hash(px + 7123, py - 8191);
@@ -236,6 +255,27 @@ Chunk World::Generate(ChunkKey key) const
                     if (wx == landmark.x && wy == landmark.y && buildingFits(wx, wy))
                     {
                         tile.prop = landmark.prop;
+                    }
+                }
+            }
+            for (const auto& village : Villages())
+            {
+                if (village.center.x < 1)
+                {
+                    continue;
+                }
+                for (const auto& landmark : landmarks)
+                {
+                    WorldInt ax = WorldInt(village.center.x - 0.5) + landmark.x;
+                    WorldInt ay = WorldInt(village.center.y - 0.5) + landmark.y;
+                    if (std::abs(wx - ax) <= 2 && std::abs(wy - ay) <= 2)
+                    {
+                        tile.prop = Prop::None;
+                        tile.ground = trail || camp ? Ground::Dirt : Ground::Stone;
+                        if (wx == ax && wy == ay && buildingFits(wx, wy))
+                        {
+                            tile.prop = landmark.prop;
+                        }
                     }
                 }
             }
@@ -314,7 +354,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
         std::uint64_t seed = 0;
         WorldInt x = 0, y = 0;
         if (!(in >> magic >> version >> seed >> x >> y) || magic != "GSE_CHUNK" ||
-            (version < 2 || version > 5) || seed != seed_ || x != key.first || y != key.second)
+            (version < 2 || version > 6) || seed != seed_ || x != key.first || y != key.second)
         {
             throw std::runtime_error("Invalid chunk header; original file preserved");
         }
@@ -331,10 +371,10 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             tile = {static_cast<Ground>(ground), static_cast<Prop>(prop), variation, lit != 0};
         }
         in.close();
-        if (version < 5)
+        if (version < 6)
         {
-            // Preserve a recoverable copy before the first successful v5 replacement.
-            auto backupDirectory = directory_ / L"Backups" / L"before_environment_v5";
+            // Preserve a recoverable copy before the first successful v6 replacement.
+            auto backupDirectory = directory_ / L"Backups" / L"before_society_v6";
             std::filesystem::create_directories(backupDirectory);
             std::filesystem::copy_file(Path(key),
                                        backupDirectory / Path(key).filename(),
@@ -380,7 +420,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             };
             std::ofstream audit(backupDirectory / L"migration.log", std::ios::app);
             audit << key.first << ':' << key.second << " version=" << version
-                  << "->5 trees=" << trees(chunk) << "->" << trees(updated) << '\n';
+                  << "->6 trees=" << trees(chunk) << "->" << trees(updated) << '\n';
             audit.close();
             if (!audit)
             {
@@ -388,7 +428,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             }
             chunk = std::move(updated);
             std::cout << "[WorldMigration] " << key.first << ":" << key.second << " v" << version
-                      << " -> v5; original backed up\n";
+                      << " -> v6; original backed up\n";
         }
         ++loaded_;
         return true;

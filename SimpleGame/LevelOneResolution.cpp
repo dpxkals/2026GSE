@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "LevelOne.h"
+#include "WorldSimulation.h"
 #include <algorithm>
 
 void LevelOne::ResolveCombat()
@@ -8,7 +9,20 @@ void LevelOne::ResolveCombat()
     {
         if (it->health <= 0.0)
         {
-            Defeat(*it);
+            if (simulation_ && it->lastHitNpc)
+            {
+                simulation_->MonsterKilled(it->lastHitNpc, *it);
+                if (it->kind == EnemyKind::Boss)
+                {
+                    phase_ = LevelPhase::Cleared;
+                    Announce(L"주민이 잿빛 파수꾼을 처치했습니다. 마을의 삶은 계속됩니다.");
+                }
+                urgentSave_ = true;
+            }
+            else
+            {
+                Defeat(*it);
+            }
             it = enemies_.erase(it);
         }
         else
@@ -21,7 +35,7 @@ void LevelOne::ResolveCombat()
     {
         Die();
     }
-    if (phase_ == LevelPhase::Cleared)
+    if (phase_ == LevelPhase::Cleared && !simulation_)
     {
         projectiles_.clear();
     }

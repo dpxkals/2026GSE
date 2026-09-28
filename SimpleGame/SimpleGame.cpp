@@ -20,6 +20,9 @@ but WITHOUT ANY WARRANTY.
 #include "LevelOneView.h"
 #include "WorldActors.h"
 #include "WorldView.h"
+#include "WorldSimulation.h"
+#include "SocietyView.h"
+#include "VillageLayout.h"
 #include "Dependencies/freeglut.h"
 #include <Windows.h>
 #include <algorithm>
@@ -40,9 +43,11 @@ namespace
     std::unique_ptr<World> world;
     std::unique_ptr<NpcSystem> npcs;
     std::unique_ptr<LevelOne> levelOne;
+    std::unique_ptr<WorldSimulation> society;
     std::filesystem::path gameplaySaveDirectory;
     int speakingNpc = -1;
     int speakingSoul = -1;
+    bool transactionDialogue = false;
     double renderDelta = 0.016;
     size_t dialoguePage = 0;
     std::vector<std::wstring> dialoguePages;
@@ -62,11 +67,12 @@ namespace
     bool arrows[4] = {};
 
     bool showChunks = false;
-    bool showHelp = true;
+    bool showHelp = false;
+    bool showDiagnostics = false;
     bool moving = false;
     bool running = true;
     bool paused = false;
-    bool showAttackRange = true;
+    bool showAttackRange = false;
 
     std::string message;
     double messageUntil = 0.0;
@@ -301,7 +307,7 @@ namespace
 
     bool Speaking()
     {
-        return speakingNpc >= 0 || speakingSoul >= 0;
+        return transactionDialogue || speakingNpc >= 0 || speakingSoul >= 0;
     }
 
     struct TalkTarget
@@ -320,6 +326,10 @@ namespace
 
     TalkTarget GetTalkTarget(bool active)
     {
+        if (active && transactionDialogue)
+        {
+            return {-1, -1, L"마을 거래", L"거래 결과", playerX, playerY};
+        }
         TalkTarget result;
         int resident = active ? speakingNpc : npcs->Nearest(playerX, playerY, *world);
         int soul = active ? speakingSoul : levelOne->NearestSoul(playerX, playerY, *world);
@@ -352,6 +362,10 @@ namespace
 
     void DialogueHUD()
     {
+        if (showHelp && !Speaking())
+        {
+            return;
+        }
         if (!Speaking())
         {
             TalkTarget npc = GetTalkTarget(false);
@@ -407,47 +421,81 @@ namespace
 
     void HUD()
     {
-        renderer.Rect(0, 0, float(width), 92, {0.035f, 0.05f, 0.06f, 0.94f});
-        renderer.Rect(24, 22, 3, 45, gold);
-        renderer.Text(40, 22, "GSE / LEVEL 01 - ASHEN FIELDS", ivory, 2);
-        const auto& effects = renderer.Effects();
-        std::ostringstream effectStatus;
-        effectStatus << (renderer.PostProcessingAvailable()
-                             ? (effects.enabled ? "HDR ON" : "POST OFF")
-                             : "POST UNAVAILABLE")
-                     << "   BLOOM " << (effects.bloom ? "ON" : "OFF") << "   VIGNETTE "
-                     << (effects.vignette ? "ON" : "OFF") << "   BLUR "
-                     << (effects.edgeBlur ? "ON" : "OFF") << "   EXP " << std::fixed
-                     << std::setprecision(1) << effects.exposure;
-        renderer.Text(40, 47, effectStatus.str(), muted, 1.3f);
-        std::ostringstream status;
-        status << std::fixed << std::setprecision(1) << "X " << playerX << "  Y " << playerY
-               << "   CHUNKS " << world->Chunks().size() << "   QUEUED " << world->Pending()
-               << "   ACTORS " << levelOne->Scene().Size() << "   MESH CACHE "
-               << renderer.MeshCount() << "   SEED " << world->Seed();
-        renderer.Text(40, 70, status.str(), muted, 1.3f);
+        if (width >= 900)
+        {
+            int village = VillageAt(levelOne->Player().position);
+            renderer.KoreanText(350,
+                                24,
+                                village >= 0 ? Villages()[village].name : L"잿빛 들판",
+                                gold,
+                                22,
+                                width - 600);
+        }
+        if (showDiagnostics && width >= 900)
+        {
+            renderer.Rect(340, 136, float(width) - 570, 90, {0.025f, 0.035f, 0.04f, 0.95f});
+            const auto& effects = renderer.Effects();
+            std::ostringstream effectStatus;
+            effectStatus << (renderer.PostProcessingAvailable()
+                                 ? (effects.enabled ? "HDR ON" : "POST OFF")
+                                 : "POST UNAVAILABLE")
+                         << "   BLOOM " << (effects.bloom ? "ON" : "OFF") << "   VIGNETTE "
+                         << (effects.vignette ? "ON" : "OFF") << "   BLUR "
+                         << (effects.edgeBlur ? "ON" : "OFF") << "   EXP " << std::fixed
+                         << std::setprecision(1) << effects.exposure;
+            renderer.Text(350, 146, effectStatus.str(), muted, 0.8f);
+            std::ostringstream status;
+            status << std::fixed << std::setprecision(1) << "X " << playerX << "  Y " << playerY
+                   << "   CHUNKS " << world->Chunks().size() << "   QUEUED " << world->Pending()
+                   << "   ACTORS " << levelOne->Scene().Size() << "   MESH CACHE "
+                   << renderer.MeshCount() << "   SEED " << world->Seed();
+            renderer.Text(350, 166, status.str(), muted, 0.65f);
+            renderer.Text(350, 188, "F1 CHUNKS  F2 POST  F3 BLOOM  F4 VIGNETTE", muted, 1);
+            renderer.Text(350, 207, "F5 BLUR  F6 RESET FX  F8 CLOSE  F9 RESET SAVE", muted, 1);
+        }
         WorldView::MiniMap(renderer, *world, *levelOne, *npcs, width, height, renderDelta);
-        renderer.Rect(0, float(height) - 64, float(width), 64, {0.025f, 0.045f, 0.05f, 0.94f});
+        float barLeft = (std::max)(12.0f, (float(width) - 620) * 0.5f);
+        float barWidth = (std::min)(620.0f, float(width) - 24);
+        renderer.Rect(barLeft, float(height) - 84, barWidth, 72, {0.035f, 0.045f, 0.045f, 0.94f});
+        renderer.Rect(barLeft, float(height) - 84, barWidth, 1, gold);
+        const wchar_t* actions[] = {
+            L"T  거래", L"Y  성장", L"G  습득", L"F  대화", L"P  정지", L"H  도움"};
+        for (int i = 0; i < 6; ++i)
+        {
+            float x = barLeft + 10 + i * (barWidth - 20) / 6;
+            renderer.Rect(
+                x, float(height) - 73, (barWidth - 20) / 6 - 5, 30, {0.12f, 0.13f, 0.115f, 1});
+            renderer.KoreanText(
+                x + 8, float(height) - 68, actions[i], ivory, 14, int((barWidth - 20) / 6 - 12));
+        }
+        renderer.KoreanText(barLeft + 16,
+                            float(height) - 34,
+                            L"WASD 이동  ·  클릭 관찰  ·  Ctrl+클릭 공격  ·  우클릭 해제",
+                            muted,
+                            12,
+                            int(barWidth) - 32);
         if (showHelp)
         {
-            renderer.Text(
-                24,
-                float(height) - 46,
-                "WASD MOVE   AUTO FIRE   R RANGE   P PAUSE   F TALK   E BEACON   WHEEL ZOOM",
+            renderer.Rect(
+                barLeft, float(height) - 290, barWidth, 190, {0.025f, 0.04f, 0.045f, 0.97f});
+            renderer.KoreanText(
+                barLeft + 16,
+                float(height) - 278,
+                L"여행자의 안내\n주민은 경험에 따라 성향이 변합니다. 클릭해서 살펴보세요.\n"
+                L"Ctrl+클릭하면 중립 주민도 공격합니다. 목격자에게 주의하세요.\n"
+                L"마을 주민 근처에서 T: 재료 판매 / 재료가 없으면 회복 구매\n"
+                L"Y: 경험치 구매 · G: 소지품 습득 · F: 안내 주민과 대화\n"
+                L"F8: 개발 정보 · F9: 시드 유지 초기화 · H: 안내 닫기",
                 ivory,
-                1.5f);
-            renderer.Text(
-                24,
-                float(height) - 25,
-                "F1 CHUNKS  F2 POST  F3 BLOOM  F4 VIGNETTE  F5 BLUR  F6 FX RESET  F9 NEW RUN  HOME ORIGIN",
-                muted,
-                1.2f);
+                15,
+                int(barWidth) - 32);
         }
-        else
+        LevelOneView::HUD(
+            renderer, *levelOne, width, height, paused, Speaking() || showHelp, Project);
+        if (society && !Speaking() && !showHelp)
         {
-            renderer.Text(24, float(height) - 38, "H  SHOW CONTROLS", muted, 1.5f);
+            SocietyView::Panel(renderer, *society, width, height);
         }
-        LevelOneView::HUD(renderer, *levelOne, width, height, paused, Speaking(), Project);
         if (!world->Error().empty() || !npcs->Error().empty())
         {
             renderer.Rect(20, 105, float(width) - 200, 56, {0.28f, 0.08f, 0.07f, 0.94f});
@@ -459,7 +507,7 @@ namespace
                           2);
             renderer.Text(32, 141, "EXISTING DATA PRESERVED - SEE CONSOLE", ivory, 1.3f);
         }
-        else if (!Speaking() && elapsed < messageUntil)
+        else if (!Speaking() && !showHelp && elapsed < messageUntil)
         {
             float panelWidth = (std::min)(float(width) - 40, float(message.size()) * 9 + 32);
             renderer.Rect((width - panelWidth) * 0.5f,
@@ -509,6 +557,45 @@ namespace
 
     void ConfigureActorRenderers()
     {
+        auto& societyScene = levelOne->Scene();
+        societyScene.SetRenderer("citizen",
+                                 [](Actor& actor)
+                                 {
+                                     if (society)
+                                     {
+                                         if (const auto* npc = society->Find(actor.recordId))
+                                         {
+                                             SocietyView::CitizenBody(
+                                                 renderer,
+                                                 *npc,
+                                                 Project(npc->position.x, npc->position.y),
+                                                 zoom,
+                                                 society->Selected() == npc->id);
+                                         }
+                                     }
+                                 });
+        societyScene.SetRenderer("citizen_loot",
+                                 [](Actor& actor)
+                                 {
+                                     auto position = actor.Position();
+                                     auto p = Project(position.x, position.y);
+                                     renderer.Ellipse(p, 7 * zoom, 5 * zoom, gold);
+                                 });
+        societyScene.SetRenderer("social_strikes",
+                                 [](Actor&)
+                                 {
+                                     if (!society)
+                                     {
+                                         return;
+                                     }
+                                     for (const auto& strike : society->Strikes())
+                                     {
+                                         renderer.Line(Project(strike.from.x, strike.from.y, 18),
+                                                       Project(strike.to.x, strike.to.y, 18),
+                                                       2 * zoom,
+                                                       {1, 0.6f, 0.25f, 0.8f});
+                                     }
+                                 });
         auto& scene = levelOne->Scene();
         scene.SetRenderer(
             "terrain",
@@ -750,6 +837,10 @@ namespace
     void SynchronizeScene()
     {
         levelOne->SynchronizeActors();
+        if (society)
+        {
+            society->SynchronizeActors(levelOne->Scene(), *world);
+        }
         auto& scene = levelOne->Scene();
         Actor& root = scene.Ensure("world", "group");
         std::set<std::string> terrainKeys, propKeys, meshKeys, npcKeys;
@@ -923,10 +1014,10 @@ namespace
             (keys['s'] || arrows[3] ? 1.0 : 0.0) - (keys['w'] || arrows[2] ? 1.0 : 0.0);
         double length = std::sqrt(horizontal * horizontal + vertical * vertical);
         moving = false;
-        bool simulate = !paused && !Speaking() && foregroundProcess == GetCurrentProcessId() &&
+        bool simulate = !paused && foregroundProcess == GetCurrentProcessId() &&
                         world->Error().empty() && npcs->Error().empty() &&
-                        levelOne->Error().empty();
-        if (length > 0 && simulate)
+                        levelOne->Error().empty() && (!society || society->Error().empty());
+        if (length > 0 && simulate && !Speaking())
         {
             double speed = levelOne->Player().MoveSpeed();
             double dx = (horizontal + vertical) / length * 0.70710678 * speed * dt;
@@ -935,6 +1026,10 @@ namespace
         }
         if (simulate)
         {
+            if (society)
+            {
+                society->Update(dt, *world, *levelOne, *npcs);
+            }
             levelOne->Update(dt, *world, *npcs);
         }
         WorldPoint position = levelOne->Player().position;
@@ -963,6 +1058,10 @@ namespace
             return;
         }
         running = false;
+        if (society && !society->Save())
+        {
+            std::cerr << society->Error() << '\n';
+        }
         if (levelOne && !levelOne->Save())
         {
             std::cerr << levelOne->Error() << '\n';
@@ -999,6 +1098,7 @@ namespace
             if (close)
             {
                 speakingNpc = -1;
+                transactionDialogue = false;
                 speakingSoul = -1;
                 dialoguePages.clear();
                 ClearInput();
@@ -1023,6 +1123,24 @@ namespace
         }
         if (paused)
         {
+            return;
+        }
+        if (society && (key == 't' || key == 'y' || key == 'g'))
+        {
+            if (!society->Error().empty() || !levelOne->Error().empty())
+            {
+                return;
+            }
+            std::wstring text = key == 'g' ? society->LootPlayer(levelOne->Player().position)
+                                           : society->TradePlayer(*levelOne, key == 'y');
+            std::wcout << text << L'\n';
+            society->Save();
+            levelOne->Save();
+            dialoguePages = {text};
+            dialoguePage = 0;
+            speakingNpc = speakingSoul = -1;
+            transactionDialogue = true;
+            ClearInput();
             return;
         }
         if (key == 'f')
@@ -1109,7 +1227,7 @@ namespace
         int answer = MessageBoxW(
             nullptr,
             L"플레이 진행을 초기화하고 거점에서 다시 시작할까요?\n\n"
-            L"초기화: 레벨, 경험치, 강화, 처치 수, 보스 진행, 적과 아이템, 영혼 NPC, 주민 대화 기록\n"
+            L"초기화: 플레이 성장, 적/아이템, 영혼 NPC, 대화 기록, 동적 NPC와 금화/재료\n"
             L"유지: 월드 시드, 생성된 지형과 건물, 봉화 점등 상태\n\n"
             L"기존 진행 파일은 Backups 폴더에 보관됩니다.",
             L"F9 · 테스트용 새 플레이",
@@ -1120,12 +1238,13 @@ namespace
             paused = wasPaused;
             return;
         }
-        const wchar_t* files[] = {L"level_one.dat", L"residents_v1.dat"};
+        const wchar_t* files[] = {L"level_one.dat", L"residents_v1.dat", L"world_simulation.dat"};
         std::filesystem::path backup;
         bool originalsChanged = false;
         try
         {
-            if (!world->Error().empty() || !npcs->Error().empty() || !levelOne->Save())
+            if (!world->Error().empty() || !npcs->Error().empty() || !levelOne->Save() ||
+                (society && !society->Save()))
             {
                 throw std::runtime_error("Resolve existing save errors before resetting.");
             }
@@ -1146,12 +1265,18 @@ namespace
             }
             auto freshNpcs = std::make_unique<NpcSystem>(gameplaySaveDirectory);
             auto freshLevel = std::make_unique<LevelOne>(gameplaySaveDirectory, world->Seed());
-            if (!freshNpcs->Error().empty() || !freshLevel->Error().empty())
+            auto freshSociety =
+                std::make_unique<WorldSimulation>(gameplaySaveDirectory, world->Seed());
+            if (!freshNpcs->Error().empty() || !freshLevel->Error().empty() ||
+                !freshSociety->Error().empty())
             {
-                throw std::runtime_error(freshNpcs->Error() + " " + freshLevel->Error());
+                throw std::runtime_error(freshNpcs->Error() + " " + freshLevel->Error() + " " +
+                                         freshSociety->Error());
             }
             levelOne.swap(freshLevel);
             npcs.swap(freshNpcs);
+            society.swap(freshSociety);
+            levelOne->BindSimulation(society.get());
         }
         catch (const std::exception& error)
         {
@@ -1182,6 +1307,7 @@ namespace
         }
         ConfigureActorRenderers();
         speakingNpc = speakingSoul = -1;
+        transactionDialogue = false;
         dialoguePages.clear();
         dialoguePage = 0;
         playerX = cameraX = levelOne->Player().position.x;
@@ -1200,6 +1326,11 @@ namespace
 
     void SpecialDown(int key, int, int)
     {
+        if (key == GLUT_KEY_F8)
+        {
+            showDiagnostics = !showDiagnostics;
+            return;
+        }
         if (key == GLUT_KEY_F9)
         {
             ResetPlayData();
@@ -1259,6 +1390,65 @@ namespace
         }
     }
 
+    void MouseButton(int button, int state, int x, int y)
+    {
+        if (state != GLUT_DOWN || !society || paused || Speaking() || showHelp)
+        {
+            return;
+        }
+        if (button == GLUT_RIGHT_BUTTON)
+        {
+            society->Select(0);
+            return;
+        }
+        bool societyVisible = width >= 700 && height >= 560;
+        bool leftPanel =
+            x >= 20 && x <= 324 &&
+            ((y >= 20 && y <= 152) ||
+             (societyVisible && society->Find(society->Selected()) && y >= 166 && y <= 376));
+        bool newsPanel =
+            societyVisible && x >= 20 && x <= 360 && y >= height - 176 && y <= height - 98;
+        float mapSize =
+            (std::min)(std::clamp(width * 0.20f, 124.0f, 184.0f), float(height) - 250.0f);
+        bool mapPanel = width >= 600 && height >= 400 && x >= width - mapSize - 34 &&
+                        x <= width - 14 && y >= 20 &&
+                        y <= 54 + mapSize + (societyVisible ? 114 : 49);
+        bool debugPanel =
+            showDiagnostics && width >= 900 && x >= 340 && x <= width - 230 && y >= 136 && y <= 226;
+        bool bossPanel = false;
+        for (const auto& enemy : levelOne->Enemies())
+        {
+            if (enemy.kind == EnemyKind::Boss && enemy.health > 0)
+            {
+                bossPanel =
+                    x >= 360 && x <= 360 + (std::min)(440, width - 540) && y >= 64 && y <= 125;
+            }
+        }
+        if (button != GLUT_LEFT_BUTTON || y > height - 90 || leftPanel || newsPanel || mapPanel ||
+            debugPanel || bossPanel)
+        {
+            return;
+        }
+        std::uint64_t selected = 0;
+        double nearest = 24 * zoom;
+        for (const auto& npc : society->People())
+        {
+            if (npc.health <= 0 || !world->Find(WorldInt(std::floor(npc.position.x)),
+                                                WorldInt(std::floor(npc.position.y))))
+            {
+                continue;
+            }
+            auto point = Project(npc.position.x, npc.position.y, 22);
+            double distance = std::hypot(double(point.x - x), double(point.y - y));
+            if (distance < nearest)
+            {
+                nearest = distance;
+                selected = npc.id;
+            }
+        }
+        society->Select(selected, (glutGetModifiers() & GLUT_ACTIVE_CTRL) != 0);
+    }
+
     void Wheel(int, int direction, int, int)
     {
         zoom = (std::max)(0.65f, (std::min)(1.8f, zoom + direction * 0.1f));
@@ -1279,7 +1469,7 @@ int main(int argc, char** argv)
     glutInitContextVersion(3, 3);
     glutInitContextProfile(GLUT_CORE_PROFILE);
     glutInitWindowSize(width, height);
-    glutCreateWindow("GSE - The Remaining Light | Level 01 - Ashen Fields");
+    glutCreateWindow("GSE - The Remaining Light | Living World");
     glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
     glewExperimental = GL_TRUE;
     GLenum glewStatus = glewInit();
@@ -1339,16 +1529,25 @@ int main(int argc, char** argv)
         "seed=" + std::to_string(world->Seed()) +
             (naturalWorld ? ";mode=Level01_natural_v2" : ";mode=Level01_v1"));
     levelOne = std::make_unique<LevelOne>(savePath, world->Seed());
+    society = std::make_unique<WorldSimulation>(savePath, world->Seed());
+    levelOne->BindSimulation(society.get());
+    if (!society->Error().empty())
+    {
+        std::cerr << "[Simulation] " << society->Error() << '\n';
+    }
     ConfigureActorRenderers();
     playerX = cameraX = levelOne->Player().position.x;
     playerY = cameraY = levelOne->Player().position.y;
     std::wcout << L"World save directory: " << savePath.c_str() << L'\n';
-    std::cout << "WASD / arrows: move | F: talk | E: light beacon | wheel / +/-: zoom\n"
-              << "F1: chunk edges | H: help | Home: origin | Esc: exit\n"
-              << "F2: post on/off | F3: bloom | F4: vignette | F5: edge blur | F6: reset FX\n"
-              << "F9: reset play data (confirmation + backup); keep world seed and terrain\n"
-              << "[ / ]: exposure down/up (0.1 to 4.0); HDR is tone-mapped to SDR output.\n"
-              << "Level 01: auto fire within 6 tiles | R: range | P: pause | 24 kills: boss\n";
+    std::cout
+        << "WASD / arrows: move | F: talk | E: light beacon | wheel / +/-: zoom\n"
+        << "F1: chunk edges | H: help | Home: origin | Esc: exit\n"
+        << "Left click NPC: inspect | Ctrl+click: PK target | Right click: cancel | T: trade | Y: XP | G: loot\n"
+        << "F8: diagnostics HUD (hidden by default)\n"
+        << "F2: post on/off | F3: bloom | F4: vignette | F5: edge blur | F6: reset FX\n"
+        << "F9: reset play data (confirmation + backup); keep world seed and terrain\n"
+        << "[ / ]: exposure down/up (0.1 to 4.0); HDR is tone-mapped to SDR output.\n"
+        << "Level 01: auto fire within 6 tiles | R: range | P: pause | 24 kills: boss\n";
     world->Stream(playerX, playerY, 2);
     glutDisplayFunc(RenderScene);
     glutReshapeFunc(Resize);
@@ -1357,6 +1556,7 @@ int main(int argc, char** argv)
     glutSpecialFunc(SpecialDown);
     glutSpecialUpFunc(SpecialUp);
     glutMouseWheelFunc(Wheel);
+    glutMouseFunc(MouseButton);
     glutCloseFunc(Close);
     glutIgnoreKeyRepeat(1);
     lastTick = std::chrono::steady_clock::now();

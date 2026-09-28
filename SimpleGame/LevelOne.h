@@ -12,6 +12,8 @@
 #include <utility>
 #include <vector>
 
+class WorldSimulation;
+
 class LevelOne
 {
   public:
@@ -24,6 +26,21 @@ class LevelOne
     bool Save();
     static bool InCamp(WorldPoint position);
     SceneGraph& Scene();
+
+    void BindSimulation(WorldSimulation* simulation)
+    {
+        simulation_ = simulation;
+    }
+
+    WorldSimulation* Simulation() const
+    {
+        return simulation_;
+    }
+
+    bool DamageMonster(std::uint64_t id, double damage, std::uint64_t npc);
+    bool SpawnWild(WorldPoint position, EnemyKind kind, const World& world);
+    void ReceiveNpcDamage(double amount);
+    void ReceiveTrade(bool training);
     void SynchronizeActors();
     const Enemy* FindEnemy(std::uint64_t id) const;
     const ItemDrop* FindDrop(std::uint64_t id) const;
@@ -127,6 +144,7 @@ class LevelOne
     void Die();
 
     SceneGraph scene_;
+    WorldSimulation* simulation_ = nullptr;
     const World* activeWorld_ = nullptr;
     const NpcSystem* activeNpcs_ = nullptr;
     std::uint64_t nextRuntimeId_ = 1;

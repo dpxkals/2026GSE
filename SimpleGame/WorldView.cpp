@@ -2,6 +2,8 @@
 #include "WorldView.h"
 #include "LevelOne.h"
 #include "NpcSystem.h"
+#include "WorldSimulation.h"
+#include "VillageLayout.h"
 #include <algorithm>
 #include <cmath>
 
@@ -167,10 +169,16 @@ void WorldView::MiniMap(SceneRenderer& renderer,
     constexpr int radius = 20;
     constexpr int cells = radius * 2 + 1;
     float size = (std::min)(std::clamp(width * 0.20f, 124.0f, 184.0f), float(height) - 250.0f);
-    float left = width - size - 24, top = 135, cell = size / cells;
+    float left = width - size - 24, top = 54, cell = size / cells;
     Color light{0.86f, 0.89f, 0.81f, 1};
     renderer.Rect(left - 10, top - 34, size + 20, size + 83, {0.025f, 0.04f, 0.05f, 0.96f});
-    renderer.KoreanText(left, top - 30, L"주변 지도", light, 16, int(size - 20));
+    int village = VillageAt(level.Player().position);
+    renderer.KoreanText(left,
+                        top - 30,
+                        village >= 0 ? Villages()[village].name : L"주변 지도",
+                        light,
+                        16,
+                        int(size - 20));
     renderer.Text(left + size - 12, top - 23, "N", light, 1.3f);
     const auto& player = level.Player().position;
 
@@ -257,6 +265,24 @@ void WorldView::MiniMap(SceneRenderer& renderer,
         renderer.Rect(px - extent, py - extent, extent * 2, extent * 2, color);
     };
     marker(0.5, 0.5, {0.94f, 0.73f, 0.25f, 1}, 3);
+    for (const auto& village : Villages())
+    {
+        marker(village.center.x, village.center.y, {0.94f, 0.73f, 0.25f, 1}, 3);
+    }
+    if (level.Simulation())
+    {
+        for (const auto& citizen : level.Simulation()->People())
+        {
+            if (citizen.health > 0)
+            {
+                marker(citizen.position.x,
+                       citizen.position.y,
+                       citizen.hostility > 0 ? Color{1, 0.2f, 0.2f, 1}
+                                             : Color{0.2f, 0.85f, 0.7f, 1},
+                       1.5f);
+            }
+        }
+    }
     for (const auto& npc : npcs.Residents())
     {
         if (npcs.IsPresent(npc, world))

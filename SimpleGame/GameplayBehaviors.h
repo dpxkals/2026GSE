@@ -29,6 +29,7 @@ namespace Gameplay
         std::vector<Enemy>& enemies;
         std::function<void(double)> hurt;
         std::function<void(FloatingNumber)> damageNumber;
+        std::function<bool(Projectile&)> hitNpc;
     };
 
     // These behaviors know neither LevelOne nor the scene graph / OpenGL.

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "LevelOneView.h"
+#include "VillageLayout.h"
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
@@ -45,7 +46,17 @@ void LevelOneView::Ground(SceneRenderer& renderer,
                           float zoom,
                           bool showRange)
 {
-    Ring(renderer, project(0.5, 0.5, 0), 3.8, zoom, {0.38f, 0.75f, 0.58f, 0.55f});
+    if (showRange)
+    {
+        for (const auto& village : Villages())
+        {
+            Ring(renderer,
+                 project(village.center.x, village.center.y, 0),
+                 4.5,
+                 zoom,
+                 {0.38f, 0.75f, 0.58f, 0.4f});
+        }
+    }
     const auto& player = level.Player();
     if (showRange)
     {
@@ -266,44 +277,49 @@ void LevelOneView::HUD(SceneRenderer& renderer,
                        const Projection& project)
 {
     const auto& player = level.Player();
-    renderer.Rect(20, 101, 320, 150, {0.025f, 0.045f, 0.055f, 0.94f});
-    renderer.KoreanText(32, 108, L"레벨 1 · 잿빛 들판", Gold, 20, 296);
-    Bar(renderer, 32, 139, 294, 17, player.health / player.MaxHealth(), {0.74f, 0.19f, 0.22f, 1});
+    renderer.Rect(20, 20, 304, 132, {0.035f, 0.045f, 0.045f, 0.92f});
+    renderer.Rect(20, 20, 304, 1, Gold);
+    renderer.KoreanText(
+        32, 30, L"남겨진 자   ·   Lv " + std::to_wstring(player.level), Gold, 19, 280);
+    Bar(renderer, 32, 59, 280, 19, player.health / player.MaxHealth(), {0.62f, 0.14f, 0.19f, 1});
     renderer.Text(40,
-                  143,
+                  64,
                   "HP " + std::to_string(int(std::ceil(player.health))) + " / " +
                       std::to_string(int(player.MaxHealth())),
                   TextColor,
                   1.2f);
     Bar(renderer,
         32,
-        162,
-        294,
-        13,
+        84,
+        280,
+        8,
         player.level >= 30 ? 1.0 : double(player.experience) / player.ExperienceNeeded(),
         {0.24f, 0.55f, 0.86f, 1});
     std::ostringstream stats;
-    stats << "LV " << player.level << "   XP " << player.experience << '/'
-          << player.ExperienceNeeded() << "   WEAPON +" << player.weaponRank;
-    renderer.Text(32, 184, stats.str(), TextColor, 1.2f);
+    stats << "XP " << player.experience << '/' << player.ExperienceNeeded() << "   WEAPON +"
+          << player.weaponRank;
+    renderer.Text(32, 100, stats.str(), TextColor, 1.1f);
     stats.str("");
     stats.clear();
     stats << "DMG " << int(player.Damage()) << "   CD " << std::fixed << std::setprecision(2)
           << player.ShotCooldown() << "   RANGE 6";
-    renderer.Text(32, 203, stats.str(), TextColor, 1.2f);
-    Bar(renderer, 32, 223, 294, 6, level.ShotReady(), Gold);
+    renderer.Text(32, 118, stats.str(), TextColor, 1.1f);
+    Bar(renderer, 32, 138, 280, 5, level.ShotReady(), Gold);
     if (level.MagnetTime() > 0.0)
     {
         renderer.Text(32,
-                      235,
+                      154,
                       "MAGNET " + std::to_string(int(std::ceil(level.MagnetTime()))) + " SEC",
                       {0.23f, 0.88f, 0.77f, 1},
                       1.2f);
     }
-    renderer.KoreanText(24, 260, level.Objective(), Gold, 18, (std::max)(180, width - 210));
-    if (!dialogue)
+    if (!level.Simulation())
     {
-        renderer.KoreanText(24, 289, level.Hint(), TextColor, 16, (std::max)(180, width - 210));
+        renderer.KoreanText(24, 176, level.Objective(), Gold, 16, 280);
+        if (!dialogue)
+        {
+            renderer.KoreanText(24, 226, level.Hint(), TextColor, 14, 280);
+        }
     }
 
     for (const Enemy& enemy : level.Enemies())
@@ -316,12 +332,12 @@ void LevelOneView::HUD(SceneRenderer& renderer,
         if (barWidth >= 150)
         {
             float left = 360;
-            renderer.Rect(left, 102, barWidth, 61, {0.06f, 0.025f, 0.035f, 0.93f});
+            renderer.Rect(left, 64, barWidth, 61, {0.06f, 0.025f, 0.035f, 0.93f});
             renderer.KoreanText(
-                left + 12, 107, L"잿빛 파수꾼", {1.0f, 0.45f, 0.26f, 1}, 20, int(barWidth) - 24);
+                left + 12, 69, L"잿빛 파수꾼", {1.0f, 0.45f, 0.26f, 1}, 20, int(barWidth) - 24);
             Bar(renderer,
                 left + 12,
-                138,
+                100,
                 barWidth - 24,
                 13,
                 enemy.health / enemy.maxHealth,
@@ -348,14 +364,16 @@ void LevelOneView::HUD(SceneRenderer& renderer,
     }
     else if (!dialogue && !level.Notice().empty())
     {
-        int wrap = (std::max)(120, width - 100);
+        int wrap = (std::max)(120, (std::min)(480, width - 100));
         float textHeight = renderer.KoreanTextHeight(level.Notice(), 18, wrap);
-        renderer.Rect(30,
-                      float(height) - 84 - textHeight,
-                      float(width) - 60,
+        float left = (float(width) - wrap - 32) * 0.5f;
+        renderer.Rect(left,
+                      float(height) - 190 - textHeight,
+                      float(wrap) + 32,
                       textHeight + 12,
                       {0.045f, 0.065f, 0.075f, 0.94f});
-        renderer.KoreanText(46, float(height) - 78 - textHeight, level.Notice(), Gold, 18, wrap);
+        renderer.KoreanText(
+            left + 16, float(height) - 184 - textHeight, level.Notice(), Gold, 18, wrap);
     }
     if (!dialogue && !level.Souls().empty())
     {
