@@ -10,22 +10,24 @@ int PlayerProgress::ExperienceNeeded() const
 
 double PlayerProgress::MaxHealth() const
 {
-    return 100.0 + (level - 1) * 15.0;
+    return 100.0 + (level - 1) * 15.0 + gearHealth;
 }
 
 double PlayerProgress::Damage() const
 {
-    return 12.0 + (level - 1) * 2.5 + weaponRank * 4.0;
+    return 12.0 + (level - 1) * 2.5 + weaponRank * 4.0 + gearDamage;
 }
 
 double PlayerProgress::ShotCooldown() const
 {
-    return (std::max)(0.24, 0.85 * std::pow(0.91, level - 1) * std::pow(0.96, weaponRank));
+    return (std::max)(0.18,
+                      0.85 * std::pow(0.91, level - 1) * std::pow(0.96, weaponRank) *
+                          (1 - gearHaste));
 }
 
 double PlayerProgress::MoveSpeed() const
 {
-    return 4.5 + (std::min)(0.9, (level - 1) * 0.06);
+    return 4.5 + (std::min)(0.9, (level - 1) * 0.06) + gearSpeed;
 }
 
 double PlayerProgress::PickupRange() const
@@ -36,4 +38,9 @@ double PlayerProgress::PickupRange() const
 double PlayerProgress::AttackRange() const
 {
     return 6.0;
+}
+
+double PlayerProgress::IncomingDamage(double amount) const
+{
+    return amount * 100.0 / (100.0 + gearDefense * 3.0);
 }

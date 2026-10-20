@@ -8,12 +8,12 @@
 
 void LevelOne::GainExperience(int amount)
 {
-    if (player_.level >= 30)
+    if (player_.level >= MaxCharacterLevel)
     {
         return;
     }
     player_.experience += amount;
-    while (player_.level < 30 && player_.experience >= player_.ExperienceNeeded())
+    while (player_.level < MaxCharacterLevel && player_.experience >= player_.ExperienceNeeded())
     {
         player_.experience -= player_.ExperienceNeeded();
         ++player_.level;
@@ -23,7 +23,7 @@ void LevelOne::GainExperience(int amount)
         }
         Announce(L"레벨 업! 공격력 · 발사 속도 · 최대 체력 · 이동/습득 범위 증가");
     }
-    if (player_.level == 30)
+    if (player_.level == MaxCharacterLevel)
     {
         player_.experience = 0;
     }
@@ -42,18 +42,34 @@ void LevelOne::Defeat(const Enemy& enemy)
     }
     if (enemy.kind == EnemyKind::Boss)
     {
-        phase_ = LevelPhase::Cleared;
-        GainExperience(100);
+        FinishBoss();
+        rpg_.bosses = (std::min)(1000000000, rpg_.bosses + 1);
+        GainExperience(180);
+        if (simulation_)
+        {
+            simulation_->RewardGold(180);
+        }
+        Drop(DropKind::Equipment, enemy.position, int(random_() % 3) * 5 + 4);
         Drop(DropKind::Soul, enemy.position, 80);
         Drop(DropKind::Upgrade, enemy.position, 3);
         Drop(DropKind::Health, enemy.position, 60);
         Drop(DropKind::Magnet, enemy.position, 1);
-        Announce(L"레벨 1 완료! 잿빛 파수꾼이 쓰러졌습니다. 남은 보상을 수집하세요.");
+        Announce(L"마을 보스 처치! 장비와 금화 획득 · 5분 뒤 다른 마을에서 다시 출현합니다.");
     }
     else
     {
         ++player_.kills;
         ++life_.kills;
+        rpg_.hunts = (std::min)(1000000000, rpg_.hunts + 1);
+        if (rpg_.hunts == 1 || random_() % 100 < 25)
+        {
+            int tier = int(random_() % ((std::min)(4, (player_.level - 1) / 3) + 1));
+            Drop(DropKind::Equipment, enemy.position, int(random_() % 3) * 5 + tier + 1);
+        }
+        if (random_() % 100 < 12)
+        {
+            Drop(DropKind::Equipment, enemy.position, 16 + int(random_() % 3));
+        }
         GainExperience(4);
         Drop(DropKind::Soul, enemy.position, 8);
         if (player_.kills % 4 == 0)
@@ -79,6 +95,7 @@ void LevelOne::Hurt(double amount)
     {
         return;
     }
+    amount = player_.IncomingDamage(amount);
     life_.damageTaken += (std::min)(player_.health, amount);
     player_.health = (std::max)(0.0, player_.health - amount);
     invulnerable_ = 0.65;

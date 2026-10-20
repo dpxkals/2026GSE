@@ -29,7 +29,10 @@ enum class Prop
     Chapel,
     Watchtower,
     Well,
-    Graves
+    Graves,
+    WallX,
+    WallY,
+    WallTower
 };
 
 struct Tile
@@ -43,7 +46,7 @@ struct Tile
 struct Chunk
 {
     std::array<Tile, ChunkSize * ChunkSize> tiles;
-    int generationVersion = 6;
+    int generationVersion = 9;
 };
 
 class World

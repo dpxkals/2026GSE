@@ -1,5 +1,6 @@
 #pragma once
 #include "GameplayTypes.h"
+#include "VillageLayout.h"
 #include "World.h"
 #include "SceneGraph.h"
 #include <array>
@@ -70,7 +71,7 @@ struct Citizen
     int home = 0;
     NpcGoal goal = NpcGoal::Vitality;
     NpcAction action = NpcAction::Rest;
-    double health = 90, maxHealth = 90;
+    double health = 150, maxHealth = 150;
     int level = 1, experience = 0, gold = 30, goods = 2, insight = 0;
     // Aggression, greed, sociability, courage, morality, curiosity.
     std::array<double, 6> personality{};
@@ -84,6 +85,8 @@ struct Citizen
     std::vector<WorldPoint> route;
     int lod = 0;
     double lodTime = 0;
+    double hurtCooldown = 0;
+    bool travelViaHub = false;
 };
 
 struct CitizenLoot
@@ -160,6 +163,11 @@ class WorldSimulation
     void MonsterKilled(std::uint64_t killer, const Enemy& enemy);
     void PlayerMonsterKilled();
     std::wstring TradePlayer(LevelOne& level, bool training);
+    const Citizen* NearbyTrader(WorldPoint player) const;
+    bool CanTrade(std::uint64_t id, WorldPoint player) const;
+    int ItemPrice(int item, std::uint64_t trader, bool buying) const;
+    bool ExchangeItemGold(std::uint64_t trader, WorldPoint player, int item, bool buying);
+    void RewardGold(int amount);
 
     int PlayerGold() const
     {
@@ -179,6 +187,11 @@ class WorldSimulation
     double Time() const
     {
         return time_;
+    }
+
+    int ResourceStock(int village) const
+    {
+        return wildStock_.at(village);
     }
 
     static std::wstring Name(const Citizen& npc);
@@ -214,7 +227,7 @@ class WorldSimulation
     std::vector<CitizenLoot> loot_;
     std::vector<SocialStrike> strikes_;
     std::deque<std::wstring> news_;
-    std::array<int, 2> wildStock_{{12, 12}};
+    std::array<int, VillageCount> wildStock_{{12, 12, 12, 12, 12}};
     int playerGold_ = 30, playerGoods_ = 0, crime_ = 0;
     double time_ = 0, accumulator_ = 0, saveTimer_ = 0, ecologyTimer_ = 0, stockTimer_ = 0;
     double logTimer_ = 0;

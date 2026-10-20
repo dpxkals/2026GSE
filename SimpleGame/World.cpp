@@ -114,24 +114,85 @@ std::filesystem::path World::Path(ChunkKey key) const
 Chunk World::Generate(ChunkKey key) const
 {
     Chunk chunk;
-    auto protectedGround = [this](WorldInt x, WorldInt y)
+
+    struct Landmark
+    {
+        WorldInt x, y;
+        Prop prop;
+    };
+
+    std::array<std::vector<Landmark>, VillageCount> layouts;
+    // Whole-town plan from the seed, identical for every chunk touching that town.
+    for (int town = 0; town < VillageCount; ++town)
+    {
+        auto center = Villages()[town].center;
+        if (key.first * ChunkSize > center.x + VillageWallRadius + 2 ||
+            (key.first + 1) * ChunkSize < center.x - VillageWallRadius - 2 ||
+            key.second * ChunkSize > center.y + VillageWallRadius + 2 ||
+            (key.second + 1) * ChunkSize < center.y - VillageWallRadius - 2)
+        {
+            continue;
+        }
+        auto seed = Hash(WorldInt(center.x) + 8123, WorldInt(center.y) - 7127);
+        for (int slot = 0; slot < 8; ++slot)
+        {
+            for (int attempt = 0; attempt < 48; ++attempt)
+            {
+                auto h = Mix(seed + slot * 997 + attempt * 7919);
+                WorldInt x = (slot % 2 ? 1 : -1) * (4 + int(h % 6));
+                WorldInt y = (slot % 4 < 2 ? -1 : 1) * (4 + int((h >> 8) % 6));
+                bool fits = true;
+                for (const auto& other : layouts[town])
+                {
+                    // Building footprint + walkable margin; reserve a street to each entrance.
+                    if ((std::abs(x - other.x) < 4 && std::abs(y - other.y) < 4) ||
+                        ((x > 0) == (other.x > 0) && std::abs(y - other.y) < 3))
+                    {
+                        fits = false;
+                    }
+                }
+                if (!fits)
+                {
+                    continue;
+                }
+                Prop type = slot == 0            ? Prop::Chapel
+                            : slot == 1          ? Prop::Watchtower
+                            : slot == 2          ? Prop::Well
+                            : slot == 3          ? Prop::Cottage
+                            : (h >> 20) % 5 == 0 ? Prop::Graves
+                                                 : Prop::Cottage;
+                layouts[town].push_back({x, y, type});
+                break;
+            }
+        }
+    }
+    // One centerline per axis: straight between towns, smoothly winding beyond them.
+    // The mask is shared by terrain and obstacle placement across chunk boundaries.
+    auto roadAt = [this](WorldInt x, WorldInt y)
+    {
+        auto blend = [](double along)
+        {
+            double t = std::clamp((std::abs(along) - 126.0) / 48.0, 0.0, 1.0);
+            return t * t * (3.0 - 2.0 * t);
+        };
+        double bx = blend(double(x)), by = blend(double(y));
+        double main = bx * (6.0 * std::sin(x * 0.032) + 5.0 * (Noise(x / 38.0, 17.0) - 0.5));
+        double side = by * (7.0 * std::sin(y * 0.024) + 5.0 * (Noise(31.0, y / 44.0) - 0.5));
+        double width = 1.05 + Noise(x / 15.0, y / 15.0) * 0.7;
+        return std::abs(y - main) < 1.5 + bx * (width - 1.5) ||
+               std::abs(x - side) < 1.5 + by * (width * 0.8 - 1.5);
+    };
+    auto protectedGround = [&](WorldInt x, WorldInt y)
     {
         for (const auto& village : Villages())
         {
-            if (std::hypot(x + 0.5 - village.center.x, y + 0.5 - village.center.y) < 5.3)
+            if (std::abs(x + 0.5 - village.center.x) <= VillageWallRadius + 2 &&
+                std::abs(y + 0.5 - village.center.y) <= VillageWallRadius + 2)
             {
                 return true;
             }
         }
-        if (x >= 0 && x <= 26 && std::abs(double(y) - x * (10.0 / 26.0)) < 1.4)
-        {
-            return true;
-        }
-        double main = 6.0 * std::sin(x * 0.032) + 5.0 * (Noise(x / 38.0, 17.0) - 0.5);
-        double side = 7.0 * std::sin(y * 0.024) + 5.0 * (Noise(31.0, y / 44.0) - 0.5);
-        double width = 1.05 + Noise(x / 15.0, y / 15.0) * 0.7;
-        return std::hypot(double(x), double(y)) < 5.3 || std::abs(y - main) < width ||
-               std::abs(x - side) < width * 0.8;
+        return std::hypot(double(x), double(y)) < 5.3 || roadAt(x, y);
     };
     auto buildingFits = [&](WorldInt x, WorldInt y)
     {
@@ -170,19 +231,13 @@ Chunk World::Generate(ChunkKey key) const
 
             // Winding trails are sampled in global coordinates, so their width,
             // bends and forks continue through every chunk boundary unchanged.
-            double mainTrail = 6.0 * std::sin(wx * 0.032) + 5.0 * (Noise(wx / 38.0, 17.0) - 0.5);
-            double sideTrail = 7.0 * std::sin(wy * 0.024) + 5.0 * (Noise(31.0, wy / 44.0) - 0.5);
-            double trailWidth = 1.05 + Noise(wx / 15.0, wy / 15.0) * 0.7;
-            bool trail = std::abs(wy - mainTrail) < trailWidth ||
-                         std::abs(wx - sideTrail) < trailWidth * 0.8;
-            bool camp = std::hypot(double(wx), double(wy)) < 5.3;
+            bool trail = roadAt(wx, wy);
+            bool camp = false;
             for (const auto& village : Villages())
             {
-                camp = camp ||
-                       std::hypot(wx + 0.5 - village.center.x, wy + 0.5 - village.center.y) < 5.3;
+                camp = camp || (std::abs(wx + 0.5 - village.center.x) <= VillageWallRadius + 2 &&
+                                std::abs(wy + 0.5 - village.center.y) <= VillageWallRadius + 2);
             }
-            trail =
-                trail || (wx >= 0 && wx <= 26 && std::abs(double(wy) - wx * (10.0 / 26.0)) < 1.4);
 
             WorldInt px = patchOf(wx), py = patchOf(wy);
             auto patchHash = Hash(px + 7123, py - 8191);
@@ -234,49 +289,53 @@ Chunk World::Generate(ChunkKey key) const
                 tile.prop = Prop::None;
             }
 
-            // Authored landmarks surrounding, but never blocking, the central safe area.
-            struct Landmark
+            for (const auto& village : Villages())
             {
-                WorldInt x, y;
-                Prop prop;
-            };
-
-            const Landmark landmarks[] = {{-8, -8, Prop::Cottage},
-                                          {8, -8, Prop::Watchtower},
-                                          {-8, 8, Prop::Chapel},
-                                          {8, 8, Prop::Graves},
-                                          {6, 5, Prop::Well}};
-            for (const auto& landmark : landmarks)
-            {
-                if (std::abs(wx - landmark.x) <= 2 && std::abs(wy - landmark.y) <= 2)
+                WorldInt localX = wx - WorldInt(village.center.x - 0.5);
+                WorldInt localY = wy - WorldInt(village.center.y - 0.5);
+                if (std::abs(localX) > VillageWallRadius + 2 ||
+                    std::abs(localY) > VillageWallRadius + 2)
                 {
-                    tile.prop = Prop::None;
-                    tile.ground = trail || camp ? Ground::Dirt : Ground::Stone;
-                    if (wx == landmark.x && wy == landmark.y && buildingFits(wx, wy))
+                    continue;
+                }
+                tile.prop = Prop::None;
+                tile.ground = (std::abs(localX) <= 1 || std::abs(localY) <= 1)   ? Ground::Dirt
+                              : std::hypot(double(localX), double(localY)) < 3.8 ? Ground::Stone
+                                                                                 : Ground::Grass;
+                const auto& landmarks = layouts[size_t(&village - Villages().data())];
+                for (const auto& landmark : landmarks)
+                {
+                    if (std::abs(localX - landmark.x) <= 2 && std::abs(localY - landmark.y) <= 2)
+                    {
+                        tile.ground = Ground::Stone;
+                    }
+                    if (localY == landmark.y && localX * landmark.x > 0 &&
+                        std::abs(localX) < std::abs(landmark.x) - 1)
+                    {
+                        tile.ground = Ground::Dirt;
+                    }
+                    if (localX == landmark.x && localY == landmark.y)
                     {
                         tile.prop = landmark.prop;
                     }
                 }
-            }
-            for (const auto& village : Villages())
-            {
-                if (village.center.x < 1)
+                bool wallX =
+                    std::abs(localY) == VillageWallRadius && std::abs(localX) <= VillageWallRadius;
+                bool wallY =
+                    std::abs(localX) == VillageWallRadius && std::abs(localY) <= VillageWallRadius;
+                if (wallX || wallY)
                 {
-                    continue;
-                }
-                for (const auto& landmark : landmarks)
-                {
-                    WorldInt ax = WorldInt(village.center.x - 0.5) + landmark.x;
-                    WorldInt ay = WorldInt(village.center.y - 0.5) + landmark.y;
-                    if (std::abs(wx - ax) <= 2 && std::abs(wy - ay) <= 2)
+                    WorldInt along = wallX ? localX : localY;
+                    if (std::abs(along) > 2)
                     {
-                        tile.prop = Prop::None;
-                        tile.ground = trail || camp ? Ground::Dirt : Ground::Stone;
-                        if (wx == ax && wy == ay && buildingFits(wx, wy))
-                        {
-                            tile.prop = landmark.prop;
-                        }
+                        tile.prop = (wallX && wallY) || std::abs(along) == 3 ? Prop::WallTower
+                                    : wallX                                  ? Prop::WallX
+                                                                             : Prop::WallY;
                     }
+                }
+                if (tile.prop != Prop::None)
+                {
+                    tile.variation = int(&village - Villages().data());
                 }
             }
             if (wx == 2 && wy == 1)
@@ -354,7 +413,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
         std::uint64_t seed = 0;
         WorldInt x = 0, y = 0;
         if (!(in >> magic >> version >> seed >> x >> y) || magic != "GSE_CHUNK" ||
-            (version < 2 || version > 6) || seed != seed_ || x != key.first || y != key.second)
+            (version < 2 || version > 9) || seed != seed_ || x != key.first || y != key.second)
         {
             throw std::runtime_error("Invalid chunk header; original file preserved");
         }
@@ -363,7 +422,10 @@ bool World::Read(ChunkKey key, Chunk& chunk)
         {
             int ground, prop, variation, lit;
             if (!(in >> ground >> prop >> variation >> lit) || ground < 0 || ground > 3 ||
-                prop < 0 || prop > (version >= 4 ? int(Prop::Graves) : int(Prop::Beacon)) ||
+                prop < 0 ||
+                prop > (version >= 7   ? int(Prop::WallTower)
+                        : version >= 4 ? int(Prop::Graves)
+                                       : int(Prop::Beacon)) ||
                 variation < 0 || variation > 6 || lit < 0 || lit > 1)
             {
                 throw std::runtime_error("Invalid chunk data; original file preserved");
@@ -371,10 +433,10 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             tile = {static_cast<Ground>(ground), static_cast<Prop>(prop), variation, lit != 0};
         }
         in.close();
-        if (version < 6)
+        if (version < 9)
         {
-            // Preserve a recoverable copy before the first successful v6 replacement.
-            auto backupDirectory = directory_ / L"Backups" / L"before_society_v6";
+            // Keep old chunks recoverable; seed and gameplay saves are not reset.
+            auto backupDirectory = directory_ / L"Backups" / L"before_villages_v9";
             std::filesystem::create_directories(backupDirectory);
             std::filesystem::copy_file(Path(key),
                                        backupDirectory / Path(key).filename(),
@@ -382,7 +444,41 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             Chunk updated = Generate(key);
             for (size_t i = 0; i < chunk.tiles.size(); ++i)
             {
-                if (chunk.tiles[i].prop == Prop::Beacon)
+                if (chunk.tiles[i].prop == Prop::Beacon && updated.tiles[i].prop >= Prop::WallX)
+                {
+                    // Keep the persistent beacon without punching a hole in a new wall.
+                    int bx = int(i % ChunkSize), by = int(i / ChunkSize);
+                    bool moved = false;
+                    for (int radius = 1; radius <= ChunkSize && !moved; ++radius)
+                    {
+                        for (int ty = 0; ty < ChunkSize && !moved; ++ty)
+                        {
+                            for (int tx = 0; tx < ChunkSize; ++tx)
+                            {
+                                if (std::abs(tx - bx) + std::abs(ty - by) != radius)
+                                {
+                                    continue;
+                                }
+                                auto& target = updated.tiles[ty * ChunkSize + tx];
+                                WorldInt wx = key.first * ChunkSize + tx,
+                                         wy = key.second * ChunkSize + ty;
+                                if (target.prop == Prop::None && target.ground != Ground::Water &&
+                                    !VillageRoad(double(wx), double(wy)))
+                                {
+                                    target = chunk.tiles[i];
+                                    moved = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (!moved)
+                    {
+                        throw std::runtime_error(
+                            "Cannot relocate preserved beacon around village wall");
+                    }
+                }
+                else if (chunk.tiles[i].prop == Prop::Beacon)
                 {
                     // Beacon coordinates and their lit state are persistent discoveries.
                     updated.tiles[i] = chunk.tiles[i];
@@ -397,7 +493,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
                                 continue;
                             }
                             auto& nearbyTile = updated.tiles[ty * ChunkSize + tx];
-                            if (nearbyTile.prop >= Prop::Cottage)
+                            if (nearbyTile.prop >= Prop::Cottage && nearbyTile.prop <= Prop::Graves)
                             {
                                 nearbyTile.prop = Prop::None;
                             }
@@ -420,7 +516,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             };
             std::ofstream audit(backupDirectory / L"migration.log", std::ios::app);
             audit << key.first << ':' << key.second << " version=" << version
-                  << "->6 trees=" << trees(chunk) << "->" << trees(updated) << '\n';
+                  << "->9 trees=" << trees(chunk) << "->" << trees(updated) << '\n';
             audit.close();
             if (!audit)
             {
@@ -428,7 +524,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             }
             chunk = std::move(updated);
             std::cout << "[WorldMigration] " << key.first << ":" << key.second << " v" << version
-                      << " -> v6; original backed up\n";
+                      << " -> v9; original backed up\n";
         }
         ++loaded_;
         return true;

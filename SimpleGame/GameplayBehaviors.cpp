@@ -138,6 +138,7 @@ namespace Gameplay
                     double radius = enemy.kind == EnemyKind::Boss ? 0.6 : 0.34;
                     if (enemy.health > 0.0 && Distance(shot.position, enemy.position) <= radius)
                     {
+                        enemy.playerDamage += (std::min)(enemy.health, shot.damage);
                         enemy.health -= shot.damage;
                         enemy.lastHitNpc = 0;
                         enemy.hitFlash = 0.15;

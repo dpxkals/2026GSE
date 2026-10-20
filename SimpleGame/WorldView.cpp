@@ -51,7 +51,7 @@ void WorldView::Structure(
 {
     // Large landmarks use the enlarged collision footprint in World::PropHalfExtent.
     const bool building = prop == Prop::Cottage || prop == Prop::Chapel || prop == Prop::Watchtower;
-    zoom *= building ? 2.2f : 1.3f;
+    zoom *= prop >= Prop::WallX ? 1.0f : building ? 2.2f : 1.3f;
     auto p = [=](float x, float y)
     {
         return Point2{origin.x + x * zoom, origin.y + y * zoom};
@@ -67,16 +67,107 @@ void WorldView::Structure(
     };
     auto roof = [&](float base, float ridge, Color color)
     {
-        renderer.Quad(
-            p(-29, base), p(0, base + 14), p(0, ridge), p(-29, ridge - 14), Shade(color, 0.70f));
-        renderer.Quad(p(0, base + 14), p(29, base), p(29, ridge - 14), p(0, ridge), color);
+        // A gable roof, projected from four eaves and two raised ridge endpoints.
+        // Unlike a vertical extrusion, each ridge is centered across the building span.
+        Point2 left = p(-29, base), front = p(0, base + 14), right = p(29, base);
+        Point2 back = p(0, base - 14);
+        Point2 ridgeBack = p(-14.5f, ridge - 7), ridgeFront = p(14.5f, ridge + 7);
+        auto lerp = [](Point2 a, Point2 b, float t)
+        {
+            return Point2{a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t};
+        };
+        renderer.Quad(back, right, ridgeFront, ridgeBack, Shade(color, .65f));
+        for (int row = 1; row <= 4; ++row)
+        {
+            float t = row / 5.0f;
+            renderer.Line(lerp(back, ridgeBack, t),
+                          lerp(right, ridgeFront, t),
+                          .6f * zoom,
+                          Shade(color, .82f));
+        }
+        renderer.Triangle(front, right, ridgeFront, Shade(color, .48f));
+        renderer.Quad(left, front, ridgeFront, ridgeBack, color);
+        for (int row = 1; row <= 4; ++row)
+        {
+            float t = row / 5.0f;
+            renderer.Line(lerp(left, ridgeBack, t),
+                          lerp(front, ridgeFront, t),
+                          .65f * zoom,
+                          Shade(color, 1.22f));
+        }
+        renderer.Line(ridgeBack, ridgeFront, 2 * zoom, Shade(color, 1.45f));
+        renderer.Line(left, front, 2 * zoom, Shade(color, .55f));
+        renderer.Line(front, right, 2 * zoom, Shade(color, .55f));
+        renderer.Line(front, ridgeFront, zoom, Shade(color, 1.25f));
     };
     Color stone{0.43f, 0.46f, 0.42f, 1};
     Color wood{0.38f, 0.28f, 0.20f, 1};
-    Color roofColor = variation % 2 ? Color{0.37f, 0.25f, 0.20f, 1} : Color{0.25f, 0.30f, 0.31f, 1};
+    const Color roofs[] = {{.22f, .30f, .34f, 1},
+                           {.47f, .29f, .18f, 1},
+                           {.37f, .40f, .43f, 1},
+                           {.24f, .36f, .31f, 1},
+                           {.42f, .20f, .18f, 1}};
+    Color roofColor = roofs[variation % 5];
     renderer.Ellipse(p(0, 1), 30 * zoom, 13 * zoom, {0.015f, 0.02f, 0.02f, 0.35f});
     switch (prop)
     {
+        case Prop::WallX:
+        case Prop::WallY:
+        {
+            float direction = prop == Prop::WallX ? 1.0f : -1.0f;
+            auto wallPoint = [&](float along, float depth, float elevation)
+            {
+                return p(direction * along + depth,
+                         along * .5f - direction * depth * .5f - elevation);
+            };
+            renderer.Quad(wallPoint(-18, -7, 0),
+                          wallPoint(18, -7, 0),
+                          wallPoint(18, -7, 53),
+                          wallPoint(-18, -7, 53),
+                          Shade(stone, .6f));
+            renderer.Quad(wallPoint(-18, 7, 0),
+                          wallPoint(18, 7, 0),
+                          wallPoint(18, 7, 53),
+                          wallPoint(-18, 7, 53),
+                          stone);
+            renderer.Quad(wallPoint(-18, -7, 53),
+                          wallPoint(18, -7, 53),
+                          wallPoint(18, 7, 53),
+                          wallPoint(-18, 7, 53),
+                          Shade(stone, 1.25f));
+            for (int row = 1; row < 5; ++row)
+            {
+                renderer.Line(wallPoint(-18, 7, float(row * 10)),
+                              wallPoint(18, 7, float(row * 10)),
+                              zoom,
+                              Shade(stone, .65f));
+                renderer.Line(wallPoint(float(row % 2 ? 0 : 10), 7, float(row * 10)),
+                              wallPoint(float(row % 2 ? 0 : 10), 7, float(row * 10 + 9)),
+                              zoom,
+                              Shade(stone, .65f));
+            }
+            for (float along : {-12.0f, 8.0f})
+            {
+                renderer.Quad(wallPoint(along, 7, 53),
+                              wallPoint(along + 8, 7, 53),
+                              wallPoint(along + 8, 7, 64),
+                              wallPoint(along, 7, 64),
+                              Shade(stone, 1.05f));
+            }
+            break;
+        }
+        case Prop::WallTower:
+            box(0, 14, 29, 14, 84, Shade(stone, .85f));
+            box(0, -64, 33, 16, 9, stone);
+            for (int i = -1; i <= 1; ++i)
+            {
+                box(float(i * 20), -72 - float(std::abs(i) * 9), 6, 4, 16, Shade(stone, 1.1f));
+            }
+            renderer.Quad(p(6, -45), p(11, -48), p(11, -27), p(6, -24), {.05f, .07f, .07f, 1});
+            renderer.Line(p(-10, -89), p(-10, -112), 2 * zoom, wood);
+            renderer.Triangle(p(-9, -110), p(14, -105), p(-9, -96), roofColor);
+            renderer.Ellipse(p(18, -27), 3 * zoom, 5 * zoom, {1, .64f, .22f, 1, 2});
+            break;
         case Prop::Cottage:
             box(0, 12, 25, 12, 35, {0.54f, 0.48f, 0.37f, 1});
             roof(-35, -53, roofColor);
@@ -85,15 +176,27 @@ void WorldView::Structure(
             renderer.Quad(
                 p(-19, -22), p(-9, -17), p(-9, -8), p(-19, -13), {0.79f, 0.55f, 0.24f, 1, 1.3f});
             renderer.Line(p(-14, -20), p(-14, -10), zoom, wood);
+            // Shop awning, hanging sign and stacked storage at the entrance.
+            renderer.Quad(p(1, -20), p(23, -30), p(28, -20), p(4, -9), roofColor);
+            renderer.Line(p(27, -20), p(27, 4), 1.3f * zoom, wood);
+            renderer.Line(p(3, -9), p(3, 13), 1.3f * zoom, wood);
+            box(-24, 10, 5, 3, 9, wood);
+            renderer.Line(p(-25, 6), p(-18, 3), zoom, Shade(stone, 1.4f));
             break;
         case Prop::Chapel:
             box(0, 12, 26, 13, 48, stone);
-            roof(-47, -69, roofColor);
+            roof(-49, -71, roofColor);
             box(-14, -46, 7, 5, 26, Shade(stone, 1.1f));
             renderer.Line(p(-14, -79), p(-14, -96), 2 * zoom, stone);
             renderer.Line(p(-19, -89), p(-9, -89), 2 * zoom, stone);
             renderer.Quad(p(2, 10), p(12, 5), p(12, -22), p(2, -17), Shade(wood, 0.5f));
             renderer.Ellipse(p(-12, -36), 4 * zoom, 7 * zoom, {0.50f, 0.67f, 0.71f, 1, 1.2f});
+            renderer.Line(p(-12, -43), p(-12, -29), zoom, stone);
+            renderer.Line(p(-16, -36), p(-8, -36), zoom, stone);
+            for (float x : {-23.0f, 21.0f})
+            {
+                box(x, 4, 3, 3, 36, Shade(stone, .85f));
+            }
             break;
         case Prop::Watchtower:
             box(0, 10, 17, 9, 72, stone);

@@ -4,6 +4,7 @@
 #include "World.h"
 #include "GameplayTypes.h"
 #include "SceneGraph.h"
+#include "RpgItems.h"
 #include <cstdint>
 #include <filesystem>
 #include <map>
@@ -17,7 +18,8 @@ class WorldSimulation;
 class LevelOne
 {
   public:
-    static constexpr int BossKillRequirement = 24;
+    static constexpr double BossInterval = 300;
+    static constexpr double VillageBossHealth = 4500;
 
     LevelOne(const std::filesystem::path& directory, std::uint64_t seed);
     void Update(double dt, const World& world, const NpcSystem& npcs);
@@ -117,6 +119,23 @@ class LevelOne
     std::wstring Objective() const;
     std::wstring Hint() const;
 
+    const RpgProgress& Rpg() const
+    {
+        return rpg_;
+    }
+
+    void RebuildEquipment();
+    bool UseItem(int id);
+    bool BuyItem(int id, std::uint64_t merchant);
+    bool SellItem(int id, std::uint64_t merchant);
+    bool ClaimQuest(int index);
+    int QuestProgress(int index) const;
+    int QuestTarget(int index) const;
+    std::wstring QuestTitle(int index) const;
+    std::wstring QuestReward(int index) const;
+    void UpdateRpg(double dt, const World& world);
+    void FinishBoss();
+
   private:
     using Cell = std::pair<WorldInt, WorldInt>;
 
@@ -150,6 +169,7 @@ class LevelOne
     std::uint64_t nextRuntimeId_ = 1;
     std::map<std::string, std::shared_ptr<std::map<std::uint64_t, size_t>>> recordIndices_;
     PlayerProgress player_;
+    RpgProgress rpg_;
     LevelPhase phase_ = LevelPhase::Farming;
     std::vector<Enemy> enemies_;
     std::vector<ItemDrop> drops_;

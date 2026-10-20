@@ -73,7 +73,8 @@ bool LevelOne::Spawn(EnemyKind kind, const World& world)
     enemy.id = nextId_++;
     enemy.kind = kind;
     enemy.position = candidates[random_() % candidates.size()];
-    enemy.maxHealth = kind == EnemyKind::Boss ? 650.0 : (kind == EnemyKind::Hound ? 24.0 : 34.0);
+    enemy.maxHealth =
+        kind == EnemyKind::Boss ? VillageBossHealth : (kind == EnemyKind::Hound ? 24.0 : 34.0);
     enemy.health = enemy.maxHealth;
     enemy.attackTimer = kind == EnemyKind::Boss ? 3.0 : 1.0;
     enemy.attackPoint = enemy.position;

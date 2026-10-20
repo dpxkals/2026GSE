@@ -1,41 +1,31 @@
 #include "stdafx.h"
 #include "SocietyView.h"
+#include "CharacterArt.h"
 #include "VillageLayout.h"
 #include <algorithm>
 #include <sstream>
 #include <iomanip>
 
-void SocietyView::CitizenBody(
-    SceneRenderer& r, const Citizen& npc, Point2 p, float zoom, bool selected)
+void SocietyView::CitizenBody(SceneRenderer& r,
+                              const Citizen& npc,
+                              Point2 p,
+                              float zoom,
+                              bool selected,
+                              const ActorPose& pose)
 {
-    Color colors[] = {{0.29f, 0.49f, 0.28f, 1},
-                      {0.56f, 0.20f, 0.17f, 1},
-                      {0.68f, 0.49f, 0.20f, 1},
-                      {0.34f, 0.36f, 0.65f, 1},
-                      {0.47f, 0.46f, 0.40f, 1},
-                      {0.56f, 0.38f, 0.23f, 1},
-                      {0.32f, 0.62f, 0.65f, 1}};
-    auto tendency = WorldSimulation::Tendency(npc);
-    Color color = colors[int(tendency)];
-    auto key = "citizen:v2:" + std::to_string(int(tendency));
-    if (r.BeginMesh(key, p, zoom))
+    ActorPose actionPose = pose;
+    if (npc.action == NpcAction::Gather || npc.action == NpcAction::Craft ||
+        npc.action == NpcAction::Socialize || npc.action == NpcAction::Trade ||
+        npc.action == NpcAction::Aid)
     {
-        r.Ellipse(p, 13 * zoom, 5 * zoom, {0, 0, 0, 0.35f});
-        r.Triangle({p.x, p.y - 31 * zoom}, {p.x - 11 * zoom, p.y}, {p.x + 11 * zoom, p.y}, color);
-        r.Ellipse({p.x, p.y - 34 * zoom}, 7 * zoom, 8 * zoom, {0.65f, 0.53f, 0.39f, 1});
-        r.Rect(p.x - 8 * zoom, p.y - 42 * zoom, 16 * zoom, 5 * zoom, color);
-        r.Line({p.x + 12 * zoom, p.y},
-               {p.x + 12 * zoom, p.y - 30 * zoom},
-               2 * zoom,
-               {0.62f, 0.57f, 0.40f, 1});
-        r.EndMesh();
+        actionPose.work = pose.breath * (1 - pose.moving);
     }
-    r.DrawMesh(key, p, zoom);
+    CharacterArt::Human(r, p, zoom, 3 + int(WorldSimulation::Tendency(npc)), npc.level, actionPose);
     if (selected || npc.hostility > 0 || npc.health < npc.maxHealth)
     {
-        r.Rect(p.x - 17 * zoom, p.y - 50 * zoom, 34 * zoom, 4 * zoom, {0.07f, 0.08f, 0.08f, 1});
+        r.Rect(p.x - 17 * zoom, p.y - 59 * zoom, 34 * zoom, 4 * zoom, {0.07f, 0.08f, 0.08f, 1});
         r.Rect(p.x - 17 * zoom,
-               p.y - 50 * zoom,
+               p.y - 59 * zoom,
                34 * zoom * float(npc.health / npc.maxHealth),
                4 * zoom,
                npc.hostility > 0 ? Color{0.95f, 0.22f, 0.15f, 1} : Color{0.25f, 0.8f, 0.4f, 1});

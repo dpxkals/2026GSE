@@ -1,5 +1,8 @@
 # RPG HUD와 경험 기반 NPC 행동 개편
 
+> 이후 성채 5곳·주민 60명·레벨 100 및 외형 확장이 적용되었다.
+> 최신 월드/성장 수치는 [Fortified_World_RPG_Expansion.md](Fortified_World_RPG_Expansion.md)를 참고한다.
+
 ## 변경 의도
 
 기존 직업별 생성·행동 보너스를 제거했다. NPC는 고정된 사냥꾼/상인이 아니라,

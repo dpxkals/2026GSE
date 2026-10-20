@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "LevelOne.h"
 #include "WorldSimulation.h"
+#include "GameplayBehaviors.h"
 #include <algorithm>
 
 void LevelOne::ResolveCombat()
@@ -12,10 +13,15 @@ void LevelOne::ResolveCombat()
             if (simulation_ && it->lastHitNpc)
             {
                 simulation_->MonsterKilled(it->lastHitNpc, *it);
-                if (it->kind == EnemyKind::Boss)
+                if (it->playerDamage > 0 &&
+                    Gameplay::Distance(player_.position, it->position) <= 30)
                 {
-                    phase_ = LevelPhase::Cleared;
-                    Announce(L"주민이 잿빛 파수꾼을 처치했습니다. 마을의 삶은 계속됩니다.");
+                    Defeat(*it);
+                }
+                else if (it->kind == EnemyKind::Boss)
+                {
+                    FinishBoss();
+                    Announce(L"주민이 마을 보스를 처치했습니다. 5분 뒤 다른 마을에서 출현합니다.");
                 }
                 urgentSave_ = true;
             }
@@ -45,6 +51,18 @@ void LevelOne::Collect(const ItemDrop& drop)
 {
     switch (drop.kind)
     {
+        case DropKind::Equipment:
+        {
+            int item = drop.amount - 1;
+            if (item < 0 || item >= RpgItemCount || rpg_.inventory[item] >= 999)
+            {
+                return;
+            }
+            ++rpg_.inventory[item];
+            rpg_.finds = (std::min)(1000000000, rpg_.finds + 1);
+            Announce(std::wstring(ItemCatalog()[item].name) + L" 획득 · Tab으로 확인");
+            break;
+        }
         case DropKind::Soul:
             GainExperience(drop.amount);
             ++player_.souls;

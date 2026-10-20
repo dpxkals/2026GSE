@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "CharacterArt.h"
 #include "LevelOneView.h"
 #include "VillageLayout.h"
 #include <algorithm>
@@ -50,11 +51,17 @@ void LevelOneView::Ground(SceneRenderer& renderer,
     {
         for (const auto& village : Villages())
         {
-            Ring(renderer,
-                 project(village.center.x, village.center.y, 0),
-                 4.5,
-                 zoom,
-                 {0.38f, 0.75f, 0.58f, 0.4f});
+            double radius = VillageWallRadius - 0.5;
+            auto center = village.center;
+            Point2 corners[] = {project(center.x - radius, center.y - radius, 0),
+                                project(center.x + radius, center.y - radius, 0),
+                                project(center.x + radius, center.y + radius, 0),
+                                project(center.x - radius, center.y + radius, 0)};
+            for (int i = 0; i < 4; ++i)
+            {
+                renderer.Line(
+                    corners[i], corners[(i + 1) % 4], 1.4f * zoom, {.38f, .75f, .58f, .4f});
+            }
         }
     }
     const auto& player = level.Player();
@@ -89,79 +96,173 @@ void LevelOneView::Ground(SceneRenderer& renderer,
     }
 }
 
-void LevelOneView::DrawEnemy(
-    SceneRenderer& renderer, const Enemy& enemy, Point2 p, float zoom, bool targeted)
+void LevelOneView::DrawEnemy(SceneRenderer& renderer,
+                             const Enemy& enemy,
+                             Point2 p,
+                             float zoom,
+                             bool targeted,
+                             const ActorPose& pose)
 {
-    bool boss = enemy.kind == EnemyKind::Boss;
+    bool boss = enemy.kind == EnemyKind::Boss, hound = enemy.kind == EnemyKind::Hound;
     float size = (boss ? 1.9f : 1.0f) * zoom;
-    Color body = enemy.kind == EnemyKind::Hound ? Color{0.50f, 0.30f, 0.25f, 1}
-                                                : Color{0.39f, 0.44f, 0.42f, 1};
-    if (boss)
-    {
-        body = enemy.health <= enemy.maxHealth * 0.5 ? Color{0.65f, 0.23f, 0.19f, 1}
-                                                     : Color{0.40f, 0.25f, 0.30f, 1};
-    }
-    if (enemy.hitFlash > 0.0)
-    {
-        body = {0.98f, 0.76f, 0.52f, 1, 1.5f};
-    }
+    bool enraged = boss && enemy.health <= enemy.maxHealth * .5;
+    Color body = hound  ? Color{.50f, .30f, .25f, 1}
+                 : boss ? (enraged ? Color{.65f, .23f, .19f, 1} : Color{.40f, .25f, .30f, 1})
+                        : Color{.39f, .44f, .42f, 1};
+    Color bone{.67f, .65f, .50f, 1}, iron{.22f, .27f, .28f, 1}, rag{.27f, .19f, .20f, 1};
+    float charge = float(std::clamp(enemy.windup / 1.25, 0.0, 1.0));
     if (targeted)
     {
-        Ring(renderer, p, boss ? 0.65 : 0.38, zoom, {0.96f, 0.66f, 0.21f, 0.8f});
+        Ring(renderer, p, boss ? .65 : .38, zoom, {.96f, .66f, .21f, .8f});
     }
-    std::string key = "enemy:" + std::to_string(int(enemy.kind)) + ":" +
-                      std::to_string(enemy.health <= enemy.maxHealth * 0.5) + ":" +
-                      std::to_string(enemy.hitFlash > 0.0);
-    if (renderer.BeginMesh(key, p, zoom))
+    // Shadow, four limbs, torso, head and weapon/tail. All geometry is model-space.
+    for (int part = 0; part < 8; ++part)
     {
-        renderer.Ellipse(p, 14 * size, 6 * size, {0.015f, 0.02f, 0.02f, 0.45f});
-        if (enemy.kind == EnemyKind::Hound)
+        std::string key = "enemy:rig1:" + std::to_string(int(enemy.kind)) + ":" +
+                          std::to_string(enraged) + ":" + std::to_string(part);
+        Point2 pivot{0, -18};
+        float angle = pose.breath * .025f - pose.hurt * .15f;
+        if (part >= 1 && part <= 4)
         {
-            renderer.Quad({p.x - 18 * size, p.y - 13 * size},
-                          {p.x + 8 * size, p.y - 19 * size},
-                          {p.x + 16 * size, p.y - 6 * size},
-                          {p.x - 12 * size, p.y - 3 * size},
-                          body);
-            renderer.Triangle({p.x + 6 * size, p.y - 16 * size},
-                              {p.x + 10 * size, p.y - 30 * size},
-                              {p.x + 17 * size, p.y - 11 * size},
-                              body);
-        }
-        else
-        {
-            renderer.Quad({p.x - 11 * size, p.y - 28 * size},
-                          {p.x + 11 * size, p.y - 28 * size},
-                          {p.x + 14 * size, p.y - 4 * size},
-                          {p.x - 13 * size, p.y - 4 * size},
-                          body);
-            renderer.Ellipse({p.x, p.y - 35 * size}, 8 * size, 10 * size, body);
-            if (boss)
+            float x = hound ? -13 + (part - 1) * 9.0f : (part % 2 ? -7.0f : 7.0f);
+            pivot = {x, hound ? -10.0f : -13.0f};
+            angle = pose.stride * (part % 2 ? .5f : -.5f);
+            if (!hound && part >= 3)
             {
-                renderer.Triangle({p.x - 9 * size, p.y - 33 * size},
-                                  {p.x - 15 * size, p.y - 54 * size},
-                                  {p.x - 2 * size, p.y - 39 * size},
-                                  Gold);
-                renderer.Triangle({p.x + 9 * size, p.y - 33 * size},
-                                  {p.x + 15 * size, p.y - 54 * size},
-                                  {p.x + 2 * size, p.y - 39 * size},
-                                  Gold);
+                pivot = {part == 3 ? -12.0f : 12.0f, -26};
+                angle = pose.stride * (part == 3 ? -.35f : .35f) -
+                        (part == 4 ? pose.attack * 1.2f + charge * .8f : 0);
             }
         }
-        float eyeHeight = enemy.kind == EnemyKind::Hound ? 15 : 36;
-        renderer.Ellipse({p.x + 3 * size, p.y - eyeHeight * size},
-                         3 * size,
-                         2 * size,
-                         {1.0f, 0.22f, 0.06f, 1, 2.0f});
-        renderer.EndMesh();
+        if (part == 6)
+        {
+            pivot = hound ? Point2{9, -14} : Point2{0, -28};
+            angle += hound ? -pose.attack * .35f : -charge * .15f;
+        }
+        if (part == 7)
+        {
+            pivot = hound ? Point2{-15, -13} : Point2{12, -26};
+            angle = hound ? pose.stride * .25f + pose.breath * .12f
+                          : pose.stride * .35f - pose.attack * 1.2f - charge * .8f;
+        }
+        if (renderer.BeginMesh(key, {0, 0}, 1))
+        {
+            if (part == 0)
+            {
+                renderer.Ellipse({0, 1}, hound ? 21.0f : 16.0f, 6, {0, 0, 0, .4f});
+            }
+            else if (part <= 4)
+            {
+                if (hound || part <= 2)
+                {
+                    Point2 knee{pivot.x + 2, -5}, foot{pivot.x + 4, 0};
+                    renderer.Line(pivot, knee, hound ? 3.0f : 6.0f, iron);
+                    renderer.Line(knee, foot, hound ? 3.0f : 5.0f, body);
+                    renderer.Line(foot, {foot.x + 4, 0}, 2, bone);
+                }
+                else
+                {
+                    renderer.Line(pivot, {pivot.x * 1.4f, -16}, 5, body);
+                    renderer.Ellipse({pivot.x * 1.4f, -15}, 3, 3, bone);
+                }
+            }
+            else if (part == 5)
+            {
+                if (hound)
+                {
+                    renderer.Quad({-18, -13}, {8, -19}, {16, -6}, {-12, -3}, body);
+                    for (int i = 0; i < 4; ++i)
+                    {
+                        float x = -13 + i * 6.0f;
+                        renderer.Triangle({x, -18}, {x + 2, -27}, {x + 6, -19}, iron);
+                        renderer.Line({x, -15}, {x + 3, -8}, 1, bone);
+                    }
+                }
+                else
+                {
+                    renderer.Triangle({-9, -28}, {-19, -3}, {11, -8}, rag);
+                    renderer.Quad({-11, -28}, {11, -28}, {14, -6}, {-13, -6}, body);
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        renderer.Line({-7, -24 + i * 4.0f}, {7, -24 + i * 4.0f}, 1, bone);
+                    }
+                    if (boss)
+                    {
+                        renderer.Quad({-10, -29}, {10, -29}, {8, -14}, {-8, -14}, iron);
+                        renderer.Line({0, -28}, {0, -15}, 2, Gold);
+                        for (float side : {-1.0f, 1.0f})
+                        {
+                            renderer.Ellipse({13 * side, -27}, 7, 5, iron);
+                            renderer.Triangle(
+                                {17 * side, -27}, {23 * side, -38}, {10 * side, -31}, bone);
+                        }
+                    }
+                }
+            }
+            else if (part == 6)
+            {
+                if (hound)
+                {
+                    renderer.Triangle({6, -16}, {10, -30}, {17, -11}, body);
+                    renderer.Quad({10, -16}, {24, -13}, {25, -7}, {13, -5}, bone);
+                    renderer.Line({13, -10}, {25, -10}, 1, iron);
+                    renderer.Triangle({18, -10}, {20, -5}, {21, -10}, bone);
+                    renderer.Ellipse({13, -16}, 2, 2, {1, .22f, .06f, 1, 2});
+                }
+                else
+                {
+                    renderer.Ellipse({0, -35}, 8, 10, body);
+                    renderer.Ellipse({1, -35}, 6, 8, bone);
+                    renderer.Line({-3, -37}, {6, -37}, 2, iron);
+                    renderer.Line({-2, -30}, {5, -30}, 1, iron);
+                    renderer.Ellipse({3, -37}, 2, 1.5f, {1, .22f, .06f, 1, 2});
+                    if (boss)
+                    {
+                        for (float side : {-1.0f, 1.0f})
+                        {
+                            renderer.Triangle(
+                                {9 * side, -33}, {15 * side, -54}, {2 * side, -39}, Gold);
+                        }
+                    }
+                }
+            }
+            else if (hound)
+            {
+                renderer.Triangle({-15, -13}, {-29, -27}, {-18, -5}, body);
+            }
+            else
+            {
+                renderer.Line({20, -5}, {20, -36}, 2, iron);
+                renderer.Triangle({19, -34}, {23, -43}, {23, -15}, bone);
+                renderer.Line({23, -40}, {23, -18}, 1, {1, .35f, .1f, 1, 1.7f});
+            }
+            renderer.EndMesh();
+        }
+        Point2 point = p;
+        if (part > 0)
+        {
+            point.y +=
+                (pose.breath * .7f - std::abs(pose.stride) * (hound ? 2.5f : 1.5f) + charge * 2) *
+                size;
+            point.x += pose.facing * (pose.attack * 3 - pose.hurt * 3) * size;
+        }
+        Color tint{1, 1 - pose.hurt * .4f, 1 - pose.hurt * .55f, 1, 1 + pose.hurt};
+        renderer.DrawMeshPose(key,
+                              point,
+                              size,
+                              pivot,
+                              part == 0 ? 0 : angle,
+                              pose.facing,
+                              part == 0 ? Color{1, 1, 1, 1} : tint);
     }
-    renderer.DrawMesh(key, p, zoom);
+    CharacterArt::Aura(renderer, p, size, pose, {1, .36f, .12f, 1});
     Bar(renderer,
         p.x - 19 * size,
         p.y - (boss ? 60 : 50) * size,
         38 * size,
         5,
         enemy.health / enemy.maxHealth,
-        {0.80f, 0.19f, 0.12f, 1});
+        {.80f, .19f, .12f, 1});
 }
 
 void LevelOneView::DrawDrop(SceneRenderer& renderer, const ItemDrop& drop, Point2 p, float zoom)
@@ -183,6 +284,9 @@ void LevelOneView::DrawDrop(SceneRenderer& renderer, const ItemDrop& drop, Point
                 break;
             case DropKind::Magnet:
                 color = {0.18f, 0.95f, 0.79f, 1, 1.8f};
+                break;
+            case DropKind::Equipment:
+                color = {.77f, .48f, 1.0f, 1, 2.2f};
                 break;
         }
         renderer.Ellipse(p, 9 * zoom, 4 * zoom, {color.r, color.g, color.b, 0.16f});
@@ -221,7 +325,7 @@ void LevelOneView::DrawSoul(
     SceneRenderer& renderer, const SoulNpc& soul, Point2 p, float zoom, double time)
 {
     p.y -= float(3.0 + std::sin(time * 1.6 + double(soul.id % 100)) * 2.0) * zoom;
-    std::string key = "soul:" + std::to_string(soul.feeling);
+    std::string key = "soul:rpg2:" + std::to_string(soul.feeling);
     if (renderer.BeginMesh(key, p, zoom))
     {
         Color color = soul.feeling == 1   ? Color{0.58f, 0.87f, 0.62f, 0.58f, 1.6f}
@@ -231,6 +335,22 @@ void LevelOneView::DrawSoul(
         renderer.Triangle(
             {p.x, p.y - 38 * zoom}, {p.x - 14 * zoom, p.y}, {p.x + 14 * zoom, p.y}, color);
         renderer.Ellipse({p.x, p.y - 36 * zoom}, 7 * zoom, 9 * zoom, color);
+        renderer.Quad({p.x - 10 * zoom, p.y - 31 * zoom},
+                      {p.x + 10 * zoom, p.y - 31 * zoom},
+                      {p.x + 16 * zoom, p.y - 8 * zoom},
+                      {p.x - 15 * zoom, p.y - 5 * zoom},
+                      {color.r * .6f, color.g * .7f, color.b * .8f, .5f, 1.5f});
+        renderer.Ellipse({p.x, p.y - 39 * zoom}, 9 * zoom, 11 * zoom, color);
+        renderer.Ellipse(
+            {p.x + zoom, p.y - 38 * zoom}, 5 * zoom, 7 * zoom, {.08f, .16f, .20f, .75f});
+        renderer.Line(
+            {p.x - 9 * zoom, p.y - 29 * zoom}, {p.x - 13 * zoom, p.y - 8 * zoom}, zoom, color);
+        renderer.Line(
+            {p.x + 9 * zoom, p.y - 29 * zoom}, {p.x + 13 * zoom, p.y - 8 * zoom}, zoom, color);
+        renderer.Ellipse({p.x + 17 * zoom, p.y - 25 * zoom},
+                         3 * zoom,
+                         4 * zoom,
+                         {color.r, color.g, color.b, .8f, 3});
         renderer.Ellipse({p.x - 2 * zoom, p.y - 37 * zoom},
                          2 * zoom,
                          2 * zoom,
@@ -293,7 +413,8 @@ void LevelOneView::HUD(SceneRenderer& renderer,
         84,
         280,
         8,
-        player.level >= 30 ? 1.0 : double(player.experience) / player.ExperienceNeeded(),
+        player.level >= MaxCharacterLevel ? 1.0
+                                          : double(player.experience) / player.ExperienceNeeded(),
         {0.24f, 0.55f, 0.86f, 1});
     std::ostringstream stats;
     stats << "XP " << player.experience << '/' << player.ExperienceNeeded() << "   WEAPON +"
@@ -302,7 +423,7 @@ void LevelOneView::HUD(SceneRenderer& renderer,
     stats.str("");
     stats.clear();
     stats << "DMG " << int(player.Damage()) << "   CD " << std::fixed << std::setprecision(2)
-          << player.ShotCooldown() << "   RANGE 6";
+          << player.ShotCooldown() << "   DEF " << int(player.gearDefense);
     renderer.Text(32, 118, stats.str(), TextColor, 1.1f);
     Bar(renderer, 32, 138, 280, 5, level.ShotReady(), Gold);
     if (level.MagnetTime() > 0.0)

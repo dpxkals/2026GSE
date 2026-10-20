@@ -47,6 +47,14 @@ class SceneRenderer
     bool BeginMesh(const std::string& key, Point2 origin, float scale);
     void EndMesh();
     void DrawMesh(const std::string& key, Point2 origin, float scale, float opacity = 1.0f);
+    // Rotate a cached local-space part around its joint; reflection changes facing.
+    void DrawMeshPose(const std::string& key,
+                      Point2 origin,
+                      float scale,
+                      Point2 pivot,
+                      float radians,
+                      float facing = 1.0f,
+                      Color tint = {1, 1, 1, 1});
     bool MeshCovers(const std::string& key, Point2 origin, float scale, Point2 point) const;
     void RetainTerrainMeshes(const std::set<std::string>& keys);
 

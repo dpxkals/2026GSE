@@ -59,6 +59,7 @@ class FrameProfiler
         EdgeBlurEnabled,
         VignetteEnabled,
         RenderMs,
+        PoseSubmissions,
         Count
     };
 
@@ -85,7 +86,7 @@ class FrameProfiler
             std::fprintf(stderr, "[Profile] Cannot open CSV; console logging remains enabled.\n");
             return;
         }
-        log_ << "# schema=2; timings=CPU wall ms; samples=completed display callbacks\n";
+        log_ << "# schema=3; timings=CPU wall ms; samples=completed display callbacks\n";
         log_ << "# context=" << context << '\n';
 #ifdef _DEBUG
         log_ << "# configuration=Debug\n";
@@ -253,7 +254,7 @@ class FrameProfiler
                     maximum_[Draws]);
         std::printf("[Profile] avg/frame: instances=%.1f upload=%.1f KB generated=%.1f verts "
                     "cache[mem/disk/miss]=%.1f/%.1f/%.1f | CPU render=%.2f ms swap=%.2f ms "
-                    "| frame max=%.2f ms\n",
+                    "| frame max=%.2f ms | posed parts=%.1f builds=%.1f\n",
                     total_[Instances] / frames_,
                     total_[UploadBytes] / frames_ / 1024.0,
                     total_[GeneratedVertices] / frames_,
@@ -262,7 +263,9 @@ class FrameProfiler
                     total_[CacheMisses] / frames_,
                     total_[RenderMs] / frames_,
                     total_[SwapMs] / frames_,
-                    frameMaxMs_);
+                    frameMaxMs_,
+                    total_[PoseSubmissions] / frames_,
+                    total_[MeshBuilds] / frames_);
         if (log_)
         {
             log_ << std::fixed << std::setprecision(4)
@@ -332,7 +335,8 @@ class FrameProfiler
                                                              "bloom_enabled",
                                                              "edge_blur_enabled",
                                                              "vignette_enabled",
-                                                             "render_ms"};
+                                                             "render_ms",
+                                                             "pose_submissions"};
         return names;
     }
 

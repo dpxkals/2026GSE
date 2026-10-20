@@ -9,6 +9,8 @@ struct WorldPoint
     double y = 0.5;
 };
 
+constexpr int MaxCharacterLevel = 100;
+
 struct PlayerProgress
 {
     WorldPoint position;
@@ -22,6 +24,8 @@ struct PlayerProgress
     int upgrades = 0;
     int potions = 0;
     int magnets = 0;
+    // Derived from equipped items; rebuilt after load, never serialized independently.
+    double gearDamage = 0, gearHealth = 0, gearDefense = 0, gearHaste = 0, gearSpeed = 0;
 
     int ExperienceNeeded() const;
     double MaxHealth() const;
@@ -30,6 +34,7 @@ struct PlayerProgress
     double MoveSpeed() const;
     double PickupRange() const;
     double AttackRange() const;
+    double IncomingDamage(double amount) const;
 };
 
 // One life, reset only after a death has produced its own persistent soul.
@@ -80,6 +85,7 @@ struct Enemy
     WorldPoint attackPoint;
     double hitFlash = 0.0;
     std::uint64_t lastHitNpc = 0;
+    double playerDamage = 0;
 };
 
 enum class DropKind
@@ -87,7 +93,8 @@ enum class DropKind
     Soul,
     Upgrade,
     Health,
-    Magnet
+    Magnet,
+    Equipment
 };
 
 struct ItemDrop

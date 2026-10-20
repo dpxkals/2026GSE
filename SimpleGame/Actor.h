@@ -10,6 +10,13 @@ struct ActorPosition
     double y = 0.0;
 };
 
+// Presentation only: never serialized or used by collision / combat rules.
+struct ActorPose
+{
+    float stride = 0, breath = 0, attack = 0, hurt = 0;
+    float facing = 1, moving = 0, phase = 0, work = 0;
+};
+
 enum class RenderLayer
 {
     Ground,
@@ -48,6 +55,7 @@ class Actor
     const std::string& Type() const;
     virtual ActorPosition Position() const;
     virtual void Update(double dt);
+    ActorPose Animate(double time, double attackCooldown = 0, double health = -1);
     void BindPosition(std::function<ActorPosition()> read,
                       std::function<void(ActorPosition)> write);
     void BindUpdate(std::function<void(double)> update);
@@ -69,6 +77,11 @@ class Actor
     std::string type_;
     ActorPosition position_;
     ActorPosition propagatedTranslation_;
+    ActorPosition animationPosition_;
+    double animationTime_ = -1, animationPhase_ = 0, animationAttack_ = 0;
+    double animationCooldown_ = 0, animationMoving_ = 0;
+    double animationHealth_ = -1, animationHurt_ = 0;
+    float animationFacing_ = 1;
     std::function<ActorPosition()> readPosition_;
     std::function<void(ActorPosition)> writePosition_;
     std::function<void(double)> update_;

@@ -21,7 +21,10 @@ but WITHOUT ANY WARRANTY.
 #include "WorldActors.h"
 #include "WorldView.h"
 #include "WorldSimulation.h"
+#include "WorldMonitor.h"
+#include "RpgPanel.h"
 #include "SocietyView.h"
+#include "CharacterArt.h"
 #include "VillageLayout.h"
 #include "Dependencies/freeglut.h"
 #include <Windows.h>
@@ -44,6 +47,8 @@ namespace
     std::unique_ptr<NpcSystem> npcs;
     std::unique_ptr<LevelOne> levelOne;
     std::unique_ptr<WorldSimulation> society;
+    std::unique_ptr<WorldMonitor> monitor;
+    RpgPanel rpgPanel;
     std::filesystem::path gameplaySaveDirectory;
     int speakingNpc = -1;
     int speakingSoul = -1;
@@ -60,6 +65,7 @@ namespace
     double cameraY = 0.5;
 
     double elapsed = 0.0;
+    double animationClock = 0.0;
     double stepPhase = 0.0;
     float zoom = 1.0f;
 
@@ -228,81 +234,14 @@ namespace
                           {1.0f, 0.87f, 0.44f, 1, 8.0f});
     }
 
-    void Player(Point2 p)
+    void Player(Point2 p, const ActorPose& pose)
     {
-        float bob = moving ? float(std::sin(stepPhase)) * 1.5f * zoom : 0;
-        renderer.Ellipse(p, 13 * zoom, 5 * zoom, {0.0f, 0.015f, 0.02f, 0.45f});
-        renderer.Ellipse({p.x, p.y + zoom}, 17 * zoom, 7 * zoom, {0.63f, 0.68f, 0.55f, 0.12f});
-        float stride = moving ? float(std::sin(stepPhase)) * 3 * zoom : 0;
-        renderer.Rect(
-            p.x - 6 * zoom, p.y - 6 * zoom + stride, 4 * zoom, 7 * zoom, {0.12f, 0.12f, 0.11f, 1});
-        renderer.Rect(
-            p.x + 2 * zoom, p.y - 6 * zoom - stride, 4 * zoom, 7 * zoom, {0.12f, 0.12f, 0.11f, 1});
-        renderer.Triangle({p.x, p.y - 31 * zoom + bob},
-                          {p.x - 12 * zoom, p.y - 5 * zoom + bob},
-                          {p.x + 10 * zoom, p.y - 5 * zoom + bob},
-                          {0.49f, 0.37f, 0.25f, 1});
-        renderer.Triangle({p.x, p.y - 31 * zoom + bob},
-                          {p.x, p.y - 5 * zoom + bob},
-                          {p.x + 10 * zoom, p.y - 5 * zoom + bob},
-                          {0.31f, 0.26f, 0.21f, 1});
-        renderer.Ellipse(
-            {p.x, p.y - 33 * zoom + bob}, 7 * zoom, 8 * zoom, {0.59f, 0.48f, 0.32f, 1});
-        renderer.Ellipse(
-            {p.x + 2 * zoom, p.y - 32 * zoom + bob}, 4 * zoom, 4 * zoom, {0.16f, 0.17f, 0.16f, 1});
-        renderer.Line({p.x + 12 * zoom, p.y - 2 * zoom},
-                      {p.x + 15 * zoom, p.y - 31 * zoom + bob},
-                      2 * zoom,
-                      gold);
-        renderer.Ellipse({p.x + 15 * zoom, p.y - 30 * zoom + bob},
-                         3 * zoom,
-                         4 * zoom,
-                         {0.99f, 0.78f, 0.38f, 1, 3.5f});
+        CharacterArt::Human(renderer, p, zoom, 0, levelOne->Player().level, pose);
     }
 
-    void DrawNpc(Point2 p, const Npc& npc)
+    void DrawNpc(Point2 p, const Npc& npc, const ActorPose& pose)
     {
-        float breath = float(std::sin(elapsed * 1.7 + npc.id)) * 0.8f * zoom;
-        Color cloak =
-            npc.style == 0 ? Color{0.30f, 0.43f, 0.36f, 1} : Color{0.39f, 0.32f, 0.49f, 1};
-        renderer.Ellipse(p, 14 * zoom, 5 * zoom, {0.01f, 0.02f, 0.02f, 0.4f});
-        renderer.Rect(p.x - 6 * zoom, p.y - 6 * zoom, 4 * zoom, 7 * zoom, {0.15f, 0.13f, 0.12f, 1});
-        renderer.Rect(p.x + 2 * zoom, p.y - 6 * zoom, 4 * zoom, 7 * zoom, {0.15f, 0.13f, 0.12f, 1});
-        renderer.Triangle({p.x, p.y - 33 * zoom + breath},
-                          {p.x - 13 * zoom, p.y - 5 * zoom},
-                          {p.x + 12 * zoom, p.y - 5 * zoom},
-                          cloak);
-        renderer.Triangle({p.x, p.y - 33 * zoom + breath},
-                          {p.x, p.y - 5 * zoom},
-                          {p.x + 12 * zoom, p.y - 5 * zoom},
-                          Shade(cloak, 0.72f));
-        renderer.Ellipse(
-            {p.x, p.y - 35 * zoom + breath}, 7 * zoom, 8 * zoom, {0.64f, 0.54f, 0.42f, 1});
-        renderer.Ellipse({p.x, p.y - 40 * zoom + breath}, 8 * zoom, 5 * zoom, Shade(cloak, 0.75f));
-        if (npc.style == 0)
-        {
-            renderer.Line({p.x - 13 * zoom, p.y},
-                          {p.x - 15 * zoom, p.y - 35 * zoom},
-                          2 * zoom,
-                          {0.49f, 0.37f, 0.23f, 1});
-            renderer.Rect(p.x + 5 * zoom,
-                          p.y - 20 * zoom + breath,
-                          7 * zoom,
-                          9 * zoom,
-                          {0.73f, 0.49f, 0.23f, 1});
-        }
-        else
-        {
-            renderer.Rect(p.x - 4 * zoom,
-                          p.y - 22 * zoom + breath,
-                          15 * zoom,
-                          11 * zoom,
-                          {0.69f, 0.62f, 0.45f, 1});
-            renderer.Line({p.x + 3 * zoom, p.y - 21 * zoom + breath},
-                          {p.x + 3 * zoom, p.y - 12 * zoom + breath},
-                          zoom,
-                          {0.35f, 0.26f, 0.18f, 1});
-        }
+        CharacterArt::Human(renderer, p, zoom, npc.style == 0 ? 1 : 2, 1, pose);
     }
 
     bool Speaking()
@@ -421,6 +360,10 @@ namespace
 
     void HUD()
     {
+        if (width >= 900 && !showDiagnostics)
+        {
+            renderer.KoreanText(350, 136, levelOne->Objective(), gold, 15, width - 610);
+        }
         if (width >= 900)
         {
             int village = VillageAt(levelOne->Player().position);
@@ -470,7 +413,7 @@ namespace
         }
         renderer.KoreanText(barLeft + 16,
                             float(height) - 34,
-                            L"WASD 이동  ·  클릭 관찰  ·  Ctrl+클릭 공격  ·  우클릭 해제",
+                            L"WASD 이동 · Tab 가방 · Q 의뢰 · T 상점 · Ctrl+클릭 공격",
                             muted,
                             12,
                             int(barWidth) - 32);
@@ -483,8 +426,9 @@ namespace
                 float(height) - 278,
                 L"여행자의 안내\n주민은 경험에 따라 성향이 변합니다. 클릭해서 살펴보세요.\n"
                 L"Ctrl+클릭하면 중립 주민도 공격합니다. 목격자에게 주의하세요.\n"
-                L"마을 주민 근처에서 T: 재료 판매 / 재료가 없으면 회복 구매\n"
+                L"마을 주민 근처 T: 상점 · 가방에서 장비 착용/판매 · M 재료 판매\n"
                 L"Y: 경험치 구매 · G: 소지품 습득 · F: 안내 주민과 대화\n"
+                L"Tab: 인벤토리 · Q: 퀘스트 보상 · 마을 보스 권장 레벨 10\n"
                 L"F8: 개발 정보 · F9: 시드 유지 초기화 · H: 안내 닫기",
                 ivory,
                 15,
@@ -519,6 +463,10 @@ namespace
                 (width - panelWidth) * 0.5f + 16, float(height) - 104, message, gold, 1.5f);
         }
         DialogueHUD();
+        if (society && (rpgPanel.IsOpen() || (!Speaking() && !showHelp)))
+        {
+            rpgPanel.Draw(renderer, *levelOne, *society, width, height);
+        }
     }
 
     bool VisibleActor(const Actor& actor)
@@ -558,22 +506,30 @@ namespace
     void ConfigureActorRenderers()
     {
         auto& societyScene = levelOne->Scene();
-        societyScene.SetRenderer("citizen",
-                                 [](Actor& actor)
-                                 {
-                                     if (society)
-                                     {
-                                         if (const auto* npc = society->Find(actor.recordId))
-                                         {
-                                             SocietyView::CitizenBody(
-                                                 renderer,
-                                                 *npc,
-                                                 Project(npc->position.x, npc->position.y),
-                                                 zoom,
-                                                 society->Selected() == npc->id);
-                                         }
-                                     }
-                                 });
+        societyScene.SetRenderer(
+            "citizen",
+            [](Actor& actor)
+            {
+                if (society)
+                {
+                    if (const auto* npc = society->Find(actor.recordId))
+                    {
+                        if (!VisibleActor(actor))
+                        {
+                            return;
+                        }
+                        bool combat =
+                            npc->action == NpcAction::Hunt || npc->action == NpcAction::PK;
+                        SocietyView::CitizenBody(
+                            renderer,
+                            *npc,
+                            Project(npc->position.x, npc->position.y),
+                            zoom,
+                            society->Selected() == npc->id,
+                            actor.Animate(animationClock, combat ? npc->cooldown : 0, npc->health));
+                    }
+                }
+            });
         societyScene.SetRenderer("citizen_loot",
                                  [](Actor& actor)
                                  {
@@ -670,7 +626,7 @@ namespace
                 }
                 auto position = actor.Position();
                 Point2 p = Project(position.x, position.y);
-                std::string meshKey = "prop:" + std::to_string(int(tile->prop)) + ":" +
+                std::string meshKey = "prop:rpg3:" + std::to_string(int(tile->prop)) + ":" +
                                       std::to_string(tile->variation);
                 if (renderer.BeginMesh(meshKey, p, zoom))
                 {
@@ -694,6 +650,9 @@ namespace
                         case Prop::Watchtower:
                         case Prop::Well:
                         case Prop::Graves:
+                        case Prop::WallX:
+                        case Prop::WallY:
+                        case Prop::WallTower:
                             WorldView::Structure(renderer, p, zoom, tile->prop, tile->variation);
                             break;
                         default:
@@ -702,7 +661,7 @@ namespace
                     renderer.EndMesh();
                 }
                 Point2 body = Project(playerX, playerY, 20);
-                Point2 head = Project(playerX, playerY, 36);
+                Point2 head = Project(playerX, playerY, 49);
                 bool inFront =
                     position.x + position.y > playerX + playerY ||
                     (position.x + position.y == playerX + playerY && position.x >= playerX);
@@ -721,10 +680,12 @@ namespace
                           [](Actor& actor)
                           {
                               auto p = actor.Position();
-                              if (levelOne->InvulnerableTime() <= 0.0 || int(elapsed * 12) % 2 == 0)
-                              {
-                                  Player(Project(p.x, p.y));
-                              }
+                              const auto& player = levelOne->Player();
+                              Player(
+                                  Project(p.x, p.y),
+                                  actor.Animate(animationClock,
+                                                (1 - levelOne->ShotReady()) * player.ShotCooldown(),
+                                                player.health));
                           });
         scene.SetRenderer("npc",
                           [](Actor& actor)
@@ -734,7 +695,8 @@ namespace
                                   if (VisibleActor(actor) && npcs->IsPresent(*npc, *world))
                                   {
                                       auto p = actor.Position();
-                                      DrawNpc(Project(p.x, p.y), *npc);
+                                      DrawNpc(
+                                          Project(p.x, p.y), *npc, actor.Animate(animationClock));
                                   }
                               }
                           });
@@ -750,7 +712,10 @@ namespace
                                                               *enemy,
                                                               Project(p.x, p.y),
                                                               zoom,
-                                                              enemy->id == levelOne->Target());
+                                                              enemy->id == levelOne->Target(),
+                                                              actor.Animate(animationClock,
+                                                                            enemy->attackTimer,
+                                                                            enemy->health));
                                   }
                               }
                           });
@@ -780,20 +745,20 @@ namespace
                                   }
                               }
                           });
-        scene.SetRenderer(
-            "soul",
-            [](Actor& actor)
-            {
-                if (const auto* soul = levelOne->FindSoul(actor.recordId))
-                {
-                    auto p = actor.Position();
-                    if (VisibleActor(actor) &&
-                        world->Find(WorldInt(std::floor(p.x)), WorldInt(std::floor(p.y))))
-                    {
-                        LevelOneView::DrawSoul(renderer, *soul, Project(p.x, p.y), zoom, elapsed);
-                    }
-                }
-            });
+        scene.SetRenderer("soul",
+                          [](Actor& actor)
+                          {
+                              if (const auto* soul = levelOne->FindSoul(actor.recordId))
+                              {
+                                  auto p = actor.Position();
+                                  if (VisibleActor(actor) && world->Find(WorldInt(std::floor(p.x)),
+                                                                         WorldInt(std::floor(p.y))))
+                                  {
+                                      LevelOneView::DrawSoul(
+                                          renderer, *soul, Project(p.x, p.y), zoom, animationClock);
+                                  }
+                              }
+                          });
         scene.SetRenderer("number",
                           [](Actor& actor)
                           {
@@ -1014,9 +979,9 @@ namespace
             (keys['s'] || arrows[3] ? 1.0 : 0.0) - (keys['w'] || arrows[2] ? 1.0 : 0.0);
         double length = std::sqrt(horizontal * horizontal + vertical * vertical);
         moving = false;
-        bool simulate = !paused && foregroundProcess == GetCurrentProcessId() &&
-                        world->Error().empty() && npcs->Error().empty() &&
-                        levelOne->Error().empty() && (!society || society->Error().empty());
+        bool simulate = !paused && !rpgPanel.IsOpen() && world->Error().empty() &&
+                        npcs->Error().empty() && levelOne->Error().empty() &&
+                        (!society || society->Error().empty());
         if (length > 0 && simulate && !Speaking())
         {
             double speed = levelOne->Player().MoveSpeed();
@@ -1026,11 +991,22 @@ namespace
         }
         if (simulate)
         {
+            animationClock += dt;
             if (society)
             {
                 society->Update(dt, *world, *levelOne, *npcs);
             }
             levelOne->Update(dt, *world, *npcs);
+        }
+        if (monitor && society)
+        {
+            monitor->Publish(*world,
+                             *society,
+                             *levelOne,
+                             *npcs,
+                             true,
+                             paused || rpgPanel.IsOpen(),
+                             foregroundProcess == GetCurrentProcessId());
         }
         WorldPoint position = levelOne->Player().position;
         if (std::hypot(playerX - position.x, playerY - position.y) > 8.0)
@@ -1066,6 +1042,11 @@ namespace
         {
             std::cerr << levelOne->Error() << '\n';
         }
+        if (monitor && society)
+        {
+            monitor->Publish(*world, *society, *levelOne, *npcs, false, paused, false, true);
+            monitor.reset();
+        }
         renderer.Shutdown();
     }
 
@@ -1080,6 +1061,19 @@ namespace
             return;
         }
         keys[key] = true;
+        if (rpgPanel.IsOpen() && society)
+        {
+            rpgPanel.Key(key, *levelOne, *society);
+            ClearInput();
+            return;
+        }
+        if ((key == '\t' || key == 'q') && !Speaking())
+        {
+            rpgPanel.Open(key == 'q' ? 3 : 1);
+            showHelp = false;
+            ClearInput();
+            return;
+        }
         // Exposure can also be adjusted while comparing effects behind a dialogue window.
         if (key == '[' || key == ']')
         {
@@ -1130,6 +1124,15 @@ namespace
             if (!society->Error().empty() || !levelOne->Error().empty())
             {
                 return;
+            }
+            if (key == 't')
+            {
+                if (const auto* trader = society->NearbyTrader(levelOne->Player().position))
+                {
+                    rpgPanel.Open(2, trader->id);
+                    ClearInput();
+                    return;
+                }
             }
             std::wstring text = key == 'g' ? society->LootPlayer(levelOne->Player().position)
                                            : society->TradePlayer(*levelOne, key == 'y');
@@ -1306,13 +1309,14 @@ namespace
             return;
         }
         ConfigureActorRenderers();
+        rpgPanel.Close();
         speakingNpc = speakingSoul = -1;
         transactionDialogue = false;
         dialoguePages.clear();
         dialoguePage = 0;
         playerX = cameraX = levelOne->Player().position.x;
         playerY = cameraY = levelOne->Player().position.y;
-        elapsed = stepPhase = 0.0;
+        elapsed = stepPhase = animationClock = 0.0;
         message = "NEW RUN - WORLD SEED PRESERVED";
         messageUntil = 6.0;
         paused = false;
@@ -1326,6 +1330,27 @@ namespace
 
     void SpecialDown(int key, int, int)
     {
+        if (rpgPanel.IsOpen() && society)
+        {
+            if (key == GLUT_KEY_UP)
+            {
+                rpgPanel.Key('w', *levelOne, *society);
+            }
+            if (key == GLUT_KEY_DOWN)
+            {
+                rpgPanel.Key('s', *levelOne, *society);
+            }
+            if (key == GLUT_KEY_LEFT)
+            {
+                rpgPanel.Key('a', *levelOne, *society);
+            }
+            if (key == GLUT_KEY_RIGHT)
+            {
+                rpgPanel.Key('d', *levelOne, *society);
+            }
+            ClearInput();
+            return;
+        }
         if (key == GLUT_KEY_F8)
         {
             showDiagnostics = !showDiagnostics;
@@ -1392,6 +1417,25 @@ namespace
 
     void MouseButton(int button, int state, int x, int y)
     {
+        if (rpgPanel.IsOpen() && society)
+        {
+            if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+            {
+                rpgPanel.Click(x, y, width, height, *levelOne, *society);
+            }
+            return;
+        }
+        if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && width >= 760 && height >= 600 &&
+            society && !society->Find(society->Selected()) && x >= 20 && x <= 324 && y >= 166 &&
+            y <= 272)
+        {
+            if (!Speaking() && !showHelp)
+            {
+                rpgPanel.Open(3);
+            }
+            ClearInput();
+            return;
+        }
         if (state != GLUT_DOWN || !society || paused || Speaking() || showHelp)
         {
             return;
@@ -1430,7 +1474,7 @@ namespace
             return;
         }
         std::uint64_t selected = 0;
-        double nearest = 24 * zoom;
+        double nearest = 30 * zoom;
         for (const auto& npc : society->People())
         {
             if (npc.health <= 0 || !world->Find(WorldInt(std::floor(npc.position.x)),
@@ -1438,7 +1482,7 @@ namespace
             {
                 continue;
             }
-            auto point = Project(npc.position.x, npc.position.y, 22);
+            auto point = Project(npc.position.x, npc.position.y, 27);
             double distance = std::hypot(double(point.x - x), double(point.y - y));
             if (distance < nearest)
             {
@@ -1451,6 +1495,11 @@ namespace
 
     void Wheel(int, int direction, int, int)
     {
+        if (rpgPanel.IsOpen() && society)
+        {
+            rpgPanel.Key(direction > 0 ? 'a' : 'd', *levelOne, *society);
+            return;
+        }
         zoom = (std::max)(0.65f, (std::min)(1.8f, zoom + direction * 0.1f));
     }
 
@@ -1527,9 +1576,19 @@ int main(int argc, char** argv)
     FrameProfiler::Instance().OpenLog(
         std::filesystem::path(executable).parent_path() / L"Logs",
         "seed=" + std::to_string(world->Seed()) +
-            (naturalWorld ? ";mode=Level01_natural_v2" : ";mode=Level01_v1"));
+            (naturalWorld ? ";mode=Level01_natural_v2" : ";mode=Level01_v1") +
+            ";terrain=v9;art=rig2;props=rpg3;rpg=1");
     levelOne = std::make_unique<LevelOne>(savePath, world->Seed());
     society = std::make_unique<WorldSimulation>(savePath, world->Seed());
+    try
+    {
+        monitor = std::make_unique<WorldMonitor>(
+            savePath, std::filesystem::path(executable).parent_path() / L"Monitor");
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "[Monitor] Disabled: " << e.what() << '\n';
+    }
     levelOne->BindSimulation(society.get());
     if (!society->Error().empty())
     {
@@ -1544,10 +1603,13 @@ int main(int argc, char** argv)
         << "F1: chunk edges | H: help | Home: origin | Esc: exit\n"
         << "Left click NPC: inspect | Ctrl+click: PK target | Right click: cancel | T: trade | Y: XP | G: loot\n"
         << "F8: diagnostics HUD (hidden by default)\n"
+        << "Monitor: built-in server starts automatically; open the [Monitor HTTP] URL above.\n"
+        << "Simulation continues in background. Press P in the game to pause safely.\n"
         << "F2: post on/off | F3: bloom | F4: vignette | F5: edge blur | F6: reset FX\n"
         << "F9: reset play data (confirmation + backup); keep world seed and terrain\n"
         << "[ / ]: exposure down/up (0.1 to 4.0); HDR is tone-mapped to SDR output.\n"
-        << "Level 01: auto fire within 6 tiles | R: range | P: pause | 24 kills: boss\n";
+        << "Tab: inventory/equipment | Q: quests | T: nearby village shop\n"
+        << "Village boss: first in 3 minutes, then 5 minutes after defeat (recommended level 10)\n";
     world->Stream(playerX, playerY, 2);
     glutDisplayFunc(RenderScene);
     glutReshapeFunc(Resize);

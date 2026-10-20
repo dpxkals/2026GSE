@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "LevelOne.h"
+#include "VillageLayout.h"
 #include <Windows.h>
 #include <cmath>
 #include <fstream>
@@ -58,7 +59,7 @@ bool LevelOne::Save()
         temporary += L".tmp";
         std::ofstream out(temporary, std::ios::trunc);
         out << std::setprecision(17);
-        out << "GSE_LEVEL_ONE 2 " << seed_ << '\n';
+        out << "GSE_LEVEL_ONE 3 " << seed_ << '\n';
         out << player_.position.x << ' ' << player_.position.y << ' ' << player_.level << ' '
             << player_.experience << ' ' << player_.health << ' ' << player_.weaponRank << ' '
             << player_.kills << ' ' << player_.retreats << ' ' << player_.souls << ' '
@@ -68,7 +69,8 @@ bool LevelOne::Save()
         for (const Enemy& enemy : enemies_)
         {
             out << enemy.id << ' ' << int(enemy.kind) << ' ' << enemy.position.x << ' '
-                << enemy.position.y << ' ' << enemy.health << ' ' << enemy.maxHealth << '\n';
+                << enemy.position.y << ' ' << enemy.health << ' ' << enemy.maxHealth << ' '
+                << enemy.playerDamage << '\n';
         }
         out << drops_.size() << '\n';
         for (const ItemDrop& drop : drops_)
@@ -85,6 +87,25 @@ bool LevelOne::Save()
                 << ' ' << soul.meetings << ' ' << soul.feeling << '\n';
             WriteLife(out, soul.life);
         }
+        out << "RPG 1\n";
+        for (int value : rpg_.inventory)
+        {
+            out << value << ' ';
+        }
+        out << '\n';
+        for (int value : rpg_.equipped)
+        {
+            out << value << ' ';
+        }
+        out << '\n';
+        for (bool value : rpg_.claimed)
+        {
+            out << value << ' ';
+        }
+        out << '\n'
+            << rpg_.hunts << ' ' << rpg_.finds << ' ' << rpg_.trades << ' ' << rpg_.bosses << ' '
+            << rpg_.visited << ' ' << rpg_.bountyBaseline << ' ' << rpg_.bountyRound << ' '
+            << rpg_.bossTimer << ' ' << rpg_.bossVillage << ' ' << rpg_.lastBossVillage << '\n';
         out << random_ << '\n';
         out.flush();
         if (!out)
@@ -121,7 +142,7 @@ void LevelOne::Load()
         int version = 0;
         std::uint64_t seed = 0;
         if (!(in >> magic >> version >> seed) || magic != "GSE_LEVEL_ONE" ||
-            (version != 1 && version != 2) || seed != seed_)
+            (version < 1 || version > 3) || seed != seed_)
         {
             throw std::runtime_error("Invalid level header; original preserved");
         }
@@ -130,10 +151,11 @@ void LevelOne::Load()
         if (!(in >> player.position.x >> player.position.y >> player.level >> player.experience >>
               player.health >> player.weaponRank >> player.kills >> player.retreats >>
               player.souls >> player.upgrades >> player.potions >> player.magnets) ||
-            !ValidPoint(player.position) || player.level < 1 || player.level > 30 ||
+            !ValidPoint(player.position) || player.level < 1 || player.level > MaxCharacterLevel ||
             player.experience < 0 || player.experience >= player.ExperienceNeeded() ||
             !std::isfinite(player.health) || player.health <= 0.0 ||
-            player.health > player.MaxHealth() || player.weaponRank < 0 || player.weaponRank > 20)
+            player.health > player.MaxHealth() + (version >= 3 ? 130 : 0) ||
+            player.weaponRank < 0 || player.weaponRank > 20)
         {
             throw std::runtime_error("Invalid player data; original preserved");
         }
@@ -182,6 +204,17 @@ void LevelOne::Load()
                 throw std::runtime_error("Invalid enemy data; original preserved");
             }
             enemy.kind = static_cast<EnemyKind>(kind);
+            if (version >= 3 &&
+                (!(in >> enemy.playerDamage) || !std::isfinite(enemy.playerDamage) ||
+                 enemy.playerDamage < 0 || enemy.playerDamage > 10000000))
+            {
+                throw std::runtime_error("Invalid boss participation");
+            }
+            if (version < 3 && enemy.kind == EnemyKind::Boss)
+            {
+                enemy.health = enemy.health / enemy.maxHealth * VillageBossHealth;
+                enemy.maxHealth = VillageBossHealth;
+            }
             enemy.attackTimer = 2.0;
             enemy.attackPoint = enemy.position;
             bosses += enemy.kind == EnemyKind::Boss ? 1 : 0;
@@ -201,8 +234,9 @@ void LevelOne::Load()
             ItemDrop drop;
             int kind = 0;
             if (!(in >> drop.id >> kind >> drop.position.x >> drop.position.y >> drop.amount) ||
-                kind < 0 || kind > 3 || !ValidPoint(drop.position) || drop.amount <= 0 ||
-                drop.amount > 10000 || drop.id == 0 || drop.id >= nextId ||
+                kind < 0 || kind > (version >= 3 ? 4 : 3) ||
+                (kind == 4 && drop.amount > RpgItemCount) || !ValidPoint(drop.position) ||
+                drop.amount <= 0 || drop.amount > 10000 || drop.id == 0 || drop.id >= nextId ||
                 !ids.insert(drop.id).second)
             {
                 throw std::runtime_error("Invalid item data; original preserved");
@@ -229,7 +263,7 @@ void LevelOne::Load()
                     soul.id == 0 || soul.id >= nextId || !ids.insert(soul.id).second ||
                     soul.deathNumber <= 0 || soul.deathNumber > player.retreats ||
                     !deaths.insert(soul.deathNumber).second || !ValidPoint(soul.position) ||
-                    soul.inheritedLevel < 1 || soul.inheritedLevel > 30 ||
+                    soul.inheritedLevel < 1 || soul.inheritedLevel > MaxCharacterLevel ||
                     soul.inheritedWeapon < 0 || soul.inheritedWeapon > 20 || soul.meetings < 0 ||
                     soul.meetings > 1000000000 || soul.feeling < 0 || soul.feeling > 2)
                 {
@@ -239,22 +273,120 @@ void LevelOne::Load()
                 souls.push_back(soul);
             }
         }
+        RpgProgress rpg;
+        if (version >= 3)
+        {
+            std::string section;
+            int schema = 0;
+            if (!(in >> section >> schema) || section != "RPG" || schema != 1)
+            {
+                throw std::runtime_error("Invalid RPG header");
+            }
+            for (int& value : rpg.inventory)
+            {
+                if (!(in >> value) || value < 0 || value > 999)
+                {
+                    throw std::runtime_error("Invalid inventory");
+                }
+            }
+            for (int slot = 0; slot < 3; ++slot)
+            {
+                int& id = rpg.equipped[slot];
+                if (!(in >> id) || id < -1 || id >= RpgItemCount ||
+                    (id >= 0 && (int(ItemCatalog()[id].slot) != slot || rpg.inventory[id] <= 0 ||
+                                 player.level < ItemCatalog()[id].requiredLevel)))
+                {
+                    throw std::runtime_error("Invalid equipment");
+                }
+                if (id >= 0)
+                {
+                    player.gearHealth += ItemCatalog()[id].health;
+                }
+            }
+            if (player.health > player.MaxHealth())
+            {
+                throw std::runtime_error("Health exceeds equipped maximum");
+            }
+            for (bool& flag : rpg.claimed)
+            {
+                int value = 0;
+                if (!(in >> value) || value < 0 || value > 1)
+                {
+                    throw std::runtime_error("Invalid quest claim");
+                }
+                flag = value != 0;
+            }
+            if (!(in >> rpg.hunts >> rpg.finds >> rpg.trades >> rpg.bosses >> rpg.visited >>
+                  rpg.bountyBaseline >> rpg.bountyRound >> rpg.bossTimer >> rpg.bossVillage >>
+                  rpg.lastBossVillage))
+            {
+                throw std::runtime_error("Invalid RPG progress");
+            }
+            for (int value : {rpg.hunts,
+                              rpg.finds,
+                              rpg.trades,
+                              rpg.bosses,
+                              rpg.bountyBaseline,
+                              rpg.bountyRound})
+            {
+                if (value < 0 || value > 1000000000)
+                {
+                    throw std::runtime_error("Invalid RPG counters");
+                }
+            }
+            if (rpg.visited < 0 || rpg.visited >= (1 << VillageCount) ||
+                rpg.bountyBaseline > rpg.hunts || !std::isfinite(rpg.bossTimer) ||
+                rpg.bossTimer < 0 || rpg.bossTimer > BossInterval || rpg.bossVillage < -1 ||
+                rpg.bossVillage >= VillageCount || rpg.lastBossVillage < -1 ||
+                rpg.lastBossVillage >= VillageCount || (bosses && rpg.bossVillage < 0))
+            {
+                throw std::runtime_error("Invalid boss schedule");
+            }
+        }
+        else if (bosses)
+        {
+            double nearest = 1e30;
+            for (const auto& enemy : enemies)
+            {
+                if (enemy.kind != EnemyKind::Boss)
+                {
+                    continue;
+                }
+                for (int i = 0; i < VillageCount; ++i)
+                {
+                    auto center = Villages()[i].center;
+                    double d = std::hypot(center.x - enemy.position.x, center.y - enemy.position.y);
+                    if (d < nearest)
+                    {
+                        nearest = d;
+                        rpg.bossVillage = rpg.lastBossVillage = i;
+                    }
+                }
+            }
+            rpg.bossTimer = BossInterval;
+        }
+        if (phase == int(LevelPhase::Cleared))
+        {
+            phase = int(LevelPhase::Farming);
+        }
         std::mt19937 random;
         if (!(in >> random))
         {
             throw std::runtime_error("Invalid random generator state; original preserved");
         }
 
-        if (version == 1)
+        if (version < 3)
         {
             auto backup = savePath_;
-            backup += L".v1.bak";
+            backup += L".before_rpg_v3.bak";
             if (!std::filesystem::exists(backup))
             {
                 std::filesystem::copy_file(savePath_, backup);
             }
         }
         player_ = player;
+        rpg_ = rpg;
+        RebuildEquipment();
         enemies_ = std::move(enemies);
         drops_ = std::move(drops);
         phase_ = static_cast<LevelPhase>(phase);

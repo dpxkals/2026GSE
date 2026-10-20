@@ -7,6 +7,86 @@
 #include <cmath>
 #include <set>
 
+const Citizen* WorldSimulation::NearbyTrader(WorldPoint player) const
+{
+    const Citizen* best = nullptr;
+    double distance = 3.5;
+    for (const auto& npc : people_)
+    {
+        if (!CanTrade(npc.id, player))
+        {
+            continue;
+        }
+        double d = Gameplay::Distance(player, npc.position);
+        if (npc.id == selected_)
+        {
+            return &npc;
+        }
+        if (d <= distance)
+        {
+            best = &npc;
+            distance = d;
+        }
+    }
+    return best;
+}
+
+bool WorldSimulation::CanTrade(std::uint64_t id, WorldPoint player) const
+{
+    const auto* npc = Find(id);
+    int town = VillageAt(player);
+    return error_.empty() && npc && npc->health > 0 && npc->hostility <= 0 && town >= 0 &&
+           VillageAt(npc->position) == town && Gameplay::Distance(player, npc->position) <= 3.5;
+}
+
+int WorldSimulation::ItemPrice(int item, std::uint64_t trader, bool buying) const
+{
+    const auto* npc = Find(trader);
+    if (item < 0 || item >= RpgItemCount || !npc)
+    {
+        return 0;
+    }
+    bool merchant = Tendency(*npc) == NpcTendency::Merchant || npc->action == NpcAction::Trade ||
+                    npc->learned[size_t(NpcAction::Trade)] >= 4;
+    int price = ItemCatalog()[item].price;
+    return buying ? (merchant ? price * 85 / 100 : price) : price * (merchant ? 40 : 30) / 100;
+}
+
+bool WorldSimulation::ExchangeItemGold(std::uint64_t trader,
+                                       WorldPoint player,
+                                       int item,
+                                       bool buying)
+{
+    if (!CanTrade(trader, player) || item < 0 || item >= RpgItemCount)
+    {
+        return false;
+    }
+    auto& npc = *Find(trader);
+    int price = ItemPrice(item, trader, buying);
+    if (price <= 0 || (buying ? playerGold_ < price : npc.gold < price))
+    {
+        return false;
+    }
+    if ((buying ? npc.gold : playerGold_) > 1000000000 - price)
+    {
+        return false;
+    }
+    playerGold_ += buying ? -price : price;
+    npc.gold += buying ? price : -price;
+    Learn(npc, NpcAction::Trade, 1);
+    Record(buying ? "equipment_buy" : "equipment_sell",
+           0,
+           trader,
+           price,
+           std::wstring(ItemCatalog()[item].name) + (buying ? L" 구매" : L" 판매"));
+    return true;
+}
+
+void WorldSimulation::RewardGold(int amount)
+{
+    playerGold_ = (std::min)(1000000000, playerGold_ + amount);
+}
+
 CombatTarget WorldSimulation::PlayerTarget(WorldPoint player,
                                            double range,
                                            const World& world) const
@@ -73,7 +153,19 @@ void WorldSimulation::MonsterKilled(std::uint64_t killer, const Enemy& enemy)
     int reward = enemy.kind == EnemyKind::Boss ? 60 : 5;
     npc->gold += reward;
     ++npc->goods;
-    Grow(*npc, enemy.kind == EnemyKind::Boss ? 50 : 6);
+    Grow(*npc, enemy.kind == EnemyKind::Boss ? 100 : 12);
+    npc->health = (std::min)(npc->maxHealth, npc->health + 8);
+    for (auto& ally : people_)
+    {
+        if (ally.id != killer && ally.health > 0 && ally.action == NpcAction::Hunt &&
+            ally.targetKind == CombatKind::Monster && ally.target == enemy.id &&
+            Gameplay::Distance(ally.position, enemy.position) < 8)
+        {
+            Grow(ally, enemy.kind == EnemyKind::Boss ? 40 : 6);
+            Learn(ally, NpcAction::Hunt, 1);
+            ally.dirty = true;
+        }
+    }
     Learn(*npc, NpcAction::Hunt, 3);
     npc->dirty = true;
     Record("npc_hunt", killer, enemy.id, reward, Name(*npc) + L"가 몬스터를 사냥해 성장했다.");
@@ -120,6 +212,8 @@ std::wstring WorldSimulation::TradePlayer(LevelOne& level, bool training)
     }
     for (auto& npc : people_)
     {
+        if (!training && selected_ && CanTrade(selected_, position) && npc.id != selected_)
+            continue;
         if (npc.health <= 0 || npc.hostility > 0 || VillageAt(npc.position) != village ||
             Gameplay::Distance(position, npc.position) > 3.5)
         {
@@ -154,7 +248,7 @@ std::wstring WorldSimulation::TradePlayer(LevelOne& level, bool training)
         {
             return L"이미 체력이 가득합니다.";
         }
-        if (training && level.Player().level >= 30)
+        if (training && level.Player().level >= MaxCharacterLevel)
         {
             return L"현재 성장 한도에 도달했습니다.";
         }

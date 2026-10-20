@@ -13,4 +13,5 @@
 *.db 
 SaveData/
 Logs/
+Monitor/__pycache__/
 

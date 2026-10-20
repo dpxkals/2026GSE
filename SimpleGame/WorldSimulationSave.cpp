@@ -34,10 +34,14 @@ bool WorldSimulation::Save()
         auto temp = path_;
         temp += L".tmp";
         std::ofstream out(temp);
-        out << std::setprecision(17) << "GSE_SOCIETY 2 " << seed_ << '\n';
+        out << std::setprecision(17) << "GSE_SOCIETY 3 " << seed_ << '\n';
         out << nextId_ << ' ' << eventId_ << ' ' << time_ << ' ' << playerGold_ << ' '
-            << playerGoods_ << ' ' << crime_ << ' ' << wildStock_[0] << ' ' << wildStock_[1]
-            << '\n';
+            << playerGoods_ << ' ' << crime_;
+        for (int stock : wildStock_)
+        {
+            out << ' ' << stock;
+        }
+        out << '\n';
         out << people_.size() << '\n';
         for (const auto& n : people_)
         {
@@ -88,9 +92,9 @@ void WorldSimulation::Load()
     {
         if (!std::filesystem::exists(path_))
         {
-            for (int i = 0; i < 24; ++i)
+            for (int i = 0; i < VillagePopulation; ++i)
             {
-                people_.push_back(Create(i / 12));
+                people_.push_back(Create(i / CitizensPerVillage));
             }
             Save();
             return;
@@ -100,19 +104,24 @@ void WorldSimulation::Load()
         int version;
         std::uint64_t seed;
         if (!(in >> magic >> version >> seed) || magic != "GSE_SOCIETY" ||
-            (version != 1 && version != 2) || seed != seed_)
+            (version < 1 || version > 3) || seed != seed_)
         {
             throw std::runtime_error("Invalid society header; original preserved");
         }
-        if (!(in >> nextId_ >> eventId_ >> time_ >> playerGold_ >> playerGoods_ >> crime_ >>
-              wildStock_[0] >> wildStock_[1]) ||
-            !Finite(time_, 0, 1e12) || playerGold_ < 0 || playerGoods_ < 0 || crime_ < 0 ||
-            wildStock_[0] < 0 || wildStock_[0] > 12 || wildStock_[1] < 0 || wildStock_[1] > 12)
+        if (!(in >> nextId_ >> eventId_ >> time_ >> playerGold_ >> playerGoods_ >> crime_) ||
+            !Finite(time_, 0, 1e12) || playerGold_ < 0 || playerGoods_ < 0 || crime_ < 0)
         {
             throw std::runtime_error("Invalid society state");
         }
+        for (int i = 0; i < (version < 3 ? 2 : VillageCount); ++i)
+        {
+            if (!(in >> wildStock_[i]) || wildStock_[i] < 0 || wildStock_[i] > 12)
+            {
+                throw std::runtime_error("Invalid regional resource stock");
+            }
+        }
         size_t count;
-        if (!(in >> count) || count != 24)
+        if (!(in >> count) || count != (version < 3 ? 24 : VillagePopulation))
         {
             throw std::runtime_error("Invalid society population");
         }
@@ -125,16 +134,17 @@ void WorldSimulation::Load()
                   n.maxHealth >> n.level >> n.experience >> n.gold >> n.goods >> n.insight >>
                   n.deadTime >> n.hostility >> action >> n.decision >> n.actionTime >> n.cooldown >>
                   kind >> n.target >> n.destination.x >> n.destination.y) ||
-                !n.id || n.id >= nextId_ || !ids.insert(n.id).second || n.home < 0 || n.home > 1 ||
-                job < 0 || job > (version == 1 ? 3 : 6) || goal < 0 || goal > 2 || action < 0 ||
+                !n.id || n.id >= nextId_ || !ids.insert(n.id).second || n.home < 0 ||
+                n.home >= (version < 3 ? 2 : VillageCount) || job < 0 ||
+                job > (version == 1 ? 3 : 6) || goal < 0 || goal > 2 || action < 0 ||
                 action >= (version == 1 ? 7 : int(NpcAction::Count)) || kind < 0 || kind > 3 ||
                 !Finite(n.position.x, -1e12, 1e12) || !Finite(n.position.y, -1e12, 1e12) ||
                 !Finite(n.destination.x, -1e12, 1e12) || !Finite(n.destination.y, -1e12, 1e12) ||
                 !Finite(n.maxHealth, 1, 10000) || !Finite(n.health, 0, n.maxHealth) ||
-                n.level < 1 || n.level > 20 || n.experience < 0 || n.gold < 0 || n.goods < 0 ||
-                n.insight < 0 || !Finite(n.deadTime, -1, 60) || !Finite(n.hostility, 0, 60) ||
-                !Finite(n.decision, -10, 60) || !Finite(n.actionTime, 0, 1e12) ||
-                !Finite(n.cooldown, -1e12, 60))
+                n.level < 1 || n.level > MaxCharacterLevel || n.experience < 0 || n.gold < 0 ||
+                n.goods < 0 || n.insight < 0 || !Finite(n.deadTime, -1, 60) ||
+                !Finite(n.hostility, 0, 60) || !Finite(n.decision, -10, 300) ||
+                !Finite(n.actionTime, 0, 1e12) || !Finite(n.cooldown, -1e12, 60))
             {
                 throw std::runtime_error("Invalid citizen record");
             }
@@ -182,14 +192,34 @@ void WorldSimulation::Load()
         {
             throw std::runtime_error("Invalid society random state");
         }
-        if (version == 1)
+        in.close();
+        if (version < 3)
         {
-            // Keep a recoverable copy before the next automatic v2 save.
+            // Preserve the old layout/population before the first v3 save.
             auto backup = path_;
-            backup += L".before_v2";
+            backup += L".before_v3";
             if (!std::filesystem::exists(backup))
             {
                 std::filesystem::copy_file(path_, backup);
+            }
+            for (auto& npc : people_)
+            {
+                double ratio = npc.health / npc.maxHealth;
+                npc.maxHealth = 150 + (npc.level - 1) * 18;
+                npc.health = npc.maxHealth * ratio;
+                auto home = Villages()[npc.home].center;
+                npc.position = {home.x + double(npc.id % 3) - 1,
+                                home.y + double((npc.id / 3) % 3) - 1};
+                npc.destination = npc.position;
+                npc.target = 0;
+                npc.targetKind = CombatKind::None;
+            }
+            for (int home = 2; home < VillageCount; ++home)
+            {
+                for (int i = 0; i < CitizensPerVillage; ++i)
+                {
+                    people_.push_back(Create(home));
+                }
             }
         }
     }

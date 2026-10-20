@@ -4,7 +4,11 @@
 
 namespace SocietyView
 {
-    void CitizenBody(
-        SceneRenderer& renderer, const Citizen& npc, Point2 p, float zoom, bool selected);
+    void CitizenBody(SceneRenderer& renderer,
+                     const Citizen& npc,
+                     Point2 p,
+                     float zoom,
+                     bool selected,
+                     const ActorPose& pose);
     void Panel(SceneRenderer& renderer, const WorldSimulation& simulation, int width, int height);
 }

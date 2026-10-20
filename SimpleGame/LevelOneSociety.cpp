@@ -37,7 +37,9 @@ bool LevelOne::SpawnWild(WorldPoint position, EnemyKind kind, const World& world
     enemy.id = nextId_++;
     enemy.kind = kind;
     enemy.position = enemy.attackPoint = position;
-    enemy.health = enemy.maxHealth = kind == EnemyKind::Hound ? 24 : 34;
+    enemy.health = enemy.maxHealth = kind == EnemyKind::Boss    ? VillageBossHealth
+                                     : kind == EnemyKind::Hound ? 24
+                                                                : 34;
     enemies_.push_back(enemy);
     return true;
 }
@@ -48,6 +50,7 @@ void LevelOne::ReceiveNpcDamage(double amount)
     {
         return;
     }
+    amount = player_.IncomingDamage(amount);
     life_.damageTaken += (std::min)(player_.health, amount);
     player_.health = (std::max)(0.0, player_.health - amount);
     invulnerable_ = 0.65;

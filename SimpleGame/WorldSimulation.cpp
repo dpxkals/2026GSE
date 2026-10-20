@@ -200,13 +200,22 @@ void WorldSimulation::Record(const std::string& kind,
 void WorldSimulation::Grow(Citizen& npc, int experience)
 {
     npc.experience += experience;
-    while (npc.experience >= npc.level * 12 && npc.level < 20)
+    if (npc.level >= MaxCharacterLevel)
+    {
+        npc.experience = 0;
+        return;
+    }
+    while (npc.experience >= npc.level * 12 && npc.level < MaxCharacterLevel)
     {
         npc.experience -= npc.level * 12;
         ++npc.level;
-        npc.maxHealth += 12;
-        npc.health = (std::min)(npc.maxHealth, npc.health + 12);
+        npc.maxHealth += 18;
+        npc.health = (std::min)(npc.maxHealth, npc.health + 40);
         Record("npc_level", npc.id, 0, npc.level, Name(npc) + L"의 체력이 성장했다.");
+    }
+    if (npc.level >= MaxCharacterLevel)
+    {
+        npc.experience = 0;
     }
 }
 
@@ -215,11 +224,12 @@ void WorldSimulation::Choose(Citizen& npc, const World& world, const LevelOne& l
     const double hp = npc.health / npc.maxHealth;
     const auto& p = npc.personality;
     const Enemy* monster = nullptr;
-    double monsterDistance = 14;
+    double monsterDistance = 30;
     for (const auto& enemy : level.Enemies())
     {
         double distance = Distance(npc.position, enemy.position);
-        if (enemy.health > 0 && distance < monsterDistance)
+        if (enemy.health > 0 && distance < monsterDistance &&
+            (enemy.kind != EnemyKind::Boss || npc.level >= 10))
         {
             monster = &enemy;
             monsterDistance = distance;
@@ -256,7 +266,7 @@ void WorldSimulation::Choose(Citizen& npc, const World& world, const LevelOne& l
     }
     double law = VillageAt(npc.position) >= 0 ? 0.08 : 1.0;
     npc.goal = hp < 0.55 ? NpcGoal::Vitality : npc.gold < 40 ? NpcGoal::Wealth : NpcGoal::Wisdom;
-    npc.weights = {24.0 * p[3] * hp * (monster ? 2.0 : 0.6),
+    npc.weights = {38.0 * p[3] * hp * (monster ? 2.0 : 0.6),
                    12.0 * p[2] + (std::min)(npc.goods, 12) * 3.0,
                    treasure ? 18.0 + p[1] * 65.0 : 0.0,
                    victim ? 110.0 * p[0] * p[1] * (1 - p[4]) * hp * law : 0.0,
@@ -302,7 +312,7 @@ void WorldSimulation::Choose(Citizen& npc, const World& world, const LevelOne& l
     }
     std::discrete_distribution<int> choice(npc.weights.begin(), npc.weights.end());
     npc.action = static_cast<NpcAction>(choice(random_));
-    if (hp < 0.22)
+    if (hp < 0.4)
     {
         npc.action = NpcAction::Flee;
     }
@@ -347,16 +357,27 @@ void WorldSimulation::Choose(Citizen& npc, const World& world, const LevelOne& l
     }
     if (npc.action == NpcAction::Travel)
     {
-        npc.destination = Villages()[1 - npc.home].center;
+        int target = int(random_() % (VillageCount - 1));
+        if (target >= npc.home)
+        {
+            ++target;
+        }
+        npc.target = std::uint64_t(target + 1);
+        npc.travelViaHub = npc.home != 0 && target != 0;
+        npc.destination = Villages()[target].center;
     }
     if (npc.action == NpcAction::Gather || npc.action == NpcAction::Explore ||
         (npc.action == NpcAction::Hunt && !monster))
     {
         auto home = Villages()[npc.home].center;
         double angle = double(random_() % 360) * Pi / 180;
-        npc.destination = {home.x + std::cos(angle) * 11, home.y + std::sin(angle) * 11};
+        npc.destination = {home.x + std::cos(angle) * 22, home.y + std::sin(angle) * 22};
     }
     npc.decision = 30.0 + double(random_() % 60) / 10;
+    if (npc.action == NpcAction::Travel)
+    {
+        npc.decision = 240;
+    }
     npc.route.clear();
     npc.pathTimer = 0;
     npc.actionTime = 0;
@@ -367,7 +388,37 @@ void WorldSimulation::Navigate(Citizen& npc, WorldPoint goal, double dt, const W
 {
     if (!world.Find(WorldInt(std::floor(goal.x)), WorldInt(std::floor(goal.y))))
     {
-        return;
+        // Walk toward a distant loaded frontier; never require the destination chunk to be loaded.
+        double distance = Distance(npc.position, goal);
+        if (distance < 0.01)
+        {
+            return;
+        }
+        WorldPoint direction{(goal.x - npc.position.x) / distance,
+                             (goal.y - npc.position.y) / distance};
+        if (npc.action == NpcAction::Travel && npc.lod == 1 &&
+            VillageRoad(npc.position.x - 0.5, npc.position.y - 0.5) &&
+            !world.Find(WorldInt(std::floor(npc.position.x + direction.x * 4)),
+                        WorldInt(std::floor(npc.position.y + direction.y * 4))))
+        {
+            // A road frontier outside the near simulation hands off to coarse travel.
+            npc.position.x += direction.x * 4;
+            npc.position.y += direction.y * 4;
+            npc.route.clear();
+            return;
+        }
+        double reach = (std::min)(12.0, distance);
+        while (reach > 0.5 &&
+               !world.Find(WorldInt(std::floor(npc.position.x + direction.x * reach)),
+                           WorldInt(std::floor(npc.position.y + direction.y * reach))))
+        {
+            reach -= 1;
+        }
+        if (reach <= 0.5)
+        {
+            return;
+        }
+        goal = {npc.position.x + direction.x * reach, npc.position.y + direction.y * reach};
     }
     WorldPoint waypoint = goal;
     if (!world.ClearLine(npc.position.x, npc.position.y, goal.x, goal.y))
@@ -383,7 +434,7 @@ void WorldSimulation::Navigate(Citizen& npc, WorldPoint goal, double dt, const W
             previous[origin] = origin;
             Cell best = origin;
             double closest = Distance(npc.position, goal);
-            while (!queue.empty() && previous.size() < 900)
+            while (!queue.empty() && previous.size() < 2048)
             {
                 Cell cell = queue.front();
                 queue.pop();
@@ -400,8 +451,8 @@ void WorldSimulation::Navigate(Citizen& npc, WorldPoint goal, double dt, const W
                 for (Cell offset : {Cell{-1, 0}, {1, 0}, {0, -1}, {0, 1}})
                 {
                     Cell next{cell.first + offset.first, cell.second + offset.second};
-                    if (previous.count(next) || std::abs(next.first - origin.first) > 18 ||
-                        std::abs(next.second - origin.second) > 18 ||
+                    if (previous.count(next) || std::abs(next.first - origin.first) > 28 ||
+                        std::abs(next.second - origin.second) > 28 ||
                         !world.CanWalk(next.first + 0.5, next.second + 0.5))
                     {
                         continue;
@@ -431,7 +482,7 @@ void WorldSimulation::Navigate(Citizen& npc, WorldPoint goal, double dt, const W
     {
         return;
     }
-    double step = (std::min)(distance, dt * (npc.action == NpcAction::Flee ? 3.2 : 2.1));
+    double step = (std::min)(distance, dt * (npc.action == NpcAction::Flee ? 3.8 : 2.6));
     double dx = (waypoint.x - npc.position.x) / distance * step;
     double dy = (waypoint.y - npc.position.y) / distance * step;
     int steps = (std::max)(1, int(std::ceil(step / 0.08)));
@@ -511,6 +562,15 @@ void WorldSimulation::Damage(Citizen& npc, double amount, CombatKind source, std
     {
         return;
     }
+    if (source == CombatKind::Monster)
+    {
+        if (npc.hurtCooldown > 0)
+        {
+            return;
+        }
+        npc.hurtCooldown = 0.65;
+        amount *= 0.65;
+    }
     npc.health = (std::max)(0.0, npc.health - amount);
     Learn(npc, npc.action, -1);
     Learn(npc, NpcAction::Flee, 1);
@@ -550,6 +610,14 @@ void WorldSimulation::HurtNpc(std::uint64_t id, double amount, std::uint64_t mon
     if (auto* npc = Find(id))
     {
         Damage(*npc, amount, CombatKind::Monster, monster);
+        if (npc->health > 0)
+        {
+            npc->action = npc->health < npc->maxHealth * 0.4 ? NpcAction::Flee : NpcAction::Hunt;
+            npc->targetKind = CombatKind::Monster;
+            npc->target = monster;
+            npc->decision = 12;
+            npc->dirty = false;
+        }
     }
 }
 
@@ -579,7 +647,7 @@ void WorldSimulation::Step(Citizen& npc, double dt, const World& world, LevelOne
         if (VillageAt(npc.position) >= 0)
         {
             double before = npc.health;
-            npc.health = (std::min)(npc.maxHealth, npc.health + dt * 3);
+            npc.health = (std::min)(npc.maxHealth, npc.health + dt * 7);
             if (before < npc.maxHealth && npc.health >= npc.maxHealth &&
                 npc.action != NpcAction::Trade)
             {
@@ -651,12 +719,12 @@ void WorldSimulation::Step(Citizen& npc, double dt, const World& world, LevelOne
     if (target.kind != CombatKind::None && target.health > 0)
     {
         Navigate(npc, target.position, dt, world);
-        if (npc.cooldown <= 0 && Distance(npc.position, target.position) < 1.3 &&
+        if (npc.cooldown <= 0 && Distance(npc.position, target.position) < 1.8 &&
             world.ClearLine(npc.position.x, npc.position.y, target.position.x, target.position.y))
         {
-            double damage = 7 + npc.level * 2;
+            double damage = 11 + npc.level * 2.4;
             strikes_.push_back({npc.position, target.position, 0.16});
-            npc.cooldown = 1.1;
+            npc.cooldown = 0.85;
             if (target.kind == CombatKind::Monster)
             {
                 level.DamageMonster(target.id, damage, npc.id);
@@ -712,6 +780,29 @@ bool WorldSimulation::CivilAction(Citizen& npc, double dt, const World& world)
     {
         return false;
     }
+    if (npc.action == NpcAction::Travel)
+    {
+        WorldPoint waypoint = npc.travelViaHub ? Villages()[0].center : npc.destination;
+        Navigate(npc, waypoint, dt, world);
+        if (Distance(npc.position, waypoint) < 1.5)
+        {
+            if (npc.travelViaHub)
+            {
+                npc.travelViaHub = false;
+                npc.route.clear();
+                npc.pathTimer = 0;
+            }
+            else
+            {
+                npc.home = int(npc.target) - 1;
+                ++npc.insight;
+                Learn(npc, npc.action, 3);
+                Record("travel", npc.id, 0, npc.home, Name(npc) + L"가 다른 성채에 도착했다.");
+                npc.dirty = true;
+            }
+        }
+        return true;
+    }
     if (npc.action == NpcAction::Aid)
     {
         auto* patient = Find(npc.target);
@@ -751,13 +842,6 @@ bool WorldSimulation::CivilAction(Citizen& npc, double dt, const World& world)
         {
             Learn(npc, npc.action, -1);
         }
-    }
-    else if (npc.action == NpcAction::Travel)
-    {
-        npc.home = 1 - npc.home;
-        ++npc.insight;
-        Learn(npc, npc.action, 3);
-        Record("travel", npc.id, 0, npc.home, Name(npc) + L"가 다른 마을에 정착했다.");
     }
     else if (VillageAt(npc.position) < 0)
     {
@@ -814,13 +898,13 @@ void WorldSimulation::Ecology(double dt, const World& world, LevelOne& level)
         return;
     }
     ecologyTimer_ = 3;
-    for (int region = 0; region < 2; ++region)
+    for (int region = 0; region < VillageCount; ++region)
     {
         auto center = Villages()[region].center;
         int count = 0;
         for (const auto& enemy : level.Enemies())
         {
-            if (enemy.health > 0 && Distance(center, enemy.position) < 18)
+            if (enemy.health > 0 && Distance(center, enemy.position) < 30)
             {
                 ++count;
             }
@@ -832,7 +916,7 @@ void WorldSimulation::Ecology(double dt, const World& world, LevelOne& level)
         for (int attempt = 0; attempt < 12; ++attempt)
         {
             double angle = double(random_() % 360) * Pi / 180;
-            WorldPoint location{center.x + std::cos(angle) * 10, center.y + std::sin(angle) * 10};
+            WorldPoint location{center.x + std::cos(angle) * 22, center.y + std::sin(angle) * 22};
             if (level.SpawnWild(
                     location, random_() % 3 ? EnemyKind::Husk : EnemyKind::Hound, world))
             {
@@ -861,6 +945,7 @@ void WorldSimulation::Update(double dt,
         Ecology(0.1, world, level);
         for (auto& npc : people_)
         {
+            npc.hurtCooldown = (std::max)(0.0, npc.hurtCooldown - 0.1);
             if (npc.health <= 0)
             {
                 npc.deadTime -= 0.1;
@@ -920,14 +1005,17 @@ void WorldSimulation::Update(double dt,
                 {
                     npc.actionTime = 0;
                     npc.cooldown -= 15;
-                    Choose(npc, world, level);
+                    if (npc.action != NpcAction::Travel || npc.dirty)
+                    {
+                        Choose(npc, world, level);
+                    }
                     if ((npc.action == NpcAction::Hunt || npc.action == NpcAction::Gather) &&
                         wildStock_[npc.home] > 0 && npc.health > 30)
                     {
                         --wildStock_[npc.home];
                         ++npc.goods;
                         npc.health -= 5;
-                        Grow(npc, 6);
+                        Grow(npc, 12);
                         Learn(npc, npc.action, 2);
                         Record("lod_hunt",
                                npc.id,
@@ -953,14 +1041,30 @@ void WorldSimulation::Update(double dt,
                     }
                     else if (npc.action == NpcAction::Travel)
                     {
-                        npc.home = 1 - npc.home;
-                        ++npc.insight;
-                        Learn(npc, npc.action, 3);
-                        Record("lod_travel",
-                               npc.id,
-                               0,
-                               npc.home,
-                               Name(npc) + L"가 먼 마을을 방문했다.");
+                        WorldPoint waypoint =
+                            npc.travelViaHub ? Villages()[0].center : npc.destination;
+                        double distance = Distance(npc.position, waypoint);
+                        double step = (std::min)(distance, 15.0 * 2.6);
+                        if (distance > 0.01)
+                        {
+                            npc.position.x += (waypoint.x - npc.position.x) / distance * step;
+                            npc.position.y += (waypoint.y - npc.position.y) / distance * step;
+                        }
+                        if (distance <= step + 1.5)
+                        {
+                            if (npc.travelViaHub)
+                            {
+                                npc.travelViaHub = false;
+                            }
+                            else
+                            {
+                                npc.home = int(npc.target) - 1;
+                                ++npc.insight;
+                                Learn(npc, npc.action, 3);
+                                npc.dirty = true;
+                            }
+                        }
+                        continue;
                     }
                     else
                     {
@@ -1040,8 +1144,8 @@ void WorldSimulation::Update(double dt,
                 }
                 states_.flush();
             }
-            std::cout << "[Simulation] t=" << int(time_) << " population=" << alive
-                      << "/24 LOD=" << lod[0] << "/" << lod[1] << "/" << lod[2]
+            std::cout << "[Simulation] t=" << int(time_) << " population=" << alive << '/'
+                      << VillagePopulation << " LOD=" << lod[0] << "/" << lod[1] << "/" << lod[2]
                       << " gold=" << wealth << " events=" << eventId_ << '\n';
             logTimer_ = 0;
         }

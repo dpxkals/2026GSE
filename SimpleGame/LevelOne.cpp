@@ -18,26 +18,22 @@ void LevelOne::Announce(const std::wstring& text)
 
 std::wstring LevelOne::Objective() const
 {
-    if (simulation_)
+    if (phase_ == LevelPhase::BossFight && rpg_.bossVillage >= 0)
     {
-        return L"마을 생활: 사냥 · 거래 · 성장 · 약탈과 선택";
+        auto center = Villages()[rpg_.bossVillage].center;
+        return std::wstring(Villages()[rpg_.bossVillage].name) +
+               L" 보스 출현 · 권장 Lv 10 · 거리 " +
+               std::to_wstring(int(Gameplay::Distance(player_.position, center))) + L"타일";
     }
-    if (phase_ == LevelPhase::Cleared)
-    {
-        return L"레벨 1 완료 — 잿빛 파수꾼을 쓰러뜨렸습니다.";
-    }
-    if (phase_ == LevelPhase::BossFight)
-    {
-        return L"보스: 잿빛 파수꾼 — 붉은 공격 예고를 피하세요.";
-    }
-    return L"파밍: 적 " + std::to_wstring(player_.kills) + L" / 24 처치 후 보스 등장";
+    return L"다음 마을 보스: " + std::to_wstring(int(std::ceil(rpg_.bossTimer))) +
+           L"초 · Q 의뢰 / Tab 가방";
 }
 
 std::wstring LevelOne::Hint() const
 {
     if (simulation_)
     {
-        return L"주민 곁에서 T 거래 / Y 성장 · 클릭 관찰 · Ctrl+클릭 공격";
+        return L"Tab 장비/가방 · Q 퀘스트 · 주민 곁 T 상점 / Y 성장";
     }
     if (phase_ == LevelPhase::Cleared)
     {
@@ -118,31 +114,14 @@ void LevelOne::Update(double dt, const World& world, const NpcSystem& npcs)
         routeTimer_ = 0.25;
     }
     spawnTimer_ -= dt;
-    if (phase_ == LevelPhase::Farming && !InCamp(player_.position))
+    UpdateRpg(dt, world);
+    if (!simulation_ && spawnTimer_ <= 0 && !InCamp(player_.position))
     {
-        if (player_.kills >= BossKillRequirement)
+        if (enemies_.size() < 12)
         {
-            if (Spawn(EnemyKind::Boss, world))
-            {
-                phase_ = LevelPhase::BossFight;
-                Announce(L"잿빛 파수꾼 등장! 붉은 원이 사라지기 전에 피하세요.");
-                urgentSave_ = true;
-            }
+            Spawn(random_() % 3 == 0 ? EnemyKind::Hound : EnemyKind::Husk, world);
         }
-        else if (spawnTimer_ <= 0.0 && !simulation_)
-        {
-            int activeCount = 0;
-            for (const Enemy& enemy : enemies_)
-            {
-                activeCount += Gameplay::Distance(enemy.position, player_.position) < 20.0 ? 1 : 0;
-            }
-            int limit = (std::min)(12, 4 + player_.kills / 4);
-            if (activeCount < limit)
-            {
-                Spawn(random_() % 3 == 0 ? EnemyKind::Hound : EnemyKind::Husk, world);
-            }
-            spawnTimer_ = (std::max)(0.8, 2.2 - player_.kills * 0.045);
-        }
+        spawnTimer_ = 2;
     }
     if (InCamp(player_.position))
     {

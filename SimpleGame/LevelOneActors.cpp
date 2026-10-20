@@ -3,6 +3,7 @@
 #include "ActorRecords.h"
 #include "GameplayBehaviors.h"
 #include "WorldSimulation.h"
+#include "VillageLayout.h"
 #include <cmath>
 #include <set>
 
@@ -179,9 +180,45 @@ void LevelOne::SynchronizeActors()
 void LevelOne::StepEnemy(std::uint64_t id, double dt)
 {
     auto* enemy = FindRecord(enemies_, id);
-    if (!enemy || !activeWorld_ || !activeNpcs_)
+    if (!enemy || enemy->health <= 0 || !activeWorld_ || !activeNpcs_)
     {
         return;
+    }
+    if (!activeWorld_->Find(WorldInt(std::floor(enemy->position.x)),
+                            WorldInt(std::floor(enemy->position.y))))
+    {
+        return;
+    }
+    if (InCamp(enemy->position) || !activeWorld_->CanWalk(enemy->position.x, enemy->position.y))
+    {
+        const VillageSite* nearest = &Villages()[0];
+        for (const auto& village : Villages())
+        {
+            if (Gameplay::Distance(enemy->position, village.center) <
+                Gameplay::Distance(enemy->position, nearest->center))
+            {
+                nearest = &village;
+            }
+        }
+        bool relocated = false;
+        for (int attempt = 0; attempt < 16; ++attempt)
+        {
+            double angle = double((enemy->id + attempt) % 16) * 6.283185307 / 16;
+            WorldPoint point{nearest->center.x + std::cos(angle) * 22,
+                             nearest->center.y + std::sin(angle) * 22};
+            if (activeNpcs_->CanWalk(point.x, point.y, *activeWorld_) && !InCamp(point))
+            {
+                enemy->position = enemy->attackPoint = point;
+                enemy->windup = 0;
+                urgentSave_ = true;
+                relocated = true;
+                break;
+            }
+        }
+        if (!relocated)
+        {
+            return;
+        }
     }
     std::uint64_t npcTarget = 0;
     WorldPoint destination = player_.position;
@@ -272,6 +309,12 @@ void LevelOne::StepProjectile(std::uint64_t id, double dt)
 void LevelOne::StepDrop(std::uint64_t id, double dt)
 {
     auto* drop = FindRecord(drops_, id);
+    if (drop && drop->kind == DropKind::Equipment &&
+        (drop->amount < 1 || drop->amount > RpgItemCount ||
+         rpg_.inventory[drop->amount - 1] >= 999))
+    {
+        return;
+    }
     if (drop && Gameplay::MovePickup(*drop, dt, player_, magnetTime_))
     {
         Collect(*drop);

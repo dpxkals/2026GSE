@@ -14,8 +14,12 @@ class LevelOneView
                        const Projection& project,
                        float zoom,
                        bool showRange);
-    static void DrawEnemy(
-        SceneRenderer& renderer, const Enemy& enemy, Point2 point, float zoom, bool targeted);
+    static void DrawEnemy(SceneRenderer& renderer,
+                          const Enemy& enemy,
+                          Point2 point,
+                          float zoom,
+                          bool targeted,
+                          const ActorPose& pose);
     static void DrawDrop(SceneRenderer& renderer, const ItemDrop& drop, Point2 point, float zoom);
     static void DrawShot(SceneRenderer& renderer, const Projectile& shot, Point2 point, float zoom);
     static void DrawSoul(

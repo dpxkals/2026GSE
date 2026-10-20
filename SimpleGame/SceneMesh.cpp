@@ -67,6 +67,32 @@ void SceneRenderer::DrawMesh(const std::string& key, Point2 origin, float scale,
     QueueMesh(key, {origin.x, origin.y, scale, scale, 1, 1, 1, opacity, 1});
 }
 
+void SceneRenderer::DrawMeshPose(const std::string& key,
+                                 Point2 origin,
+                                 float scale,
+                                 Point2 pivot,
+                                 float radians,
+                                 float facing,
+                                 Color tint)
+{
+    FrameProfiler::Instance().Add(FrameProfiler::PoseSubmissions);
+    float c = std::cos(radians), s = std::sin(radians);
+    float sx = c * scale * facing, sy = c * scale;
+    float shearX = -s * scale * facing, shearY = s * scale;
+    QueueMesh(key,
+              {origin.x + pivot.x * scale * facing - pivot.x * sx - pivot.y * shearX,
+               origin.y + pivot.y * scale - pivot.y * sy - pivot.x * shearY,
+               sx,
+               sy,
+               tint.r,
+               tint.g,
+               tint.b,
+               tint.a,
+               tint.energy,
+               shearX,
+               shearY});
+}
+
 bool SceneRenderer::MeshCovers(const std::string& key,
                                Point2 origin,
                                float scale,
