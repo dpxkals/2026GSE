@@ -13,6 +13,7 @@ struct Npc
     double x, y;
     int style;
     unsigned int meetings = 0;
+    double homeX = 0.5, homeY = 0.5;
 };
 
 // Authored prototype residents, not death-generated NPCs or an AI service.
@@ -30,6 +31,7 @@ class NpcSystem
     bool CanWalk(double x, double y, const World& world) const;
     bool IsPresent(const Npc& npc, const World& world) const;
     void SetPosition(int id, double x, double y);
+    void AssignHomes(std::uint64_t seed);
     std::vector<std::wstring> Conversation(int index, const World& world);
 
     const std::string& Error() const

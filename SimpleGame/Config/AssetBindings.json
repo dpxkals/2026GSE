@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "npc_pack": "LowPoly_DarkAge_v1",
+  "npc_presets": "Data/npc_presets_210.json",
+  "npc_model": "",
+  "default_character_scale": 0.8,
+  "animation_aliases": {
+    "idle": ["Idle", "idle", "대기"],
+    "walk": ["Walk", "walk", "Run", "이동"],
+    "attack": ["Attack", "attack", "공격"],
+    "hurt": ["Hit", "Hurt", "hurt", "피격"]
+  },
+  "roles": {
+    "player": {"recipe": "NPC_PRESET_001"},
+    "warden": {"recipe": "NPC_PRESET_002"},
+    "scholar": {"recipe": "NPC_PRESET_003"},
+    "husk": {"model": ""},
+    "hound": {"model": ""},
+    "boss": {"model": "", "scale": 1.5}
+  },
+  "props": {
+    "Tree": {"variants": ["NAT_Tree_00_Oak", "NAT_Tree_01_Pine", "NAT_Tree_02_Dead", "NAT_Tree_03_Willow", "NAT_Tree_04_Sapling", "NAT_Tree_05_Stump"], "fit_footprint": true},
+    "Rock": {"variants": ["NAT_Rock_00_Small", "NAT_Rock_01_Boulder", "NAT_Rock_02_Slate", "NAT_Rock_03_Ore", "NAT_Rock_04_Cliff"], "fit_footprint": true},
+    "Ruin": {"model": "ENV_Module_03_Ruin", "fit_footprint": true},
+    "Cottage": {"variants": ["BLD_House_02_Town", "BLD_House_00_Timber", "BLD_House_01_Thatch", "BLD_House_02_Town", "BLD_House_03_Woodland", "BLD_House_00_Timber", "BLD_House_00_Timber"], "fit_footprint": true, "roof_palette": true},
+    "Chapel": {"model": "BLD_Abbey_00_Dawn", "fit_footprint": true, "roof_palette": true},
+    "Watchtower": {"model": "BLD_Keep_00_Ash", "fit_footprint": true, "roof_palette": true},
+    "Well": {"model": "PRP_00_Well", "fit_footprint": true},
+    "Graves": {"model": "PRP_04_Grave", "fit_footprint": true},
+    "WallX": {"model": "ENV_Module_00_Wall"},
+    "WallY": {"model": "ENV_Module_00_Wall", "yaw_degrees": 90},
+    "WallTower": {"model": "ENV_Module_02_Tower", "fit_footprint": true}
+  }
+}

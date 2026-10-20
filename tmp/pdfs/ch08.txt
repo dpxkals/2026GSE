@@ -1,0 +1,394 @@
+
+=== PAGE 1 ===
+Chapter 08 UDP 서버-클라이언트
+
+
+=== PAGE 2 ===
+2
+학습목표
+• UDP 서버-클라이언트의 기본 구조와 동작 원리를 이해한다.
+• UDP 응용 프로그램 작성에 필요한 핵심 소켓 함수를 익힌다.
+• IPv4와 IPv6 기반 UDP 서버-클라이언트를 작성할 수 있다.
+• 브로드캐스팅의 개념을 이해하고 UDP를 이용해 구현할 수 있다.
+
+=== PAGE 3 ===
+01 UDP 서버-클라이언트 구조
+02 UDP 서버-클라이언트 분석
+03 UDP 서버-클라이언트(IPv6)
+04 브로드캐스팅
+
+=== PAGE 4 ===
+01 UDP 서버-클라이언트 구조
+
+=== PAGE 5 ===
+5
+ TCP와 UDP의 공통점
+ 포트 번호를 이용해 주소를 지정
+• 두 응용 프로그램이 TCP나 UDP를 이용해 통신하려면 반드시 포트 번호를 결정해야 함
+ 데이터 오류를 체크
+• TCP와 UDP는 헤더는 물론이고 데이터에 대한 오류도 체크
+5
+TCP와 UDP (1)
+전송매체 프로토콜
+UDP는 오류를 체크하고 오류가 있으면 버려버림
+
+=== PAGE 6 ===
+6
+TCP와 UDP (2)
+ UDP의 특징
+ 연결 설정을 하지 않으므로 connect() 함수 불필요
+ 프로토콜 수준에서 신뢰성 있는 데이터 전송을 보장하지 않으므로, 필요하다면 응용 프로그
+램 수준에서 신뢰성 있는 데이터 전송 기능을 구현해야 함
+ 간단한 소켓 함수 호출 절차만 따르면 다자간 통신을 쉽게 구현할 수 있음
+ TCP와 달리 응용 프로그램이 데이터 경계 구분을 위한 작업을 별도로 할 필요가 없음
+
+=== PAGE 7 ===
+7
+ TCP와 UDP의 차이점
+TCP UDP
+① 연결형 프로토콜
+- 연결 설정 후 통신 가능
+비연결형 프로토콜
+- 연결 설정 없이 통신 가능
+② 신뢰성 있는 데이터 전송
+- 필요시 데이터 재전송
+신뢰성 없는 데이터 전송
+- 데이터를 재전송하지 않음
+③ 일대일 통신 일대일 통신
+일대다 통신
+④ 데이터 경계 구분 안 함
+- 바이트 스트림 서비스
+데이터 경계 구분함
+- 데이터그램 서비스
+TCP와 UDP (3)
+
+=== PAGE 8 ===
+8
+UDP 서버-클라이언트 동작 원리 (1)
+ UDP 서버-클라이언트 동작 원리
+UDP 서버 UDP 서버
+UDP 
+클라이언트 1
+대기 통신
+
+=== PAGE 9 ===
+9
+UDP 서버-클라이언트 동작 원리 (2)
+ UDP 서버-클라이언트 동작 원리
+UDP 서버
+UDP 
+클라이언트 1
+UDP
+클라이언트 2
+통신 통신
+...
+...
+UDP 서버
+UDP 
+클라이언트 1
+UDP
+클라이언트 n
+누가 보낸는지 알기위해 클라이언트에 주소 정보
+를 계속 찍어 보낸다
+
+=== PAGE 10 ===
+10
+UDP 서버-클라이언트 실습 (1)
+ UDP 서버-클라이언트 예제 동작
+UDP 클라이언트
+ UDP 서버
+fgets() sendto()
+printf()
+recvfrom() printf()
+sendto()recvfrom()
+
+=== PAGE 11 ===
+11
+UDP 서버-클라이언트 실습 (2)
+ 실습 8-1 UDP 서버-클라이언트 작성과 테스트
+ UDPServer.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter08/UDPServer/UDPServer.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter08/UDPServer.cpp
+ UDPClient.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter08/UDPClient/UDPClient.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter08/UDPClient.cpp
+`
+
+=== PAGE 12 ===
+12
+UDP 서버-클라이언트 실습 (3)
+ 실습 8-1 UDP 서버-클라이언트 작성과 테스트
+➊ UDP 서버를 실행
+➋ 명령 프롬프트를 실행한 후 netstat -a -n -p udp | findstr 9000 명령을 실행
+
+
+=== PAGE 13 ===
+13
+UDP 서버-클라이언트 실습 (4)
+➌ UDP 클라이언트를 실행
+➍ 클라이언트에서 글자를 입력하고 [Enter]를 누름
+UDP 서버
+UDP 
+클라이언트 1
+통신
+(포트 번호: 9000)
+(포트 번호: 52580)
+
+=== PAGE 14 ===
+14
+UDP 서버-클라이언트 실습 (5)
+➎ UDP 클라이언트를 하나 더 실행
+UDP 서버
+UDP 
+클라이언트 1
+UDP
+클라이언트 2
+통신 통신
+(포트 번호: 52580) (포트 번호: 61544)
+(포트 번호: 9000)
+
+=== PAGE 15 ===
+02 UDP 서버-클라이언트 분석
+
+=== PAGE 16 ===
+16
+UDP 서버-클라이언트 분석 (1)
+ 응용 프로그램 통신을 위해 결정해야 할 요소
+① 프로토콜 : 통신 규약으로, 소켓을 생성할 때 결정
+② 지역 IP 주소와 지역 포트 번호 : 서버 또는 클라이언트 자신의 주소
+③ 원격 IP 주소와 원격 포트 번호 : 서버 또는 클라이언트가 통신하는 상대의 주소
+
+=== PAGE 17 ===
+17
+UDP 서버-클라이언트 분석 (2)
+ 소켓 데이터 구조체
+서버
+지역 IP 주소
+지역 포트 번호
+원격 IP 주소
+원격 포트 번호
+클라이언트
+지역 IP 주소
+지역 포트 번호
+원격 IP 주소
+원격 포트 번호
+응용 프로그램
+운영체제
+네트워크
+• • • • • •
+수신 버퍼
+운영체제 커널에 데이터를 복사해서 UDP를 
+타고 데이터가 이동
+이동하면 데이터를 바로 삭제
+송신 버퍼가 존재하지 않음
+재송신이 없기 때문에
+
+=== PAGE 18 ===
+18
+UDP 서버-클라이언트 분석 (3)
+ UDP 서버-클라이언트 모델 ①
+socket()
+bind()
+recvfrom()
+sendto()
+closesocket()
+또는 close()
+socket()
+sendto()
+recvfrom()
+closesocket()
+또는 close()
+UDP 서버 UDP 클라이언트
+네트워크
+-> connect(), bind() 역할을 함
+
+=== PAGE 19 ===
+19
+UDP 서버-클라이언트 분석 (4)
+ UDP 서버-클라이언트 모델 ②
+socket()
+bind()
+recvfrom()
+sendto()
+closesocket()
+또는 close()
+socket()
+send()
+recv()
+closesocket()
+또는 close()
+UDP 서버 UDP 클라이언트
+네트워크
+connect()
+클라이언트 내부 사용 용도
+한 서버하고만 통신이 되는 경
+우에 사용
+
+=== PAGE 20 ===
+20
+데이터 전송 함수 (1)
+ sendto() 함수
+ 응용 프로그램 데이터를 운영체제
+의 커널에 복사함으로써 데이터를
+전송
+• 소켓의 지역 IP 주소와 지역 포트 번
+호가 아직 결정되지 않은 상태라면
+운영체제가 자동으로 결정
+
+
+=== PAGE 21 ===
+21
+데이터 전송 함수 (2)
+ sendto() 함수 사용 예
+
+
+=== PAGE 22 ===
+22
+데이터 전송 함수 (3)
+ recvfrom() 함수
+ 운영체제의 수신 버퍼에 도착한
+데이터를 응용 프로그램 버퍼에
+복사
+• UDP 패킷 데이터를 한 번에 하나만
+읽을 수 있음
+
+
+=== PAGE 23 ===
+23
+데이터 전송 함수 (4)
+ recvfrom() 함수 사용 예
+
+
+=== PAGE 24 ===
+03 UDP 서버-클라이언트(IPv6)
+
+=== PAGE 25 ===
+25
+UDP서버-클라이언트(IPv6) (1)
+ IPv4 코드 ⇒ IPv6 코드
+ (필요시) 새로운 헤더 파일을 포함
+• 윈도우에 한해 ws2tcpip.h 추가
+ 소켓 생성 시 AF_INET 대신 AF_INET6 사용
+ 소켓 주소 구조체로 sockaddr_in 대신 sockaddr_in6 사용
+• 구조체를 변경하면 구조체 필드명도 그에 따라 변경
+• 서버에서 주로 사용하는 INADDR_ANY 값은 in6addr_any로 변경
+ 데이터 전송 함수는 기존의 sendto() 함수와 recvfrom() 함수를 변경 없이 그대로 사용
+
+=== PAGE 26 ===
+26
+UDP서버-클라이언트(IPv6) (2)
+ 실습 8-2 UDP 서버-클라이언트(IPv6) 작성과 테스트
+
+
+=== PAGE 27 ===
+27
+UDP서버-클라이언트(IPv6) (3)
+ 실습 8-2 UDP 서버-클라이언트(IPv6) 작성과 테스트
+ UDPServer6
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter08/UDPServer6/UDPServer6.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter08/UDPServer6.cpp
+ UDPClient6
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter08/UDPClient6/UDPClient6.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter08/UDPClient6.cpp
+
+=== PAGE 28 ===
+04 브로드캐스팅
+
+=== PAGE 29 ===
+29
+브로드캐스팅 (1)
+ 통신에 참여하는 개체 간 상호 작용
+유니캐스팅 브로드캐스팅 멀티캐스팅
+ 애니캐스팅
+tcp, udp
+1 : n        udp
+all some
+보내는 쪽에서 쉽게 보내기 위해 1 : n 통신을 한다
+
+=== PAGE 30 ===
+30
+브로드캐스팅 (2)
+ 브로드캐스팅 개념
+ 송신자가 보낸 데이터 하나를 다수의 수신자가 받는 방식
+• 데이터 복사본을 여러 개 만들어 보내는 것이 아니므로 송신자 관점에서 보면 상당히 효율적인 기술
+송신자
+브로드캐스팅은 수신자가 거부 할 수 없음
+브로드캐스팅을 할 경우 중요 사안이거나, 시급할 경우 사용
+
+=== PAGE 31 ===
+31
+브로드캐스팅 (3)
+ 브로드캐스트 데이터를 보내기 위한 절차
+① 브로드캐스팅을 활성화함
+UDP 소켓을 생성해도 기본 설정 값은 유니캐스트이다. 
+-> 옵션을 변경해줘야함
+bool 값임
+
+=== PAGE 32 ===
+32
+브로드캐스팅 (4)
+ 브로드캐스트 데이터를 보내기 위한 절차
+② 브로드캐스트 주소를 목적지로 설정해 데이터를 보냄
+
+
+=== PAGE 33 ===
+33
+브로드캐스팅 (5)
+ 브로드캐스트 주소의 종류
+호스트 ID
+11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+네트워크 ID 11 . . . . . . . . . . . . 1 네트워크 브로드캐스트
+지역 브로드캐스트
+네트워크 ID 11 . . . 1 서브넷 브로드캐스트서브넷 ID
+
+=== PAGE 34 ===
+34
+브로드캐스팅 (6)
+ 브로드캐스트 주소의 종류
+네트워크 브로드캐스트
+서브넷 브로드캐스트
+지역 브로드캐스트
+
+=== PAGE 35 ===
+35
+브로드캐스팅 (7)
+ 브로드캐스팅 예제 동작
+송신자
+ 수신자
+fgets() sendto() recvfrom() printf()
+사용자가 키보드로 입력한(fgets)
+문자열을 브로드캐스트 주소로
+보낸다(sendto).
+브로드캐스트 데이터를 받고(recvfrom),
+이를 문자열로 간주해 무조건 화면에
+출력한다.
+
+=== PAGE 36 ===
+36
+브로드캐스팅 (8)
+ 실습 8-3 UDP 브로드캐스팅 예제 작성과 테스트
+
+
+=== PAGE 37 ===
+37
+브로드캐스팅 (9)
+ 실습 8-3 UDP 브로드캐스팅 예제 작성과 테스트
+ BroadcastReceiver.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter08/BroadcastReceiver/BroadcastReceiver.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter08/BroadcastReceiver.cpp
+ BroadcastSender.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter08/BroadcastSender/BroadcastSender.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter08/BroadcastSender.cpp
+`

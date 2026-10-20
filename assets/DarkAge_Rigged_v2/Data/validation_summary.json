@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "npc_part_count": 27,
+  "monster_count": 5,
+  "rig_count": 6,
+  "animated_glb_count": 6,
+  "static_skinned_part_glb_count": 27,
+  "animation_clip_count": 80,
+  "all_vertices_weighted": true,
+  "max_weight_influences": 2,
+  "max_joint_gap_m": 1e-06,
+  "max_loop_boundary_matrix_error": 0.0,
+  "reimported_character_glbs": 6,
+  "reimported_animations": 80,
+  "quadruped_hind_revision": "Shortened tibia, repositioned stifle/hock, added haunch mass, reduced boar stride and lift; all 26 quadruped clips rebaked.",
+  "engine_integration_tested": false
+}

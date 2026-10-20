@@ -1,0 +1,4835 @@
+{
+  "schema_version": 1,
+  "recipes": [
+    {
+      "recipe_id": "NPC_PRESET_001",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 0,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 0,
+        "back": 2,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_002",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 1,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 3,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_003",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 2,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_004",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 3,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 0,
+        "legs": 0,
+        "back": 2,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_005",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 4,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 1,
+        "legs": 2,
+        "back": 3,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_006",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 5,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 2,
+        "back": 1,
+        "hand": 2,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_007",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 6,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 2,
+        "back": 0,
+        "hand": 4,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_008",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 7,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 3,
+        "legs": 1,
+        "back": 0,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_009",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 8,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": -1,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_010",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 9,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 0,
+        "legs": 1,
+        "back": 3,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_011",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 10,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 0,
+        "legs": 1,
+        "back": 1,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_012",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 11,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_013",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 12,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": 4,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_014",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 13,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 3,
+        "legs": 0,
+        "back": -1,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_015",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 14,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 1,
+        "legs": 1,
+        "back": 0,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 4,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_016",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 15,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 0,
+        "back": -1,
+        "hand": -1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_017",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 16,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 0,
+        "back": 1,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_018",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 17,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 3,
+        "legs": 0,
+        "back": 1,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_019",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 18,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 3,
+        "legs": 1,
+        "back": 1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_020",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 19,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 1,
+        "back": 2,
+        "hand": 0,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_021",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 20,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": 3,
+        "hand": 1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 4,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_022",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 21,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": -1,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_023",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 22,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 2,
+        "legs": 0,
+        "back": -1,
+        "hand": 4,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_024",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 23,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 2,
+        "legs": 2,
+        "back": 3,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_025",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 24,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 1,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 1,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_026",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 25,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 0,
+        "legs": 2,
+        "back": 0,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_027",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 26,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_028",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 27,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_029",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 28,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 1,
+        "legs": 2,
+        "back": 0,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_030",
+      "town_index": 0,
+      "town_name": "잿빛 왕성",
+      "local_index": 29,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 1,
+        "legs": 0,
+        "back": 3,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_031",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 0,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 1,
+        "legs": 2,
+        "back": 3,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_032",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 1,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": 1,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_033",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 2,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 1,
+        "back": 2,
+        "hand": 1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_034",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 3,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 2,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_035",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 4,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 0,
+        "back": -1,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_036",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 5,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 1,
+        "legs": 1,
+        "back": 2,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_037",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 6,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 0,
+        "back": 1,
+        "hand": 4,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_038",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 7,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_039",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 8,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 2,
+        "back": 2,
+        "hand": 3,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 3,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_040",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 9,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 2,
+        "legs": 0,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 4,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_041",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 10,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 1,
+        "legs": 1,
+        "back": -1,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 3,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_042",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 11,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 0,
+        "legs": 2,
+        "back": 3,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_043",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 12,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 0,
+        "back": -1,
+        "hand": 0,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_044",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 13,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 2,
+        "legs": 0,
+        "back": 0,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_045",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 14,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_046",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 15,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 3,
+        "legs": 1,
+        "back": 1,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_047",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 16,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_048",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 17,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 3,
+        "legs": 0,
+        "back": -1,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_049",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 18,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 3,
+        "legs": 2,
+        "back": 0,
+        "hand": 1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 4,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_050",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 19,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 1,
+        "legs": 2,
+        "back": -1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 2,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_051",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 20,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 0,
+        "legs": 2,
+        "back": -1,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_052",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 21,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 0,
+        "legs": 1,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_053",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 22,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 3,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 4,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_054",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 23,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": 0,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_055",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 24,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 2,
+        "legs": 1,
+        "back": -1,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_056",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 25,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 1,
+        "legs": 2,
+        "back": 0,
+        "hand": 4,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_057",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 26,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 1,
+        "legs": 2,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 4,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_058",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 27,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 3,
+        "legs": 1,
+        "back": 1,
+        "hand": 3,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_059",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 28,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 0,
+        "back": -1,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_060",
+      "town_index": 1,
+      "town_name": "등불 장터",
+      "local_index": 29,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 1,
+        "legs": 1,
+        "back": 0,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_061",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 0,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 1,
+        "back": 1,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 2,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_062",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 1,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 2,
+        "legs": 2,
+        "back": 2,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_063",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 2,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 2,
+        "back": 1,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_064",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 3,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 0,
+        "legs": 2,
+        "back": 0,
+        "hand": 4,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 1,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_065",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 4,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 0,
+        "legs": 1,
+        "back": 3,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_066",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 5,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 0,
+        "back": 0,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_067",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 6,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 0,
+        "back": -1,
+        "hand": -1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 2,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_068",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 7,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 1,
+        "legs": 0,
+        "back": 0,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_069",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 8,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 1,
+        "hand": 0,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_070",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 9,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 3,
+        "legs": 2,
+        "back": 0,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_071",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 10,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 0,
+        "legs": 1,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_072",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 11,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 2,
+        "back": 1,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_073",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 12,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 0,
+        "legs": 0,
+        "back": 3,
+        "hand": 2,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 1,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_074",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 13,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 0,
+        "back": 3,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_075",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 14,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 1,
+        "legs": 1,
+        "back": 0,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_076",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 15,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 0,
+        "legs": 0,
+        "back": -1,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 1,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_077",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 16,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": 1,
+        "hand": 1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_078",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 17,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 3,
+        "legs": 2,
+        "back": 1,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_079",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 18,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 3,
+        "legs": 2,
+        "back": 0,
+        "hand": 1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_080",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 19,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_081",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 20,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_082",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 21,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 1,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_083",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 22,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 0,
+        "legs": 0,
+        "back": 3,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_084",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 23,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 2,
+        "legs": 0,
+        "back": -1,
+        "hand": 0,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_085",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 24,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 2,
+        "legs": 1,
+        "back": 1,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_086",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 25,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 3,
+        "legs": 1,
+        "back": 1,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_087",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 26,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": 0,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 4,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_088",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 27,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 2,
+        "legs": 0,
+        "back": 0,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_089",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 28,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 2,
+        "legs": 2,
+        "back": -1,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_090",
+      "town_index": 2,
+      "town_name": "보리들 마을",
+      "local_index": 29,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 2,
+        "legs": 1,
+        "back": 2,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_091",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 0,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 3,
+        "legs": 1,
+        "back": 0,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 3,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_092",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 1,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 2,
+        "legs": 0,
+        "back": 2,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_093",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 2,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 1,
+        "legs": 1,
+        "back": -1,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_094",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 3,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 0,
+        "back": 3,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_095",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 4,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 3,
+        "hand": 2,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_096",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 5,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 1,
+        "legs": 2,
+        "back": -1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 3,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_097",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 6,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 1,
+        "legs": 1,
+        "back": 0,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_098",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 7,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_099",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 8,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 0,
+        "legs": 1,
+        "back": 2,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_100",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 9,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 0,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_101",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 10,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 0,
+        "legs": 1,
+        "back": 3,
+        "hand": 3,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_102",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 11,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_103",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 12,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 1,
+        "legs": 0,
+        "back": 3,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_104",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 13,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": -1,
+        "hand": 4,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_105",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 14,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 2,
+        "back": 1,
+        "hand": 3,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 4,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_106",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 15,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 1,
+        "legs": 0,
+        "back": 2,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_107",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 16,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 2,
+        "legs": 1,
+        "back": 0,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_108",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 17,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 0,
+        "legs": 1,
+        "back": 2,
+        "hand": 0,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_109",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 18,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 3,
+        "legs": 0,
+        "back": -1,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_110",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 19,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": 2,
+        "hand": 4,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_111",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 20,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": 0,
+        "hand": 0,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_112",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 21,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 1,
+        "legs": 1,
+        "back": 3,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_113",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 22,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 1,
+        "legs": 0,
+        "back": 3,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 4,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_114",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 23,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 2,
+        "legs": 1,
+        "back": 2,
+        "hand": -1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_115",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 24,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 3,
+        "legs": 2,
+        "back": 0,
+        "hand": 0,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_116",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 25,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 0,
+        "back": 1,
+        "hand": -1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_117",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 26,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 1,
+        "legs": 0,
+        "back": 3,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_118",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 27,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 0,
+        "back": 3,
+        "hand": 4,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 4,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_119",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 28,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 0,
+        "back": 0,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_120",
+      "town_index": 3,
+      "town_name": "새벽 수도원",
+      "local_index": 29,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 0,
+        "legs": 2,
+        "back": 2,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_121",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 0,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 0,
+        "back": 1,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_122",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 1,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 2,
+        "back": -1,
+        "hand": 4,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_123",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 2,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 0,
+        "legs": 1,
+        "back": -1,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_124",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 3,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 2,
+        "legs": 1,
+        "back": 0,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 0,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_125",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 4,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": 3,
+        "hand": -1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_126",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 5,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 1,
+        "legs": 2,
+        "back": 0,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_127",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 6,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 3,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 2,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_128",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 7,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": 0,
+        "hand": 0,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 2,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_129",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 8,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_130",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 9,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 3,
+        "legs": 0,
+        "back": 0,
+        "hand": -1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_131",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 10,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 2,
+        "legs": 1,
+        "back": 0,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 0,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_132",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 11,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 1,
+        "legs": 1,
+        "back": 3,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_133",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 12,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 2,
+        "back": 2,
+        "hand": -1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_134",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 13,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 2,
+        "back": 2,
+        "hand": 1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_135",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 14,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 1,
+        "back": 1,
+        "hand": -1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_136",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 15,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_137",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 16,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 2,
+        "legs": 0,
+        "back": 0,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_138",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 17,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 2,
+        "back": 1,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_139",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 18,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 2,
+        "legs": 1,
+        "back": 2,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_140",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 19,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 3,
+        "legs": 2,
+        "back": -1,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_141",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 20,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_142",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 21,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 3,
+        "legs": 2,
+        "back": 0,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_143",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 22,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 3,
+        "legs": 1,
+        "back": 0,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_144",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 23,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 2,
+        "legs": 1,
+        "back": 3,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_145",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 24,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 2,
+        "legs": 1,
+        "back": 1,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_146",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 25,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 2,
+        "legs": 2,
+        "back": 3,
+        "hand": 1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_147",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 26,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 0,
+        "back": -1,
+        "hand": 1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_148",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 27,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 2,
+        "legs": 0,
+        "back": -1,
+        "hand": 1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_149",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 28,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 0,
+        "legs": 2,
+        "back": 1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 4,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_150",
+      "town_index": 4,
+      "town_name": "솔바람 촌락",
+      "local_index": 29,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 3,
+        "legs": 2,
+        "back": 1,
+        "hand": 4,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_151",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 0,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 0,
+        "legs": 2,
+        "back": 1,
+        "hand": 3,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_152",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 1,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 0,
+        "legs": 0,
+        "back": 3,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 2,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_153",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 2,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 2,
+        "legs": 0,
+        "back": 1,
+        "hand": 4,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_154",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 3,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": 2,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_155",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 4,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 2,
+        "legs": 0,
+        "back": 3,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 5
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_156",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 5,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 1,
+        "legs": 1,
+        "back": 0,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_157",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 6,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 3,
+        "legs": 1,
+        "back": -1,
+        "hand": -1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 2,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_158",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 7,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 2,
+        "legs": 1,
+        "back": 3,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 2,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_159",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 8,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": 3,
+        "hand": -1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 4,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_160",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 9,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": 0,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 1,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_161",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 10,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 0,
+        "back": 0,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 0,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_162",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 11,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 0,
+        "back": 3,
+        "hand": 1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_163",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 12,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 0,
+        "back": 3,
+        "hand": 1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_164",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 13,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 0,
+        "back": 1,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_165",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 14,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 0,
+        "back": 0,
+        "hand": -1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_166",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 15,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 0,
+        "legs": 1,
+        "back": 3,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_167",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 16,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 1,
+        "legs": 0,
+        "back": 0,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_168",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 17,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": 1,
+        "hand": 4,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_169",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 18,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 0,
+        "legs": 1,
+        "back": 0,
+        "hand": 3,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_170",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 19,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 1,
+        "legs": 2,
+        "back": 1,
+        "hand": 1,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_171",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 20,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": 1,
+        "hand": 2,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_172",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 21,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 3,
+        "legs": 0,
+        "back": -1,
+        "hand": 4,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_173",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 22,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 1,
+        "legs": 2,
+        "back": 2,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_174",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 23,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 2,
+        "legs": 1,
+        "back": 2,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_175",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 24,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 2,
+        "legs": 1,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_176",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 25,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 1,
+        "legs": 0,
+        "back": 2,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 4,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_177",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 26,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 0,
+        "legs": 1,
+        "back": 3,
+        "hand": 1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 4,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_178",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 27,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 0,
+        "legs": 2,
+        "back": 1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 4,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_179",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 28,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 3,
+        "legs": 1,
+        "back": 0,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_180",
+      "town_index": 5,
+      "town_name": "검은돌 광산촌",
+      "local_index": 29,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": -1,
+        "hand": 0,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_181",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 0,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 3,
+        "legs": 2,
+        "back": 1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_182",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 1,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 0,
+        "legs": 2,
+        "back": 1,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_183",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 2,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 0,
+        "legs": 0,
+        "back": 1,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_184",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 3,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 1,
+        "legs": 1,
+        "back": 1,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_185",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 4,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 2,
+        "legs": 0,
+        "back": 0,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 3,
+        "cloth": 6
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_186",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 5,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 3,
+        "hand": 1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 2,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_187",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 6,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 0,
+        "legs": 1,
+        "back": 0,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_188",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 7,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 0,
+        "legs": 1,
+        "back": 3,
+        "hand": 1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 2,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_189",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 8,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 2,
+        "legs": 1,
+        "back": -1,
+        "hand": -1,
+        "headwear": 2
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 4,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_190",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 9,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 0,
+        "hand": 0,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 0
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_191",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 10,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 0,
+        "legs": 1,
+        "back": 0,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_192",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 11,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 0,
+        "legs": 0,
+        "back": 1,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_193",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 12,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 2,
+        "torso": 0,
+        "legs": 2,
+        "back": 0,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_194",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 13,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 0,
+        "legs": 2,
+        "back": 0,
+        "hand": 3,
+        "headwear": 0
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 2,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_195",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 14,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 3,
+        "torso": 1,
+        "legs": 2,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 1
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_196",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 15,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 0,
+        "legs": 1,
+        "back": -1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 2,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_197",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 16,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 1,
+        "legs": 2,
+        "back": 3,
+        "hand": 1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 3,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_198",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 17,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 1,
+        "legs": 2,
+        "back": -1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_199",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 18,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 1,
+        "torso": 2,
+        "legs": 0,
+        "back": 0,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_200",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 19,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 0,
+        "torso": 1,
+        "legs": 0,
+        "back": 3,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 4,
+        "cloth": 2
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_201",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 20,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 1,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_202",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 21,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 0,
+        "torso": 0,
+        "legs": 0,
+        "back": 1,
+        "hand": 0,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_203",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 22,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 1,
+        "legs": 1,
+        "back": 0,
+        "hand": 0,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 1,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_204",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 23,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 2,
+        "torso": 1,
+        "legs": 0,
+        "back": -1,
+        "hand": 2,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 1,
+        "hair": 3,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_205",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 24,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 0,
+        "back": 1,
+        "hand": 1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 2,
+        "hair": 0,
+        "cloth": 3
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_206",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 25,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": -1,
+        "torso": 2,
+        "legs": 1,
+        "back": 1,
+        "hand": 3,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 2,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_207",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 26,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 3,
+        "legs": 0,
+        "back": 0,
+        "hand": 2,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 0,
+        "hair": 0,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_208",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 27,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 1,
+        "head": 1,
+        "hair": 1,
+        "torso": 1,
+        "legs": 0,
+        "back": 2,
+        "hand": -1,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 0,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_209",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 28,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": -1,
+        "torso": 0,
+        "legs": 1,
+        "back": 1,
+        "hand": -1,
+        "headwear": 1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 3,
+        "cloth": 4
+      },
+      "appearance_only": true
+    },
+    {
+      "recipe_id": "NPC_PRESET_210",
+      "town_index": 6,
+      "town_name": "물안개 나루",
+      "local_index": 29,
+      "runtime_npc_id": null,
+      "parts": {
+        "body": 0,
+        "head": 0,
+        "hair": 3,
+        "torso": 2,
+        "legs": 2,
+        "back": 3,
+        "hand": 3,
+        "headwear": -1
+      },
+      "palette": {
+        "skin": 3,
+        "hair": 1,
+        "cloth": 4
+      },
+      "appearance_only": true
+    }
+  ]
+}

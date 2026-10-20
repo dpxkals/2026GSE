@@ -4,6 +4,7 @@
 #include "NpcSystem.h"
 #include "VillageLayout.h"
 #include "GameplayBehaviors.h"
+#include "KoreanNames.h"
 #include <algorithm>
 #include <cmath>
 #include <queue>
@@ -38,7 +39,7 @@ WorldSimulation::WorldSimulation(const std::filesystem::path& directory, std::ui
     if (states_)
     {
         states_
-            << "# v2: time,id,tendency,lod,action,hp,max_hp,level,gold,goods,insight,hunt,trade,loot,pk,explore,rest,flee,gather,craft,aid,socialize,travel,meditate; followed by learned values in the same order\n";
+            << "# v3: time,id,tendency,lod,action,hp,max_hp,level,gold,goods,insight; weights[13]; learned[13]; home_village,home_slot,travel_village,reserved_home,known_reports\n";
     }
     if (!events_)
     {
@@ -68,15 +69,13 @@ Citizen* WorldSimulation::Find(std::uint64_t id)
     return const_cast<Citizen*>(static_cast<const WorldSimulation*>(this)->Find(id));
 }
 
-Citizen WorldSimulation::Create(int home)
+Citizen WorldSimulation::Create(int home, int house)
 {
     Citizen npc;
     npc.id = nextId_++;
     npc.home = home;
-    auto center = Villages()[home].center;
-    double angle = double(random_() % 360) * Pi / 180.0;
-    double radius = 1.0 + double(random_() % 12) / 10;
-    npc.position = {center.x + std::cos(angle) * radius, center.y + std::sin(angle) * radius};
+    npc.house = house >= 0 ? house : FreeHome(home);
+    npc.position = HomeDoor(npc);
     npc.destination = npc.position;
     for (auto& trait : npc.personality)
     {
@@ -163,19 +162,7 @@ const wchar_t* WorldSimulation::ActionName(NpcAction action)
 
 std::wstring WorldSimulation::Name(const Citizen& npc)
 {
-    static const wchar_t* names[] = {L"카일",
-                                     L"미라",
-                                     L"로웬",
-                                     L"에다",
-                                     L"가렌",
-                                     L"루나",
-                                     L"세드",
-                                     L"노아",
-                                     L"아린",
-                                     L"브람",
-                                     L"레아",
-                                     L"오르"};
-    return std::wstring(names[(npc.id - 1) % 12]) + L" " + std::to_wstring(npc.id);
+    return KoreanPersonalName(npc.id);
 }
 
 void WorldSimulation::Record(const std::string& kind,
@@ -222,9 +209,17 @@ void WorldSimulation::Grow(Citizen& npc, int experience)
 void WorldSimulation::Choose(Citizen& npc, const World& world, const LevelOne& level)
 {
     const double hp = npc.health / npc.maxHealth;
+    if (npc.action == NpcAction::Travel && npc.travelVillage >= 0 && hp >= .4 && npc.hostility <= 0)
+    {
+        npc.decision = 300;
+        npc.dirty = false;
+        return;
+    }
+    // Interrupted journeys release their destination reservation, retaining the current home.
+    npc.travelVillage = npc.travelStop = npc.reservedHouse = -1;
     const auto& p = npc.personality;
     const Enemy* monster = nullptr;
-    double monsterDistance = 30;
+    double monsterDistance = 45;
     for (const auto& enemy : level.Enemies())
     {
         double distance = Distance(npc.position, enemy.position);
@@ -322,7 +317,10 @@ void WorldSimulation::Choose(Citizen& npc, const World& world, const LevelOne& l
     }
     npc.target = 0;
     npc.targetKind = CombatKind::None;
-    npc.destination = Villages()[npc.home].center;
+    npc.destination = npc.action == NpcAction::Rest || npc.action == NpcAction::Craft ||
+                              npc.action == NpcAction::Flee
+                          ? HomeDoor(npc)
+                          : Villages()[npc.home].center;
     if (npc.action == NpcAction::Hunt && monster)
     {
         npc.targetKind = CombatKind::Monster;
@@ -357,21 +355,30 @@ void WorldSimulation::Choose(Citizen& npc, const World& world, const LevelOne& l
     }
     if (npc.action == NpcAction::Travel)
     {
+        int from = VillageAt(npc.position);
+        if (from < 0)
+        {
+            from = npc.home;
+        }
         int target = int(random_() % (VillageCount - 1));
-        if (target >= npc.home)
+        if (target >= from)
         {
             ++target;
         }
-        npc.target = std::uint64_t(target + 1);
-        npc.travelViaHub = npc.home != 0 && target != 0;
-        npc.destination = Villages()[target].center;
+        StartJourney(npc, target, false);
+    }
+    else if (hp >= .6 && VillageAt(npc.position) >= 0 && VillageAt(npc.position) != npc.home &&
+             (npc.action == NpcAction::Rest || npc.action == NpcAction::Craft))
+    {
+        StartJourney(npc, npc.home, false);
     }
     if (npc.action == NpcAction::Gather || npc.action == NpcAction::Explore ||
         (npc.action == NpcAction::Hunt && !monster))
     {
         auto home = Villages()[npc.home].center;
         double angle = double(random_() % 360) * Pi / 180;
-        npc.destination = {home.x + std::cos(angle) * 22, home.y + std::sin(angle) * 22};
+        double radius = VillageHuntingRadius(npc.home);
+        npc.destination = {home.x + std::cos(angle) * radius, home.y + std::sin(angle) * radius};
     }
     npc.decision = 30.0 + double(random_() % 60) / 10;
     if (npc.action == NpcAction::Travel)
@@ -397,7 +404,7 @@ void WorldSimulation::Navigate(Citizen& npc, WorldPoint goal, double dt, const W
         WorldPoint direction{(goal.x - npc.position.x) / distance,
                              (goal.y - npc.position.y) / distance};
         if (npc.action == NpcAction::Travel && npc.lod == 1 &&
-            VillageRoad(npc.position.x - 0.5, npc.position.y - 0.5) &&
+            VillageRoad(npc.position.x, npc.position.y) &&
             !world.Find(WorldInt(std::floor(npc.position.x + direction.x * 4)),
                         WorldInt(std::floor(npc.position.y + direction.y * 4))))
         {
@@ -533,6 +540,8 @@ void WorldSimulation::Kill(Citizen& npc, CombatKind source, std::uint64_t source
     npc.health = 0;
     npc.deadTime = 60;
     npc.hostility = 0;
+    npc.travelVillage = npc.travelStop = npc.reservedHouse = -1;
+    npc.action = NpcAction::Rest;
     loot_.push_back({nextId_++, npc.position, npc.gold, npc.goods, 120});
     npc.gold = npc.goods = 0;
     if (selected_ == npc.id)
@@ -572,6 +581,19 @@ void WorldSimulation::Damage(Citizen& npc, double amount, CombatKind source, std
         amount *= 0.65;
     }
     npc.health = (std::max)(0.0, npc.health - amount);
+    if (npc.reservedHouse >= 0)
+    {
+        Record("migration_interrupted",
+               npc.id,
+               std::uint64_t(npc.travelVillage),
+               npc.reservedHouse,
+               Name(npc) + L"의 이사가 공격으로 중단되어 새 집 예약을 해제했다.");
+    }
+    npc.travelVillage = npc.travelStop = npc.reservedHouse = -1;
+    if (npc.action == NpcAction::Travel)
+    {
+        npc.action = NpcAction::Flee;
+    }
     Learn(npc, npc.action, -1);
     Learn(npc, NpcAction::Flee, 1);
     npc.dirty = true;
@@ -643,7 +665,10 @@ void WorldSimulation::Step(Citizen& npc, double dt, const World& world, LevelOne
     if (npc.action == NpcAction::Rest || npc.action == NpcAction::Flee ||
         npc.action == NpcAction::Trade)
     {
-        Navigate(npc, Villages()[npc.home].center, dt, world);
+        Navigate(npc,
+                 npc.action == NpcAction::Trade ? Villages()[npc.home].center : HomeDoor(npc),
+                 dt,
+                 world);
         if (VillageAt(npc.position) >= 0)
         {
             double before = npc.health;
@@ -782,24 +807,11 @@ bool WorldSimulation::CivilAction(Citizen& npc, double dt, const World& world)
     }
     if (npc.action == NpcAction::Travel)
     {
-        WorldPoint waypoint = npc.travelViaHub ? Villages()[0].center : npc.destination;
+        WorldPoint waypoint = JourneyWaypoint(npc);
         Navigate(npc, waypoint, dt, world);
         if (Distance(npc.position, waypoint) < 1.5)
         {
-            if (npc.travelViaHub)
-            {
-                npc.travelViaHub = false;
-                npc.route.clear();
-                npc.pathTimer = 0;
-            }
-            else
-            {
-                npc.home = int(npc.target) - 1;
-                ++npc.insight;
-                Learn(npc, npc.action, 3);
-                Record("travel", npc.id, 0, npc.home, Name(npc) + L"가 다른 성채에 도착했다.");
-                npc.dirty = true;
-            }
+            ArriveJourney(npc);
         }
         return true;
     }
@@ -873,6 +885,7 @@ bool WorldSimulation::CivilAction(Citizen& npc, double dt, const World& world)
             ++npc.insight;
             Learn(npc, npc.action, 2);
             Learn(other, NpcAction::Socialize, 1);
+            ShareReports(npc, other);
             Record("socialize", npc.id, other.id, 1, Name(npc) + L"가 주민과 경험을 나눴다.");
             break;
         }
@@ -904,7 +917,8 @@ void WorldSimulation::Ecology(double dt, const World& world, LevelOne& level)
         int count = 0;
         for (const auto& enemy : level.Enemies())
         {
-            if (enemy.health > 0 && Distance(center, enemy.position) < 30)
+            if (enemy.health > 0 &&
+                Distance(center, enemy.position) < VillageHuntingRadius(region) + 6)
             {
                 ++count;
             }
@@ -916,7 +930,9 @@ void WorldSimulation::Ecology(double dt, const World& world, LevelOne& level)
         for (int attempt = 0; attempt < 12; ++attempt)
         {
             double angle = double(random_() % 360) * Pi / 180;
-            WorldPoint location{center.x + std::cos(angle) * 22, center.y + std::sin(angle) * 22};
+            double radius = VillageHuntingRadius(region);
+            WorldPoint location{center.x + std::cos(angle) * radius,
+                                center.y + std::sin(angle) * radius};
             if (level.SpawnWild(
                     location, random_() % 3 ? EnemyKind::Husk : EnemyKind::Hound, world))
             {
@@ -943,6 +959,7 @@ void WorldSimulation::Update(double dt,
         saveTimer_ += 0.1;
         logTimer_ += 0.1;
         Ecology(0.1, world, level);
+        UpdateSettlements(0.1);
         for (auto& npc : people_)
         {
             npc.hurtCooldown = (std::max)(0.0, npc.hurtCooldown - 0.1);
@@ -952,10 +969,22 @@ void WorldSimulation::Update(double dt,
                 if (npc.deadTime <= 0)
                 {
                     auto home = npc.home;
-                    npc = Create(home);
+                    npc = Create(home, npc.house);
                     Record("immigration", npc.id, 0, home, Name(npc) + L"가 마을에 새로 정착했다.");
                 }
                 continue;
+            }
+            npc.migrationCooldown = (std::max)(0.0, npc.migrationCooldown - .1);
+            npc.newsCooldown -= .1;
+            if (npc.newsCooldown <= 0)
+            {
+                npc.newsCooldown = 8 + double(npc.id % 7);
+                int town = VillageAt(npc.position);
+                if (town >= 0)
+                {
+                    ExchangeNews(npc, town);
+                }
+                ConsiderMigration(npc);
             }
             for (auto& weight : npc.learned)
             {
@@ -1041,8 +1070,7 @@ void WorldSimulation::Update(double dt,
                     }
                     else if (npc.action == NpcAction::Travel)
                     {
-                        WorldPoint waypoint =
-                            npc.travelViaHub ? Villages()[0].center : npc.destination;
+                        WorldPoint waypoint = JourneyWaypoint(npc);
                         double distance = Distance(npc.position, waypoint);
                         double step = (std::min)(distance, 15.0 * 2.6);
                         if (distance > 0.01)
@@ -1052,17 +1080,7 @@ void WorldSimulation::Update(double dt,
                         }
                         if (distance <= step + 1.5)
                         {
-                            if (npc.travelViaHub)
-                            {
-                                npc.travelViaHub = false;
-                            }
-                            else
-                            {
-                                npc.home = int(npc.target) - 1;
-                                ++npc.insight;
-                                Learn(npc, npc.action, 3);
-                                npc.dirty = true;
-                            }
+                            ArriveJourney(npc);
                         }
                         continue;
                     }
@@ -1071,7 +1089,19 @@ void WorldSimulation::Update(double dt,
                         npc.health = (std::min)(npc.maxHealth, npc.health + 10);
                     }
                     // Coarse return is only allowed where no physical Actor exists.
-                    npc.position = Villages()[npc.home].center;
+                    int currentTown = VillageAt(npc.position);
+                    if (currentTown >= 0 && currentTown != npc.home)
+                    {
+                        npc.position = Villages()[currentTown].center;
+                    }
+                    else
+                    {
+                        npc.position = npc.action == NpcAction::Rest ||
+                                               npc.action == NpcAction::Craft ||
+                                               npc.action == NpcAction::Flee
+                                           ? HomeDoor(npc)
+                                           : Villages()[npc.home].center;
+                    }
                     if (npc.action == NpcAction::Trade)
                     {
                         Trade(npc);
@@ -1140,13 +1170,21 @@ void WorldSimulation::Update(double dt,
                     {
                         states_ << ',' << weight;
                     }
+                    int known = 0;
+                    for (const auto& report : npc.reports)
+                    {
+                        known += report.revision && time_ - report.observed <= 600 ? 1 : 0;
+                    }
+                    states_ << ',' << npc.home << ',' << npc.house << ',' << npc.travelVillage
+                            << ',' << npc.reservedHouse << ',' << known;
                     states_ << '\n';
                 }
                 states_.flush();
             }
             std::cout << "[Simulation] t=" << int(time_) << " population=" << alive << '/'
                       << VillagePopulation << " LOD=" << lod[0] << "/" << lod[1] << "/" << lod[2]
-                      << " gold=" << wealth << " events=" << eventId_ << '\n';
+                      << " gold=" << wealth << " events=" << eventId_
+                      << " letters=" << letters_.size() << '\n';
             logTimer_ = 0;
         }
     }

@@ -276,17 +276,10 @@ void LevelOne::UpdateRpg(double dt, const World& world)
         }
         rpg_.bossVillage = choice;
     }
-    auto center = Villages()[rpg_.bossVillage].center;
-    // Approach along a guaranteed inter-village road, outside the safe walls.
-    int direction = rpg_.bossVillage == 1   ? 2
-                    : rpg_.bossVillage == 2 ? 0
-                    : rpg_.bossVillage == 3 ? 3
-                    : rpg_.bossVillage == 4 ? 1
-                                            : int(random_() % 4);
-    const int dx[] = {1, 0, -1, 0}, dy[] = {0, 1, 0, -1};
-    for (int distance = 18; distance <= 25; ++distance)
+    auto approach = VillageApproach(rpg_.bossVillage);
+    for (int offset = 0; offset <= 4; ++offset)
     {
-        WorldPoint point{center.x + dx[direction] * distance, center.y + dy[direction] * distance};
+        WorldPoint point{approach.x + offset, approach.y};
         const auto* tile = world.Find(WorldInt(std::floor(point.x)), WorldInt(std::floor(point.y)));
         if (tile && !world.CanWalk(point.x, point.y))
         {
@@ -303,7 +296,7 @@ void LevelOne::UpdateRpg(double dt, const World& world)
         rpg_.bossTimer = BossInterval;
         rpg_.lastBossVillage = rpg_.bossVillage;
         Announce(std::wstring(Villages()[rpg_.bossVillage].name) +
-                 L" 성문 밖에 잿빛 파수꾼 등장! 권장 Lv 10");
+                 L" 외곽에 잿빛 파수꾼 등장! 권장 Lv 10");
         std::cout << "[BossEvent] village=" << rpg_.bossVillage << " hp=" << boss.health
                   << " position=" << point.x << "," << point.y << '\n';
         urgentSave_ = true;

@@ -64,6 +64,19 @@ struct CombatTarget
     double health = 0;
 };
 
+struct VillageReport
+{
+    std::uint64_t revision = 0;
+    double observed = 0, safety = 0, wealth = 0, wisdom = 0;
+};
+
+struct VillageLetter
+{
+    int from = 0, to = 0, origin = 0;
+    double remaining = 0;
+    VillageReport report;
+};
+
 struct Citizen
 {
     std::uint64_t id = 0;
@@ -86,7 +99,10 @@ struct Citizen
     int lod = 0;
     double lodTime = 0;
     double hurtCooldown = 0;
-    bool travelViaHub = false;
+    int house = -1;
+    int travelVillage = -1, travelStop = -1, reservedHouse = -1;
+    double migrationCooldown = 120, newsCooldown = 0;
+    std::array<VillageReport, VillageCount> reports{};
 };
 
 struct CitizenLoot
@@ -195,13 +211,30 @@ class WorldSimulation
     }
 
     static std::wstring Name(const Citizen& npc);
+    WorldPoint HomePosition(const Citizen& npc) const;
+    WorldPoint HomeDoor(const Citizen& npc) const;
+    std::wstring HomeAddress(const Citizen& npc) const;
+    std::wstring HeardNews(const Citizen& npc) const;
+    int OccupiedHomes(int town) const;
+    int KnownReports(int town) const;
+
+    size_t LettersInTransit() const
+    {
+        return letters_.size();
+    }
+
+    const std::array<VillageReport, VillageCount>& Bulletin(int town) const
+    {
+        return bulletins_.at(town);
+    }
+
     static NpcTendency Tendency(const Citizen& npc);
     static const wchar_t* TendencyName(NpcTendency tendency);
     static const wchar_t* ActionName(NpcAction action);
     static const wchar_t* GoalName(NpcGoal goal);
 
   private:
-    Citizen Create(int home);
+    Citizen Create(int home, int house = -1);
     void Learn(Citizen& npc, NpcAction action, double reward);
     bool CivilAction(Citizen& npc, double dt, const World& world);
     void Load();
@@ -218,6 +251,15 @@ class WorldSimulation
     void Trade(Citizen& npc);
     void Grow(Citizen& npc, int experience);
     void Ecology(double dt, const World& world, LevelOne& level);
+    int FreeHome(int town) const;
+    void UpdateSettlements(double dt);
+    void ObserveVillage(int town);
+    void ExchangeNews(Citizen& npc, int town);
+    void ShareReports(Citizen& a, Citizen& b);
+    void ConsiderMigration(Citizen& npc);
+    bool StartJourney(Citizen& npc, int town, bool relocate);
+    WorldPoint JourneyWaypoint(const Citizen& npc) const;
+    void ArriveJourney(Citizen& npc);
     std::filesystem::path path_;
     std::ofstream events_;
     std::ofstream states_;
@@ -227,7 +269,11 @@ class WorldSimulation
     std::vector<CitizenLoot> loot_;
     std::vector<SocialStrike> strikes_;
     std::deque<std::wstring> news_;
-    std::array<int, VillageCount> wildStock_{{12, 12, 12, 12, 12}};
+    std::array<int, VillageCount> wildStock_{{12, 12, 12, 12, 12, 12, 12}};
+    std::array<std::array<VillageReport, VillageCount>, VillageCount> bulletins_{};
+    std::vector<VillageLetter> letters_;
+    std::uint64_t reportRevision_ = 0;
+    double reportTimer_ = 0, letterTimer_ = 12;
     int playerGold_ = 30, playerGoods_ = 0, crime_ = 0;
     double time_ = 0, accumulator_ = 0, saveTimer_ = 0, ecologyTimer_ = 0, stockTimer_ = 0;
     double logTimer_ = 0;

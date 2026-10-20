@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "NpcSystem.h"
+#include "VillageLayout.h"
 #include <Windows.h>
 #include <cmath>
 #include <fstream>
@@ -19,6 +20,19 @@ NpcSystem::NpcSystem(const std::filesystem::path& saveDirectory)
 bool NpcSystem::IsPresent(const Npc& npc, const World& world) const
 {
     return world.CanWalk(npc.x, npc.y);
+}
+
+void NpcSystem::AssignHomes(std::uint64_t seed)
+{
+    for (size_t i = 0; i < residents_.size(); ++i)
+    {
+        auto home = VillageHome(0, VillageHomeCount + int(i), seed);
+        residents_[i].homeX = home.x;
+        residents_[i].homeY = home.y;
+        auto door = VillageHomeDoor(0, VillageHomeCount + int(i), seed);
+        residents_[i].x = door.x;
+        residents_[i].y = door.y;
+    }
 }
 
 void NpcSystem::SetPosition(int id, double x, double y)

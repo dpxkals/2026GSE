@@ -104,10 +104,12 @@ void WorldView::Structure(
     Color wood{0.38f, 0.28f, 0.20f, 1};
     const Color roofs[] = {{.22f, .30f, .34f, 1},
                            {.47f, .29f, .18f, 1},
-                           {.37f, .40f, .43f, 1},
+                           {.59f, .45f, .25f, 1},
                            {.24f, .36f, .31f, 1},
-                           {.42f, .20f, .18f, 1}};
-    Color roofColor = roofs[variation % 5];
+                           {.23f, .34f, .20f, 1},
+                           {.31f, .29f, .28f, 1},
+                           {.22f, .36f, .40f, 1}};
+    Color roofColor = roofs[variation % 7];
     renderer.Ellipse(p(0, 1), 30 * zoom, 13 * zoom, {0.015f, 0.02f, 0.02f, 0.35f});
     switch (prop)
     {
@@ -169,7 +171,14 @@ void WorldView::Structure(
             renderer.Ellipse(p(18, -27), 3 * zoom, 5 * zoom, {1, .64f, .22f, 1, 2});
             break;
         case Prop::Cottage:
-            box(0, 12, 25, 12, 35, {0.54f, 0.48f, 0.37f, 1});
+            box(0,
+                12,
+                25,
+                12,
+                35,
+                variation == 0                     ? Color{.49f, .51f, .48f, 1}
+                : variation == 2 || variation == 4 ? Color{.48f, .35f, .22f, 1}
+                                                   : Color{.54f, .48f, .37f, 1});
             roof(-35, -53, roofColor);
             box(-15, -46, 4, 3, 20, stone);
             renderer.Quad(p(3, 9), p(12, 5), p(12, -15), p(3, -11), Shade(wood, 0.48f));
@@ -182,6 +191,24 @@ void WorldView::Structure(
             renderer.Line(p(3, -9), p(3, 13), 1.3f * zoom, wood);
             box(-24, 10, 5, 3, 9, wood);
             renderer.Line(p(-25, 6), p(-18, 3), zoom, Shade(stone, 1.4f));
+            if (variation == 2 || variation == 4)
+            {
+                // Straw ridges and timber posts distinguish ordinary rural homes.
+                for (int i = -2; i <= 2; ++i)
+                {
+                    renderer.Line(p(float(i * 9), -35),
+                                  p(float(i * 9 + 10), -28),
+                                  zoom,
+                                  {.64f, .51f, .28f, 1});
+                }
+                box(22, 12, 3, 2, 25, wood);
+            }
+            if (variation == 6)
+            {
+                box(-21, 12, 3, 2, 14, wood);
+                box(21, 12, 3, 2, 14, wood);
+                renderer.Line(p(-28, 16), p(28, -12), 3 * zoom, wood);
+            }
             break;
         case Prop::Chapel:
             box(0, 12, 26, 13, 48, stone);

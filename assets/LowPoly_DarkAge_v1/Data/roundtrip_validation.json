@@ -1,0 +1,401 @@
+{
+  "blend_reopened": true,
+  "glbs_parsed": 78,
+  "glbs_reimported": 78,
+  "node_names_match": true,
+  "triangle_counts_match": true,
+  "bounds_match": true,
+  "all_210_recipe_references_and_compatibility_valid": true,
+  "checks": [
+    {
+      "asset_id": "NPC_Body_00_Male",
+      "bounds_error_m": 3.74e-06,
+      "triangles": 320
+    },
+    {
+      "asset_id": "NPC_Head_00_Male",
+      "bounds_error_m": 4.85e-06,
+      "triangles": 228
+    },
+    {
+      "asset_id": "NPC_Body_01_Female",
+      "bounds_error_m": 3.74e-06,
+      "triangles": 320
+    },
+    {
+      "asset_id": "NPC_Head_01_Female",
+      "bounds_error_m": 4.85e-06,
+      "triangles": 228
+    },
+    {
+      "asset_id": "NPC_Hair_00_Short",
+      "bounds_error_m": 2.96e-06,
+      "triangles": 120
+    },
+    {
+      "asset_id": "NPC_Hair_01_Long",
+      "bounds_error_m": 4.46e-06,
+      "triangles": 128
+    },
+    {
+      "asset_id": "NPC_Hair_02_Braid",
+      "bounds_error_m": 3.03e-06,
+      "triangles": 332
+    },
+    {
+      "asset_id": "NPC_Hair_03_Crop",
+      "bounds_error_m": 2.96e-06,
+      "triangles": 56
+    },
+    {
+      "asset_id": "NPC_Torso_00_Tunic",
+      "bounds_error_m": 4.54e-06,
+      "triangles": 232
+    },
+    {
+      "asset_id": "NPC_Torso_01_Armor",
+      "bounds_error_m": 4.35e-06,
+      "triangles": 380
+    },
+    {
+      "asset_id": "NPC_Torso_02_Ranger",
+      "bounds_error_m": 4.54e-06,
+      "triangles": 220
+    },
+    {
+      "asset_id": "NPC_Torso_03_Robe",
+      "bounds_error_m": 4.54e-06,
+      "triangles": 236
+    },
+    {
+      "asset_id": "NPC_Legs_00_Trousers",
+      "bounds_error_m": 1e-08,
+      "triangles": 136
+    },
+    {
+      "asset_id": "NPC_Legs_01_Greaves",
+      "bounds_error_m": 1e-08,
+      "triangles": 160
+    },
+    {
+      "asset_id": "NPC_Legs_02_RangerBoots",
+      "bounds_error_m": 1e-08,
+      "triangles": 184
+    },
+    {
+      "asset_id": "NPC_Back_00_Cloak",
+      "bounds_error_m": 1.63e-06,
+      "triangles": 28
+    },
+    {
+      "asset_id": "NPC_Back_01_Quiver",
+      "bounds_error_m": 3e-08,
+      "triangles": 148
+    },
+    {
+      "asset_id": "NPC_Back_02_Satchel",
+      "bounds_error_m": 1.43e-06,
+      "triangles": 48
+    },
+    {
+      "asset_id": "NPC_Back_03_Apron",
+      "bounds_error_m": 2e-08,
+      "triangles": 14
+    },
+    {
+      "asset_id": "NPC_Hand_00_Sword",
+      "bounds_error_m": 2.69e-06,
+      "triangles": 40
+    },
+    {
+      "asset_id": "NPC_Hand_01_Bow",
+      "bounds_error_m": 4.99e-06,
+      "triangles": 192
+    },
+    {
+      "asset_id": "NPC_Hand_02_Staff",
+      "bounds_error_m": 3.9e-06,
+      "triangles": 84
+    },
+    {
+      "asset_id": "NPC_Hand_03_Axe",
+      "bounds_error_m": 3e-08,
+      "triangles": 36
+    },
+    {
+      "asset_id": "NPC_Hand_04_Lantern",
+      "bounds_error_m": 1e-08,
+      "triangles": 104
+    },
+    {
+      "asset_id": "NPC_Headwear_00_Hood",
+      "bounds_error_m": 4.87e-06,
+      "triangles": 96
+    },
+    {
+      "asset_id": "NPC_Headwear_01_Helmet",
+      "bounds_error_m": 3.26e-06,
+      "triangles": 80
+    },
+    {
+      "asset_id": "NPC_Headwear_02_Cap",
+      "bounds_error_m": 1.5e-06,
+      "triangles": 72
+    },
+    {
+      "asset_id": "BLD_House_00_Timber",
+      "bounds_error_m": 1.41e-06,
+      "triangles": 464
+    },
+    {
+      "asset_id": "BLD_House_01_Thatch",
+      "bounds_error_m": 3.64e-06,
+      "triangles": 464
+    },
+    {
+      "asset_id": "BLD_House_02_Town",
+      "bounds_error_m": 4.32e-06,
+      "triangles": 464
+    },
+    {
+      "asset_id": "BLD_Workshop_00_Smith",
+      "bounds_error_m": 9e-08,
+      "triangles": 548
+    },
+    {
+      "asset_id": "BLD_House_03_Woodland",
+      "bounds_error_m": 4.92e-06,
+      "triangles": 440
+    },
+    {
+      "asset_id": "BLD_Abbey_00_Dawn",
+      "bounds_error_m": 2.3e-07,
+      "triangles": 452
+    },
+    {
+      "asset_id": "BLD_Keep_00_Ash",
+      "bounds_error_m": 2.1e-07,
+      "triangles": 600
+    },
+    {
+      "asset_id": "BLD_Market_00_Stall",
+      "bounds_error_m": 5e-08,
+      "triangles": 728
+    },
+    {
+      "asset_id": "ENV_Module_00_Wall",
+      "bounds_error_m": 1e-07,
+      "triangles": 96
+    },
+    {
+      "asset_id": "ENV_Module_01_Gate",
+      "bounds_error_m": 5e-08,
+      "triangles": 120
+    },
+    {
+      "asset_id": "ENV_Module_02_Tower",
+      "bounds_error_m": 1.9e-07,
+      "triangles": 192
+    },
+    {
+      "asset_id": "ENV_Module_03_Ruin",
+      "bounds_error_m": 4.23e-06,
+      "triangles": 236
+    },
+    {
+      "asset_id": "ENV_Module_04_Stairs",
+      "bounds_error_m": 6e-08,
+      "triangles": 72
+    },
+    {
+      "asset_id": "ENV_Module_05_Bridge",
+      "bounds_error_m": 0.0,
+      "triangles": 328
+    },
+    {
+      "asset_id": "ENV_Module_06_Dock",
+      "bounds_error_m": 2e-08,
+      "triangles": 216
+    },
+    {
+      "asset_id": "ENV_Module_07_Fence",
+      "bounds_error_m": 3.96e-06,
+      "triangles": 56
+    },
+    {
+      "asset_id": "NAT_Tree_00_Oak",
+      "bounds_error_m": 3.83e-06,
+      "triangles": 312
+    },
+    {
+      "asset_id": "NAT_Tree_01_Pine",
+      "bounds_error_m": 2.46e-06,
+      "triangles": 96
+    },
+    {
+      "asset_id": "NAT_Tree_02_Dead",
+      "bounds_error_m": 4.39e-06,
+      "triangles": 96
+    },
+    {
+      "asset_id": "NAT_Tree_03_Willow",
+      "bounds_error_m": 4.3e-06,
+      "triangles": 312
+    },
+    {
+      "asset_id": "NAT_Tree_04_Sapling",
+      "bounds_error_m": 4.93e-06,
+      "triangles": 112
+    },
+    {
+      "asset_id": "NAT_Tree_05_Stump",
+      "bounds_error_m": 4.93e-06,
+      "triangles": 128
+    },
+    {
+      "asset_id": "NAT_Ground_00_Grass",
+      "bounds_error_m": 4.85e-06,
+      "triangles": 90
+    },
+    {
+      "asset_id": "NAT_Ground_01_DryGrass",
+      "bounds_error_m": 4.47e-06,
+      "triangles": 90
+    },
+    {
+      "asset_id": "NAT_Ground_02_Fern",
+      "bounds_error_m": 3.75e-06,
+      "triangles": 140
+    },
+    {
+      "asset_id": "NAT_Ground_03_Reeds",
+      "bounds_error_m": 2.08e-06,
+      "triangles": 216
+    },
+    {
+      "asset_id": "NAT_Ground_04_Flowers",
+      "bounds_error_m": 4.85e-06,
+      "triangles": 306
+    },
+    {
+      "asset_id": "NAT_Ground_05_Shrub",
+      "bounds_error_m": 2.38e-06,
+      "triangles": 208
+    },
+    {
+      "asset_id": "NAT_Ground_06_Crop",
+      "bounds_error_m": 4.59e-06,
+      "triangles": 704
+    },
+    {
+      "asset_id": "NAT_Ground_07_Moss",
+      "bounds_error_m": 3.68e-06,
+      "triangles": 208
+    },
+    {
+      "asset_id": "NAT_Rock_00_Small",
+      "bounds_error_m": 4.76e-06,
+      "triangles": 52
+    },
+    {
+      "asset_id": "NAT_Rock_01_Boulder",
+      "bounds_error_m": 3.91e-06,
+      "triangles": 52
+    },
+    {
+      "asset_id": "NAT_Rock_02_Slate",
+      "bounds_error_m": 4.87e-06,
+      "triangles": 52
+    },
+    {
+      "asset_id": "NAT_Rock_03_Ore",
+      "bounds_error_m": 4.58e-06,
+      "triangles": 196
+    },
+    {
+      "asset_id": "NAT_Rock_04_Cliff",
+      "bounds_error_m": 3.89e-06,
+      "triangles": 52
+    },
+    {
+      "asset_id": "ENV_Tile_00_Earth",
+      "bounds_error_m": 0.0,
+      "triangles": 12
+    },
+    {
+      "asset_id": "ENV_Tile_01_Cobble",
+      "bounds_error_m": 0.0,
+      "triangles": 312
+    },
+    {
+      "asset_id": "ENV_Tile_02_Field",
+      "bounds_error_m": 0.0,
+      "triangles": 84
+    },
+    {
+      "asset_id": "ENV_Tile_03_River",
+      "bounds_error_m": 0.0,
+      "triangles": 72
+    },
+    {
+      "asset_id": "PRP_00_Well",
+      "bounds_error_m": 5e-08,
+      "triangles": 232
+    },
+    {
+      "asset_id": "PRP_01_Crate",
+      "bounds_error_m": 1e-08,
+      "triangles": 96
+    },
+    {
+      "asset_id": "PRP_02_Barrel",
+      "bounds_error_m": 3.12e-06,
+      "triangles": 148
+    },
+    {
+      "asset_id": "PRP_03_Cart",
+      "bounds_error_m": 4.21e-06,
+      "triangles": 264
+    },
+    {
+      "asset_id": "PRP_04_Grave",
+      "bounds_error_m": 2e-08,
+      "triangles": 56
+    },
+    {
+      "asset_id": "PRP_05_Memorial",
+      "bounds_error_m": 2e-08,
+      "triangles": 112
+    },
+    {
+      "asset_id": "PRP_06_Lamppost",
+      "bounds_error_m": 1e-07,
+      "triangles": 140
+    },
+    {
+      "asset_id": "PRP_07_Campfire",
+      "bounds_error_m": 3.72e-06,
+      "triangles": 438
+    },
+    {
+      "asset_id": "PRP_08_Sign",
+      "bounds_error_m": 2e-08,
+      "triangles": 44
+    },
+    {
+      "asset_id": "PRP_09_Bench",
+      "bounds_error_m": 2e-08,
+      "triangles": 36
+    },
+    {
+      "asset_id": "PRP_10_Supply",
+      "bounds_error_m": 4.14e-06,
+      "triangles": 168
+    },
+    {
+      "asset_id": "PRP_11_Rift",
+      "bounds_error_m": 4.77e-06,
+      "triangles": 124
+    }
+  ]
+}

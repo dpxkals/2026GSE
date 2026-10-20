@@ -2,6 +2,7 @@
 #include "SocietyView.h"
 #include "CharacterArt.h"
 #include "VillageLayout.h"
+#include "AssetRuntime.h"
 #include <algorithm>
 #include <sstream>
 #include <iomanip>
@@ -20,7 +21,11 @@ void SocietyView::CitizenBody(SceneRenderer& r,
     {
         actionPose.work = pose.breath * (1 - pose.moving);
     }
-    CharacterArt::Human(r, p, zoom, 3 + int(WorldSimulation::Tendency(npc)), npc.level, actionPose);
+    if (!AssetRuntime::Instance().DrawCitizen(r, npc.id, p, zoom, actionPose))
+    {
+        CharacterArt::Human(
+            r, p, zoom, 3 + int(WorldSimulation::Tendency(npc)), npc.level, actionPose);
+    }
     if (selected || npc.hostility > 0 || npc.health < npc.maxHealth)
     {
         r.Rect(p.x - 17 * zoom, p.y - 59 * zoom, 34 * zoom, 4 * zoom, {0.07f, 0.08f, 0.08f, 1});
@@ -65,7 +70,7 @@ void SocietyView::Panel(SceneRenderer& r, const WorldSimulation& sim, int width,
     const auto* n = sim.Find(sim.Selected());
     if (n)
     {
-        r.Rect(20, top, 304, 210, ink);
+        r.Rect(20, top, 304, 274, ink);
         r.Rect(20, top, 304, 1, gold);
         r.KoreanText(32,
                      top + 10,
@@ -92,17 +97,20 @@ void SocietyView::Panel(SceneRenderer& r, const WorldSimulation& sim, int width,
             280);
         r.KoreanText(32,
                      top + 136,
-                     L"성향은 행동 결과에 따라 변합니다.\nCtrl+좌클릭: 공격   우클릭: 해제",
+                     L"집  " + sim.HomeAddress(*n) + L"\n" + sim.HeardNews(*n),
                      text,
                      12,
                      280);
         r.KoreanText(32,
-                     top + 183,
-                     sim.AttackingSelected() ? L"공격 대상으로 지정됨"
-                                             : L"관찰 중 · 중립 대상 공격 안 함",
+                     top + 215,
+                     n->travelVillage >= 0
+                         ? std::wstring(n->reservedHouse >= 0 ? L"이사 중 → " : L"방문 중 → ") +
+                               Villages()[n->travelVillage].name
+                         : L"가까이 F 소식 듣기 · 우클릭 해제",
                      sim.AttackingSelected() ? Color{1, 0.4f, 0.3f, 1} : gold,
                      13,
                      280);
+        r.KoreanText(32, top + 246, L"주택 소유·소문·이사는 모니터에서도 확인", gold, 12, 280);
     }
     float newsTop = float(height) - 176;
     r.Rect(20, newsTop, 340, 78, ink);

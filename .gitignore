@@ -14,4 +14,7 @@
 SaveData/
 Logs/
 Monitor/__pycache__/
+/x64/*/assets/
+/x64/*/Config/
+/Tests/bin/
 

@@ -26,8 +26,10 @@ but WITHOUT ANY WARRANTY.
 #include "SocietyView.h"
 #include "CharacterArt.h"
 #include "VillageLayout.h"
+#include "AssetRuntime.h"
 #include "Dependencies/freeglut.h"
 #include <Windows.h>
+#include <shellapi.h>
 #include <algorithm>
 #include <chrono>
 #include <cmath>
@@ -236,12 +238,23 @@ namespace
 
     void Player(Point2 p, const ActorPose& pose)
     {
-        CharacterArt::Human(renderer, p, zoom, 0, levelOne->Player().level, pose);
+        if (!AssetRuntime::Instance().DrawRole(renderer, "player", "player", p, zoom, pose))
+        {
+            CharacterArt::Human(renderer, p, zoom, 0, levelOne->Player().level, pose);
+        }
     }
 
     void DrawNpc(Point2 p, const Npc& npc, const ActorPose& pose)
     {
-        CharacterArt::Human(renderer, p, zoom, npc.style == 0 ? 1 : 2, 1, pose);
+        if (!AssetRuntime::Instance().DrawRole(renderer,
+                                               npc.style == 0 ? "warden" : "scholar",
+                                               "resident:" + std::to_string(npc.id),
+                                               p,
+                                               zoom,
+                                               pose))
+        {
+            CharacterArt::Human(renderer, p, zoom, npc.style == 0 ? 1 : 2, 1, pose);
+        }
     }
 
     bool Speaking()
@@ -626,9 +639,15 @@ namespace
                 }
                 auto position = actor.Position();
                 Point2 p = Project(position.x, position.y);
-                std::string meshKey = "prop:rpg3:" + std::to_string(int(tile->prop)) + ":" +
-                                      std::to_string(tile->variation);
-                if (renderer.BeginMesh(meshKey, p, zoom))
+                std::string meshKey =
+                    AssetRuntime::Instance().PropMesh(renderer, tile->prop, tile->variation);
+                bool imported = !meshKey.empty();
+                if (!imported)
+                {
+                    meshKey = "prop:settlement4:" + std::to_string(int(tile->prop)) + ":" +
+                              std::to_string(tile->variation);
+                }
+                if (!imported && renderer.BeginMesh(meshKey, p, zoom))
                 {
                     switch (tile->prop)
                     {
@@ -670,7 +689,32 @@ namespace
                 float& opacity = actor.opacity;
                 float desired = covers ? 0.25f : 1.0f;
                 opacity += (desired - opacity) * float(1.0 - std::exp(-renderDelta * 12.0));
-                renderer.DrawMesh(meshKey, p, zoom, opacity);
+                if (!imported ||
+                    !AssetRuntime::Instance().DrawAnimatedProp(
+                        renderer, tile->prop, tile->variation, actor.Key(), p, zoom, opacity))
+                {
+                    renderer.DrawMesh(meshKey, p, zoom, opacity);
+                }
+                if (society)
+                {
+                    if (const auto* citizen = society->Find(society->Selected()))
+                    {
+                        auto home = society->HomePosition(*citizen);
+                        if (std::hypot(position.x - home.x, position.y - home.y) < .1)
+                        {
+                            renderer.Ellipse({p.x, p.y + 6 * zoom},
+                                             42 * zoom,
+                                             18 * zoom,
+                                             {.92f, .73f, .28f, .35f});
+                            renderer.KoreanText(p.x - 70 * zoom,
+                                                p.y - 155 * zoom,
+                                                WorldSimulation::Name(*citizen) + L"의 집",
+                                                {.96f, .81f, .43f, 1},
+                                                14,
+                                                180);
+                        }
+                    }
+                }
                 if (tile->prop == Prop::Beacon && tile->lit)
                 {
                     BeaconFlame(p);
@@ -1008,6 +1052,10 @@ namespace
                              paused || rpgPanel.IsOpen(),
                              foregroundProcess == GetCurrentProcessId());
         }
+        if (society && society->Error().empty())
+        {
+            AssetRuntime::Instance().Update(animationClock, society->People());
+        }
         WorldPoint position = levelOne->Player().position;
         if (std::hypot(playerX - position.x, playerY - position.y) > 8.0)
         {
@@ -1047,6 +1095,7 @@ namespace
             monitor->Publish(*world, *society, *levelOne, *npcs, false, paused, false, true);
             monitor.reset();
         }
+        AssetRuntime::Instance().Shutdown();
         renderer.Shutdown();
     }
 
@@ -1148,6 +1197,33 @@ namespace
         }
         if (key == 'f')
         {
+            if (society)
+            {
+                const auto* citizen = society->Find(society->Selected());
+                if (citizen && citizen->health > 0 && citizen->hostility <= 0 &&
+                    std::hypot(citizen->position.x - playerX, citizen->position.y - playerY) <=
+                        2.5 &&
+                    world->ClearLine(playerX, playerY, citizen->position.x, citizen->position.y))
+                {
+                    dialoguePages = {
+                        L"저는 " + WorldSimulation::Name(*citizen) + L"입니다. 제 집은 " +
+                            society->HomeAddress(*citizen) + L"에 있어요.",
+                        society->HeardNews(*citizen),
+                        citizen->travelVillage >= 0
+                            ? std::wstring(citizen->reservedHouse >= 0
+                                               ? L"들은 소식을 믿고 이사를 가는 중이에요. "
+                                               : L"이웃 마을에 소식을 전하러 가요. ") +
+                                  Villages()[citizen->travelVillage].name + L"로 향하고 있어요."
+                            : L"저는 " + std::wstring(WorldSimulation::GoalName(citizen->goal)) +
+                                  L"을 바라며 살고 있어요."};
+                    dialoguePage = 0;
+                    speakingNpc = speakingSoul = -1;
+                    transactionDialogue = true;
+                    levelOne->RecordConversation();
+                    ClearInput();
+                    return;
+                }
+            }
             TalkTarget target = GetTalkTarget(false);
             if (target.Valid())
             {
@@ -1267,6 +1343,7 @@ namespace
                 std::filesystem::remove(gameplaySaveDirectory / file);
             }
             auto freshNpcs = std::make_unique<NpcSystem>(gameplaySaveDirectory);
+            freshNpcs->AssignHomes(world->Seed());
             auto freshLevel = std::make_unique<LevelOne>(gameplaySaveDirectory, world->Seed());
             auto freshSociety =
                 std::make_unique<WorldSimulation>(gameplaySaveDirectory, world->Seed());
@@ -1359,6 +1436,18 @@ namespace
         if (key == GLUT_KEY_F9)
         {
             ResetPlayData();
+            return;
+        }
+        if (key == GLUT_KEY_F10)
+        {
+            bool loaded = AssetRuntime::Instance().Reload(renderer);
+            if (loaded && society && society->Error().empty())
+            {
+                AssetRuntime::Instance().Update(animationClock, society->People());
+            }
+            message = loaded ? "ASSETS RELOADED" : "ASSET RELOAD FAILED - SEE CONSOLE";
+            messageUntil = glutGet(GLUT_ELAPSED_TIME) / 1000.0 + 4;
+            ClearInput();
             return;
         }
         auto& effects = renderer.Effects();
@@ -1553,9 +1642,23 @@ int main(int argc, char** argv)
         return 1;
     }
     bool naturalWorld = false;
+    std::filesystem::path assetRoot;
     for (int i = 1; i < argc; ++i)
     {
         naturalWorld = naturalWorld || std::string(argv[i]) == "--natural-world";
+    }
+    int wideCount = 0;
+    LPWSTR* wideArguments = CommandLineToArgvW(GetCommandLineW(), &wideCount);
+    if (wideArguments)
+    {
+        for (int i = 1; i + 1 < wideCount; ++i)
+        {
+            if (std::wstring(wideArguments[i]) == L"--assets")
+            {
+                assetRoot = wideArguments[++i];
+            }
+        }
+        LocalFree(wideArguments);
     }
     auto savePath = std::filesystem::path(executable).parent_path() / L"SaveData" /
                     (naturalWorld ? L"Level01_natural_v2" : L"Level01_v1");
@@ -1572,14 +1675,21 @@ int main(int argc, char** argv)
         return 1;
     }
     npcs = std::make_unique<NpcSystem>(savePath);
+    npcs->AssignHomes(world->Seed());
     renderer.SetMeshCacheDirectory(savePath / L"MeshCache" / std::to_string(world->Seed()));
     FrameProfiler::Instance().OpenLog(
         std::filesystem::path(executable).parent_path() / L"Logs",
         "seed=" + std::to_string(world->Seed()) +
             (naturalWorld ? ";mode=Level01_natural_v2" : ";mode=Level01_v1") +
-            ";terrain=v9;art=rig2;props=rpg3;rpg=1");
+            ";terrain=v10;art=rig2;props=settlement4;rpg=1;villages=7;citizens=210");
     levelOne = std::make_unique<LevelOne>(savePath, world->Seed());
     society = std::make_unique<WorldSimulation>(savePath, world->Seed());
+    AssetRuntime::Instance().Initialize(
+        std::filesystem::path(executable).parent_path(), savePath, assetRoot);
+    if (society->Error().empty())
+    {
+        AssetRuntime::Instance().Update(animationClock, society->People());
+    }
     try
     {
         monitor = std::make_unique<WorldMonitor>(
@@ -1603,6 +1713,7 @@ int main(int argc, char** argv)
         << "F1: chunk edges | H: help | Home: origin | Esc: exit\n"
         << "Left click NPC: inspect | Ctrl+click: PK target | Right click: cancel | T: trade | Y: XP | G: loot\n"
         << "F8: diagnostics HUD (hidden by default)\n"
+        << "F10: reload asset catalog, GLB models, palettes and animation bindings\n"
         << "Monitor: built-in server starts automatically; open the [Monitor HTTP] URL above.\n"
         << "Simulation continues in background. Press P in the game to pause safely.\n"
         << "F2: post on/off | F3: bloom | F4: vignette | F5: edge blur | F6: reset FX\n"

@@ -57,6 +57,7 @@ class SceneRenderer
                       Color tint = {1, 1, 1, 1});
     bool MeshCovers(const std::string& key, Point2 origin, float scale, Point2 point) const;
     void RetainTerrainMeshes(const std::set<std::string>& keys);
+    void RemoveMeshes(const std::string& prefix);
 
     size_t MeshCount() const
     {

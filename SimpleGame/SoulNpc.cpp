@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "LevelOne.h"
+#include "KoreanNames.h"
 #include <cmath>
 
 std::wstring SoulNpc::Name() const
 {
-    return L"잔향 " + std::to_wstring(deathNumber);
+    return L"잔향 " + KoreanPersonalName(id);
 }
 
 std::wstring SoulNpc::Role() const

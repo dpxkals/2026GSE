@@ -1,0 +1,543 @@
+{
+  "schema_version": 1,
+  "units": "meter",
+  "blender_up_axis": "+Z",
+  "blender_forward": "-Y",
+  "gltf_up_axis": "+Y",
+  "gltf_forward": "+Z",
+  "gltf_conversion": "(x,y,z)_blender -> (x,z,-y)_gltf",
+  "nominal_height_m": 1.8,
+  "head_height_m": 0.6,
+  "ratio": "3 heads excluding hair and headwear",
+  "assembly": "All NPC part GLBs have the same feet-origin; overlay at identity transform. Do not recenter individual parts.",
+  "none_index": -1,
+  "slots": {
+    "body": [
+      {
+        "index": 0,
+        "asset_id": "NPC_Body_00_Male",
+        "label_ko": "남성 체형"
+      },
+      {
+        "index": 1,
+        "asset_id": "NPC_Body_01_Female",
+        "label_ko": "여성 체형"
+      }
+    ],
+    "head": [
+      {
+        "index": 0,
+        "asset_id": "NPC_Head_00_Male",
+        "label_ko": "남성 얼굴"
+      },
+      {
+        "index": 1,
+        "asset_id": "NPC_Head_01_Female",
+        "label_ko": "여성 얼굴"
+      }
+    ],
+    "hair": [
+      {
+        "index": 0,
+        "asset_id": "NPC_Hair_00_Short",
+        "label_ko": "짧은 머리"
+      },
+      {
+        "index": 1,
+        "asset_id": "NPC_Hair_01_Long",
+        "label_ko": "긴 머리"
+      },
+      {
+        "index": 2,
+        "asset_id": "NPC_Hair_02_Braid",
+        "label_ko": "땋은 머리"
+      },
+      {
+        "index": 3,
+        "asset_id": "NPC_Hair_03_Crop",
+        "label_ko": "아주 짧은 머리"
+      }
+    ],
+    "torso": [
+      {
+        "index": 0,
+        "asset_id": "NPC_Torso_00_Tunic",
+        "label_ko": "평민 튜닉"
+      },
+      {
+        "index": 1,
+        "asset_id": "NPC_Torso_01_Armor",
+        "label_ko": "판금 갑옷"
+      },
+      {
+        "index": 2,
+        "asset_id": "NPC_Torso_02_Ranger",
+        "label_ko": "궁수 가죽옷"
+      },
+      {
+        "index": 3,
+        "asset_id": "NPC_Torso_03_Robe",
+        "label_ko": "수도사 로브"
+      }
+    ],
+    "legs": [
+      {
+        "index": 0,
+        "asset_id": "NPC_Legs_00_Trousers",
+        "label_ko": "바지와 장화"
+      },
+      {
+        "index": 1,
+        "asset_id": "NPC_Legs_01_Greaves",
+        "label_ko": "갑옷 다리"
+      },
+      {
+        "index": 2,
+        "asset_id": "NPC_Legs_02_RangerBoots",
+        "label_ko": "궁수 바지와 긴 장화"
+      }
+    ],
+    "back": [
+      {
+        "index": 0,
+        "asset_id": "NPC_Back_00_Cloak",
+        "label_ko": "짧은 망토"
+      },
+      {
+        "index": 1,
+        "asset_id": "NPC_Back_01_Quiver",
+        "label_ko": "화살통"
+      },
+      {
+        "index": 2,
+        "asset_id": "NPC_Back_02_Satchel",
+        "label_ko": "어깨 가방"
+      },
+      {
+        "index": 3,
+        "asset_id": "NPC_Back_03_Apron",
+        "label_ko": "작업 앞치마"
+      }
+    ],
+    "hand": [
+      {
+        "index": 0,
+        "asset_id": "NPC_Hand_00_Sword",
+        "label_ko": "단검이 아닌 짧은 검"
+      },
+      {
+        "index": 1,
+        "asset_id": "NPC_Hand_01_Bow",
+        "label_ko": "활"
+      },
+      {
+        "index": 2,
+        "asset_id": "NPC_Hand_02_Staff",
+        "label_ko": "잔흔 지팡이"
+      },
+      {
+        "index": 3,
+        "asset_id": "NPC_Hand_03_Axe",
+        "label_ko": "도끼"
+      },
+      {
+        "index": 4,
+        "asset_id": "NPC_Hand_04_Lantern",
+        "label_ko": "손등불"
+      }
+    ],
+    "headwear": [
+      {
+        "index": 0,
+        "asset_id": "NPC_Headwear_00_Hood",
+        "label_ko": "천 후드"
+      },
+      {
+        "index": 1,
+        "asset_id": "NPC_Headwear_01_Helmet",
+        "label_ko": "철제 투구"
+      },
+      {
+        "index": 2,
+        "asset_id": "NPC_Headwear_02_Cap",
+        "label_ko": "천 모자"
+      }
+    ]
+  },
+  "palette": {
+    "skin": [
+      "PAL_Skin_00",
+      "PAL_Skin_01",
+      "PAL_Skin_02",
+      "PAL_Skin_03"
+    ],
+    "hair": [
+      "PAL_Hair_00",
+      "PAL_Hair_01",
+      "PAL_Hair_02",
+      "PAL_Hair_03",
+      "PAL_Hair_04"
+    ],
+    "cloth": [
+      "PAL_Cloth_00",
+      "PAL_Cloth_01",
+      "PAL_Cloth_02",
+      "PAL_Cloth_03",
+      "PAL_Cloth_04",
+      "PAL_Cloth_05",
+      "PAL_Cloth_06"
+    ],
+    "roof": [
+      "PAL_Roof_00",
+      "PAL_Roof_01",
+      "PAL_Roof_02",
+      "PAL_Roof_03",
+      "PAL_Roof_04",
+      "PAL_Roof_05",
+      "PAL_Roof_06"
+    ],
+    "colors": {
+      "MAT_Skin": [
+        0.46207699179649353,
+        0.2541520893573761,
+        0.14702726900577545
+      ],
+      "MAT_Hair": [
+        0.05951123684644699,
+        0.0382043719291687,
+        0.028426039963960648
+      ],
+      "MAT_Cloth": [
+        0.08650045841932297,
+        0.12477181851863861,
+        0.1441284716129303
+      ],
+      "MAT_ClothLight": [
+        0.21952620148658752,
+        0.21952620148658752,
+        0.15292614698410034
+      ],
+      "MAT_Leather": [
+        0.09530746936798096,
+        0.05612849071621895,
+        0.03688944876194
+      ],
+      "MAT_LeatherLight": [
+        0.2345505803823471,
+        0.12477181851863861,
+        0.05612849071621895
+      ],
+      "MAT_Iron": [
+        0.14702726900577545,
+        0.18447498977184296,
+        0.2015562504529953
+      ],
+      "MAT_IronDark": [
+        0.039546236395835876,
+        0.05612849071621895,
+        0.06480326503515244
+      ],
+      "MAT_Brass": [
+        0.41788506507873535,
+        0.25015828013420105,
+        0.0802198201417923
+      ],
+      "MAT_Stone": [
+        0.17144110798835754,
+        0.18782077729701996,
+        0.18447498977184296
+      ],
+      "MAT_StoneLight": [
+        0.31398871541023254,
+        0.31854677200317383,
+        0.2541520893573761
+      ],
+      "MAT_StoneDark": [
+        0.07036009430885315,
+        0.08865558356046677,
+        0.09305896610021591
+      ],
+      "MAT_Plaster": [
+        0.37123769521713257,
+        0.3277781009674072,
+        0.22322796285152435
+      ],
+      "MAT_Wood": [
+        0.08228270709514618,
+        0.06301001459360123,
+        0.04373503103852272
+      ],
+      "MAT_WoodLight": [
+        0.21952620148658752,
+        0.16202937066555023,
+        0.09758734703063965
+      ],
+      "MAT_Roof": [
+        0.07036009430885315,
+        0.10702310502529144,
+        0.12477181851863861
+      ],
+      "MAT_Thatch": [
+        0.2581828534603119,
+        0.2158605009317398,
+        0.09530746936798096
+      ],
+      "MAT_Leaf": [
+        0.05951123684644699,
+        0.10702310502529144,
+        0.06480326503515244
+      ],
+      "MAT_LeafLight": [
+        0.1384316086769104,
+        0.18116424977779388,
+        0.08865558356046677
+      ],
+      "MAT_Grass": [
+        0.18782077729701996,
+        0.2158605009317398,
+        0.10224173218011856
+      ],
+      "MAT_Earth": [
+        0.08228270709514618,
+        0.07227185368537903,
+        0.05126945674419403
+      ],
+      "MAT_Water": [
+        0.08865558356046677,
+        0.19806931912899017,
+        0.2015562504529953
+      ],
+      "MAT_Eye": [
+        0.01599629409611225,
+        0.023153366521000862,
+        0.02518685907125473
+      ],
+      "MAT_Linen": [
+        0.5088813304901123,
+        0.4507857859134674,
+        0.31854677200317383
+      ],
+      "MAT_Scar": [
+        0.23839756846427917,
+        0.11697066575288773,
+        0.08437620848417282
+      ],
+      "MAT_Ash": [
+        0.3324515223503113,
+        0.3324515223503113,
+        0.24228112399578094
+      ],
+      "MAT_Flower": [
+        0.5088813304901123,
+        0.38642942905426025,
+        0.14702726900577545
+      ],
+      "MAT_Ember": [
+        1.0,
+        0.533276379108429,
+        0.19806931912899017
+      ],
+      "MAT_Soul": [
+        0.22696587443351746,
+        0.5840784311294556,
+        0.46207699179649353
+      ],
+      "PAL_Skin_00": [
+        0.6583748459815979,
+        0.41788506507873535,
+        0.2541520893573761
+      ],
+      "PAL_Skin_01": [
+        0.4125426113605499,
+        0.1946178376674652,
+        0.09989872574806213
+      ],
+      "PAL_Skin_02": [
+        0.18447498977184296,
+        0.07818742096424103,
+        0.045186202973127365
+      ],
+      "PAL_Skin_03": [
+        0.0802198201417923,
+        0.0423114113509655,
+        0.03071344457566738
+      ],
+      "PAL_Hair_00": [
+        0.02955683507025242,
+        0.026241222396492958,
+        0.026241222396492958
+      ],
+      "PAL_Hair_01": [
+        0.13563333451747894,
+        0.07227185368537903,
+        0.039546236395835876
+      ],
+      "PAL_Hair_02": [
+        0.35640013217926025,
+        0.2581828534603119,
+        0.13013647496700287
+      ],
+      "PAL_Hair_03": [
+        0.3613067865371704,
+        0.38132601976394653,
+        0.35153260827064514
+      ],
+      "PAL_Hair_04": [
+        0.16826939582824707,
+        0.04817182570695877,
+        0.03189603239297867
+      ],
+      "PAL_Cloth_00": [
+        0.08228270709514618,
+        0.11443537473678589,
+        0.14126329123973846
+      ],
+      "PAL_Cloth_01": [
+        0.26635560393333435,
+        0.177888423204422,
+        0.07036009430885315
+      ],
+      "PAL_Cloth_02": [
+        0.12477181851863861,
+        0.15292614698410034,
+        0.0802198201417923
+      ],
+      "PAL_Cloth_03": [
+        0.20863686501979828,
+        0.14126329123973846,
+        0.15292614698410034
+      ],
+      "PAL_Cloth_04": [
+        0.06847816705703735,
+        0.1384316086769104,
+        0.13286831974983215
+      ],
+      "PAL_Cloth_05": [
+        0.22696587443351746,
+        0.09305896610021591,
+        0.07036009430885315
+      ],
+      "PAL_Cloth_06": [
+        0.2541520893573761,
+        0.25015828013420105,
+        0.1946178376674652
+      ],
+      "PAL_Roof_00": [
+        0.06480326503515244,
+        0.10224173218011856,
+        0.13013647496700287
+      ],
+      "PAL_Roof_01": [
+        0.26635560393333435,
+        0.17464740574359894,
+        0.07421357184648514
+      ],
+      "PAL_Roof_02": [
+        0.18447498977184296,
+        0.20863686501979828,
+        0.19120168685913086
+      ],
+      "PAL_Roof_03": [
+        0.12477181851863861,
+        0.16513219475746155,
+        0.12743768095970154
+      ],
+      "PAL_Roof_04": [
+        0.2345505803823471,
+        0.09530746936798096,
+        0.07227185368537903
+      ],
+      "PAL_Roof_05": [
+        0.05780543014407158,
+        0.06847816705703735,
+        0.07818742096424103
+      ],
+      "PAL_Roof_06": [
+        0.09305896610021591,
+        0.17144110798835754,
+        0.17464740574359894
+      ]
+    },
+    "color_space": "linear RGB",
+    "replace_material": {
+      "skin": "MAT_Skin",
+      "hair": "MAT_Hair",
+      "cloth": "MAT_Cloth",
+      "roof": "MAT_Roof"
+    }
+  },
+  "sockets_blender_m": {
+    "root": [
+      0,
+      0,
+      0
+    ],
+    "head_center": [
+      0,
+      0,
+      1.5
+    ],
+    "hand_R": [
+      0.46,
+      -0.02,
+      0.69
+    ],
+    "hand_L": [
+      -0.46,
+      -0.02,
+      0.69
+    ],
+    "back": [
+      0,
+      0.19,
+      0.98
+    ]
+  },
+  "compatibility": [
+    {
+      "if": {
+        "headwear": [
+          0,
+          1
+        ]
+      },
+      "require": {
+        "hair": [
+          -1
+        ]
+      },
+      "reason": "Hood/helmet replace the hair cap."
+    },
+    {
+      "if": {
+        "back": [
+          1
+        ]
+      },
+      "forbid": {
+        "hair": [
+          1,
+          2
+        ]
+      },
+      "reason": "Long hair/braid overlap the quiver."
+    },
+    {
+      "if": {
+        "torso": [
+          3
+        ]
+      },
+      "forbid": {
+        "back": [
+          2,
+          3
+        ]
+      },
+      "reason": "Robe stole overlaps diagonal satchel strap / apron."
+    }
+  ],
+  "scope": "Static rigid parts; no skeleton, skin weights, animation clips, collision meshes or runtime code.",
+  "index_policy": "Index values are stable within schema v1; append new variants, never reorder. Body and head may be chosen independently.",
+  "preset_binding": "210 design recipes, 30 per current village; runtime_npc_id is null. Bind to actual persisted IDs in integration task; do not assume ordinal equals runtime ID."
+}

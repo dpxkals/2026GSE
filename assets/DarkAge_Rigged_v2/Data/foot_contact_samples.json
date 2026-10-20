@@ -1,0 +1,9442 @@
+[
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.03125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.03125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.0625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.0625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.09375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.09375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.15625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.15625,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.129187,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.1875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.1875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.146179,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.21875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.21875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.161236,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.173245,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.28125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.28125,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.181319,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.3125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.3125,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.184861,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.34375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.34375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.183609,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.177656,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.40625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.40625,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.167441,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.4375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.4375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.15372,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.46875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.46875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.137507,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.53125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.53125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.5625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.5625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.59375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.59375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.65625,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.129187,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.65625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.6875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.146179,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.6875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.71875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.161236,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.71875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.173245,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.78125,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.181319,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.78125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.8125,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.184861,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.8125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.84375,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.183609,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.84375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.177656,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.90625,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.167441,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.90625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.9375,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.15372,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.9375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.96875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.137507,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 0.96875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.136875,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.177458,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.212837,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.239809,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.255932,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.259745,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.250902,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.230206,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.199529,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.16165,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.136875,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.177458,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.212837,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.239809,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.255932,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.259745,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.250902,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.230206,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.199529,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.16165,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.12,
+    "ankle_rest_z": 0.12,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_NPC_Common_v2",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.136875,
+    "ankle_rest_z": 0.12,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.03125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.03125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.0625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.0625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.09375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.09375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.15625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.15625,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.13177,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.1875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.1875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.149102,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.21875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.21875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.16446,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.17671,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.28125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.28125,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.184945,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.3125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.3125,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.188558,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.34375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.34375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.187281,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.181209,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.40625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.40625,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.17079,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.4375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.4375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.156795,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.46875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.46875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.140257,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.53125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.53125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.5625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.5625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.59375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.59375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.65625,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.13177,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.65625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.6875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.149102,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.6875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.71875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.16446,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.71875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.17671,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.78125,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.184945,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.78125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.8125,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.188558,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.8125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.84375,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.187281,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.84375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.181209,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.90625,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.17079,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.90625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.9375,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.156795,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.9375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.96875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.140257,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 0.96875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.139613,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.181007,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.217094,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.244606,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.26105,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.264939,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.25592,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.23481,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.20352,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.164883,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.139613,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.181007,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.217094,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.244606,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.26105,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.264939,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.25592,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.23481,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.20352,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.164883,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.1224,
+    "ankle_rest_z": 0.1224,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_00_Husk",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.139613,
+    "ankle_rest_z": 0.1224,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.03125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.03125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.0625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.0625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.09375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.09375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.15625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.15625,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.098182,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.1875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.1875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.111096,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.21875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.21875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.122539,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.131666,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.28125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.28125,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.137802,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.3125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.3125,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.140494,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.34375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.34375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.139543,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.135018,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.40625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.40625,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.127255,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.4375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.4375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.116827,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.46875,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.46875,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.104505,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.53125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.53125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.5625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.5625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.59375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.59375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.65625,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.098182,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.65625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.6875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.111096,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.6875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.71875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.122539,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.71875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.131666,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.78125,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.137802,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.78125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.8125,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.140494,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.8125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.84375,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.139543,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.84375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.135018,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.90625,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.127255,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.90625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.9375,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.116827,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.9375,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.96875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.104505,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 0.96875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.104025,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.134868,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.161756,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.182255,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.194508,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.197406,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.190686,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.174956,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.151642,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.122854,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.104025,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.134868,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.161756,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.182255,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.194508,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.197406,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.190686,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.174956,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.151642,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.122854,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.0912,
+    "ankle_rest_z": 0.0912,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_01_Goblin",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.104025,
+    "ankle_rest_z": 0.0912,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.025,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.025,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.05,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.05,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.075,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.075,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.1,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.1,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.125,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.125,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.15,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.15,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.175931,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.175,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.175,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.195364,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.2,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.2,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.2135,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.225,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.225,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.229479,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.242543,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.275,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.275,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.252073,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.3,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.3,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.257618,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.325,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.325,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.258913,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.35,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.35,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.255899,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.375,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.375,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.248718,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.4,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.4,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.23771,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.425,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.425,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.223397,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.45,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.45,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.206458,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.475,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.475,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.187696,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.525,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.525,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.55,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.55,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.575,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.575,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.6,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.6,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.625,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.625,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.65,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.175931,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.65,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.675,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.195364,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.675,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.7,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.2135,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.7,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.725,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.229479,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.725,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.242543,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.775,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.252073,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.775,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.8,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.257618,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.8,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.825,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.258913,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.825,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.85,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.255899,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.85,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.875,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.248718,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.875,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.9,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.23771,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.9,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.925,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.223397,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.925,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.95,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.206458,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.95,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.975,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.187696,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 0.975,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.191625,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.03571,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.03571,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.232735,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.07143,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.07143,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.270842,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.10714,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.10714,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.30418,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.14286,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.14286,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.331203,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.17857,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.17857,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.350657,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.21429,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.21429,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.36164,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.363642,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.28571,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.28571,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.356572,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.32143,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.32143,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.340757,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.35714,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.35714,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.31693,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.39286,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.39286,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.286196,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.42857,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.42857,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.24998,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.46429,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.46429,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.209963,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.191625,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.53571,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.232735,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.53571,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.57143,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.270842,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.57143,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.60714,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.30418,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.60714,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.64286,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.331203,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.64286,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.67857,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.350657,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.67857,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.71429,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.36164,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.71429,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.363642,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.78571,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.356572,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.78571,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.82143,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.340757,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.82143,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.85714,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.31693,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.85714,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.89286,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.286196,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.89286,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.92857,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.24998,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.92857,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.96429,
+    "limb": "L",
+    "stance": false,
+    "ankle_z": 0.209963,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 0.96429,
+    "limb": "R",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "L",
+    "stance": true,
+    "ankle_z": 0.168,
+    "ankle_rest_z": 0.168,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_02_Ogre",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "R",
+    "stance": false,
+    "ankle_z": 0.191625,
+    "ankle_rest_z": 0.168,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.175053,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.02778,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.02778,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.02778,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.181309,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.02778,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.05556,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.05556,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.05556,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.184564,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.05556,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.08333,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.08333,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.08333,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.184628,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.08333,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.11111,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.11111,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.11111,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.181498,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.11111,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.13889,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.13889,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.13889,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.175357,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.13889,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.16667,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.16667,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.142684,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.16667,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.166564,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.16667,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.19444,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.19444,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.155159,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.19444,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.155632,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.19444,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.22222,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.22222,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.166164,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.22222,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.143202,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.22222,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.175053,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.27778,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.27778,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.181309,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.27778,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.27778,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.30556,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.30556,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.184564,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.30556,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.30556,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.33333,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.33333,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.184628,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.33333,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.33333,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.36111,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.36111,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.181498,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.36111,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.36111,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.38889,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.38889,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.175357,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.38889,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.38889,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.41667,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.41667,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.166564,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.41667,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.41667,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.142684,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.44444,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.44444,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.155632,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.44444,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.44444,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.155159,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.47222,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.47222,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.143202,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.47222,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.47222,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.166164,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.175053,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.52778,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.52778,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.52778,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.52778,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.181309,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.55556,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.55556,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.55556,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.55556,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.184564,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.58333,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.58333,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.58333,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.58333,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.184628,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.61111,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.61111,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.61111,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.61111,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.181498,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.63889,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.63889,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.63889,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.63889,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.175357,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.66667,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.142684,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.66667,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.66667,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.66667,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.166564,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.69444,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.155159,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.69444,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.69444,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.69444,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.155632,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.72222,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.166164,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.72222,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.72222,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.72222,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.143202,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.175053,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.77778,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.181309,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.77778,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.77778,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.77778,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.80556,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.184564,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.80556,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.80556,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.80556,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.83333,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.184628,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.83333,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.83333,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.83333,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.86111,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.181498,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.86111,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.86111,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.86111,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.88889,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.175357,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.88889,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.88889,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.88889,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.91667,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.166564,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.91667,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.91667,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.142684,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.91667,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.94444,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.155632,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.94444,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.94444,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.155159,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.94444,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.97222,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.143202,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.97222,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.97222,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.166164,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 0.97222,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.175053,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.2078,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.232982,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.222602,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.05,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.234874,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.231853,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.1,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.230479,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.235,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.15,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.220061,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.231853,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.2,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.204246,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.150484,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.222602,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.183981,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.174893,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.2078,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.3,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.16048,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.145407,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.196611,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.188335,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.35,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.135152,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.170182,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.214337,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.165373,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.4,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.192548,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.227007,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.140292,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.45,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.211166,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.233864,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.224919,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.234494,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.55,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.232982,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.228862,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.6,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.234874,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.217304,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.65,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.230479,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.200514,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.7,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.220061,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.179497,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.145407,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.204246,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.155513,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.8,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.170182,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.183981,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.140292,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.85,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.192548,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.16048,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.165373,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.9,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.211166,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.135152,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.188335,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 0.95,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.224919,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.2078,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_03_Hound",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.232982,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.15867,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.0,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.02778,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.02778,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.02778,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.162651,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.02778,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.05556,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.05556,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.05556,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.164722,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.05556,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.08333,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.08333,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.08333,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.164763,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.08333,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.11111,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.11111,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.11111,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.162772,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.11111,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.13889,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.13889,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.13889,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.158864,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.13889,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.16667,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.16667,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.138072,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.16667,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.153268,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.16667,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.19444,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.19444,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.14601,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.19444,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.146312,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.19444,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.22222,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.22222,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.153013,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.22222,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.138401,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.22222,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.15867,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.25,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.27778,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.27778,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.162651,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.27778,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.27778,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.30556,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.30556,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.164722,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.30556,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.30556,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.33333,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.33333,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.164763,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.33333,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.33333,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.36111,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.36111,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.162772,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.36111,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.36111,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.38889,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.38889,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.158864,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.38889,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.38889,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.41667,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.41667,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.153268,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.41667,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.41667,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.138072,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.44444,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.44444,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.146312,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.44444,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.44444,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.14601,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.47222,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.47222,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.138401,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.47222,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.47222,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.153013,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.5,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.15867,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.52778,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.52778,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.52778,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.52778,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.162651,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.55556,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.55556,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.55556,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.55556,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.164722,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.58333,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.58333,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.58333,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.58333,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.164763,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.61111,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.61111,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.61111,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.61111,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.162772,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.63889,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.63889,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.63889,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.63889,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.158864,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.66667,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.138072,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.66667,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.66667,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.66667,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.153268,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.69444,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.14601,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.69444,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.69444,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.69444,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.146312,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.72222,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.153013,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.72222,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.72222,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.72222,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.138401,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.15867,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.75,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.77778,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.162651,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.77778,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.77778,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.77778,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.80556,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.164722,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.80556,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.80556,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.80556,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.83333,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.164763,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.83333,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.83333,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.83333,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.86111,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.162772,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.86111,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.86111,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.86111,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.88889,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.158864,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.88889,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.88889,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.88889,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.91667,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.153268,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.91667,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.91667,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.138072,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.91667,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.94444,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.146312,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.94444,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.94444,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.14601,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.94444,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.97222,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.138401,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.97222,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.97222,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.153013,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 0.97222,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.15867,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Walk",
+    "phase": 1.0,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.138438,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.138438,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.0,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.04167,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.04167,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.15548,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.04167,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.15548,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.04167,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.08333,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.08333,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.170917,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.08333,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.170917,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.08333,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.125,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.125,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.183774,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.125,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.183774,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.125,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.16667,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.16667,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.193242,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.16667,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.193242,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.16667,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.20833,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.20833,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.198723,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.20833,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.198723,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.20833,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.199872,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.199872,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.25,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.29167,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.29167,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.196617,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.29167,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.196617,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.29167,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.33333,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.33333,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.189163,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.33333,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.189163,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.33333,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.375,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.375,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.17798,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.375,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.17798,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.375,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.41667,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.41667,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.163772,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.41667,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.163772,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.41667,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.45833,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.45833,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.147436,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.45833,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.147436,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.45833,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.138438,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.5,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.138438,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.54167,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.15548,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.54167,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.54167,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.54167,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.15548,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.58333,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.170917,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.58333,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.58333,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.58333,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.170917,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.625,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.183774,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.625,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.625,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.625,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.183774,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.66667,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.193242,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.66667,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.66667,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.66667,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.193242,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.70833,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.198723,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.70833,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.70833,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.70833,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.198723,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.199872,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.75,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.199872,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.79167,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.196617,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.79167,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.79167,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.79167,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.196617,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.83333,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.189163,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.83333,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.83333,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.83333,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.189163,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.875,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.17798,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.875,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.875,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.875,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.17798,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.91667,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.163772,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.91667,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.91667,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.91667,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.163772,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.95833,
+    "limb": "FL",
+    "stance": false,
+    "ankle_z": 0.147436,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.95833,
+    "limb": "FR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.95833,
+    "limb": "HL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 0.95833,
+    "limb": "HR",
+    "stance": false,
+    "ankle_z": 0.147436,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "FL",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "FR",
+    "stance": false,
+    "ankle_z": 0.138438,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "HL",
+    "stance": false,
+    "ankle_z": 0.138438,
+    "ankle_rest_z": 0.13,
+    "heel_error": null
+  },
+  {
+    "rig": "RIG_MON_04_Boar",
+    "clip": "Run",
+    "phase": 1.0,
+    "limb": "HR",
+    "stance": true,
+    "ankle_z": 0.13,
+    "ankle_rest_z": 0.13,
+    "heel_error": 0.0
+  }
+]

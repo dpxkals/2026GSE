@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "labels_are_editable": true,
+  "story_status": "Visual proposals; lore may change independently of stable asset and rig identifiers.",
+  "monsters": [
+    {"index":0,"asset_id":"MON_00_Husk","label_ko":"해골 허스크","rig_id":"RIG_MON_00_Husk","locomotion":"biped","file":"Characters/MON_00_Husk_Animated.glb","triangles":1353,"attack_style":"axe_chop"},
+    {"index":1,"asset_id":"MON_01_Goblin","label_ko":"고블린 약탈자","rig_id":"RIG_MON_01_Goblin","locomotion":"biped","file":"Characters/MON_01_Goblin_Animated.glb","triangles":1271,"attack_style":"blade_slash"},
+    {"index":2,"asset_id":"MON_02_Ogre","label_ko":"돌가죽 오우거","rig_id":"RIG_MON_02_Ogre","locomotion":"biped","file":"Characters/MON_02_Ogre_Animated.glb","triangles":1494,"attack_style":"heavy_mace"},
+    {"index":3,"asset_id":"MON_03_Hound","label_ko":"가시 하운드","rig_id":"RIG_MON_03_Hound","locomotion":"quadruped","file":"Characters/MON_03_Hound_Animated.glb","triangles":1964,"attack_style":"bite","hind_revision":2},
+    {"index":4,"asset_id":"MON_04_Boar","label_ko":"황야 멧돼지","rig_id":"RIG_MON_04_Boar","locomotion":"quadruped","file":"Characters/MON_04_Boar_Animated.glb","triangles":1892,"attack_style":"tusk_ram","hind_revision":2}
+  ]
+}

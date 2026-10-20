@@ -118,12 +118,12 @@ namespace
     int MonsterRegion(WorldPoint p)
     {
         int result = -1;
-        double nearest = 30;
+        double nearest = 1e30;
         for (int i = 0; i < int(Villages().size()); ++i)
         {
             auto center = Villages()[i].center;
             double distance = std::hypot(p.x - center.x, p.y - center.y);
-            if (distance < nearest)
+            if (distance < nearest && distance < VillageHuntingRadius(i) + 6)
             {
                 nearest = distance;
                 result = i;
@@ -234,7 +234,12 @@ void WorldMonitor::Publish(const World& world,
             npcJson << "{\"id\":" << Quote("citizen:" + std::to_string(n.id))
                     << ",\"kind\":\"citizen\",\"name\":" << Quote(WorldSimulation::Name(n))
                     << ",\"alive\":" << (n.health > 0 ? "true" : "false")
-                    << ",\"homeVillage\":" << n.home
+                    << ",\"homeVillage\":" << n.home << ",\"homeNumber\":" << n.house + 1
+                    << ",\"homePosition\":" << Position(society.HomePosition(n))
+                    << ",\"homeAddress\":" << Quote(society.HomeAddress(n))
+                    << ",\"heardNews\":" << Quote(society.HeardNews(n))
+                    << ",\"travelVillage\":" << n.travelVillage
+                    << ",\"relocating\":" << (n.reservedHouse >= 0 ? "true" : "false")
                     << ",\"insideVillage\":" << VillageAt(n.position)
                     << ",\"position\":" << Position(n.position)
                     << ",\"destination\":" << Position(n.destination)
@@ -255,7 +260,27 @@ void WorldMonitor::Publish(const World& world,
                     << ",\"targetId\":" << Quote(std::to_string(n.target))
                     << ",\"personality\":" << Array(n.personality)
                     << ",\"weights\":" << Array(n.weights) << ",\"learned\":" << Array(n.learned)
-                    << '}';
+                    << ",\"knownVillageReports\":[";
+            bool firstReport = true;
+            for (int town = 0; town < VillageCount; ++town)
+            {
+                const auto& report = n.reports[town];
+                if (!report.revision)
+                {
+                    continue;
+                }
+                if (!firstReport)
+                {
+                    npcJson << ',';
+                }
+                firstReport = false;
+                npcJson << "{\"village\":" << town << ",\"observedAt\":" << Number(report.observed)
+                        << ",\"ageSeconds\":" << Number(society.Time() - report.observed)
+                        << ",\"safety\":" << Number(report.safety)
+                        << ",\"wealth\":" << Number(report.wealth)
+                        << ",\"wisdom\":" << Number(report.wisdom) << '}';
+            }
+            npcJson << "]}";
         }
         for (const auto& n : residents.Residents())
         {
@@ -269,6 +294,9 @@ void WorldMonitor::Publish(const World& world,
             npcJson << "{\"id\":" << Quote("resident:" + std::to_string(n.id))
                     << ",\"kind\":\"resident\",\"name\":" << Quote(n.name)
                     << ",\"alive\":true,\"homeVillage\":null,\"insideVillage\":" << inside
+                    << ",\"homeAddress\":"
+                    << Quote(std::wstring(Villages()[0].name) + L" · 안내 주민의 집")
+                    << ",\"homePosition\":" << Position({n.homeX, n.homeY})
                     << ",\"position\":" << Position(p) << ",\"hp\":null,\"maxHp\":null"
                     << ",\"loaded\":" << (residents.IsPresent(n, world) ? "true" : "false")
                     << ",\"action\":\"안내 / 대화\",\"goal\":" << Quote(n.role)
@@ -341,7 +369,8 @@ void WorldMonitor::Publish(const World& world,
             << ",\"outsideMonsters\":" << outsideMonsters
             << ",\"monsterKinds\":" << Array(monsterKinds) << ",\"lod\":" << Array(lod)
             << ",\"chunks\":" << world.Chunks().size() << ",\"pendingChunks\":" << world.Pending()
-            << '}' << ",\"player\":{\"position\":" << Position(level.Player().position)
+            << ",\"lettersInTransit\":" << society.LettersInTransit() << '}'
+            << ",\"player\":{\"position\":" << Position(level.Player().position)
             << ",\"hp\":" << Number(level.Player().health) << ",\"gold\":" << society.PlayerGold()
             << ",\"level\":" << level.Player().level
             << ",\"damage\":" << Number(level.Player().Damage())
@@ -372,7 +401,14 @@ void WorldMonitor::Publish(const World& world,
             }
             const auto& v = villages[i];
             out << "{\"id\":" << i << ",\"name\":" << Quote(std::wstring(Villages()[i].name))
-                << ",\"radius\":" << VillageWallRadius
+                << ",\"radius\":" << (std::max)(Villages()[i].halfWidth, Villages()[i].halfHeight)
+                << ",\"halfWidth\":" << Villages()[i].halfWidth
+                << ",\"halfHeight\":" << Villages()[i].halfHeight
+                << ",\"settlementKind\":" << int(Villages()[i].kind)
+                << ",\"kindName\":" << Quote(std::wstring(VillageKindName(Villages()[i].kind)))
+                << ",\"occupiedHomes\":" << society.OccupiedHomes(i)
+                << ",\"homeCapacity\":" << VillageHomeCount
+                << ",\"knownReports\":" << society.KnownReports(i)
                 << ",\"position\":" << Position(Villages()[i].center)
                 << ",\"homeAlive\":" << v.alive << ",\"homeDead\":" << v.dead
                 << ",\"presentCitizens\":" << v.present << ",\"residents\":" << v.residents
@@ -383,7 +419,19 @@ void WorldMonitor::Publish(const World& world,
                 << (v.alive ? Number(100 * v.healthRatio / v.alive) : "null")
                 << ",\"monsters\":" << v.monsters
                 << ",\"resourceStock\":" << society.ResourceStock(i)
-                << ",\"actions\":" << Array(v.actions) << '}';
+                << ",\"actions\":" << Array(v.actions) << ",\"reports\":[";
+            for (int origin = 0; origin < VillageCount; ++origin)
+            {
+                if (origin)
+                {
+                    out << ',';
+                }
+                const auto& report = society.Bulletin(i)[origin];
+                out << "{\"village\":" << origin
+                    << ",\"known\":" << (report.revision ? "true" : "false") << ",\"ageSeconds\":"
+                    << (report.revision ? Number(society.Time() - report.observed) : "null") << '}';
+            }
+            out << "]}";
         }
         out << "],\"npcs\":[" << npcJson.str() << "],\"monsters\":[" << mobJson.str()
             << "],\"news\":[";

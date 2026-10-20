@@ -39,6 +39,8 @@ py -3 .\Monitor\serve.py --port 8775
   평균 체력 비율, 적대/중상 인원, 행동 분포, 주변 몬스터, 지역 자원.
 - NPC: 이름/유형, 현재 행동·목표·경험 성향, 체력·레벨·경험치, 금화·재료·깨달음,
   소속/현재 마을, 좌표·목적지·대상, LOD, 성격 6축, 행동 13개의 선택 가중치/학습치.
+- 7개 마을의 유형·외곽 크기·소유 주택/수용 인원·수신한 소식 수, 운송 중 편지 수.
+  NPC 상세에는 집 주소·집 좌표·방문/이사 목적지·개인이 들은 소식과 관측 후 경과 시간을 표시한다.
 - 안내 NPC와 영혼 NPC도 표시한다. 없는 체력·경제·AI 수치를 0으로 꾸며 넣지 않고 '해당 없음'으로 구분한다.
 - 이름/ID 검색, 유형·마을·상태 필터, 재화/체력/깨달음 정렬, 30명 단위 페이지, NPC 상세 관찰.
 - 개체 위치 지도, 최근 사건 5개, 현재 원본 스냅샷 JSON 내려받기.
@@ -48,14 +50,14 @@ py -3 .\Monitor\serve.py --port 8775
 - `summary.npcCount` = 살아 있는 동적 주민 + 안내 주민 + 영혼 NPC. 사망 후 교체 대기 주민은 제외.
 - `npcs` 배열에는 사망 주민도 포함하므로 배열 길이와 생존 NPC 수가 다를 수 있다.
 - 마을의 `homeAlive/homeDead` 및 자산/체력/행동은 **소속(home)** 기준이다.
-- `presentCitizens/residents/souls`는 마을 중심에서 **각 축 11.5타일 미만인 성벽 내부 현재 좌표** 기준이다.
+- `presentCitizens/residents/souls`는 마을별 사각/타원/모서리 절단 형태에서 경계 여백 1.5타일을 뺀 현재 좌표 기준이다.
   외출/다른 마을 방문 때문에 소속 인원과 체류 인원은 다를 수 있다.
 - 금화/재료/깨달음 합계는 생존 동적 주민만 포함한다. 플레이어와 바닥 전리품은 제외한다.
 - 평균 체력은 생존 주민별 `HP / MaxHP`의 평균이며 주민이 없으면 null이다.
 - 중상은 HP가 50% 미만인 소속 생존 주민, 적대는 플레이어 적대 타이머가 남은 주민이다.
 - 몬스터는 `LevelOne::Enemies()`의 생존 개체만 집계한다. 무한 미생성 월드의 몬스터 수가 아니다.
-- 마을 주변 몬스터는 가장 가까운 마을의 30타일 권역에 하나만 배정한다. 겹치는 권역에서 중복 계산하지 않는다.
-- 어느 마을 30타일 권역에도 없으면 `outsideMonsters`에 포함한다.
+- 마을 주변 몬스터는 마을별 사냥 반경(큰 쪽 반경+8)에 6타일을 더한 권역 안에서 가장 가까운 마을에 하나만 배정한다.
+  겹치는 권역에서 중복 계산하지 않는다. 어느 마을의 권역에도 없으면 `outsideMonsters`에 포함한다.
 - `resourceStock`은 원거리 사냥/채집용 통계 자원이며 실제 몬스터 수가 아니다.
 
 ## 연결과 JSON 메시지
@@ -101,6 +103,10 @@ SSE 이벤트 이름은 `snapshot`이다. 수신 JSON의 주요 구조:
 - `personality` 순서: 공격성, 탐욕, 사회성, 용기, 도덕성, 호기심.
 - `targetKind`: 0 없음, 1 몬스터, 2 주민, 3 플레이어. `monsters[].kind`: 0 허스크, 1 하운드, 2 보스.
 - `lod`: 0 근거리, 1 중거리, 2 원거리. `insideVillage: -1`은 야외다.
+- 마을의 `settlementKind/halfWidth/halfHeight`가 형태와 크기를 표현한다.
+  `occupiedHomes/homeCapacity/knownReports/reports`는 소유 주택과 전달된 마을 소식 정보다.
+- 동적 NPC의 `homeNumber/homeAddress/homePosition`, `travelVillage/relocating`,
+  `heardNews/knownVillageReports`가 개인 주택·여행·소식 기억을 표현한다. `summary.lettersInTransit`는 운송 중 편지 수다.
 - 안내/영혼 NPC의 `alive: true`는 사망 판정이 아니라 해당 개체가 월드에 존재함을 뜻한다.
 
 JSON 문자열은 UTF-8과 제어문자 escape를 사용하며 비유한 실수는 null로 직렬화한다.

@@ -156,3 +156,24 @@ void SceneRenderer::RetainTerrainMeshes(const std::set<std::string>& keys)
         }
     }
 }
+
+void SceneRenderer::RemoveMeshes(const std::string& prefix)
+{
+    if (prefix.empty())
+    {
+        return;
+    }
+    Flush();
+    for (auto it = meshes_.begin(); it != meshes_.end();)
+    {
+        if (it->first.compare(0, prefix.size(), prefix) == 0)
+        {
+            ReleaseMesh(it->second);
+            it = meshes_.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+}

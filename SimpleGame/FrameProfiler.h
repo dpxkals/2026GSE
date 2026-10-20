@@ -60,6 +60,10 @@ class FrameProfiler
         VignetteEnabled,
         RenderMs,
         PoseSubmissions,
+        AssetLoads,
+        AssetDecodeMs,
+        SkinVertices,
+        AssetPoseMs,
         Count
     };
 
@@ -86,7 +90,7 @@ class FrameProfiler
             std::fprintf(stderr, "[Profile] Cannot open CSV; console logging remains enabled.\n");
             return;
         }
-        log_ << "# schema=3; timings=CPU wall ms; samples=completed display callbacks\n";
+        log_ << "# schema=4; timings=CPU wall ms; samples=completed display callbacks\n";
         log_ << "# context=" << context << '\n';
 #ifdef _DEBUG
         log_ << "# configuration=Debug\n";
@@ -336,7 +340,11 @@ class FrameProfiler
                                                              "edge_blur_enabled",
                                                              "vignette_enabled",
                                                              "render_ms",
-                                                             "pose_submissions"};
+                                                             "pose_submissions",
+                                                             "asset_loads",
+                                                             "asset_decode_ms",
+                                                             "skin_vertices",
+                                                             "asset_pose_ms"};
         return names;
     }
 

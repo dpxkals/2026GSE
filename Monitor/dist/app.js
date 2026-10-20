@@ -41,10 +41,12 @@ function renderSummary() {
   );
   const cards = snapshot.villages.map(village => {
     const card = element('article', null, 'village');
-    card.append(element('h3', village.name));
+    card.append(element('h3', `${village.name} · ${village.kindName ?? '마을'}`));
     const facts = element('div', null, 'facts');
     for (const [label, value] of [
       ['소속 생존 / 사망', `${fmt(village.homeAlive)} / ${fmt(village.homeDead)}`],
+      ['주택 소유 / 수용', `${fmt(village.occupiedHomes)} / ${fmt(village.homeCapacity)}`],
+      ['도착한 타 마을 소식', `${fmt(village.knownReports)}곳`],
       ['현재 체류 · 모든 NPC', fmt(village.presentCitizens + village.residents + village.souls)],
       ['주변 몬스터', fmt(village.monsters)], ['소속 주민 금화', fmt(village.gold)],
       ['소속 주민 재료', fmt(village.goods)], ['평균 체력 비율', `${fmt(village.averageHealthPercent)}%`],
@@ -61,7 +63,7 @@ function renderSummary() {
   $('villages').replaceChildren(...cards);
   $('news').replaceChildren(...(snapshot.news.length ? snapshot.news.map(news => element('li', news)) : [element('li', '최근 사건 없음')]));
   const types = s.monsterKinds;
-  $('meta').textContent = `허스크 ${fmt(types[0])} · 하운드 ${fmt(types[1])} · 보스 ${fmt(types[2])}\n청크 ${fmt(s.chunks)} · 대기 ${fmt(s.pendingChunks)} · 시드 ${snapshot.seed}`;
+  $('meta').textContent = `허스크 ${fmt(types[0])} · 하운드 ${fmt(types[1])} · 보스 ${fmt(types[2])}\n청크 ${fmt(s.chunks)} · 대기 ${fmt(s.pendingChunks)} · 운송 중 편지 ${fmt(s.lettersInTransit)} · 시드 ${snapshot.seed}`;
   const previous = $('village').value;
   $('village').replaceChildren(new Option('전체 마을', ''), ...snapshot.villages.map(v => new Option(v.name, String(v.id))));
   $('village').value = previous;
@@ -151,6 +153,12 @@ function renderDetail() {
   if (npc.kind === 'citizen') {
     info.append(element('p', `목적지 (${fmt(npc.destination.x)}, ${fmt(npc.destination.y)}) · 대상 ${['없음', '몬스터', '주민', '플레이어'][npc.targetKind]} #${npc.targetId}`));
     info.append(element('p', `경험치 ${fmt(npc.xp)} · 적대 유지 ${fmt(npc.hostility)}초`));
+    info.append(element('p', `집: ${npc.homeAddress ?? '—'}`));
+    info.append(element('p', npc.travelVillage >= 0 ? `${npc.relocating ? '이사' : '방문'} 목적지: ${villageName(npc.travelVillage)}` : '현재 진행 중인 마을 여행 없음'));
+    info.append(element('p', npc.heardNews ?? '아직 소식 없음'));
+    for (const report of npc.knownVillageReports ?? []) {
+      info.append(element('p', `${villageName(report.village)} · ${fmt(report.ageSeconds)}초 전 소식 · 안전 ${fmt(report.safety * 100)}% / 부 ${fmt(report.wealth * 100)}% / 배움 ${fmt(report.wisdom * 100)}%`, 'subtle'));
+    }
     const traits = ['공격성', '탐욕', '사회성', '용기', '도덕성', '호기심'];
     info.append(element('p', traits.map((name, i) => `${name} ${fmt(npc.personality[i])}`).join(' · '), 'subtle'));
     info.append(element('p', '선택 가중치는 마지막 의사결정 시점의 값입니다. 경험 편향은 보상·피해·시간 감쇠로 변하며, 확률(%)이나 고정 직업이 아닙니다.', 'subtle'));
@@ -162,6 +170,7 @@ function renderDetail() {
     });
     grid.append(info, weights);
   } else {
+    if (npc.homeAddress) info.append(element('p', `집: ${npc.homeAddress}`));
     info.append(element('p', `대화 횟수 ${fmt(npc.meetings)} · 독립 체력/경제/가중치 모델은 없습니다.`, 'subtle'));
     grid.append(info);
   }
@@ -177,7 +186,11 @@ function drawMap() {
   const ctx = canvas.getContext('2d');
   ctx.scale(ratio, ratio);
   const living = snapshot.npcs.filter(n => n.alive);
-  const points = [...living, ...snapshot.monsters, ...snapshot.villages, snapshot.player].map(n => n.position).filter(p => Number.isFinite(p?.x) && Number.isFinite(p?.y));
+  const extents = snapshot.villages.flatMap(v => [
+    { position: { x: v.position.x - (v.halfWidth ?? v.radius), y: v.position.y - (v.halfHeight ?? v.radius) } },
+    { position: { x: v.position.x + (v.halfWidth ?? v.radius), y: v.position.y + (v.halfHeight ?? v.radius) } }
+  ]);
+  const points = [...living, ...snapshot.monsters, ...snapshot.villages, ...extents, snapshot.player].map(n => n.position).filter(p => Number.isFinite(p?.x) && Number.isFinite(p?.y));
   if (!points.length) return;
   let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
   for (const p of points) { minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x); minY = Math.min(minY, p.y); maxY = Math.max(maxY, p.y); }
@@ -186,8 +199,16 @@ function drawMap() {
   ctx.font = '12px sans-serif';
   for (const v of snapshot.villages) {
     const [x, y] = project(v.position);
-    const radius = v.radius ?? 4.5;
-    ctx.strokeStyle = '#7c7450'; ctx.strokeRect(x - scale * radius, y - scale * radius, scale * radius * 2, scale * radius * 2);
+    const rx = scale * (v.halfWidth ?? v.radius ?? 4.5), ry = scale * (v.halfHeight ?? v.radius ?? 4.5);
+    ctx.strokeStyle = '#7c7450'; ctx.beginPath();
+    if ([1, 4, 6].includes(v.settlementKind)) ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+    else if ([3, 5].includes(v.settlementKind)) {
+      for (const [i, point] of [[-.65,-1],[.65,-1],[1,-.65],[1,.65],[.65,1],[-.65,1],[-1,.65],[-1,-.65]].entries()) {
+        if (i) ctx.lineTo(x + point[0]*rx, y + point[1]*ry); else ctx.moveTo(x + point[0]*rx, y + point[1]*ry);
+      }
+      ctx.closePath();
+    } else ctx.rect(x-rx,y-ry,rx*2,ry*2);
+    ctx.stroke();
     ctx.fillStyle = '#d6ba79'; ctx.fillText(v.name, x + 7, y - 10);
   }
   for (const mob of snapshot.monsters) {
@@ -198,6 +219,11 @@ function drawMap() {
     const [x, y] = project(npc.position);
     ctx.fillStyle = npc.id === selected ? '#fff' : npc.kind === 'soul' ? '#9cbae8' : npc.hostility > 0 ? '#f37b77' : '#80c5a2';
     ctx.beginPath(); ctx.arc(x, y, npc.id === selected ? 5 : 3, 0, Math.PI * 2); ctx.fill();
+    if (npc.id === selected && npc.homePosition) {
+      const [hx, hy] = project(npc.homePosition);
+      ctx.strokeStyle = '#f0ce79'; ctx.strokeRect(hx-4,hy-4,8,8);
+      ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(hx,hy); ctx.stroke();
+    }
   }
   const [x, y] = project(snapshot.player.position);
   ctx.strokeStyle = '#fff'; ctx.beginPath(); ctx.moveTo(x - 6, y); ctx.lineTo(x + 6, y); ctx.moveTo(x, y - 6); ctx.lineTo(x, y + 6); ctx.stroke();

@@ -1,0 +1,12 @@
+{
+  "unique_master_meshes": 78,
+  "npc_part_meshes": 27,
+  "environment_meshes": 51,
+  "npc_recipe_count": 210,
+  "total_master_triangles": 15458,
+  "max_master_triangles": 728,
+  "all_faces_triangles": true,
+  "unique_recipe_signatures": 210,
+  "shared_mesh_data": true,
+  "glb_count": 78
+}

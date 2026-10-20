@@ -1,0 +1,2078 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "asset_id": "NPC_Body_00_Male",
+      "mesh_name": "NPC_Body_00_Male_MESH",
+      "label_ko": "남성 체형",
+      "category": "NPC_Body",
+      "file": "Meshes/NPC_Body_00_Male.glb",
+      "vertices": 176,
+      "triangles": 320,
+      "materials": [
+        "MAT_Skin"
+      ],
+      "bounds_m": [
+        [
+          -0.50881,
+          -0.12472,
+          0.6
+        ],
+        [
+          0.50881,
+          0.12472,
+          1.3
+        ]
+      ],
+      "slot": "body",
+      "index": 0
+    },
+    {
+      "asset_id": "NPC_Head_00_Male",
+      "mesh_name": "NPC_Head_00_Male_MESH",
+      "label_ko": "남성 얼굴",
+      "category": "NPC_Head",
+      "file": "Meshes/NPC_Head_00_Male.glb",
+      "vertices": 132,
+      "triangles": 228,
+      "materials": [
+        "MAT_Skin",
+        "MAT_Eye",
+        "MAT_Hair",
+        "MAT_Scar"
+      ],
+      "bounds_m": [
+        [
+          -0.2846,
+          -0.268,
+          1.2
+        ],
+        [
+          0.2846,
+          0.20717,
+          1.8
+        ]
+      ],
+      "slot": "head",
+      "index": 0
+    },
+    {
+      "asset_id": "NPC_Body_01_Female",
+      "mesh_name": "NPC_Body_01_Female_MESH",
+      "label_ko": "여성 체형",
+      "category": "NPC_Body",
+      "file": "Meshes/NPC_Body_01_Female.glb",
+      "vertices": 176,
+      "triangles": 320,
+      "materials": [
+        "MAT_Skin"
+      ],
+      "bounds_m": [
+        [
+          -0.50881,
+          -0.12472,
+          0.6
+        ],
+        [
+          0.50881,
+          0.12472,
+          1.3
+        ]
+      ],
+      "slot": "body",
+      "index": 1
+    },
+    {
+      "asset_id": "NPC_Head_01_Female",
+      "mesh_name": "NPC_Head_01_Female_MESH",
+      "label_ko": "여성 얼굴",
+      "category": "NPC_Head",
+      "file": "Meshes/NPC_Head_01_Female.glb",
+      "vertices": 132,
+      "triangles": 228,
+      "materials": [
+        "MAT_Skin",
+        "MAT_Eye",
+        "MAT_Hair",
+        "MAT_Scar"
+      ],
+      "bounds_m": [
+        [
+          -0.2846,
+          -0.268,
+          1.2
+        ],
+        [
+          0.2846,
+          0.20717,
+          1.8
+        ]
+      ],
+      "slot": "head",
+      "index": 1
+    },
+    {
+      "asset_id": "NPC_Hair_00_Short",
+      "mesh_name": "NPC_Hair_00_Short_MESH",
+      "label_ko": "짧은 머리",
+      "category": "NPC_Hair",
+      "file": "Meshes/NPC_Hair_00_Short.glb",
+      "vertices": 72,
+      "triangles": 120,
+      "materials": [
+        "MAT_Hair"
+      ],
+      "bounds_m": [
+        [
+          -0.23744,
+          -0.24781,
+          1.48
+        ],
+        [
+          0.23744,
+          0.23287,
+          1.823
+        ]
+      ],
+      "slot": "hair",
+      "index": 0
+    },
+    {
+      "asset_id": "NPC_Hair_01_Long",
+      "mesh_name": "NPC_Hair_01_Long_MESH",
+      "label_ko": "긴 머리",
+      "category": "NPC_Hair",
+      "file": "Meshes/NPC_Hair_01_Long.glb",
+      "vertices": 72,
+      "triangles": 128,
+      "materials": [
+        "MAT_Hair"
+      ],
+      "bounds_m": [
+        [
+          -0.29364,
+          -0.18287,
+          1.13
+        ],
+        [
+          0.29364,
+          0.26087,
+          1.823
+        ]
+      ],
+      "slot": "hair",
+      "index": 1
+    },
+    {
+      "asset_id": "NPC_Hair_02_Braid",
+      "mesh_name": "NPC_Hair_02_Braid_MESH",
+      "label_ko": "땋은 머리",
+      "category": "NPC_Hair",
+      "file": "Meshes/NPC_Hair_02_Braid.glb",
+      "vertices": 184,
+      "triangles": 332,
+      "materials": [
+        "MAT_Hair",
+        "MAT_Brass"
+      ],
+      "bounds_m": [
+        [
+          -0.23744,
+          -0.18287,
+          1.033
+        ],
+        [
+          0.23744,
+          0.27652,
+          1.823
+        ]
+      ],
+      "slot": "hair",
+      "index": 2
+    },
+    {
+      "asset_id": "NPC_Hair_03_Crop",
+      "mesh_name": "NPC_Hair_03_Crop_MESH",
+      "label_ko": "아주 짧은 머리",
+      "category": "NPC_Hair",
+      "file": "Meshes/NPC_Hair_03_Crop.glb",
+      "vertices": 32,
+      "triangles": 56,
+      "materials": [
+        "MAT_Hair"
+      ],
+      "bounds_m": [
+        [
+          -0.23744,
+          -0.18287,
+          1.58
+        ],
+        [
+          0.23744,
+          0.23287,
+          1.823
+        ]
+      ],
+      "slot": "hair",
+      "index": 3
+    },
+    {
+      "asset_id": "NPC_Torso_00_Tunic",
+      "mesh_name": "NPC_Torso_00_Tunic_MESH",
+      "label_ko": "평민 튜닉",
+      "category": "NPC_Torso",
+      "file": "Meshes/NPC_Torso_00_Tunic.glb",
+      "vertices": 136,
+      "triangles": 232,
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Linen",
+        "MAT_ClothLight",
+        "MAT_WoodLight"
+      ],
+      "bounds_m": [
+        [
+          -0.40784,
+          -0.1855,
+          0.57
+        ],
+        [
+          0.40784,
+          0.15706,
+          1.205
+        ]
+      ],
+      "slot": "torso",
+      "index": 0
+    },
+    {
+      "asset_id": "NPC_Torso_01_Armor",
+      "mesh_name": "NPC_Torso_01_Armor_MESH",
+      "label_ko": "판금 갑옷",
+      "category": "NPC_Torso",
+      "file": "Meshes/NPC_Torso_01_Armor.glb",
+      "vertices": 216,
+      "triangles": 380,
+      "materials": [
+        "MAT_Iron",
+        "MAT_IronDark",
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Linen"
+      ],
+      "bounds_m": [
+        [
+          -0.50746,
+          -0.201,
+          0.57
+        ],
+        [
+          0.50746,
+          0.16314,
+          1.21
+        ]
+      ],
+      "slot": "torso",
+      "index": 1
+    },
+    {
+      "asset_id": "NPC_Torso_02_Ranger",
+      "mesh_name": "NPC_Torso_02_Ranger_MESH",
+      "label_ko": "궁수 가죽옷",
+      "category": "NPC_Torso",
+      "file": "Meshes/NPC_Torso_02_Ranger.glb",
+      "vertices": 128,
+      "triangles": 220,
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Linen",
+        "MAT_LeatherLight",
+        "MAT_ClothLight"
+      ],
+      "bounds_m": [
+        [
+          -0.40784,
+          -0.21398,
+          0.57
+        ],
+        [
+          0.40784,
+          0.15706,
+          1.205
+        ]
+      ],
+      "slot": "torso",
+      "index": 2
+    },
+    {
+      "asset_id": "NPC_Torso_03_Robe",
+      "mesh_name": "NPC_Torso_03_Robe_MESH",
+      "label_ko": "수도사 로브",
+      "category": "NPC_Torso",
+      "file": "Meshes/NPC_Torso_03_Robe.glb",
+      "vertices": 136,
+      "triangles": 236,
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Linen"
+      ],
+      "bounds_m": [
+        [
+          -0.40784,
+          -0.205,
+          0.18
+        ],
+        [
+          0.40784,
+          0.18016,
+          1.205
+        ]
+      ],
+      "slot": "torso",
+      "index": 3
+    },
+    {
+      "asset_id": "NPC_Legs_00_Trousers",
+      "mesh_name": "NPC_Legs_00_Trousers_MESH",
+      "label_ko": "바지와 장화",
+      "category": "NPC_Legs",
+      "file": "Meshes/NPC_Legs_00_Trousers.glb",
+      "vertices": 80,
+      "triangles": 136,
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather"
+      ],
+      "bounds_m": [
+        [
+          -0.218,
+          -0.1875,
+          0.0
+        ],
+        [
+          0.218,
+          0.103,
+          0.61
+        ]
+      ],
+      "slot": "legs",
+      "index": 0
+    },
+    {
+      "asset_id": "NPC_Legs_01_Greaves",
+      "mesh_name": "NPC_Legs_01_Greaves_MESH",
+      "label_ko": "갑옷 다리",
+      "category": "NPC_Legs",
+      "file": "Meshes/NPC_Legs_01_Greaves.glb",
+      "vertices": 96,
+      "triangles": 160,
+      "materials": [
+        "MAT_IronDark",
+        "MAT_Leather",
+        "MAT_Iron"
+      ],
+      "bounds_m": [
+        [
+          -0.218,
+          -0.1875,
+          0.0
+        ],
+        [
+          0.218,
+          0.103,
+          0.61
+        ]
+      ],
+      "slot": "legs",
+      "index": 1
+    },
+    {
+      "asset_id": "NPC_Legs_02_RangerBoots",
+      "mesh_name": "NPC_Legs_02_RangerBoots_MESH",
+      "label_ko": "궁수 바지와 긴 장화",
+      "category": "NPC_Legs",
+      "file": "Meshes/NPC_Legs_02_RangerBoots.glb",
+      "vertices": 112,
+      "triangles": 184,
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_LeatherLight"
+      ],
+      "bounds_m": [
+        [
+          -0.218,
+          -0.1875,
+          0.0
+        ],
+        [
+          0.218,
+          0.103,
+          0.61
+        ]
+      ],
+      "slot": "legs",
+      "index": 2
+    },
+    {
+      "asset_id": "NPC_Back_00_Cloak",
+      "mesh_name": "NPC_Back_00_Cloak_MESH",
+      "label_ko": "짧은 망토",
+      "category": "NPC_Back",
+      "file": "Meshes/NPC_Back_00_Cloak.glb",
+      "vertices": 24,
+      "triangles": 28,
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_Brass"
+      ],
+      "bounds_m": [
+        [
+          -0.3,
+          -0.128,
+          0.26
+        ],
+        [
+          0.32,
+          0.35,
+          1.17559
+        ]
+      ],
+      "slot": "back",
+      "index": 0
+    },
+    {
+      "asset_id": "NPC_Back_01_Quiver",
+      "mesh_name": "NPC_Back_01_Quiver_MESH",
+      "label_ko": "화살통",
+      "category": "NPC_Back",
+      "file": "Meshes/NPC_Back_01_Quiver.glb",
+      "vertices": 96,
+      "triangles": 148,
+      "materials": [
+        "MAT_Leather",
+        "MAT_WoodLight",
+        "MAT_Linen"
+      ],
+      "bounds_m": [
+        [
+          0.03,
+          0.145,
+          0.72
+        ],
+        [
+          0.21,
+          0.325,
+          1.34
+        ]
+      ],
+      "slot": "back",
+      "index": 1
+    },
+    {
+      "asset_id": "NPC_Back_02_Satchel",
+      "mesh_name": "NPC_Back_02_Satchel_MESH",
+      "label_ko": "어깨 가방",
+      "category": "NPC_Back",
+      "file": "Meshes/NPC_Back_02_Satchel.glb",
+      "vertices": 32,
+      "triangles": 48,
+      "materials": [
+        "MAT_LeatherLight",
+        "MAT_Leather",
+        "MAT_Brass"
+      ],
+      "bounds_m": [
+        [
+          -0.21742,
+          -0.22498,
+          0.55
+        ],
+        [
+          0.37,
+          0.08,
+          1.15792
+        ]
+      ],
+      "slot": "back",
+      "index": 2
+    },
+    {
+      "asset_id": "NPC_Back_03_Apron",
+      "mesh_name": "NPC_Back_03_Apron_MESH",
+      "label_ko": "작업 앞치마",
+      "category": "NPC_Back",
+      "file": "Meshes/NPC_Back_03_Apron.glb",
+      "vertices": 12,
+      "triangles": 14,
+      "materials": [
+        "MAT_ClothLight",
+        "MAT_LeatherLight"
+      ],
+      "bounds_m": [
+        [
+          -0.22,
+          -0.207,
+          0.36
+        ],
+        [
+          0.22,
+          -0.185,
+          1.1
+        ]
+      ],
+      "slot": "back",
+      "index": 3
+    },
+    {
+      "asset_id": "NPC_Hand_00_Sword",
+      "mesh_name": "NPC_Hand_00_Sword_MESH",
+      "label_ko": "단검이 아닌 짧은 검",
+      "category": "NPC_Hand",
+      "file": "Meshes/NPC_Hand_00_Sword.glb",
+      "vertices": 26,
+      "triangles": 40,
+      "materials": [
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Iron"
+      ],
+      "bounds_m": [
+        [
+          0.335,
+          -0.095,
+          0.53
+        ],
+        [
+          0.585,
+          -0.04662,
+          1.43
+        ]
+      ],
+      "slot": "hand",
+      "index": 0
+    },
+    {
+      "asset_id": "NPC_Hand_01_Bow",
+      "mesh_name": "NPC_Hand_01_Bow_MESH",
+      "label_ko": "활",
+      "category": "NPC_Hand",
+      "file": "Meshes/NPC_Hand_01_Bow.glb",
+      "vertices": 116,
+      "triangles": 192,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Linen",
+        "MAT_Leather"
+      ],
+      "bounds_m": [
+        [
+          0.44875,
+          -0.10031,
+          0.1715
+        ],
+        [
+          0.65161,
+          -0.03969,
+          1.2485
+        ]
+      ],
+      "slot": "hand",
+      "index": 1
+    },
+    {
+      "asset_id": "NPC_Hand_02_Staff",
+      "mesh_name": "NPC_Hand_02_Staff_MESH",
+      "label_ko": "잔흔 지팡이",
+      "category": "NPC_Hand",
+      "file": "Meshes/NPC_Hand_02_Staff.glb",
+      "vertices": 48,
+      "triangles": 84,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Soul",
+        "MAT_Brass"
+      ],
+      "bounds_m": [
+        [
+          0.37,
+          -0.11722,
+          0.05
+        ],
+        [
+          0.51201,
+          -0.02278,
+          1.64
+        ]
+      ],
+      "slot": "hand",
+      "index": 2
+    },
+    {
+      "asset_id": "NPC_Hand_03_Axe",
+      "mesh_name": "NPC_Hand_03_Axe_MESH",
+      "label_ko": "도끼",
+      "category": "NPC_Hand",
+      "file": "Meshes/NPC_Hand_03_Axe.glb",
+      "vertices": 22,
+      "triangles": 36,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Iron"
+      ],
+      "bounds_m": [
+        [
+          0.43,
+          -0.115,
+          0.35
+        ],
+        [
+          0.74,
+          -0.025,
+          1.22
+        ]
+      ],
+      "slot": "hand",
+      "index": 3
+    },
+    {
+      "asset_id": "NPC_Hand_04_Lantern",
+      "mesh_name": "NPC_Hand_04_Lantern_MESH",
+      "label_ko": "손등불",
+      "category": "NPC_Hand",
+      "file": "Meshes/NPC_Hand_04_Lantern.glb",
+      "vertices": 68,
+      "triangles": 104,
+      "materials": [
+        "MAT_IronDark",
+        "MAT_Ember"
+      ],
+      "bounds_m": [
+        [
+          0.36,
+          -0.16,
+          0.335
+        ],
+        [
+          0.56,
+          0.02,
+          0.7
+        ]
+      ],
+      "slot": "hand",
+      "index": 4
+    },
+    {
+      "asset_id": "NPC_Headwear_00_Hood",
+      "mesh_name": "NPC_Headwear_00_Hood_MESH",
+      "label_ko": "천 후드",
+      "category": "NPC_Headwear",
+      "file": "Meshes/NPC_Headwear_00_Hood.glb",
+      "vertices": 56,
+      "triangles": 96,
+      "materials": [
+        "MAT_Cloth"
+      ],
+      "bounds_m": [
+        [
+          -0.33446,
+          -0.20597,
+          1.23243
+        ],
+        [
+          0.33446,
+          0.27,
+          1.88
+        ]
+      ],
+      "slot": "headwear",
+      "index": 0
+    },
+    {
+      "asset_id": "NPC_Headwear_01_Helmet",
+      "mesh_name": "NPC_Headwear_01_Helmet_MESH",
+      "label_ko": "철제 투구",
+      "category": "NPC_Headwear",
+      "file": "Meshes/NPC_Headwear_01_Helmet.glb",
+      "vertices": 48,
+      "triangles": 80,
+      "materials": [
+        "MAT_Iron",
+        "MAT_Brass",
+        "MAT_IronDark"
+      ],
+      "bounds_m": [
+        [
+          -0.2745,
+          -0.26393,
+          1.385
+        ],
+        [
+          0.2745,
+          0.23581,
+          1.86
+        ]
+      ],
+      "slot": "headwear",
+      "index": 1
+    },
+    {
+      "asset_id": "NPC_Headwear_02_Cap",
+      "mesh_name": "NPC_Headwear_02_Cap_MESH",
+      "label_ko": "천 모자",
+      "category": "NPC_Headwear",
+      "file": "Meshes/NPC_Headwear_02_Cap.glb",
+      "vertices": 40,
+      "triangles": 72,
+      "materials": [
+        "MAT_Cloth",
+        "MAT_LeatherLight"
+      ],
+      "bounds_m": [
+        [
+          -0.25684,
+          -0.20173,
+          1.66
+        ],
+        [
+          0.25684,
+          0.24173,
+          1.86
+        ]
+      ],
+      "slot": "headwear",
+      "index": 2
+    },
+    {
+      "asset_id": "BLD_House_00_Timber",
+      "mesh_name": "BLD_House_00_Timber_MESH",
+      "label_ko": "목골조 주민 주택",
+      "category": "Architecture",
+      "file": "Meshes/BLD_House_00_Timber.glb",
+      "vertices": 310,
+      "triangles": 464,
+      "materials": [
+        "MAT_StoneDark",
+        "MAT_Plaster",
+        "MAT_Wood",
+        "MAT_WoodLight",
+        "MAT_IronDark",
+        "MAT_Brass",
+        "MAT_Ember",
+        "MAT_Roof",
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -1.88359,
+          -1.9,
+          0.0
+        ],
+        [
+          1.88359,
+          1.85,
+          4.01
+        ]
+      ]
+    },
+    {
+      "asset_id": "BLD_House_01_Thatch",
+      "mesh_name": "BLD_House_01_Thatch_MESH",
+      "label_ko": "보리들 초가",
+      "category": "Architecture",
+      "file": "Meshes/BLD_House_01_Thatch.glb",
+      "vertices": 310,
+      "triangles": 464,
+      "materials": [
+        "MAT_StoneDark",
+        "MAT_Plaster",
+        "MAT_Wood",
+        "MAT_WoodLight",
+        "MAT_IronDark",
+        "MAT_Brass",
+        "MAT_Ember",
+        "MAT_Thatch",
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -2.08124,
+          -1.8,
+          0.0
+        ],
+        [
+          2.08124,
+          1.75,
+          3.71
+        ]
+      ]
+    },
+    {
+      "asset_id": "BLD_House_02_Town",
+      "mesh_name": "BLD_House_02_Town_MESH",
+      "label_ko": "등불 장터 2층 주택",
+      "category": "Architecture",
+      "file": "Meshes/BLD_House_02_Town.glb",
+      "vertices": 310,
+      "triangles": 464,
+      "materials": [
+        "MAT_StoneDark",
+        "MAT_Plaster",
+        "MAT_Wood",
+        "MAT_WoodLight",
+        "MAT_IronDark",
+        "MAT_Brass",
+        "MAT_Ember",
+        "MAT_Roof",
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -1.78487,
+          -2.0,
+          0.0
+        ],
+        [
+          1.78487,
+          1.95,
+          5.71
+        ]
+      ]
+    },
+    {
+      "asset_id": "BLD_Workshop_00_Smith",
+      "mesh_name": "BLD_Workshop_00_Smith_MESH",
+      "label_ko": "검은돌 대장간",
+      "category": "Architecture",
+      "file": "Meshes/BLD_Workshop_00_Smith.glb",
+      "vertices": 362,
+      "triangles": 548,
+      "materials": [
+        "MAT_StoneDark",
+        "MAT_Plaster",
+        "MAT_Wood",
+        "MAT_WoodLight",
+        "MAT_IronDark",
+        "MAT_Brass",
+        "MAT_Ember",
+        "MAT_Roof",
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -1.98238,
+          -1.9,
+          0.0
+        ],
+        [
+          3.075,
+          1.85,
+          3.91
+        ]
+      ]
+    },
+    {
+      "asset_id": "BLD_House_03_Woodland",
+      "mesh_name": "BLD_House_03_Woodland_MESH",
+      "label_ko": "솔바람 산림 오두막",
+      "category": "Architecture",
+      "file": "Meshes/BLD_House_03_Woodland.glb",
+      "vertices": 294,
+      "triangles": 440,
+      "materials": [
+        "MAT_StoneDark",
+        "MAT_Plaster",
+        "MAT_Wood",
+        "MAT_WoodLight",
+        "MAT_IronDark",
+        "MAT_Brass",
+        "MAT_Ember",
+        "MAT_Leaf"
+      ],
+      "bounds_m": [
+        [
+          -1.58767,
+          -1.8,
+          0.0
+        ],
+        [
+          1.58767,
+          1.75,
+          3.2967
+        ]
+      ]
+    },
+    {
+      "asset_id": "BLD_Abbey_00_Dawn",
+      "mesh_name": "BLD_Abbey_00_Dawn_MESH",
+      "label_ko": "새벽 수도원 예배당",
+      "category": "Architecture",
+      "file": "Meshes/BLD_Abbey_00_Dawn.glb",
+      "vertices": 302,
+      "triangles": 452,
+      "materials": [
+        "MAT_Stone",
+        "MAT_Wood",
+        "MAT_WoodLight",
+        "MAT_IronDark",
+        "MAT_Brass",
+        "MAT_StoneDark",
+        "MAT_Ember",
+        "MAT_Roof"
+      ],
+      "bounds_m": [
+        [
+          -2.05,
+          -2.9,
+          0.0
+        ],
+        [
+          2.05,
+          2.9,
+          7.365
+        ]
+      ]
+    },
+    {
+      "asset_id": "BLD_Keep_00_Ash",
+      "mesh_name": "BLD_Keep_00_Ash_MESH",
+      "label_ko": "잿빛 왕성 내성",
+      "category": "Architecture",
+      "file": "Meshes/BLD_Keep_00_Ash.glb",
+      "vertices": 400,
+      "triangles": 600,
+      "materials": [
+        "MAT_Stone",
+        "MAT_Wood",
+        "MAT_WoodLight",
+        "MAT_IronDark",
+        "MAT_Brass",
+        "MAT_StoneDark",
+        "MAT_Ember"
+      ],
+      "bounds_m": [
+        [
+          -2.32,
+          -2.32,
+          0.0
+        ],
+        [
+          2.32,
+          2.32,
+          4.595
+        ]
+      ]
+    },
+    {
+      "asset_id": "BLD_Market_00_Stall",
+      "mesh_name": "BLD_Market_00_Stall_MESH",
+      "label_ko": "등불 장터 노점",
+      "category": "Architecture",
+      "file": "Meshes/BLD_Market_00_Stall.glb",
+      "vertices": 416,
+      "triangles": 728,
+      "materials": [
+        "MAT_Wood",
+        "MAT_WoodLight",
+        "MAT_Linen",
+        "MAT_Cloth",
+        "MAT_Flower"
+      ],
+      "bounds_m": [
+        [
+          -1.5,
+          -1.05,
+          0.0
+        ],
+        [
+          1.5,
+          1.05,
+          2.3
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Module_00_Wall",
+      "mesh_name": "ENV_Module_00_Wall_MESH",
+      "label_ko": "2m 성벽",
+      "category": "Architecture_Modules",
+      "file": "Meshes/ENV_Module_00_Wall.glb",
+      "vertices": 64,
+      "triangles": 96,
+      "materials": [
+        "MAT_Stone",
+        "MAT_StoneDark"
+      ],
+      "bounds_m": [
+        [
+          -1.0,
+          -0.325,
+          0.0
+        ],
+        [
+          1.0,
+          0.325,
+          3.1
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Module_01_Gate",
+      "mesh_name": "ENV_Module_01_Gate_MESH",
+      "label_ko": "열린 성문",
+      "category": "Architecture_Modules",
+      "file": "Meshes/ENV_Module_01_Gate.glb",
+      "vertices": 80,
+      "triangles": 120,
+      "materials": [
+        "MAT_Stone",
+        "MAT_StoneDark",
+        "MAT_IronDark"
+      ],
+      "bounds_m": [
+        [
+          -2.05,
+          -0.5,
+          0.0
+        ],
+        [
+          2.05,
+          0.5,
+          3.75
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Module_02_Tower",
+      "mesh_name": "ENV_Module_02_Tower_MESH",
+      "label_ko": "성벽 망루",
+      "category": "Architecture_Modules",
+      "file": "Meshes/ENV_Module_02_Tower.glb",
+      "vertices": 128,
+      "triangles": 192,
+      "materials": [
+        "MAT_Stone",
+        "MAT_StoneDark"
+      ],
+      "bounds_m": [
+        [
+          -1.175,
+          -1.175,
+          0.0
+        ],
+        [
+          1.175,
+          1.175,
+          4.55
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Module_03_Ruin",
+      "mesh_name": "ENV_Module_03_Ruin_MESH",
+      "label_ko": "무너진 벽",
+      "category": "Architecture_Modules",
+      "file": "Meshes/ENV_Module_03_Ruin.glb",
+      "vertices": 130,
+      "triangles": 236,
+      "materials": [
+        "MAT_Stone",
+        "MAT_StoneDark"
+      ],
+      "bounds_m": [
+        [
+          -1.10003,
+          -0.77172,
+          -0.04
+        ],
+        [
+          1.0,
+          0.3,
+          2.4
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Module_04_Stairs",
+      "mesh_name": "ENV_Module_04_Stairs_MESH",
+      "label_ko": "석조 계단",
+      "category": "Architecture_Modules",
+      "file": "Meshes/ENV_Module_04_Stairs.glb",
+      "vertices": 48,
+      "triangles": 72,
+      "materials": [
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -1.0,
+          -1.2,
+          0.0
+        ],
+        [
+          1.0,
+          1.2,
+          1.44
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Module_05_Bridge",
+      "mesh_name": "ENV_Module_05_Bridge_MESH",
+      "label_ko": "목조 다리",
+      "category": "Architecture_Modules",
+      "file": "Meshes/ENV_Module_05_Bridge.glb",
+      "vertices": 208,
+      "triangles": 328,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Wood"
+      ],
+      "bounds_m": [
+        [
+          -1.0,
+          -3.0,
+          0.0
+        ],
+        [
+          1.0,
+          3.0,
+          1.25
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Module_06_Dock",
+      "mesh_name": "ENV_Module_06_Dock_MESH",
+      "label_ko": "나루 선착장",
+      "category": "Architecture_Modules",
+      "file": "Meshes/ENV_Module_06_Dock.glb",
+      "vertices": 136,
+      "triangles": 216,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Wood"
+      ],
+      "bounds_m": [
+        [
+          -1.4,
+          -1.985,
+          -0.6
+        ],
+        [
+          1.4,
+          1.985,
+          0.8
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Module_07_Fence",
+      "mesh_name": "ENV_Module_07_Fence_MESH",
+      "label_ko": "2m 목책",
+      "category": "Architecture_Modules",
+      "file": "Meshes/ENV_Module_07_Fence.glb",
+      "vertices": 36,
+      "triangles": 56,
+      "materials": [
+        "MAT_Wood",
+        "MAT_WoodLight"
+      ],
+      "bounds_m": [
+        [
+          -1.07,
+          -0.06657,
+          0.0
+        ],
+        [
+          1.05663,
+          0.06657,
+          1.05
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Tree_00_Oak",
+      "mesh_name": "NAT_Tree_00_Oak_MESH",
+      "label_ko": "잿빛 참나무",
+      "category": "Nature_Trees",
+      "file": "Meshes/NAT_Tree_00_Oak.glb",
+      "vertices": 174,
+      "triangles": 312,
+      "materials": [
+        "MAT_Wood",
+        "MAT_Leaf",
+        "MAT_LeafLight"
+      ],
+      "bounds_m": [
+        [
+          -1.51466,
+          -1.11201,
+          -0.00852
+        ],
+        [
+          1.37009,
+          1.30735,
+          4.006
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Tree_01_Pine",
+      "mesh_name": "NAT_Tree_01_Pine_MESH",
+      "label_ko": "솔바람 침엽수",
+      "category": "Nature_Trees",
+      "file": "Meshes/NAT_Tree_01_Pine.glb",
+      "vertices": 56,
+      "triangles": 96,
+      "materials": [
+        "MAT_Wood",
+        "MAT_Leaf",
+        "MAT_LeafLight"
+      ],
+      "bounds_m": [
+        [
+          -1.09827,
+          -1.08446,
+          -0.00678
+        ],
+        [
+          1.01627,
+          1.05701,
+          4.4
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Tree_02_Dead",
+      "mesh_name": "NAT_Tree_02_Dead_MESH",
+      "label_ko": "고사목",
+      "category": "Nature_Trees",
+      "file": "Meshes/NAT_Tree_02_Dead.glb",
+      "vertices": 58,
+      "triangles": 96,
+      "materials": [
+        "MAT_Wood"
+      ],
+      "bounds_m": [
+        [
+          -0.91074,
+          -0.21726,
+          -0.00829
+        ],
+        [
+          0.91071,
+          0.21072,
+          3.00469
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Tree_03_Willow",
+      "mesh_name": "NAT_Tree_03_Willow_MESH",
+      "label_ko": "물안개 버드나무",
+      "category": "Nature_Trees",
+      "file": "Meshes/NAT_Tree_03_Willow.glb",
+      "vertices": 174,
+      "triangles": 312,
+      "materials": [
+        "MAT_Wood",
+        "MAT_Leaf"
+      ],
+      "bounds_m": [
+        [
+          -1.50526,
+          -1.25496,
+          -0.00877
+        ],
+        [
+          1.46007,
+          1.24092,
+          3.25
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Tree_04_Sapling",
+      "mesh_name": "NAT_Tree_04_Sapling_MESH",
+      "label_ko": "희망의 어린 나무",
+      "category": "Nature_Trees",
+      "file": "Meshes/NAT_Tree_04_Sapling.glb",
+      "vertices": 62,
+      "triangles": 112,
+      "materials": [
+        "MAT_Wood",
+        "MAT_LeafLight"
+      ],
+      "bounds_m": [
+        [
+          -0.42403,
+          -0.15455,
+          -0.00807
+        ],
+        [
+          0.42403,
+          0.15455,
+          0.87
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Tree_05_Stump",
+      "mesh_name": "NAT_Tree_05_Stump_MESH",
+      "label_ko": "잘린 그루터기",
+      "category": "Nature_Trees",
+      "file": "Meshes/NAT_Tree_05_Stump.glb",
+      "vertices": 78,
+      "triangles": 128,
+      "materials": [
+        "MAT_Wood",
+        "MAT_WoodLight"
+      ],
+      "bounds_m": [
+        [
+          -0.54274,
+          -0.61129,
+          -0.04471
+        ],
+        [
+          0.63565,
+          0.61636,
+          0.415
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Ground_00_Grass",
+      "mesh_name": "NAT_Ground_00_Grass_MESH",
+      "label_ko": "생풀 군락",
+      "category": "Nature_Ground",
+      "file": "Meshes/NAT_Ground_00_Grass.glb",
+      "vertices": 108,
+      "triangles": 90,
+      "materials": [
+        "MAT_Grass"
+      ],
+      "bounds_m": [
+        [
+          -0.40356,
+          -0.25951,
+          -0.00355
+        ],
+        [
+          0.41993,
+          0.29546,
+          0.36695
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Ground_01_DryGrass",
+      "mesh_name": "NAT_Ground_01_DryGrass_MESH",
+      "label_ko": "마른 풀 군락",
+      "category": "Nature_Ground",
+      "file": "Meshes/NAT_Ground_01_DryGrass.glb",
+      "vertices": 108,
+      "triangles": 90,
+      "materials": [
+        "MAT_Thatch"
+      ],
+      "bounds_m": [
+        [
+          -0.32753,
+          -0.28972,
+          -0.00267
+        ],
+        [
+          0.42501,
+          0.35479,
+          0.41212
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Ground_02_Fern",
+      "mesh_name": "NAT_Ground_02_Fern_MESH",
+      "label_ko": "고사리",
+      "category": "Nature_Ground",
+      "file": "Meshes/NAT_Ground_02_Fern.glb",
+      "vertices": 224,
+      "triangles": 140,
+      "materials": [
+        "MAT_Leaf",
+        "MAT_LeafLight"
+      ],
+      "bounds_m": [
+        [
+          -0.43288,
+          -0.46309,
+          0.00874
+        ],
+        [
+          0.475,
+          0.46309,
+          0.29333
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Ground_03_Reeds",
+      "mesh_name": "NAT_Ground_03_Reeds_MESH",
+      "label_ko": "갈대",
+      "category": "Nature_Ground",
+      "file": "Meshes/NAT_Ground_03_Reeds.glb",
+      "vertices": 144,
+      "triangles": 216,
+      "materials": [
+        "MAT_Grass",
+        "MAT_Leather"
+      ],
+      "bounds_m": [
+        [
+          -0.33906,
+          -0.27341,
+          -0.00095
+        ],
+        [
+          0.4344,
+          0.36145,
+          0.85269
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Ground_04_Flowers",
+      "mesh_name": "NAT_Ground_04_Flowers_MESH",
+      "label_ko": "들꽃",
+      "category": "Nature_Ground",
+      "file": "Meshes/NAT_Ground_04_Flowers.glb",
+      "vertices": 189,
+      "triangles": 306,
+      "materials": [
+        "MAT_Grass",
+        "MAT_Flower"
+      ],
+      "bounds_m": [
+        [
+          -0.26743,
+          -0.3742,
+          -0.00313
+        ],
+        [
+          0.44275,
+          0.38321,
+          0.44507
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Ground_05_Shrub",
+      "mesh_name": "NAT_Ground_05_Shrub_MESH",
+      "label_ko": "관목",
+      "category": "Nature_Ground",
+      "file": "Meshes/NAT_Ground_05_Shrub.glb",
+      "vertices": 112,
+      "triangles": 208,
+      "materials": [
+        "MAT_LeafLight",
+        "MAT_Leaf"
+      ],
+      "bounds_m": [
+        [
+          -0.57461,
+          -0.43085,
+          -0.05
+        ],
+        [
+          0.4119,
+          0.40426,
+          0.59
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Ground_06_Crop",
+      "mesh_name": "NAT_Ground_06_Crop_MESH",
+      "label_ko": "보리 작물",
+      "category": "Nature_Ground",
+      "file": "Meshes/NAT_Ground_06_Crop.glb",
+      "vertices": 416,
+      "triangles": 704,
+      "materials": [
+        "MAT_Thatch"
+      ],
+      "bounds_m": [
+        [
+          -0.33601,
+          -0.33146,
+          -0.00103
+        ],
+        [
+          0.42821,
+          0.34915,
+          1.06712
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Ground_07_Moss",
+      "mesh_name": "NAT_Ground_07_Moss_MESH",
+      "label_ko": "이끼 덩어리",
+      "category": "Nature_Ground",
+      "file": "Meshes/NAT_Ground_07_Moss.glb",
+      "vertices": 112,
+      "triangles": 208,
+      "materials": [
+        "MAT_LeafLight",
+        "MAT_Leaf"
+      ],
+      "bounds_m": [
+        [
+          -0.42443,
+          -0.51333,
+          -0.015
+        ],
+        [
+          0.45473,
+          0.32938,
+          0.105
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Rock_00_Small",
+      "mesh_name": "NAT_Rock_00_Small_MESH",
+      "label_ko": "작은 돌",
+      "category": "Nature_Rocks",
+      "file": "Meshes/NAT_Rock_00_Small.glb",
+      "vertices": 28,
+      "triangles": 52,
+      "materials": [
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -0.3195,
+          -0.30934,
+          0.0
+        ],
+        [
+          0.47053,
+          0.37955,
+          0.3
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Rock_01_Boulder",
+      "mesh_name": "NAT_Rock_01_Boulder_MESH",
+      "label_ko": "큰 바위",
+      "category": "Nature_Rocks",
+      "file": "Meshes/NAT_Rock_01_Boulder.glb",
+      "vertices": 28,
+      "triangles": 52,
+      "materials": [
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -0.89745,
+          -0.74547,
+          0.0
+        ],
+        [
+          1.02486,
+          0.81196,
+          0.9
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Rock_02_Slate",
+      "mesh_name": "NAT_Rock_02_Slate_MESH",
+      "label_ko": "편평한 판석",
+      "category": "Nature_Rocks",
+      "file": "Meshes/NAT_Rock_02_Slate.glb",
+      "vertices": 28,
+      "triangles": 52,
+      "materials": [
+        "MAT_StoneDark"
+      ],
+      "bounds_m": [
+        [
+          -0.79761,
+          -0.499,
+          0.0
+        ],
+        [
+          0.93247,
+          0.57173,
+          0.3
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Rock_03_Ore",
+      "mesh_name": "NAT_Rock_03_Ore_MESH",
+      "label_ko": "철광석 바위",
+      "category": "Nature_Rocks",
+      "file": "Meshes/NAT_Rock_03_Ore.glb",
+      "vertices": 108,
+      "triangles": 196,
+      "materials": [
+        "MAT_Stone",
+        "MAT_Iron"
+      ],
+      "bounds_m": [
+        [
+          -0.59792,
+          -0.5483,
+          0.0
+        ],
+        [
+          0.74769,
+          0.61977,
+          0.65
+        ]
+      ]
+    },
+    {
+      "asset_id": "NAT_Rock_04_Cliff",
+      "mesh_name": "NAT_Rock_04_Cliff_MESH",
+      "label_ko": "절벽 바위 모듈",
+      "category": "Nature_Rocks",
+      "file": "Meshes/NAT_Rock_04_Cliff.glb",
+      "vertices": 28,
+      "triangles": 52,
+      "materials": [
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -1.69619,
+          -0.79477,
+          0.0
+        ],
+        [
+          1.76396,
+          0.86,
+          2.6
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Tile_00_Earth",
+      "mesh_name": "ENV_Tile_00_Earth_MESH",
+      "label_ko": "2m 흙 타일",
+      "category": "Terrain_Tiles",
+      "file": "Meshes/ENV_Tile_00_Earth.glb",
+      "vertices": 8,
+      "triangles": 12,
+      "materials": [
+        "MAT_Earth"
+      ],
+      "bounds_m": [
+        [
+          -1.0,
+          -1.0,
+          -0.2
+        ],
+        [
+          1.0,
+          1.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Tile_01_Cobble",
+      "mesh_name": "ENV_Tile_01_Cobble_MESH",
+      "label_ko": "2m 판석길 타일",
+      "category": "Terrain_Tiles",
+      "file": "Meshes/ENV_Tile_01_Cobble.glb",
+      "vertices": 208,
+      "triangles": 312,
+      "materials": [
+        "MAT_Earth",
+        "MAT_StoneDark",
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -1.0,
+          -1.0,
+          -0.2
+        ],
+        [
+          1.0,
+          1.0,
+          0.0375
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Tile_02_Field",
+      "mesh_name": "ENV_Tile_02_Field_MESH",
+      "label_ko": "2m 밭 타일",
+      "category": "Terrain_Tiles",
+      "file": "Meshes/ENV_Tile_02_Field.glb",
+      "vertices": 56,
+      "triangles": 84,
+      "materials": [
+        "MAT_Earth"
+      ],
+      "bounds_m": [
+        [
+          -1.0,
+          -1.0,
+          -0.2
+        ],
+        [
+          1.0,
+          1.0,
+          0.065
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENV_Tile_03_River",
+      "mesh_name": "ENV_Tile_03_River_MESH",
+      "label_ko": "2m 얕은 물 타일",
+      "category": "Terrain_Tiles",
+      "file": "Meshes/ENV_Tile_03_River.glb",
+      "vertices": 48,
+      "triangles": 72,
+      "materials": [
+        "MAT_Water",
+        "MAT_Ash"
+      ],
+      "bounds_m": [
+        [
+          -1.0,
+          -1.0,
+          -0.2
+        ],
+        [
+          1.0,
+          1.0,
+          0.011
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_00_Well",
+      "mesh_name": "PRP_00_Well_MESH",
+      "label_ko": "마을 우물",
+      "category": "Props",
+      "file": "Meshes/PRP_00_Well.glb",
+      "vertices": 150,
+      "triangles": 232,
+      "materials": [
+        "MAT_Stone",
+        "MAT_Wood",
+        "MAT_Roof",
+        "MAT_WoodLight",
+        "MAT_Linen"
+      ],
+      "bounds_m": [
+        [
+          -1.05,
+          -0.85,
+          0.0
+        ],
+        [
+          1.05,
+          0.85,
+          2.5
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_01_Crate",
+      "mesh_name": "PRP_01_Crate_MESH",
+      "label_ko": "목제 상자",
+      "category": "Props",
+      "file": "Meshes/PRP_01_Crate.glb",
+      "vertices": 64,
+      "triangles": 96,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Wood"
+      ],
+      "bounds_m": [
+        [
+          -0.4,
+          -0.48,
+          0.0
+        ],
+        [
+          0.4,
+          0.435,
+          0.8
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_02_Barrel",
+      "mesh_name": "PRP_02_Barrel_MESH",
+      "label_ko": "나무통",
+      "category": "Props",
+      "file": "Meshes/PRP_02_Barrel.glb",
+      "vertices": 80,
+      "triangles": 148,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_IronDark"
+      ],
+      "bounds_m": [
+        [
+          -0.35978,
+          -0.36886,
+          0.0
+        ],
+        [
+          0.35978,
+          0.36886,
+          0.85
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_03_Cart",
+      "mesh_name": "PRP_03_Cart_MESH",
+      "label_ko": "손수레",
+      "category": "Props",
+      "file": "Meshes/PRP_03_Cart.glb",
+      "vertices": 164,
+      "triangles": 264,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Wood",
+        "MAT_IronDark"
+      ],
+      "bounds_m": [
+        [
+          -1.0,
+          -2.20458,
+          0.03105
+        ],
+        [
+          1.0,
+          0.85,
+          1.13
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_04_Grave",
+      "mesh_name": "PRP_04_Grave_MESH",
+      "label_ko": "이름 없는 묘비",
+      "category": "Props",
+      "file": "Meshes/PRP_04_Grave.glb",
+      "vertices": 36,
+      "triangles": 56,
+      "materials": [
+        "MAT_StoneDark",
+        "MAT_Stone"
+      ],
+      "bounds_m": [
+        [
+          -0.425,
+          -0.25,
+          0.0
+        ],
+        [
+          0.425,
+          0.25,
+          0.96
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_05_Memorial",
+      "mesh_name": "PRP_05_Memorial_MESH",
+      "label_ko": "계승의 흔적 기념석",
+      "category": "Props",
+      "file": "Meshes/PRP_05_Memorial.glb",
+      "vertices": 66,
+      "triangles": 112,
+      "materials": [
+        "MAT_Stone",
+        "MAT_StoneDark",
+        "MAT_Soul"
+      ],
+      "bounds_m": [
+        [
+          -0.65,
+          -0.65,
+          0.0
+        ],
+        [
+          0.65,
+          0.65,
+          2.25
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_06_Lamppost",
+      "mesh_name": "PRP_06_Lamppost_MESH",
+      "label_ko": "희망의 등불 기둥",
+      "category": "Props",
+      "file": "Meshes/PRP_06_Lamppost.glb",
+      "vertices": 90,
+      "triangles": 140,
+      "materials": [
+        "MAT_Stone",
+        "MAT_Wood",
+        "MAT_IronDark",
+        "MAT_Ember"
+      ],
+      "bounds_m": [
+        [
+          -0.19,
+          -0.19,
+          0.0
+        ],
+        [
+          0.625,
+          0.19,
+          2.4
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_07_Campfire",
+      "mesh_name": "PRP_07_Campfire_MESH",
+      "label_ko": "야영 모닥불",
+      "category": "Props",
+      "file": "Meshes/PRP_07_Campfire.glb",
+      "vertices": 243,
+      "triangles": 438,
+      "materials": [
+        "MAT_Stone",
+        "MAT_Wood",
+        "MAT_Ember"
+      ],
+      "bounds_m": [
+        [
+          -0.64802,
+          -0.64021,
+          -0.02
+        ],
+        [
+          0.64802,
+          0.64021,
+          0.8
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_08_Sign",
+      "mesh_name": "PRP_08_Sign_MESH",
+      "label_ko": "길목 표지판",
+      "category": "Props",
+      "file": "Meshes/PRP_08_Sign.glb",
+      "vertices": 28,
+      "triangles": 44,
+      "materials": [
+        "MAT_Wood",
+        "MAT_WoodLight"
+      ],
+      "bounds_m": [
+        [
+          -0.52,
+          -0.06,
+          0.0
+        ],
+        [
+          0.65,
+          0.06,
+          1.65
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_09_Bench",
+      "mesh_name": "PRP_09_Bench_MESH",
+      "label_ko": "목제 벤치",
+      "category": "Props",
+      "file": "Meshes/PRP_09_Bench.glb",
+      "vertices": 24,
+      "triangles": 36,
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Wood"
+      ],
+      "bounds_m": [
+        [
+          -0.75,
+          -0.225,
+          0.0
+        ],
+        [
+          0.75,
+          0.225,
+          0.54
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_10_Supply",
+      "mesh_name": "PRP_10_Supply_MESH",
+      "label_ko": "보급품 더미",
+      "category": "Props",
+      "file": "Meshes/PRP_10_Supply.glb",
+      "vertices": 92,
+      "triangles": 168,
+      "materials": [
+        "MAT_Linen",
+        "MAT_WoodLight"
+      ],
+      "bounds_m": [
+        [
+          -0.54023,
+          -0.21345,
+          -0.01
+        ],
+        [
+          0.46602,
+          0.44,
+          0.705
+        ]
+      ]
+    },
+    {
+      "asset_id": "PRP_11_Rift",
+      "mesh_name": "PRP_11_Rift_MESH",
+      "label_ko": "범람 흔적석",
+      "category": "Props",
+      "file": "Meshes/PRP_11_Rift.glb",
+      "vertices": 74,
+      "triangles": 124,
+      "materials": [
+        "MAT_StoneDark",
+        "MAT_Soul"
+      ],
+      "bounds_m": [
+        [
+          -0.73161,
+          -0.81069,
+          0.0
+        ],
+        [
+          0.85706,
+          0.83522,
+          0.96
+        ]
+      ]
+    }
+  ]
+}

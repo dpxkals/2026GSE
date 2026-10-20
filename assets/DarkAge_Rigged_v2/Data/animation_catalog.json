@@ -1,0 +1,1086 @@
+{
+  "schema_version": 2,
+  "fps": 24,
+  "translation_mode": "In-place; apply travel_speed_mps externally. Jump height is on pelvis, root stays at ground.",
+  "turn_convention": "Blender +Z yaw, + left, - right; Turn clips include root yaw. Move_Turn clips loop with lean/head anticipation and zero root yaw.",
+  "clips": [
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Idle",
+      "action_name": "NPC_Common_v2__Idle",
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Walk",
+      "action_name": "NPC_Common_v2__Walk",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.328125,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Run",
+      "action_name": "NPC_Common_v2__Run",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 1.05,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Move_Turn_L",
+      "action_name": "NPC_Common_v2__Move_Turn_L",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.328125,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Move_Turn_R",
+      "action_name": "NPC_Common_v2__Move_Turn_R",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.328125,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Turn_L45",
+      "action_name": "NPC_Common_v2__Turn_L45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Turn_R45",
+      "action_name": "NPC_Common_v2__Turn_R45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Turn_L90",
+      "action_name": "NPC_Common_v2__Turn_L90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Turn_R90",
+      "action_name": "NPC_Common_v2__Turn_R90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Jump",
+      "action_name": "NPC_Common_v2__Jump",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "TAKEOFF",
+          "frame": 8
+        },
+        {
+          "name": "APEX",
+          "frame": 17
+        },
+        {
+          "name": "LAND",
+          "frame": 25
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Attack_Primary",
+      "action_name": "NPC_Common_v2__Attack_Primary",
+      "start_frame": 1,
+      "end_frame": 31,
+      "duration_seconds": 1.25,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "CONTACT",
+          "frame": 15
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "HitReact",
+      "action_name": "NPC_Common_v2__HitReact",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Death",
+      "action_name": "NPC_Common_v2__Death",
+      "start_frame": 1,
+      "end_frame": 43,
+      "duration_seconds": 1.75,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Attack_Bow",
+      "action_name": "NPC_Common_v2__Attack_Bow",
+      "start_frame": 1,
+      "end_frame": 31,
+      "duration_seconds": 1.25,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "CONTACT",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Attack_Cast",
+      "action_name": "NPC_Common_v2__Attack_Cast",
+      "start_frame": 1,
+      "end_frame": 31,
+      "duration_seconds": 1.25,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "CONTACT",
+          "frame": 15
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Idle",
+      "action_name": "MON_00_Husk__Idle",
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Walk",
+      "action_name": "MON_00_Husk__Walk",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.3346875,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Run",
+      "action_name": "MON_00_Husk__Run",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 1.0710000000000002,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Move_Turn_L",
+      "action_name": "MON_00_Husk__Move_Turn_L",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.3346875,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Move_Turn_R",
+      "action_name": "MON_00_Husk__Move_Turn_R",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.3346875,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Turn_L45",
+      "action_name": "MON_00_Husk__Turn_L45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Turn_R45",
+      "action_name": "MON_00_Husk__Turn_R45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Turn_L90",
+      "action_name": "MON_00_Husk__Turn_L90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Turn_R90",
+      "action_name": "MON_00_Husk__Turn_R90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Jump",
+      "action_name": "MON_00_Husk__Jump",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "TAKEOFF",
+          "frame": 8
+        },
+        {
+          "name": "APEX",
+          "frame": 17
+        },
+        {
+          "name": "LAND",
+          "frame": 25
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Attack_Primary",
+      "action_name": "MON_00_Husk__Attack_Primary",
+      "start_frame": 1,
+      "end_frame": 31,
+      "duration_seconds": 1.25,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "CONTACT",
+          "frame": 15
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "HitReact",
+      "action_name": "MON_00_Husk__HitReact",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Death",
+      "action_name": "MON_00_Husk__Death",
+      "start_frame": 1,
+      "end_frame": 43,
+      "duration_seconds": 1.75,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Idle",
+      "action_name": "MON_01_Goblin__Idle",
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Walk",
+      "action_name": "MON_01_Goblin__Walk",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.249375,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Run",
+      "action_name": "MON_01_Goblin__Run",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.798,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Move_Turn_L",
+      "action_name": "MON_01_Goblin__Move_Turn_L",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.249375,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Move_Turn_R",
+      "action_name": "MON_01_Goblin__Move_Turn_R",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.249375,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Turn_L45",
+      "action_name": "MON_01_Goblin__Turn_L45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Turn_R45",
+      "action_name": "MON_01_Goblin__Turn_R45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Turn_L90",
+      "action_name": "MON_01_Goblin__Turn_L90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Turn_R90",
+      "action_name": "MON_01_Goblin__Turn_R90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Jump",
+      "action_name": "MON_01_Goblin__Jump",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "TAKEOFF",
+          "frame": 8
+        },
+        {
+          "name": "APEX",
+          "frame": 17
+        },
+        {
+          "name": "LAND",
+          "frame": 25
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Attack_Primary",
+      "action_name": "MON_01_Goblin__Attack_Primary",
+      "start_frame": 1,
+      "end_frame": 31,
+      "duration_seconds": 1.25,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "CONTACT",
+          "frame": 15
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "HitReact",
+      "action_name": "MON_01_Goblin__HitReact",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Death",
+      "action_name": "MON_01_Goblin__Death",
+      "start_frame": 1,
+      "end_frame": 43,
+      "duration_seconds": 1.75,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Idle",
+      "action_name": "MON_02_Ogre__Idle",
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Walk",
+      "action_name": "MON_02_Ogre__Walk",
+      "start_frame": 1,
+      "end_frame": 41,
+      "duration_seconds": 1.6666666666666667,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.3675,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Run",
+      "action_name": "MON_02_Ogre__Run",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 1.05,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Move_Turn_L",
+      "action_name": "MON_02_Ogre__Move_Turn_L",
+      "start_frame": 1,
+      "end_frame": 41,
+      "duration_seconds": 1.6666666666666667,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.3675,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Move_Turn_R",
+      "action_name": "MON_02_Ogre__Move_Turn_R",
+      "start_frame": 1,
+      "end_frame": 41,
+      "duration_seconds": 1.6666666666666667,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.3675,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Turn_L45",
+      "action_name": "MON_02_Ogre__Turn_L45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Turn_R45",
+      "action_name": "MON_02_Ogre__Turn_R45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Turn_L90",
+      "action_name": "MON_02_Ogre__Turn_L90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Turn_R90",
+      "action_name": "MON_02_Ogre__Turn_R90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Jump",
+      "action_name": "MON_02_Ogre__Jump",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "TAKEOFF",
+          "frame": 8
+        },
+        {
+          "name": "APEX",
+          "frame": 17
+        },
+        {
+          "name": "LAND",
+          "frame": 25
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Attack_Primary",
+      "action_name": "MON_02_Ogre__Attack_Primary",
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 1.5,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "CONTACT",
+          "frame": 17
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "HitReact",
+      "action_name": "MON_02_Ogre__HitReact",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Death",
+      "action_name": "MON_02_Ogre__Death",
+      "start_frame": 1,
+      "end_frame": 43,
+      "duration_seconds": 1.75,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Idle",
+      "action_name": "MON_03_Hound__Idle",
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Walk",
+      "action_name": "MON_03_Hound__Walk",
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 1.5,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.375,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Run",
+      "action_name": "MON_03_Hound__Run",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 1.8000000000000003,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Move_Turn_L",
+      "action_name": "MON_03_Hound__Move_Turn_L",
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 1.5,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.375,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Move_Turn_R",
+      "action_name": "MON_03_Hound__Move_Turn_R",
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 1.5,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.375,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Turn_L45",
+      "action_name": "MON_03_Hound__Turn_L45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Turn_R45",
+      "action_name": "MON_03_Hound__Turn_R45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Turn_L90",
+      "action_name": "MON_03_Hound__Turn_L90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Turn_R90",
+      "action_name": "MON_03_Hound__Turn_R90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Jump",
+      "action_name": "MON_03_Hound__Jump",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "TAKEOFF",
+          "frame": 8
+        },
+        {
+          "name": "APEX",
+          "frame": 17
+        },
+        {
+          "name": "LAND",
+          "frame": 25
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Attack_Primary",
+      "action_name": "MON_03_Hound__Attack_Primary",
+      "start_frame": 1,
+      "end_frame": 31,
+      "duration_seconds": 1.25,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "CONTACT",
+          "frame": 15
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "HitReact",
+      "action_name": "MON_03_Hound__HitReact",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Death",
+      "action_name": "MON_03_Hound__Death",
+      "start_frame": 1,
+      "end_frame": 43,
+      "duration_seconds": 1.75,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Idle",
+      "action_name": "MON_04_Boar__Idle",
+      "start_frame": 1,
+      "end_frame": 49,
+      "duration_seconds": 2.0,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Walk",
+      "action_name": "MON_04_Boar__Walk",
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 1.5,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.2916666666666667,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Run",
+      "action_name": "MON_04_Boar__Run",
+      "start_frame": 1,
+      "end_frame": 25,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.8333333333333334,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Move_Turn_L",
+      "action_name": "MON_04_Boar__Move_Turn_L",
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 1.5,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.2916666666666667,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Move_Turn_R",
+      "action_name": "MON_04_Boar__Move_Turn_R",
+      "start_frame": 1,
+      "end_frame": 37,
+      "duration_seconds": 1.5,
+      "loop": true,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0.2916666666666667,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Turn_L45",
+      "action_name": "MON_04_Boar__Turn_L45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Turn_R45",
+      "action_name": "MON_04_Boar__Turn_R45",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -45,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Turn_L90",
+      "action_name": "MON_04_Boar__Turn_L90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": 90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Turn_R90",
+      "action_name": "MON_04_Boar__Turn_R90",
+      "start_frame": 1,
+      "end_frame": 29,
+      "duration_seconds": 1.1666666666666667,
+      "loop": false,
+      "root_yaw_degrees": -90,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Jump",
+      "action_name": "MON_04_Boar__Jump",
+      "start_frame": 1,
+      "end_frame": 33,
+      "duration_seconds": 1.3333333333333333,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "TAKEOFF",
+          "frame": 8
+        },
+        {
+          "name": "APEX",
+          "frame": 17
+        },
+        {
+          "name": "LAND",
+          "frame": 25
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Attack_Primary",
+      "action_name": "MON_04_Boar__Attack_Primary",
+      "start_frame": 1,
+      "end_frame": 31,
+      "duration_seconds": 1.25,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": [
+        {
+          "name": "CONTACT",
+          "frame": 15
+        }
+      ]
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "HitReact",
+      "action_name": "MON_04_Boar__HitReact",
+      "start_frame": 1,
+      "end_frame": 21,
+      "duration_seconds": 0.8333333333333334,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Death",
+      "action_name": "MON_04_Boar__Death",
+      "start_frame": 1,
+      "end_frame": 43,
+      "duration_seconds": 1.75,
+      "loop": false,
+      "root_yaw_degrees": 0,
+      "travel_speed_mps": 0,
+      "events": []
+    }
+  ]
+}

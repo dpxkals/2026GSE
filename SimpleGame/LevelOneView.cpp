@@ -2,6 +2,7 @@
 #include "CharacterArt.h"
 #include "LevelOneView.h"
 #include "VillageLayout.h"
+#include "AssetRuntime.h"
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
@@ -51,16 +52,28 @@ void LevelOneView::Ground(SceneRenderer& renderer,
     {
         for (const auto& village : Villages())
         {
-            double radius = VillageWallRadius - 0.5;
+            double rx = village.halfWidth - 1.5, ry = village.halfHeight - 1.5;
             auto center = village.center;
-            Point2 corners[] = {project(center.x - radius, center.y - radius, 0),
-                                project(center.x + radius, center.y - radius, 0),
-                                project(center.x + radius, center.y + radius, 0),
-                                project(center.x - radius, center.y + radius, 0)};
-            for (int i = 0; i < 4; ++i)
+            auto boundary = [&](int index)
             {
-                renderer.Line(
-                    corners[i], corners[(i + 1) % 4], 1.4f * zoom, {.38f, .75f, .58f, .4f});
+                double angle = index * 6.283185307 / 64;
+                double dx = std::cos(angle), dy = std::sin(angle);
+                double extent = (std::min)(rx / (std::max)(.0001, std::abs(dx)),
+                                           ry / (std::max)(.0001, std::abs(dy)));
+                if (village.kind == VillageKind::Market || village.kind == VillageKind::Woodland ||
+                    village.kind == VillageKind::Riverside)
+                {
+                    extent = 1 / std::sqrt(dx * dx / (rx * rx) + dy * dy / (ry * ry));
+                }
+                else if (village.kind == VillageKind::Abbey || village.kind == VillageKind::Mining)
+                {
+                    extent = (std::min)(extent, 1.65 / (std::abs(dx) / rx + std::abs(dy) / ry));
+                }
+                return project(center.x + dx * extent, center.y + dy * extent, 0);
+            };
+            for (int i = 0; i < 64; ++i)
+            {
+                renderer.Line(boundary(i), boundary(i + 1), 1.4f * zoom, {.38f, .75f, .58f, .4f});
             }
         }
     }
@@ -115,8 +128,16 @@ void LevelOneView::DrawEnemy(SceneRenderer& renderer,
     {
         Ring(renderer, p, boss ? .65 : .38, zoom, {.96f, .66f, .21f, .8f});
     }
+    bool imported = AssetRuntime::Instance().DrawRole(renderer,
+                                                      boss    ? "boss"
+                                                      : hound ? "hound"
+                                                              : "husk",
+                                                      "enemy:" + std::to_string(enemy.id),
+                                                      p,
+                                                      zoom,
+                                                      pose);
     // Shadow, four limbs, torso, head and weapon/tail. All geometry is model-space.
-    for (int part = 0; part < 8; ++part)
+    for (int part = 0; part < (imported ? 0 : 8); ++part)
     {
         std::string key = "enemy:rig1:" + std::to_string(int(enemy.kind)) + ":" +
                           std::to_string(enraged) + ":" + std::to_string(part);

@@ -1,0 +1,946 @@
+{
+  "glb_files": [
+    {
+      "file": "Characters\\MON_00_Husk_Animated.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 13,
+      "triangles": 1353,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "Characters\\MON_01_Goblin_Animated.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 13,
+      "triangles": 1271,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "Characters\\MON_02_Ogre_Animated.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 13,
+      "triangles": 1494,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "Characters\\MON_03_Hound_Animated.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 13,
+      "triangles": 1964,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "Characters\\MON_04_Boar_Animated.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 13,
+      "triangles": 1892,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "Characters\\NPC_Common_Animated.glb",
+      "meshes": 6,
+      "joints": 23,
+      "clips": 15,
+      "triangles": 2080,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Back_00_Cloak.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 52,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Back_01_Quiver.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 372,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Back_02_Satchel.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 112,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Back_03_Apron.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 22,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Body_00_Male.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 576,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Body_01_Female.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 576,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hair_00_Short.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 136,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hair_01_Long.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 352,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hair_02_Braid.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 340,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hair_03_Crop.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 56,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hand_00_Sword.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 120,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hand_01_Bow.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 224,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hand_02_Staff.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 140,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hand_03_Axe.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 112,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Hand_04_Lantern.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 184,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Head_00_Male.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 292,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Head_01_Female.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 292,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Headwear_00_Hood.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 224,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Headwear_01_Helmet.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 144,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Headwear_02_Cap.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 72,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Legs_00_Trousers.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 296,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Legs_01_Greaves.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 448,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Legs_02_RangerBoots.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 472,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Torso_00_Tunic.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 328,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Torso_01_Armor.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 508,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Torso_02_Ranger.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 348,
+      "max_weight_sum_error": 0
+    },
+    {
+      "file": "NPC_Parts\\NPC_Torso_03_Robe.glb",
+      "meshes": 1,
+      "joints": 23,
+      "clips": 0,
+      "triangles": 428,
+      "max_weight_sum_error": 0
+    }
+  ],
+  "rigs": [
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "bones": 23,
+      "unweighted_vertices": 0,
+      "max_influences": 2,
+      "max_weight_sum_error": 2.9802322387695312e-08
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "bones": 23,
+      "unweighted_vertices": 0,
+      "max_influences": 1,
+      "max_weight_sum_error": 0
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "bones": 23,
+      "unweighted_vertices": 0,
+      "max_influences": 1,
+      "max_weight_sum_error": 0
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "bones": 23,
+      "unweighted_vertices": 0,
+      "max_influences": 1,
+      "max_weight_sum_error": 0
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "bones": 23,
+      "unweighted_vertices": 0,
+      "max_influences": 1,
+      "max_weight_sum_error": 0
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "bones": 23,
+      "unweighted_vertices": 0,
+      "max_influences": 1,
+      "max_weight_sum_error": 0
+    }
+  ],
+  "locomotion_joint_gaps": [
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Idle",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Walk",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Run",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Move_Turn_L",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Move_Turn_R",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Turn_L45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Turn_R45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Turn_L90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Turn_R90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Jump",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Attack_Primary",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "HitReact",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Death",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.124
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Attack_Bow",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Attack_Cast",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.12
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Idle",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Walk",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Run",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Move_Turn_L",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Move_Turn_R",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Turn_L45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Turn_R45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Turn_L90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Turn_R90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Jump",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Attack_Primary",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "HitReact",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1224
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Death",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.1009
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Idle",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Walk",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Run",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Move_Turn_L",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Move_Turn_R",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Turn_L45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Turn_R45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Turn_L90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Turn_R90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Jump",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Attack_Primary",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "HitReact",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0912
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Death",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.0914
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Idle",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Walk",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Run",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Move_Turn_L",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Move_Turn_R",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Turn_L45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Turn_R45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Turn_L90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Turn_R90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Jump",
+      "max_gap_m": 1e-06,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Attack_Primary",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "HitReact",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.168
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Death",
+      "max_gap_m": 1e-06,
+      "min_foot_bone_head_z": 0.172
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Idle",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Walk",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Run",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Move_Turn_L",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Move_Turn_R",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Turn_L45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Turn_R45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Turn_L90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Turn_R90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Jump",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Attack_Primary",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "HitReact",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Death",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.097682
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Idle",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Walk",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Run",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Move_Turn_L",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Move_Turn_R",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Turn_L45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Turn_R45",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Turn_L90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Turn_R90",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Jump",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Attack_Primary",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.13
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "HitReact",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.129999
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Death",
+      "max_gap_m": 0.0,
+      "min_foot_bone_head_z": 0.107817
+    }
+  ],
+  "loops": [
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Idle",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Walk",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Run",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Move_Turn_L",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_NPC_Common_v2",
+      "clip": "Move_Turn_R",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Idle",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Walk",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Run",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Move_Turn_L",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_00_Husk",
+      "clip": "Move_Turn_R",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Idle",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Walk",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Run",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Move_Turn_L",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_01_Goblin",
+      "clip": "Move_Turn_R",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Idle",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Walk",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Run",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Move_Turn_L",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_02_Ogre",
+      "clip": "Move_Turn_R",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Idle",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Walk",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Run",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Move_Turn_L",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_03_Hound",
+      "clip": "Move_Turn_R",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Idle",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Walk",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Run",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Move_Turn_L",
+      "max_boundary_matrix_error": 0.0
+    },
+    {
+      "rig_id": "RIG_MON_04_Boar",
+      "clip": "Move_Turn_R",
+      "max_boundary_matrix_error": 0.0
+    }
+  ]
+}

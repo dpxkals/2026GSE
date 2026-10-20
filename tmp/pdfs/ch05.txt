@@ -1,0 +1,276 @@
+
+=== PAGE 1 ===
+Chapter 05 데이터 전송하기
+
+=== PAGE 2 ===
+2
+학습목표
+• 응용 프로그램 프로토콜의 필요성과 메시지 설계 방식을 이해한다.
+• 데이터 전송 시 고려 사항을 파악한다.
+• 다양한 데이터 전송 방식을 이해하고 활용한다.
+데이터를 어떻게 묶어서 주고 받을지 설계
+
+=== PAGE 3 ===
+01 응용 프로그램 프로토콜과 데이터 전송
+02 다양한 데이터 전송 방식
+
+=== PAGE 4 ===
+01 응용 프로그램 프로토콜과 데이터 전송
+
+=== PAGE 5 ===
+5
+응용 프로그램 프로토콜과 데이터 전송 (1)
+ 응용 프로그램 프로토콜
+ 응용 프로그램 수준에서 주고받는 데이터의 형식과 의미, 처리 방식을 정의한 프로토콜
+ 예 : 네트워크 그림판 프로그램
+네트워크
+
+
+=== PAGE 6 ===
+6
+응용 프로그램 프로토콜과 데이터 전송 (2)
+ 주고받아야 할 정보
+• 직선의 시작과 끝점
+• 선의 두께와 색상
+ C 언어의 구조체로 표현
+
+
+=== PAGE 7 ===
+7
+응용 프로그램 프로토콜과 데이터 전송 (3)
+ 원 그리기 기능 추가
+• 원의 중심 좌표
+• 원의 반지름
+• 내부 채우기 색상
+• 테두리 두께와 색상
+ C 언어의 구조체로 표현
+원하는  정보  필요하다고  생각되는  정보를  효율적으로  전달하기  위해서  구조체를  전달
+이것을  설계하는  것이  애플리케이션  프로토콜
+
+=== PAGE 8 ===
+8
+응용 프로그램 프로토콜과 데이터 전송 (4)
+ 메시지 타입을 구분할 수 있도록 필드 추가!
+이 예시는  타입을  받게  해서  효율성을  높임
+
+=== PAGE 9 ===
+9
+ 메시지 경계 구분
+① 송신자는 항상 고정 길이 데이터를 보내고, 수신자는 항상 고정 길이 데이터를 읽음
+② 송신자는 가변 길이 데이터를 보내고 끝부분에 특별한 표시(EOR, End Of Record)를 붙임. 
+수신자는 EOR이 나올 때까지 데이터를 읽음
+③ 송신자는 보낼 데이터 크기를 고정 길이 데이터로 보내고, 이어서 가변 길이 데이터를 보냄. 
+수신자는 고정 길이 데이터를 읽어서 뒤따라올 가변 데이터의 길이를 알아내고, 이 길이만큼
+데이터를 읽음
+④ 송신자는 가변 길이 데이터 전송한 후 연결을 정상 종료. 수신자는 recv() 함수의 리턴값이
+0(정상 종료)이 될 때까지 데이터를 읽음
+응용 프로그램 프로토콜과 데이터 전송 (5)
+고정길이가 아닌데 이 방법을 사용하면 낭비될 수 있다. IPㅈ주소처럼 고정이라면 사용할 수 있겠다 .
+도메인 이름을 처리하는 사례일 경우 사용할 수 있겠지만 EOR이 나올떄까지 읽어야해서 속도저하에 문제가 
+있을 수 있어 한정된 경우에 사용해야되겠다.
+정보를 담는 것에 낭비되는 단점이 있다지만, 속도에 이점이 있고, 가변 길이에 적용이 가능해 일반적으로 많이 사용
+일반적으로 쓸 수 있는 방법은 아니고 한쪽에서 데이터를 보내고 끝낼 경우 사용
+그 후 주고 받을 데이터가 없는 경우 사용하는 방법
+
+=== PAGE 10 ===
+10
+ 메시지 경계 구분
+ 방법 ①
+• 주고받을 데이터의 길이 변동폭이 크지 않을
+때 적합
+ 방법 ②
+• 생성 데이터의 길이를 미리 알 수 없을 때 적합
+ 방법 ③
+• 생성 데이터의 길이를 미리 알고 있는 상황에
+서 구현이 쉽고 처리 효율성이 높음
+ 방법 ④
+• 한쪽에서 일방적으로 가변 길이 데이터를 보낼
+때 적합
+부가 정보
+...
+데이터
+(가변 길이)
+헤더 (고정 길이)
+데이터 길이
+↑ 방법 ③을 사용할 때의 메시지 구조
+응용 프로그램 프로토콜과 데이터 전송 (6)
+
+=== PAGE 11 ===
+11
+ 구조체 멤버 맞춤의 예 - 초기 상태
+a
+b
+c
+d
+struct MyMessage 
+{ 
+int  a; // 4바이트
+char b; // 1바이트
+int  c; // 4바이트
+char d; // 1바이트
+};
+MyMessage msg;
+...
+send(sock, (char *)&msg, sizeof(msg), 0);
+응용 프로그램 프로토콜과 데이터 전송 (7)
+송수신 작업 효율적으로 하기 위해 구조체 멤버 맞춤
+데이터는 10바이트 이지만
+총 보내지는 것은 16바이트
+낭비가 있다
+
+=== PAGE 12 ===
+12
+ 구조체 멤버 맞춤의 예 - #pragma pack 적용 후 [윈도우]
+a
+b
+c
+d
+#pragma pack(1)
+struct MyMessage 
+{
+int  a; // 4바이트
+char b; // 1바이트
+int  c; // 4바이트
+char d; // 1바이트
+}; 
+#pragma pack()
+MyMessage msg;
+...
+send(sock, (char *)&msg, sizeof(msg), 0);
+응용 프로그램 프로토콜과 데이터 전송 (8)
+1바이트로 읽는 방식 해제 코드
+1바이트 단위로 하겠다고 지정 코드
+
+=== PAGE 13 ===
+13
+ 구조체 멤버 맞춤의 예 - __attribute__((packed)) 적용 후 [리눅스]
+응용 프로그램 프로토콜과 데이터 전송 (9)
+struct __attribute__((packed)) MyMessage 
+{
+int  a;  // 4바이트
+char b;  // 1바이트
+int  c;  // 4바이트
+char d;  // 1바이트
+};
+struct MyMessage msg;
+...
+send(sock, (char *)&msg, sizeof(msg), 0);
+a
+b
+c
+d
+
+=== PAGE 14 ===
+02 다양한 데이터 전송 방식
+
+=== PAGE 15 ===
+15
+다양한 데이터 전송 방식 (1)
+ 고정 길이 데이터 전송
+ 서버와 클라이언트 모두 크기가 같은 버퍼를 정의해두고 데이터를 주고받음
+ 실습 5-1 고정 길이 데이터 전송 연습
+
+
+=== PAGE 16 ===
+16
+다양한 데이터 전송 방식 (2)
+ 실습 5-1 고정 길이 데이터 전송 연습
+ TCPServer_Fixed.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter05/TCPServer_Fixed/TCPServer_Fixed.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter05/TCPServer_Fixed.cpp
+ TCPClient_Fixed.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter05/TCPClient_Fixed/TCPClient_Fixed.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter05/TCPClient_Fixed.cpp
+
+=== PAGE 17 ===
+17
+다양한 데이터 전송 방식 (3)
+ 가변 길이 데이터 전송
+ 가변 길이 데이터 경계를 구분하기 위해 EOR로 사용할 데이터 패턴을 정해야 함
+• 흔히 '＼n'이나 '＼r＼n'을 사용
+ 예) '＼n'을 검출하는 가상 코드
+while(1){
+→ 소켓 수신 버퍼에서 1바이트 데이터를 읽는다.
+읽은 데이터가 ‘\n’이 아니면 응용 프로그램 버퍼에 저장한다.
+읽은 데이터가 ‘\n’이면 루프를 빠져나온다.
+}
+응용 프로그램 버퍼에 저장된 데이터를 사용한다.
+성능 저하 요인!
+
+=== PAGE 18 ===
+18
+다양한 데이터 전송 방식 (4)
+ 실습 5-2 가변 길이 데이터 전송 연습
+
+
+=== PAGE 19 ===
+19
+다양한 데이터 전송 방식 (5)
+ 실습 5-2 가변 길이 데이터 전송 연습
+ TCPServer_Variable.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter05/TCPServer_Variable/TCPServer_Variable.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter05/TCPServer_Variable.cpp
+ TCPClient_Variable.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter05/TCPClient_Variable/TCPClient_Variable.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter05/TCPClient_Variable.cpp
+
+=== PAGE 20 ===
+20
+다양한 데이터 전송 방식 (6)
+ 고정 길이+가변 길이 데이터 전송
+ 송신 측에서 가변 길이 데이터의 크기를 미리 계산할 수 있다면 ‘고정 길이 + 가변 길이 데이
+터’ 전송이 효과적
+ 수신 측에서는 ① 고정 길이 데이터 수신 ② 가변 길이 데이터 수신, 두 번의 데이터 읽기 작
+업으로 가변 길이 데이터의 경계를 구분해 읽을 수 있음
+
+=== PAGE 21 ===
+21
+다양한 데이터 전송 방식 (7)
+ 실습 5-3 고정 길이 + 가변 길이 데이터 전송 연습
+
+
+=== PAGE 22 ===
+22
+다양한 데이터 전송 방식 (8)
+ 실습 5-3 고정 길이 + 가변 길이 데이터 전송 연습
+ TCPServer_FixedVariable.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter05/TCPServer_FixedVariable/TCPServer_FixedVariable.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter05/TCPServer_FixedVariable.cpp
+ TCPClient_FixedVariable.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter05/TCPClient_FixedVariable/TCPClient_FixedVariable.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter05/TCPClient_FixedVariable.cpp
+
+=== PAGE 23 ===
+23
+다양한 데이터 전송 방식 (9)
+ 실습 5-4 데이터 전송 후 종료 연습
+ 일종의 가변 길이 데이터 전송 방식
+• EOR로 특별한 데이터 패턴 대신 연결 종료를 사용
+
+
+=== PAGE 24 ===
+24
+다양한 데이터 전송 방식 (10)
+ 실습 5-4 데이터 전송 후 종료 연습
+ TCPServer_CloseOnTransfer.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter05/TCPServer_CloseOnTransfer/TCPServer_CloseOnTransfer.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter05/TCPServer_CloseOnTransfer.cpp
+ TCPClient_CloseOnTransfer.cpp
+ [윈도우] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Windows/Chapter05/TCPClient_CloseOnTransfer/TCPClient_CloseOnTransfer.cpp
+ [리눅스] https://github.com/promche/TCP-IP-Socket-Prog-Book-
+2nd/blob/Source/Linux/Chapter05/TCPClient_CloseOnTransfer.cpp

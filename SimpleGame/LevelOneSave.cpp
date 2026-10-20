@@ -59,7 +59,7 @@ bool LevelOne::Save()
         temporary += L".tmp";
         std::ofstream out(temporary, std::ios::trunc);
         out << std::setprecision(17);
-        out << "GSE_LEVEL_ONE 3 " << seed_ << '\n';
+        out << "GSE_LEVEL_ONE 4 " << seed_ << '\n';
         out << player_.position.x << ' ' << player_.position.y << ' ' << player_.level << ' '
             << player_.experience << ' ' << player_.health << ' ' << player_.weaponRank << ' '
             << player_.kills << ' ' << player_.retreats << ' ' << player_.souls << ' '
@@ -142,7 +142,7 @@ void LevelOne::Load()
         int version = 0;
         std::uint64_t seed = 0;
         if (!(in >> magic >> version >> seed) || magic != "GSE_LEVEL_ONE" ||
-            (version < 1 || version > 3) || seed != seed_)
+            (version < 1 || version > 4) || seed != seed_)
         {
             throw std::runtime_error("Invalid level header; original preserved");
         }
@@ -375,13 +375,23 @@ void LevelOne::Load()
             throw std::runtime_error("Invalid random generator state; original preserved");
         }
 
-        if (version < 3)
+        if (version < 4)
         {
             auto backup = savePath_;
-            backup += L".before_rpg_v3.bak";
+            backup += L".before_settlements_v4.bak";
             if (!std::filesystem::exists(backup))
             {
                 std::filesystem::copy_file(savePath_, backup);
+            }
+            if (rpg.bossVillage >= 0)
+            {
+                for (auto& enemy : enemies)
+                {
+                    if (enemy.kind == EnemyKind::Boss)
+                    {
+                        enemy.position = enemy.attackPoint = VillageApproach(rpg.bossVillage);
+                    }
+                }
             }
         }
         player_ = player;

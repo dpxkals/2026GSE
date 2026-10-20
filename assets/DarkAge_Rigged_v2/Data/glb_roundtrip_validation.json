@@ -1,0 +1,47 @@
+{
+  "reimported_character_glbs": 6,
+  "results": [
+    {
+      "file": "MON_00_Husk_Animated.glb",
+      "joints": 23,
+      "imported_animations": 13,
+      "duration_error_frames": 0.0,
+      "max_joint_gap_m": 3e-07
+    },
+    {
+      "file": "MON_01_Goblin_Animated.glb",
+      "joints": 23,
+      "imported_animations": 13,
+      "duration_error_frames": 0.0,
+      "max_joint_gap_m": 3e-07
+    },
+    {
+      "file": "MON_02_Ogre_Animated.glb",
+      "joints": 23,
+      "imported_animations": 13,
+      "duration_error_frames": 0.0,
+      "max_joint_gap_m": 5e-07
+    },
+    {
+      "file": "MON_03_Hound_Animated.glb",
+      "joints": 23,
+      "imported_animations": 13,
+      "duration_error_frames": 0.0,
+      "max_joint_gap_m": 8e-07
+    },
+    {
+      "file": "MON_04_Boar_Animated.glb",
+      "joints": 23,
+      "imported_animations": 13,
+      "duration_error_frames": 0.0,
+      "max_joint_gap_m": 4e-07
+    },
+    {
+      "file": "NPC_Common_Animated.glb",
+      "joints": 23,
+      "imported_animations": 15,
+      "duration_error_frames": 0.0,
+      "max_joint_gap_m": 4e-07
+    }
+  ]
+}

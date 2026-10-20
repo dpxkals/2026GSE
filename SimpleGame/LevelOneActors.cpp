@@ -204,8 +204,10 @@ void LevelOne::StepEnemy(std::uint64_t id, double dt)
         for (int attempt = 0; attempt < 16; ++attempt)
         {
             double angle = double((enemy->id + attempt) % 16) * 6.283185307 / 16;
-            WorldPoint point{nearest->center.x + std::cos(angle) * 22,
-                             nearest->center.y + std::sin(angle) * 22};
+            int town = int(nearest - Villages().data());
+            double radius = VillageHuntingRadius(town);
+            WorldPoint point{nearest->center.x + std::cos(angle) * radius,
+                             nearest->center.y + std::sin(angle) * radius};
             if (activeNpcs_->CanWalk(point.x, point.y, *activeWorld_) && !InCamp(point))
             {
                 enemy->position = enemy->attackPoint = point;
