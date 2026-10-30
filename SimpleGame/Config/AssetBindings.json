@@ -1,22 +1,25 @@
 {
   "schema_version": 1,
   "npc_pack": "LowPoly_DarkAge_v1",
+  "npc_rig_contract": "DarkAge_Rigged_v2/Data/npc_rig_contract.json",
   "npc_presets": "Data/npc_presets_210.json",
   "npc_model": "",
   "default_character_scale": 0.8,
   "animation_aliases": {
     "idle": ["Idle", "idle", "대기"],
     "walk": ["Walk", "walk", "Run", "이동"],
-    "attack": ["Attack", "attack", "공격"],
-    "hurt": ["Hit", "Hurt", "hurt", "피격"]
+    "attack": ["Attack_Primary", "Attack", "attack", "공격"],
+    "attack_bow": ["Attack_Bow", "Attack_Primary", "Attack"],
+    "attack_cast": ["Attack_Cast", "Attack_Primary", "Attack"],
+    "hurt": ["HitReact", "Hit", "Hurt", "hurt", "피격"]
   },
   "roles": {
     "player": {"recipe": "NPC_PRESET_001"},
     "warden": {"recipe": "NPC_PRESET_002"},
     "scholar": {"recipe": "NPC_PRESET_003"},
-    "husk": {"model": ""},
-    "hound": {"model": ""},
-    "boss": {"model": "", "scale": 1.5}
+    "husk": {"model": "DarkAge_Rigged_v2/Characters/MON_00_Husk_Animated"},
+    "hound": {"model": "DarkAge_Rigged_v2/Characters/MON_03_Hound_Animated"},
+    "boss": {"model": "DarkAge_Rigged_v2/Characters/MON_02_Ogre_Animated", "scale": 1.5}
   },
   "props": {
     "Tree": {"variants": ["NAT_Tree_00_Oak", "NAT_Tree_01_Pine", "NAT_Tree_02_Dead", "NAT_Tree_03_Willow", "NAT_Tree_04_Sapling", "NAT_Tree_05_Stump"], "fit_footprint": true},

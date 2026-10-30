@@ -1407,6 +1407,18 @@ namespace
 
     void SpecialDown(int key, int, int)
     {
+        if (key == GLUT_KEY_F10)
+        {
+            bool loaded = AssetRuntime::Instance().Reload(renderer);
+            if (loaded && society && society->Error().empty())
+            {
+                AssetRuntime::Instance().Update(animationClock, society->People());
+            }
+            message = loaded ? "ASSETS RELOADED" : "ASSET RELOAD FAILED - SEE CONSOLE";
+            messageUntil = glutGet(GLUT_ELAPSED_TIME) / 1000.0 + 4;
+            ClearInput();
+            return;
+        }
         if (rpgPanel.IsOpen() && society)
         {
             if (key == GLUT_KEY_UP)
@@ -1436,18 +1448,6 @@ namespace
         if (key == GLUT_KEY_F9)
         {
             ResetPlayData();
-            return;
-        }
-        if (key == GLUT_KEY_F10)
-        {
-            bool loaded = AssetRuntime::Instance().Reload(renderer);
-            if (loaded && society && society->Error().empty())
-            {
-                AssetRuntime::Instance().Update(animationClock, society->People());
-            }
-            message = loaded ? "ASSETS RELOADED" : "ASSET RELOAD FAILED - SEE CONSOLE";
-            messageUntil = glutGet(GLUT_ELAPSED_TIME) / 1000.0 + 4;
-            ClearInput();
             return;
         }
         auto& effects = renderer.Effects();

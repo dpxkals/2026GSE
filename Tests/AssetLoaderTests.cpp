@@ -15,6 +15,75 @@ namespace
         }
     }
 
+    void SharedSkeleton()
+    {
+        using namespace Models;
+        Asset source;
+        source.nodes.resize(4);
+        source.nodes[0].name = "Rig";
+        source.nodes[1].name = "root";
+        source.nodes[1].parent = 0;
+        source.nodes[2].name = "hand";
+        source.nodes[2].parent = 1;
+        source.nodes[2].translation = {1, 0, 0};
+        source.nodes[3].name = "example_mesh";
+        source.nodes[3].parent = 0;
+        source.nodeOrder = {0, 1, 2, 3};
+        Skin sourceSkin;
+        sourceSkin.joints = {1, 2};
+        sourceSkin.inverseBind = {Identity(), Compose({-1, 0, 0}, {0, 0, 0, 1}, {1, 1, 1})};
+        source.skins = {sourceSkin};
+        Track track;
+        track.node = 2;
+        track.times = {0, 1};
+        track.values = {{1, 0, 0, 0}, {3, 0, 0, 0}};
+        Clip clip;
+        clip.name = "Walk";
+        clip.end = 1;
+        clip.tracks = {track};
+        source.clips = {clip};
+
+        // Reorder both nodes and joint slots; the part has no animation clips.
+        Asset part;
+        part.nodes = {source.nodes[3], source.nodes[0], source.nodes[2], source.nodes[1]};
+        part.nodes[0].parent = 1;
+        part.nodes[2].parent = 3;
+        part.nodes[3].parent = 1;
+        part.nodeOrder = {1, 3, 2, 0};
+        Skin partSkin;
+        partSkin.joints = {2, 3};
+        partSkin.inverseBind = {Compose({-2, 0, 0}, {0, 0, 0, 1}, {1, 1, 1}), Identity()};
+        part.skins = {partSkin};
+        Primitive mesh;
+        mesh.node = 0;
+        mesh.skin = 0;
+        Vertex vertex;
+        vertex.position = {2, 0, 0};
+        vertex.weights[0] = 1;
+        auto binding = BindSkeleton(source, part);
+        Pose shared, attached;
+        SamplePose(source, 0, .5, false, shared);
+        ApplySkeleton(part, binding, shared, attached);
+        Vec3 position, normal;
+        DeformVertex(mesh, vertex, attached, position, normal);
+        Near(position[0], 2); // Keep the PART inverse bind, not the source's.
+        Near(position[1], 0);
+        part.nodes[2].translation[0] = 5;
+        bool rejected = false;
+        try
+        {
+            BindSkeleton(source, part);
+        }
+        catch (const std::runtime_error&)
+        {
+            rejected = true;
+        }
+        if (!rejected)
+        {
+            throw std::runtime_error("Incompatible shared bind pose was accepted");
+        }
+    }
+
     void MathAndAnimation()
     {
         using namespace Models;
@@ -135,6 +204,7 @@ int wmain(int argc, wchar_t** argv)
     try
     {
         MathAndAnimation();
+        SharedSkeleton();
         if (argc > 1)
         {
             auto root = std::filesystem::weakly_canonical(std::filesystem::path(argv[1]));

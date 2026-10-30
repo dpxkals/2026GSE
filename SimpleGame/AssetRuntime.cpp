@@ -200,6 +200,9 @@ struct AssetRuntime::Implementation
     std::map<std::string, Recipe> recipes;
     std::map<std::uint64_t, std::string> bindings;
     std::map<std::string, Instance> animations;
+    std::map<std::string, std::shared_ptr<const Models::SkeletonBinding>> skeletonBindings;
+    std::set<std::string> rigParts;
+    std::string rigAnimation;
     std::set<std::string> warnings;
     Models::Drawing drawing;
     double now = 0, nextBindingUpdate = 0;
@@ -263,6 +266,36 @@ struct AssetRuntime::Implementation
                 }
             }
         }
+        Json rig;
+        std::map<std::string, std::filesystem::path> rigFiles;
+        std::string contract = config.value("npc_rig_contract", std::string{});
+        if (!contract.empty())
+        {
+            auto contractPath = Inside(root, std::filesystem::u8path(contract));
+            auto rigRoot = contractPath.parent_path().parent_path();
+            rig = ReadJson(contractPath);
+            Check(rig.at("schema_version") == 2 && rig.at("part_files").is_object(),
+                  "Unsupported NPC rig contract");
+            for (auto part = rig.at("part_files").begin(); part != rig.at("part_files").end();
+                 ++part)
+            {
+                auto file =
+                    Inside(root,
+                           (rigRoot / std::filesystem::u8path(part.value().get<std::string>()))
+                               .lexically_relative(root));
+                Check(std::filesystem::is_regular_file(file), "Missing rigged part: " + part.key());
+                rigFiles[part.key()] = file;
+                rigParts.insert(part.key());
+            }
+            auto animation = Inside(
+                root,
+                (rigRoot / std::filesystem::u8path(rig.at("animation_file").get<std::string>()))
+                    .lexically_relative(root));
+            Check(std::filesystem::is_regular_file(animation), "Missing shared NPC animation file");
+            auto relative = animation.lexically_relative(root);
+            relative.replace_extension();
+            rigAnimation = relative.generic_u8string();
+        }
         std::vector<std::filesystem::path> catalogs;
         std::vector<std::filesystem::path> meshFiles;
         for (const auto& entry : std::filesystem::recursive_directory_iterator(
@@ -305,12 +338,24 @@ struct AssetRuntime::Implementation
                 files[id] = file;
             }
         }
-        // New standalone GLB/glTF files can be addressed by filename stem before cataloging.
+        // Fully qualified IDs retain access to both pack versions. Only the selected rig
+        // contract may override a v1 part's short ID; unrelated collisions still fail.
         std::sort(meshFiles.begin(), meshFiles.end());
         for (const auto& path : meshFiles)
         {
             auto file = Inside(root, path.lexically_relative(root));
+            auto qualified = file.lexically_relative(root);
+            qualified.replace_extension();
+            auto inserted = files.emplace(qualified.generic_u8string(), file);
+            Check(inserted.second || inserted.first->second == file,
+                  "Duplicate qualified asset ID");
             std::string id = path.stem().u8string();
+            auto rigFile = rigFiles.find(id);
+            if (rigFile != rigFiles.end())
+            {
+                files[id] = rigFile->second;
+                continue;
+            }
             auto found = files.find(id);
             Check(found == files.end() || found->second == file,
                   "Duplicate model filename ID: " + id);
@@ -321,6 +366,48 @@ struct AssetRuntime::Implementation
         parts = ReadJson(pack / L"Data" / L"npc_parts.json");
         Check(parts.at("schema_version") == 1 && parts.at("gltf_up_axis") == "+Y",
               "Unsupported NPC part contract");
+        if (!rig.is_null())
+        {
+            auto contractPath = Inside(root, std::filesystem::u8path(contract));
+            auto rigRoot = contractPath.parent_path().parent_path();
+            auto basePath =
+                Inside(root,
+                       (rigRoot / std::filesystem::u8path(rig.at("base_schema").get<std::string>()))
+                           .lexically_relative(root));
+            Check(basePath == std::filesystem::weakly_canonical(pack / L"Data" / L"npc_parts.json"),
+                  "NPC rig base schema differs from selected NPC pack");
+            // Recipes and saved IDs keep their v1 meanings; new indices can be appended.
+            for (auto slot = parts.at("slots").begin(); slot != parts.at("slots").end(); ++slot)
+            {
+                const auto& replacements = rig.at("slots").at(slot.key());
+                for (const auto& variant : slot.value())
+                {
+                    auto found =
+                        std::find_if(replacements.begin(),
+                                     replacements.end(),
+                                     [&](const Json& candidate)
+                                     {
+                                         return candidate.at("index") == variant.at("index") &&
+                                                candidate.at("asset_id") == variant.at("asset_id");
+                                     });
+                    Check(found != replacements.end(), "NPC rig changed a stable part index");
+                }
+            }
+            for (const std::string field : {"slots", "palette", "compatibility"})
+            {
+                parts[field] = rig.at(field);
+            }
+            for (auto slot = parts.at("slots").begin(); slot != parts.at("slots").end(); ++slot)
+            {
+                for (const auto& variant : slot.value())
+                {
+                    std::string id = variant.at("asset_id").get<std::string>();
+                    Check(rigFiles.count(id) != 0, "NPC rig has no skinned file for slot: " + id);
+                    files[id] = rigFiles.at(id);
+                }
+            }
+            Check(files.count(rigAnimation) != 0, "Shared NPC animation is not registered");
+        }
         Check(parts.at("palette").at("color_space") == "linear RGB",
               "NPC palette must use linear RGB");
         std::filesystem::path presetPath = pack / L"Data" / L"npc_presets_210.json";
@@ -452,7 +539,7 @@ struct AssetRuntime::Implementation
             Check(recipe.empty() || recipes.count(recipe) != 0,
                   "Role refers to an unknown recipe: " + recipe);
         }
-        revision = Hash(config.dump() + parts.dump() + presets.dump());
+        revision = Hash(config.dump() + parts.dump() + presets.dump() + rig.dump());
         if (std::filesystem::exists(save))
         {
             // A damaged binding file is preserved and never silently replaced.
@@ -469,8 +556,14 @@ struct AssetRuntime::Implementation
                       "A saved appearance recipe was removed: " + recipe);
             }
         }
-        std::cout << "[Assets] root=" << root.u8string() << " models=" << files.size()
-                  << " recipes=" << recipes.size() << " revision=" << revision << '\n';
+        std::cout << "[Assets] root=" << root.u8string() << " files=" << meshFiles.size()
+                  << " ids=" << files.size() << " recipes=" << recipes.size()
+                  << " revision=" << revision << '\n';
+        if (!rigAnimation.empty())
+        {
+            std::cout << "[AssetRig] selected=" << rig.at("skeleton_id").get<std::string>()
+                      << " parts=" << rigParts.size() << " animation=" << rigAnimation << '\n';
+        }
     }
 
     std::shared_ptr<const Models::Asset> Model(const std::string& id)
@@ -653,9 +746,69 @@ struct AssetRuntime::Implementation
                         return clip.name;
                     }
                 }
+                std::string suffix = "__" + alias.get<std::string>();
+                for (const auto& clip : model.clips)
+                {
+                    if (clip.name.size() > suffix.size() &&
+                        clip.name.compare(
+                            clip.name.size() - suffix.size(), suffix.size(), suffix) == 0)
+                    {
+                        return clip.name;
+                    }
+                }
             }
         }
-        return model.clips.empty() ? std::string{} : model.clips.front().name;
+        Warn("No matching idle/action clip; using bind pose: " + action);
+        return {};
+    }
+
+    const Models::Pose& Animate(const Models::Asset& model,
+                                const std::string& instance,
+                                const ActorPose& pose,
+                                const std::string& attackAction)
+    {
+        auto& state = animations[instance];
+        state.lastSeen = now;
+        bool hurt = pose.hurt > .15f, attack = pose.attack > .1f;
+        bool hurtTrigger = hurt && !state.hurt;
+        bool attackTrigger = attack && !state.attack;
+        state.hurt = hurt;
+        state.attack = attack;
+        bool attacking = state.action.compare(0, 6, "attack") == 0;
+        bool holding = (state.action == "hurt" || attacking) && !state.player.Finished(model, now);
+        std::string action = state.action;
+        if (hurtTrigger)
+        {
+            action = "hurt";
+        }
+        else if (attackTrigger && (!holding || state.action != "hurt"))
+        {
+            action = attackAction;
+        }
+        else if (!holding)
+        {
+            action = pose.moving > .15f ? "walk" : "idle";
+        }
+        bool restart = hurtTrigger || (attackTrigger && action == attackAction);
+        state.action = action;
+        state.player.Play(
+            model, Clip(model, action), now, action == "idle" || action == "walk", 1, restart);
+        return state.player.Evaluate(model, now);
+    }
+
+    const Models::SkeletonBinding* Skeleton(const Models::Asset& source,
+                                            const Models::Asset& part,
+                                            const std::string& id)
+    {
+        auto inserted = skeletonBindings.emplace(id, nullptr);
+        if (inserted.second)
+        {
+            inserted.first->second =
+                std::make_shared<Models::SkeletonBinding>(Models::BindSkeleton(source, part));
+            std::cout << "[AssetRig] shared skeleton bound part=" << id << '\n';
+        }
+        Check(bool(inserted.first->second), "Incompatible shared skeleton part: " + id);
+        return inserted.first->second.get();
     }
 
     std::string PropParameters(Prop prop,
@@ -723,6 +876,8 @@ struct AssetRuntime::Implementation
         std::vector<Models::DrawPart> drawParts;
         std::string signature = revision;
         bool animated = false;
+        bool sharedSkeleton = false;
+        std::string attackAction = "attack";
         for (const auto& id : ids)
         {
             auto model = Model(id);
@@ -732,11 +887,28 @@ struct AssetRuntime::Implementation
             }
             signature += ":" + id + ":" + model->signature;
             animated = animated || !model->clips.empty();
+            sharedSkeleton = sharedSkeleton || rigParts.count(id) != 0;
+            if (id == "NPC_Hand_01_Bow")
+            {
+                attackAction = "attack_bow";
+            }
+            else if (id == "NPC_Hand_02_Staff")
+            {
+                attackAction = "attack_cast";
+            }
             drawParts.push_back({model, nullptr});
         }
         if (drawParts.empty())
         {
             return false;
+        }
+        std::shared_ptr<const Models::Asset> source;
+        if (sharedSkeleton)
+        {
+            source = Model(rigAnimation);
+            Check(source && !source->clips.empty() && !source->skins.empty(),
+                  "Shared NPC source has no skeleton/animation");
+            animated = true;
         }
         float yaw = pose.facing >= 0 ? 1.570796327f : 3.141592654f;
         Point2 at{origin.x - pose.facing * pose.hurt * 2 * zoom,
@@ -747,44 +919,22 @@ struct AssetRuntime::Implementation
         if (animated)
         {
             FrameProfiler::Scope poseTimer(FrameProfiler::AssetPoseMs);
+            const Models::Pose* sharedPose =
+                source ? &Animate(*source, instance + ":npc-rig", pose, attackAction) : nullptr;
             for (size_t i = 0; i < drawParts.size(); ++i)
             {
+                if (sharedPose && rigParts.count(ids[i]))
+                {
+                    drawParts[i].skeleton = Skeleton(*source, *drawParts[i].asset, ids[i]);
+                    drawParts[i].pose = sharedPose;
+                    continue;
+                }
                 if (drawParts[i].asset->clips.empty())
                 {
                     continue;
                 }
-                auto& state = animations[instance + ":" + ids[i]];
-                state.lastSeen = now;
-                bool hurt = pose.hurt > .15f, attack = pose.attack > .1f;
-                bool hurtTrigger = hurt && !state.hurt;
-                bool attackTrigger = attack && !state.attack;
-                state.hurt = hurt;
-                state.attack = attack;
-                bool holding = (state.action == "hurt" || state.action == "attack") &&
-                               !state.player.Finished(*drawParts[i].asset, now);
-                std::string action = state.action;
-                if (hurtTrigger)
-                {
-                    action = "hurt";
-                }
-                else if (attackTrigger && (!holding || state.action != "hurt"))
-                {
-                    action = "attack";
-                }
-                else if (!holding)
-                {
-                    action = pose.moving > .15f ? "walk" : "idle";
-                }
-                bool restart = hurtTrigger || (attackTrigger && action == "attack");
-                state.action = action;
-                auto clip = Clip(*drawParts[i].asset, action);
-                state.player.Play(*drawParts[i].asset,
-                                  clip,
-                                  now,
-                                  action == "idle" || action == "walk",
-                                  1,
-                                  restart);
-                drawParts[i].pose = &state.player.Evaluate(*drawParts[i].asset, now);
+                drawParts[i].pose =
+                    &Animate(*drawParts[i].asset, instance + ":" + ids[i], pose, attackAction);
             }
             drawing.Build(drawParts, colors, yaw, scale);
             drawing.Submit(renderer, at, zoom, tint);

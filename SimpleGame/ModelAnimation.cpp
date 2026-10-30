@@ -2,6 +2,9 @@
 #include "ModelAsset.h"
 #include <algorithm>
 #include <cmath>
+#include <map>
+#include <set>
+#include <stdexcept>
 
 namespace Models
 {
@@ -113,6 +116,95 @@ namespace Models
         for (size_t i = 0; i < asset.skins.size(); ++i)
         {
             const auto& skin = asset.skins[i];
+            pose.joints[i].resize(skin.joints.size());
+            for (size_t j = 0; j < skin.joints.size(); ++j)
+            {
+                pose.joints[i][j] = Multiply(pose.world[skin.joints[j]], skin.inverseBind[j]);
+            }
+        }
+    }
+
+    SkeletonBinding BindSkeleton(const Asset& source, const Asset& part)
+    {
+        std::map<std::string, int> names;
+        std::set<int> joints;
+        for (size_t i = 0; i < source.nodes.size(); ++i)
+        {
+            if (!names.emplace(source.nodes[i].name, int(i)).second)
+            {
+                names[source.nodes[i].name] = -1;
+            }
+        }
+        for (const auto& skin : source.skins)
+        {
+            joints.insert(skin.joints.begin(), skin.joints.end());
+        }
+        if (part.skins.empty() || joints.empty())
+        {
+            throw std::runtime_error("Shared skeleton requires skinned source and part");
+        }
+        Pose sourceBind, partBind;
+        SamplePose(source, -1, 0, false, sourceBind);
+        SamplePose(part, -1, 0, false, partBind);
+        SkeletonBinding binding;
+        for (const auto& node : part.nodes)
+        {
+            auto found = names.find(node.name);
+            binding.sourceNodes.push_back(found == names.end() ? -1 : found->second);
+            binding.bindLocal.push_back(node.hasMatrix
+                                            ? node.matrix
+                                            : Compose(node.translation, node.rotation, node.scale));
+        }
+        for (const auto& skin : part.skins)
+        {
+            for (int joint : skin.joints)
+            {
+                int mapped = binding.sourceNodes[joint];
+                if (mapped < 0 || !joints.count(mapped))
+                {
+                    throw std::runtime_error("Missing/ambiguous shared joint: " +
+                                             part.nodes[joint].name);
+                }
+                for (size_t c = 0; c < 16; ++c)
+                {
+                    if (std::abs(sourceBind.world[mapped][c] - partBind.world[joint][c]) > .001f)
+                    {
+                        throw std::runtime_error("Shared joint bind pose mismatch: " +
+                                                 part.nodes[joint].name);
+                    }
+                }
+                int sourceParent = source.nodes[mapped].parent;
+                int partParent = part.nodes[joint].parent;
+                if ((sourceParent < 0) != (partParent < 0) ||
+                    (sourceParent >= 0 &&
+                     source.nodes[sourceParent].name != part.nodes[partParent].name))
+                {
+                    throw std::runtime_error("Shared joint hierarchy mismatch: " +
+                                             part.nodes[joint].name);
+                }
+            }
+        }
+        return binding;
+    }
+
+    void ApplySkeleton(const Asset& part,
+                       const SkeletonBinding& binding,
+                       const Pose& sourcePose,
+                       Pose& pose)
+    {
+        pose.world.resize(part.nodes.size());
+        for (int node : part.nodeOrder)
+        {
+            int mapped = binding.sourceNodes[node];
+            int parent = part.nodes[node].parent;
+            pose.world[node] = mapped >= 0  ? sourcePose.world[mapped]
+                               : parent < 0 ? binding.bindLocal[node]
+                                            : Multiply(pose.world[parent], binding.bindLocal[node]);
+        }
+        pose.joints.resize(part.skins.size());
+        for (size_t i = 0; i < part.skins.size(); ++i)
+        {
+            const auto& skin = part.skins[i];
             pose.joints[i].resize(skin.joints.size());
             for (size_t j = 0; j < skin.joints.size(); ++j)
             {

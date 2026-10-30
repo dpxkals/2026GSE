@@ -69,7 +69,13 @@ namespace Models
             {
                 SamplePose(asset, -1, 0, false, bindPose_);
             }
-            const Pose& pose = part.pose ? *part.pose : bindPose_;
+            if (part.skeleton && part.pose)
+            {
+                ApplySkeleton(asset, *part.skeleton, *part.pose, attachedPose_);
+            }
+            const Pose& pose = part.skeleton && part.pose ? attachedPose_
+                               : part.pose                ? *part.pose
+                                                          : bindPose_;
             for (const auto& primitive : asset.primitives)
             {
                 positions_.resize(primitive.vertices.size());

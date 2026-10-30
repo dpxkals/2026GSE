@@ -120,6 +120,20 @@ namespace Models
     };
 
     void SamplePose(const Asset& asset, int clip, double seconds, bool loop, Pose& pose);
+
+    struct SkeletonBinding
+    {
+        std::vector<int> sourceNodes;
+        std::vector<Matrix> bindLocal;
+    };
+
+    // Same-rig modular attachment, not retargeting. Built once per source/part pair.
+    SkeletonBinding BindSkeleton(const Asset& source, const Asset& part);
+    // Produces part-indexed world/joint matrices from one character's shared source pose.
+    void ApplySkeleton(const Asset& part,
+                       const SkeletonBinding& binding,
+                       const Pose& sourcePose,
+                       Pose& pose);
     // A skinned vertex is transformed directly to asset/world coordinates by G_joint * IBM.
     void DeformVertex(const Primitive& primitive,
                       const Vertex& vertex,

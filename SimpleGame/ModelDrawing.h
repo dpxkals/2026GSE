@@ -11,6 +11,7 @@ namespace Models
     {
         std::shared_ptr<const Asset> asset;
         const Pose* pose = nullptr;
+        const SkeletonBinding* skeleton = nullptr;
     };
 
     struct DrawFace
@@ -38,6 +39,6 @@ namespace Models
       private:
         std::vector<DrawFace> faces_;
         std::vector<Vec3> positions_, normals_;
-        Pose bindPose_;
+        Pose bindPose_, attachedPose_;
     };
 }
