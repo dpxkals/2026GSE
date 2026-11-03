@@ -17,4 +17,12 @@ Monitor/__pycache__/
 /x64/*/assets/
 /x64/*/Config/
 /Tests/bin/
+/ThirdParty/GLFW/build/
+/x64/*/Licenses/
+/Debug/Licenses/
+/Release/Licenses/
+/Debug/assets/
+/Release/assets/
+/Debug/Config/
+/Release/Config/
 

@@ -27,7 +27,8 @@ but WITHOUT ANY WARRANTY.
 #include "CharacterArt.h"
 #include "VillageLayout.h"
 #include "AssetRuntime.h"
-#include "Dependencies/freeglut.h"
+#include "GlfwWindow.h"
+#include <GLFW/glfw3.h>
 #include <Windows.h>
 #include <shellapi.h>
 #include <algorithm>
@@ -44,6 +45,11 @@ but WITHOUT ANY WARRANTY.
 
 namespace
 {
+    GLFWwindow* gameWindow = nullptr; // Owned by main's GlfwWindow, never by a callback.
+    bool drawable = true;
+    double updateMs = 0, eventPollMs = 0, eventWaitMs = 0;
+    int swapInterval = 0;
+    int frameLimitMs = 16;
     SceneRenderer renderer;
     std::unique_ptr<World> world;
     std::unique_ptr<NpcSystem> npcs;
@@ -937,6 +943,11 @@ namespace
         }
         auto& profile = FrameProfiler::Instance();
         profile.BeginFrame();
+        profile.Set(FrameProfiler::UpdateMs, updateMs);
+        profile.Set(FrameProfiler::EventPollMs, eventPollMs);
+        profile.Set(FrameProfiler::EventWaitMs, eventWaitMs);
+        profile.Set(FrameProfiler::SwapInterval, swapInterval);
+        profile.Set(FrameProfiler::FrameLimitMs, frameLimitMs);
         {
             FrameProfiler::Scope timer(FrameProfiler::SyncMs);
             SynchronizeScene();
@@ -963,7 +974,7 @@ namespace
         }
         {
             FrameProfiler::Scope timer(FrameProfiler::SwapMs);
-            glutSwapBuffers();
+            glfwSwapBuffers(gameWindow);
         }
         renderer.ReportMetrics();
         profile.Set(FrameProfiler::Actors, double(scene.Size()));
@@ -986,7 +997,7 @@ namespace
         std::fill(std::begin(arrows), std::end(arrows), false);
     }
 
-    void Tick(int)
+    void Tick()
     {
         if (!running)
         {
@@ -997,9 +1008,8 @@ namespace
         lastTick = now;
         renderDelta = dt;
         elapsed += dt;
-        DWORD foregroundProcess = 0;
-        GetWindowThreadProcessId(GetForegroundWindow(), &foregroundProcess);
-        if (foregroundProcess != GetCurrentProcessId())
+        bool focused = glfwGetWindowAttrib(gameWindow, GLFW_FOCUSED) == GLFW_TRUE;
+        if (!focused)
         {
             ClearInput();
         }
@@ -1044,13 +1054,8 @@ namespace
         }
         if (monitor && society)
         {
-            monitor->Publish(*world,
-                             *society,
-                             *levelOne,
-                             *npcs,
-                             true,
-                             paused || rpgPanel.IsOpen(),
-                             foregroundProcess == GetCurrentProcessId());
+            monitor->Publish(
+                *world, *society, *levelOne, *npcs, true, paused || rpgPanel.IsOpen(), focused);
         }
         if (society && society->Error().empty())
         {
@@ -1071,8 +1076,6 @@ namespace
         double follow = 1 - std::exp(-dt * 10);
         cameraX += (playerX - cameraX) * follow;
         cameraY += (playerY - cameraY) * follow;
-        glutPostRedisplay();
-        glutTimerFunc(16, Tick, 0);
     }
 
     void Close()
@@ -1150,7 +1153,7 @@ namespace
         }
         if (key == 27)
         {
-            glutLeaveMainLoop();
+            glfwSetWindowShouldClose(gameWindow, GLFW_TRUE);
             return;
         }
         if (key == 'p')
@@ -1280,13 +1283,13 @@ namespace
     {
         switch (key)
         {
-            case GLUT_KEY_LEFT:
+            case GLFW_KEY_LEFT:
                 return 0;
-            case GLUT_KEY_RIGHT:
+            case GLFW_KEY_RIGHT:
                 return 1;
-            case GLUT_KEY_UP:
+            case GLFW_KEY_UP:
                 return 2;
-            case GLUT_KEY_DOWN:
+            case GLFW_KEY_DOWN:
                 return 3;
             default:
                 return -1;
@@ -1402,12 +1405,11 @@ namespace
         lastTick = std::chrono::steady_clock::now();
         std::wcout << L"[PlayReset] Completed. Backup: " << backup.c_str() << L'\n';
         FrameProfiler::Instance().Event("play_reset", std::to_string(world->Seed()));
-        glutPostRedisplay();
     }
 
     void SpecialDown(int key, int, int)
     {
-        if (key == GLUT_KEY_F10)
+        if (key == GLFW_KEY_F10)
         {
             bool loaded = AssetRuntime::Instance().Reload(renderer);
             if (loaded && society && society->Error().empty())
@@ -1415,37 +1417,37 @@ namespace
                 AssetRuntime::Instance().Update(animationClock, society->People());
             }
             message = loaded ? "ASSETS RELOADED" : "ASSET RELOAD FAILED - SEE CONSOLE";
-            messageUntil = glutGet(GLUT_ELAPSED_TIME) / 1000.0 + 4;
+            messageUntil = elapsed + 4;
             ClearInput();
             return;
         }
         if (rpgPanel.IsOpen() && society)
         {
-            if (key == GLUT_KEY_UP)
+            if (key == GLFW_KEY_UP)
             {
                 rpgPanel.Key('w', *levelOne, *society);
             }
-            if (key == GLUT_KEY_DOWN)
+            if (key == GLFW_KEY_DOWN)
             {
                 rpgPanel.Key('s', *levelOne, *society);
             }
-            if (key == GLUT_KEY_LEFT)
+            if (key == GLFW_KEY_LEFT)
             {
                 rpgPanel.Key('a', *levelOne, *society);
             }
-            if (key == GLUT_KEY_RIGHT)
+            if (key == GLFW_KEY_RIGHT)
             {
                 rpgPanel.Key('d', *levelOne, *society);
             }
             ClearInput();
             return;
         }
-        if (key == GLUT_KEY_F8)
+        if (key == GLFW_KEY_F8)
         {
             showDiagnostics = !showDiagnostics;
             return;
         }
-        if (key == GLUT_KEY_F9)
+        if (key == GLFW_KEY_F9)
         {
             ResetPlayData();
             return;
@@ -1453,19 +1455,19 @@ namespace
         auto& effects = renderer.Effects();
         switch (key)
         {
-            case GLUT_KEY_F2:
+            case GLFW_KEY_F2:
                 effects.enabled = !effects.enabled;
                 return;
-            case GLUT_KEY_F3:
+            case GLFW_KEY_F3:
                 effects.bloom = !effects.bloom;
                 return;
-            case GLUT_KEY_F4:
+            case GLFW_KEY_F4:
                 effects.vignette = !effects.vignette;
                 return;
-            case GLUT_KEY_F5:
+            case GLFW_KEY_F5:
                 effects.edgeBlur = !effects.edgeBlur;
                 return;
-            case GLUT_KEY_F6:
+            case GLFW_KEY_F6:
                 effects = PostProcessSettings{};
                 return;
             default:
@@ -1484,11 +1486,11 @@ namespace
         {
             arrows[index] = true;
         }
-        if (key == GLUT_KEY_F1)
+        if (key == GLFW_KEY_F1)
         {
             showChunks = !showChunks;
         }
-        if (key == GLUT_KEY_HOME)
+        if (key == GLFW_KEY_HOME)
         {
             levelOne->ReturnToCamp();
             ClearInput();
@@ -1504,19 +1506,19 @@ namespace
         }
     }
 
-    void MouseButton(int button, int state, int x, int y)
+    void MouseButton(int button, int state, int x, int y, int modifiers)
     {
         if (rpgPanel.IsOpen() && society)
         {
-            if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+            if (button == GLFW_MOUSE_BUTTON_LEFT && state == GLFW_PRESS)
             {
                 rpgPanel.Click(x, y, width, height, *levelOne, *society);
             }
             return;
         }
-        if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && width >= 760 && height >= 600 &&
-            society && !society->Find(society->Selected()) && x >= 20 && x <= 324 && y >= 166 &&
-            y <= 272)
+        if (button == GLFW_MOUSE_BUTTON_LEFT && state == GLFW_PRESS && width >= 760 &&
+            height >= 600 && society && !society->Find(society->Selected()) && x >= 20 &&
+            x <= 324 && y >= 166 && y <= 272)
         {
             if (!Speaking() && !showHelp)
             {
@@ -1525,11 +1527,11 @@ namespace
             ClearInput();
             return;
         }
-        if (state != GLUT_DOWN || !society || paused || Speaking() || showHelp)
+        if (state != GLFW_PRESS || !society || paused || Speaking() || showHelp)
         {
             return;
         }
-        if (button == GLUT_RIGHT_BUTTON)
+        if (button == GLFW_MOUSE_BUTTON_RIGHT)
         {
             society->Select(0);
             return;
@@ -1557,8 +1559,8 @@ namespace
                     x >= 360 && x <= 360 + (std::min)(440, width - 540) && y >= 64 && y <= 125;
             }
         }
-        if (button != GLUT_LEFT_BUTTON || y > height - 90 || leftPanel || newsPanel || mapPanel ||
-            debugPanel || bossPanel)
+        if (button != GLFW_MOUSE_BUTTON_LEFT || y > height - 90 || leftPanel || newsPanel ||
+            mapPanel || debugPanel || bossPanel)
         {
             return;
         }
@@ -1579,36 +1581,159 @@ namespace
                 selected = npc.id;
             }
         }
-        society->Select(selected, (glutGetModifiers() & GLUT_ACTIVE_CTRL) != 0);
+        society->Select(selected, (modifiers & GLFW_MOD_CONTROL) != 0);
     }
 
-    void Wheel(int, int direction, int, int)
+    void Wheel(double direction)
     {
+        if (direction == 0)
+        {
+            return;
+        }
         if (rpgPanel.IsOpen() && society)
         {
             rpgPanel.Key(direction > 0 ? 'a' : 'd', *levelOne, *society);
             return;
         }
-        zoom = (std::max)(0.65f, (std::min)(1.8f, zoom + direction * 0.1f));
+        zoom = std::clamp(zoom + float(direction) * 0.1f, 0.65f, 1.8f);
     }
 
     void Resize(int w, int h)
     {
-        width = (std::max)(1, w);
-        height = (std::max)(1, h);
-        glutPostRedisplay();
+        drawable = w > 0 && h > 0;
+        if (drawable)
+        {
+            width = w;
+            height = h;
+        }
+    }
+
+    int GameplayKey(int key)
+    {
+        if (key >= GLFW_KEY_A && key <= GLFW_KEY_Z)
+        {
+            return 'a' + key - GLFW_KEY_A;
+        }
+        if (key >= GLFW_KEY_SPACE && key <= GLFW_KEY_GRAVE_ACCENT)
+        {
+            return key;
+        }
+        switch (key)
+        {
+            case GLFW_KEY_ESCAPE:
+                return 27;
+            case GLFW_KEY_ENTER:
+            case GLFW_KEY_KP_ENTER:
+                return '\r';
+            case GLFW_KEY_TAB:
+                return '\t';
+            case GLFW_KEY_BACKSPACE:
+                return '\b';
+            case GLFW_KEY_KP_ADD:
+                return '+';
+            case GLFW_KEY_KP_SUBTRACT:
+                return '-';
+            default:
+                return -1;
+        }
+    }
+
+    void InstallWindowCallbacks()
+    {
+        glfwSetFramebufferSizeCallback(gameWindow,
+                                       [](GLFWwindow*, int w, int h)
+                                       {
+                                           Resize(w, h);
+                                       });
+        glfwSetWindowFocusCallback(gameWindow,
+                                   [](GLFWwindow*, int focused)
+                                   {
+                                       if (!focused)
+                                       {
+                                           ClearInput();
+                                       }
+                                   });
+        glfwSetKeyCallback(gameWindow,
+                           [](GLFWwindow*, int key, int, int action, int)
+                           {
+                               // One-shot hotkeys remain one-shot even after ClearInput.
+                               if (action == GLFW_REPEAT)
+                               {
+                                   return;
+                               }
+                               int mapped = GameplayKey(key);
+                               if (mapped >= 0)
+                               {
+                                   if (action == GLFW_PRESS)
+                                   {
+                                       KeyDown(static_cast<unsigned char>(mapped), 0, 0);
+                                   }
+                                   else if (action == GLFW_RELEASE)
+                                   {
+                                       KeyUp(static_cast<unsigned char>(mapped), 0, 0);
+                                   }
+                               }
+                               else if (action == GLFW_PRESS)
+                               {
+                                   SpecialDown(key, 0, 0);
+                               }
+                               else if (action == GLFW_RELEASE)
+                               {
+                                   SpecialUp(key, 0, 0);
+                               }
+                           });
+        glfwSetScrollCallback(gameWindow,
+                              [](GLFWwindow*, double, double vertical)
+                              {
+                                  Wheel(vertical);
+                              });
+        glfwSetMouseButtonCallback(gameWindow,
+                                   [](GLFWwindow* window, int button, int action, int modifiers)
+                                   {
+                                       double x = 0, y = 0;
+                                       int windowWidth = 0, windowHeight = 0;
+                                       glfwGetCursorPos(window, &x, &y);
+                                       glfwGetWindowSize(window, &windowWidth, &windowHeight);
+                                       if (drawable && windowWidth > 0 && windowHeight > 0)
+                                       {
+                                           // GLFW cursor coordinates are logical units; UI is in framebuffer pixels.
+                                           MouseButton(button,
+                                                       action,
+                                                       int(std::floor(x * width / windowWidth)),
+                                                       int(std::floor(y * height / windowHeight)),
+                                                       modifiers);
+                                       }
+                                   });
     }
 }
 
 int main(int argc, char** argv)
 {
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-    glutInitContextVersion(3, 3);
-    glutInitContextProfile(GLUT_CORE_PROFILE);
-    glutInitWindowSize(width, height);
-    glutCreateWindow("GSE - The Remaining Light | Living World");
-    glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
+    bool vsync = false, uncapped = false;
+    for (int i = 1; i < argc; ++i)
+    {
+        vsync = vsync || std::string(argv[i]) == "--vsync";
+        uncapped = uncapped || std::string(argv[i]) == "--uncapped";
+    }
+    swapInterval = vsync ? 1 : 0;
+    frameLimitMs = vsync || uncapped ? 0 : 16;
+    GlfwWindow host;
+    if (!host.Initialize(width,
+                         height,
+                         "GSE - The Remaining Light | Living World",
+                         swapInterval,
+                         frameLimitMs > 0))
+    {
+        MessageBoxW(nullptr,
+                    L"GLFW initialization failed. See console.",
+                    L"GSE startup",
+                    MB_OK | MB_ICONERROR);
+        return 1;
+    }
+    gameWindow = host.Handle();
+    int framebufferWidth = 0, framebufferHeight = 0;
+    glfwGetFramebufferSize(gameWindow, &framebufferWidth, &framebufferHeight);
+    Resize(framebufferWidth, framebufferHeight);
     glewExperimental = GL_TRUE;
     GLenum glewStatus = glewInit();
     if (glewStatus != GLEW_OK || !GLEW_VERSION_3_3)
@@ -1681,7 +1806,8 @@ int main(int argc, char** argv)
         std::filesystem::path(executable).parent_path() / L"Logs",
         "seed=" + std::to_string(world->Seed()) +
             (naturalWorld ? ";mode=Level01_natural_v2" : ";mode=Level01_v1") +
-            ";terrain=v10;art=rig2;props=settlement4;rpg=1;villages=7;citizens=210");
+            ";terrain=v10;art=rig2;props=settlement4;rpg=1;villages=7;citizens=210;window=glfw-3.5.1;swap_interval=" +
+            std::to_string(swapInterval) + ";frame_limit_ms=" + std::to_string(frameLimitMs));
     levelOne = std::make_unique<LevelOne>(savePath, world->Seed());
     society = std::make_unique<WorldSimulation>(savePath, world->Seed());
     AssetRuntime::Instance().Initialize(
@@ -1721,21 +1847,57 @@ int main(int argc, char** argv)
         << "[ / ]: exposure down/up (0.1 to 4.0); HDR is tone-mapped to SDR output.\n"
         << "Tab: inventory/equipment | Q: quests | T: nearby village shop\n"
         << "Village boss: first in 3 minutes, then 5 minutes after defeat (recommended level 10)\n";
+    std::cout << "[Window] frame_limit_ms=" << frameLimitMs
+              << " | --vsync: display-paced | --uncapped: no software frame limit\n";
     world->Stream(playerX, playerY, 2);
-    glutDisplayFunc(RenderScene);
-    glutReshapeFunc(Resize);
-    glutKeyboardFunc(KeyDown);
-    glutKeyboardUpFunc(KeyUp);
-    glutSpecialFunc(SpecialDown);
-    glutSpecialUpFunc(SpecialUp);
-    glutMouseWheelFunc(Wheel);
-    glutMouseFunc(MouseButton);
-    glutCloseFunc(Close);
-    glutIgnoreKeyRepeat(1);
+    InstallWindowCallbacks();
     lastTick = std::chrono::steady_clock::now();
-    glutTimerFunc(0, Tick, 0);
-    glutMainLoop();
-    // freeGLUT invokes Close before destroying the context; do not delete GL objects here.
+    auto nextFrame = lastTick;
+    double pendingPollMs = 0, pendingWaitMs = 0;
+    while (running && !glfwWindowShouldClose(gameWindow))
+    {
+        auto pollStart = std::chrono::steady_clock::now();
+        glfwPollEvents();
+        auto now = std::chrono::steady_clock::now();
+        pendingPollMs += std::chrono::duration<double, std::milli>(now - pollStart).count();
+        if (glfwWindowShouldClose(gameWindow))
+        {
+            break;
+        }
+        bool renderable = drawable && !glfwGetWindowAttrib(gameWindow, GLFW_ICONIFIED);
+        // Keep the world updating in the background, without drawing an invisible framebuffer
+        // or spinning a vsync/uncapped loop when there is no buffer swap to pace it.
+        int interval = renderable ? frameLimitMs : 16;
+        if (interval > 0 && now < nextFrame)
+        {
+            // GLFW's Win32 backend truncates timeout to whole milliseconds. Never pass
+            // a sub-ms remainder (which would become a zero-timeout polling spin).
+            double waitSeconds =
+                (std::max)(.001, std::chrono::duration<double>(nextFrame - now).count());
+            glfwWaitEventsTimeout(waitSeconds);
+            pendingWaitMs +=
+                std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - now)
+                    .count();
+            continue;
+        }
+        auto frameStart = std::chrono::steady_clock::now();
+        Tick();
+        updateMs =
+            std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - frameStart)
+                .count();
+        eventPollMs = pendingPollMs;
+        eventWaitMs = pendingWaitMs;
+        pendingPollMs = pendingWaitMs = 0;
+        if (renderable)
+        {
+            RenderScene();
+        }
+        // Deadline is relative to frame START: update/render/swap time is not added twice.
+        // Slow frames do not trigger catch-up bursts or extra simulation steps.
+        nextFrame = frameStart + std::chrono::milliseconds(interval);
+    }
+    Close(); // Save and delete all GL objects while host's context is still current.
+    society.reset();
     npcs.reset();
     levelOne.reset();
     world.reset();

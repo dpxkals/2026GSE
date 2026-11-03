@@ -25,6 +25,9 @@
     <ClInclude Include="SceneRenderer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="GlfwWindow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="ShaderProgram.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -184,6 +187,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GlfwWindow.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -64,6 +64,11 @@ class FrameProfiler
         AssetDecodeMs,
         SkinVertices,
         AssetPoseMs,
+        UpdateMs,
+        EventPollMs,
+        EventWaitMs,
+        SwapInterval,
+        FrameLimitMs,
         Count
     };
 
@@ -90,7 +95,7 @@ class FrameProfiler
             std::fprintf(stderr, "[Profile] Cannot open CSV; console logging remains enabled.\n");
             return;
         }
-        log_ << "# schema=4; timings=CPU wall ms; samples=completed display callbacks\n";
+        log_ << "# schema=5; timings=CPU wall ms; samples=completed rendered frames\n";
         log_ << "# context=" << context << '\n';
 #ifdef _DEBUG
         log_ << "# configuration=Debug\n";
@@ -270,6 +275,13 @@ class FrameProfiler
                     frameMaxMs_,
                     total_[PoseSubmissions] / frames_,
                     total_[MeshBuilds] / frames_);
+        std::printf("[WindowProfile] update=%.2f ms poll=%.2f ms wait=%.2f ms | "
+                    "swap_interval=%.0f frame_limit=%.0f ms\n",
+                    total_[UpdateMs] / frames_,
+                    total_[EventPollMs] / frames_,
+                    total_[EventWaitMs] / frames_,
+                    current_[SwapInterval],
+                    current_[FrameLimitMs]);
         if (log_)
         {
             log_ << std::fixed << std::setprecision(4)
@@ -344,7 +356,12 @@ class FrameProfiler
                                                              "asset_loads",
                                                              "asset_decode_ms",
                                                              "skin_vertices",
-                                                             "asset_pose_ms"};
+                                                             "asset_pose_ms",
+                                                             "update_ms",
+                                                             "event_poll_ms",
+                                                             "event_wait_ms",
+                                                             "swap_interval",
+                                                             "frame_limit_ms"};
         return names;
     }
 
