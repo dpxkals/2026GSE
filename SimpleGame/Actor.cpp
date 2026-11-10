@@ -25,6 +25,8 @@ ActorPose Actor::Animate(double time, double attackCooldown, double health)
         if (distance > .001 && distance < 3)
         {
             animationMoving_ = 1;
+            // glTF forward is +Z; world ground coordinates are (X, -Z).
+            animationYaw_ = float(std::atan2(dx, -dy));
             if (std::abs(dx - dy) > .001)
             {
                 animationFacing_ = dx - dy < 0 ? -1.0f : 1.0f;
@@ -58,6 +60,7 @@ ActorPose Actor::Animate(double time, double attackCooldown, double health)
     pose.attack = float(std::sin(animationAttack_ / .28 * 3.141592654));
     pose.hurt = float(animationHurt_ / .24);
     pose.facing = animationFacing_;
+    pose.yaw = animationYaw_;
     return pose;
 }
 

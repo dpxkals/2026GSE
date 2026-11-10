@@ -57,7 +57,8 @@ namespace Models
     void Drawing::Build(const std::vector<DrawPart>& parts,
                         const MaterialOverrides& colors,
                         float yaw,
-                        float scale)
+                        float scale,
+                        float thickness)
     {
         faces_.clear();
         Matrix rotation =
@@ -89,6 +90,12 @@ namespace Models
                 {
                     Vec3 position, normal;
                     DeformVertex(primitive, primitive.vertices[v], pose, position, normal);
+                    // Widen the complete posed model before yaw, keeping feet at the origin.
+                    position[0] *= thickness;
+                    position[2] *= thickness;
+                    // Inverse transpose of the nonuniform scale preserves surface lighting.
+                    normal[0] /= thickness;
+                    normal[2] /= thickness;
                     positions_[v] = TransformPoint(rotation, position);
                     normals_[v] = TransformNormal(rotation, normal);
                 }

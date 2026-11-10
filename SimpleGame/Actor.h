@@ -15,6 +15,7 @@ struct ActorPose
 {
     float stride = 0, breath = 0, attack = 0, hurt = 0;
     float facing = 1, moving = 0, phase = 0, work = 0;
+    float yaw = 1.570796327f;
 };
 
 enum class RenderLayer
@@ -82,6 +83,7 @@ class Actor
     double animationCooldown_ = 0, animationMoving_ = 0;
     double animationHealth_ = -1, animationHurt_ = 0;
     float animationFacing_ = 1;
+    float animationYaw_ = 1.570796327f;
     std::function<ActorPosition()> readPosition_;
     std::function<void(ActorPosition)> writePosition_;
     std::function<void(double)> update_;

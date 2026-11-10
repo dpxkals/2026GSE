@@ -30,7 +30,8 @@ namespace Models
         void Build(const std::vector<DrawPart>& parts,
                    const MaterialOverrides& colors,
                    float yaw,
-                   float scale);
+                   float scale,
+                   float thickness = 1.0f);
         void Submit(SceneRenderer& renderer,
                     Point2 origin = {0, 0},
                     float zoom = 1,

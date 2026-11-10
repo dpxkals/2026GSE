@@ -4,7 +4,8 @@
   "npc_rig_contract": "DarkAge_Rigged_v2/Data/npc_rig_contract.json",
   "npc_presets": "Data/npc_presets_210.json",
   "npc_model": "",
-  "default_character_scale": 0.8,
+  "default_character_scale": 1.1,
+  "default_character_thickness": 1.3,
   "animation_aliases": {
     "idle": ["Idle", "idle", "대기"],
     "walk": ["Walk", "walk", "Run", "이동"],
@@ -19,7 +20,7 @@
     "scholar": {"recipe": "NPC_PRESET_003"},
     "husk": {"model": "DarkAge_Rigged_v2/Characters/MON_00_Husk_Animated"},
     "hound": {"model": "DarkAge_Rigged_v2/Characters/MON_03_Hound_Animated"},
-    "boss": {"model": "DarkAge_Rigged_v2/Characters/MON_02_Ogre_Animated", "scale": 1.5}
+    "boss": {"model": "DarkAge_Rigged_v2/Characters/MON_02_Ogre_Animated", "scale": 1.9}
   },
   "props": {
     "Tree": {"variants": ["NAT_Tree_00_Oak", "NAT_Tree_01_Pine", "NAT_Tree_02_Dead", "NAT_Tree_03_Willow", "NAT_Tree_04_Sapling", "NAT_Tree_05_Stump"], "fit_footprint": true},

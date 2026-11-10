@@ -229,6 +229,9 @@ struct AssetRuntime::Implementation
               "Invalid asset binding objects");
         float scale = config.value("default_character_scale", .8f);
         Check(std::isfinite(scale) && scale > 0 && scale <= 10, "Invalid character scale");
+        float thickness = config.value("default_character_thickness", 1.0f);
+        Check(std::isfinite(thickness) && thickness > 0 && thickness <= 4,
+              "Invalid character thickness");
         Check(config.value("npc_model", Json("")).is_string(), "Invalid NPC model ID");
         for (const auto& aliases : config.at("animation_aliases"))
         {
@@ -910,7 +913,15 @@ struct AssetRuntime::Implementation
                   "Shared NPC source has no skeleton/animation");
             animated = true;
         }
-        float yaw = pose.facing >= 0 ? 1.570796327f : 3.141592654f;
+        float yaw = pose.yaw;
+        float thickness = config.value("default_character_thickness", 1.0f);
+        if (!animated)
+        {
+            // Bound static mesh cache growth to 16 headings per appearance.
+            constexpr float step = 6.283185307f / 16;
+            int heading = (int(std::round(yaw / step)) % 16 + 16) % 16;
+            yaw = heading * step;
+        }
         Point2 at{origin.x - pose.facing * pose.hurt * 2 * zoom,
                   origin.y + (pose.breath * .5f - std::abs(pose.stride) * .7f) * zoom};
         Color tint{1, 1 - pose.hurt * .4f, 1 - pose.hurt * .55f, 1, 1 + pose.hurt};
@@ -936,17 +947,17 @@ struct AssetRuntime::Implementation
                 drawParts[i].pose =
                     &Animate(*drawParts[i].asset, instance + ":" + ids[i], pose, attackAction);
             }
-            drawing.Build(drawParts, colors, yaw, scale);
+            drawing.Build(drawParts, colors, yaw, scale, thickness);
             drawing.Submit(renderer, at, zoom, tint);
         }
         else
         {
-            std::string key =
-                "gltf:v1:character:" +
-                Hash(signature + std::to_string(yaw) + std::to_string(scale) + Json(colors).dump());
+            std::string key = "gltf:v2:character:" +
+                              Hash(signature + std::to_string(yaw) + std::to_string(scale) +
+                                   std::to_string(thickness) + Json(colors).dump());
             if (renderer.BeginMesh(key, {0, 0}, 1))
             {
-                drawing.Build(drawParts, colors, yaw, scale);
+                drawing.Build(drawParts, colors, yaw, scale, thickness);
                 drawing.Submit(renderer);
                 renderer.EndMesh();
             }
