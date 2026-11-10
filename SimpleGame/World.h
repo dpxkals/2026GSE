@@ -39,6 +39,7 @@ struct Tile
 {
     Ground ground = Ground::Grass;
     Prop prop = Prop::None;
+    // Building appearance + 7 * quarter-turn + 28 * roof palette (v14).
     int variation = 0;
     bool lit = false;
 };
@@ -46,7 +47,7 @@ struct Tile
 struct Chunk
 {
     std::array<Tile, ChunkSize * ChunkSize> tiles;
-    int generationVersion = 10;
+    int generationVersion = 14;
 };
 
 class World

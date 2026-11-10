@@ -243,51 +243,31 @@ Chunk World::Generate(ChunkKey key) const
                     continue;
                 }
                 tile.prop = Prop::None;
-                tile.ground = (std::abs(localX) <= 1 || std::abs(localY) <= 1)   ? Ground::Dirt
-                              : std::hypot(double(localX), double(localY)) < 3.8 ? Ground::Stone
-                                                                                 : Ground::Grass;
-                bool paved = village.kind == VillageKind::Castle ||
-                             village.kind == VillageKind::Abbey ||
-                             village.kind == VillageKind::Market;
-                if (paved && std::abs(localX) > 1 && std::abs(localY) > 1 &&
-                    (localX * localX + localY * localY) < 100)
-                {
-                    tile.ground = Ground::Stone;
-                }
-                if (village.kind == VillageKind::Farming && std::abs(localX) > 24 &&
-                    std::abs(localY) > 3)
-                {
-                    tile.ground = (localY % 3 == 0) ? Ground::Grass : Ground::Dirt;
-                }
-                if (village.kind == VillageKind::Riverside && localY > village.halfHeight - 3 &&
-                    std::abs(localX) > 3)
-                {
-                    tile.ground = Ground::Water;
-                }
+                // Fortifications use flagstones; open villages have continuous packed earth.
+                tile.ground = VillageFortified(town) ? Ground::Stone : Ground::Dirt;
                 const auto& landmarks = VillageBuildings(town, seed_);
                 for (const auto& landmark : landmarks)
                 {
-                    if (std::abs(localX - landmark.x) <= 2 && std::abs(localY - landmark.y) <= 2)
-                    {
-                        tile.ground = Ground::Stone;
-                    }
-                    if (localY == landmark.y + 2 && localX * landmark.x >= 0 &&
-                        std::abs(localX) <= std::abs(landmark.x) + 1)
-                    {
-                        tile.ground = Ground::Dirt;
-                    }
                     if (localX == landmark.x && localY == landmark.y)
                     {
                         tile.prop = landmark.prop;
+                        int style = town;
+                        if (landmark.prop == Prop::Cottage)
+                        {
+                            // Mix every house family while favoring the settlement's local style.
+                            constexpr int localStyles[] = {2, 2, 1, 0, 3, 0, 0};
+                            style = landmark.appearance >= 0 ? landmark.appearance
+                                    : landmark.home % 3 == 0 ? localStyles[town]
+                                                             : (landmark.home + town) % 4;
+                        }
+                        int roof = int((hash >> 16) % 7);
+                        tile.variation = style + landmark.orientation * 7 + roof * 28;
                     }
                 }
                 Prop wall = VillageWall(town, int(localX), int(localY));
                 if (wall != Prop::None)
                 {
                     tile.prop = wall;
-                }
-                if (tile.prop != Prop::None)
-                {
                     tile.variation = town;
                 }
             }
@@ -362,7 +342,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
         std::uint64_t seed = 0;
         WorldInt x = 0, y = 0;
         if (!(in >> magic >> version >> seed >> x >> y) || magic != "GSE_CHUNK" ||
-            (version < 2 || version > 10) || seed != seed_ || x != key.first || y != key.second)
+            (version < 2 || version > 14) || seed != seed_ || x != key.first || y != key.second)
         {
             throw std::runtime_error("Invalid chunk header; original file preserved");
         }
@@ -375,17 +355,21 @@ bool World::Read(ChunkKey key, Chunk& chunk)
                 prop > (version >= 7   ? int(Prop::WallTower)
                         : version >= 4 ? int(Prop::Graves)
                                        : int(Prop::Beacon)) ||
-                variation < 0 || variation > 6 || lit < 0 || lit > 1)
+                variation < 0 ||
+                variation > (version >= 14   ? 195
+                             : version >= 11 ? 27
+                                             : 6) ||
+                lit < 0 || lit > 1)
             {
                 throw std::runtime_error("Invalid chunk data; original file preserved");
             }
             tile = {static_cast<Ground>(ground), static_cast<Prop>(prop), variation, lit != 0};
         }
         in.close();
-        if (version < 10)
+        if (version < 14)
         {
             // Keep old chunks recoverable; seed and gameplay saves are not reset.
-            auto backupDirectory = directory_ / L"Backups" / L"before_settlements_v10";
+            auto backupDirectory = directory_ / L"Backups" / L"before_settlements_v14";
             std::filesystem::create_directories(backupDirectory);
             std::filesystem::copy_file(Path(key),
                                        backupDirectory / Path(key).filename(),
@@ -446,7 +430,9 @@ bool World::Read(ChunkKey key, Chunk& chunk)
                                 auto& target = updated.tiles[ty * ChunkSize + tx];
                                 if (target.prop == Prop::None && beaconFits(ty * ChunkSize + tx))
                                 {
+                                    auto ground = target.ground;
                                     target = chunk.tiles[i];
+                                    target.ground = ground;
                                     moved = true;
                                     break;
                                 }
@@ -462,7 +448,9 @@ bool World::Read(ChunkKey key, Chunk& chunk)
                 else if (chunk.tiles[i].prop == Prop::Beacon)
                 {
                     // Beacon coordinates and their lit state are persistent discoveries.
+                    auto ground = updated.tiles[i].ground;
                     updated.tiles[i] = chunk.tiles[i];
+                    updated.tiles[i].ground = ground;
                 }
             }
             if (!Save(key, updated))
@@ -480,7 +468,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             };
             std::ofstream audit(backupDirectory / L"migration.log", std::ios::app);
             audit << key.first << ':' << key.second << " version=" << version
-                  << "->10 trees=" << trees(chunk) << "->" << trees(updated) << '\n';
+                  << "->14 trees=" << trees(chunk) << "->" << trees(updated) << '\n';
             audit.close();
             if (!audit)
             {
@@ -488,7 +476,7 @@ bool World::Read(ChunkKey key, Chunk& chunk)
             }
             chunk = std::move(updated);
             std::cout << "[WorldMigration] " << key.first << ":" << key.second << " v" << version
-                      << " -> v10; original backed up\n";
+                      << " -> v14; original backed up\n";
         }
         ++loaded_;
         return true;

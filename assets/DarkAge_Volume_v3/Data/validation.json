@@ -1,0 +1,474 @@
+{
+  "glb_count": 57,
+  "animated_glb_roundtrips": [
+    {
+      "file": "MON_00_Husk_VolumeV3.glb",
+      "bones": 23,
+      "animated_clips": 13,
+      "run_max_joint_movement_m": 0.27023
+    },
+    {
+      "file": "MON_01_Goblin_VolumeV3.glb",
+      "bones": 23,
+      "animated_clips": 13,
+      "run_max_joint_movement_m": 0.20123
+    },
+    {
+      "file": "MON_02_Ogre_VolumeV3.glb",
+      "bones": 23,
+      "animated_clips": 13,
+      "run_max_joint_movement_m": 0.32131
+    },
+    {
+      "file": "MON_03_Hound_VolumeV3.glb",
+      "bones": 23,
+      "animated_clips": 13,
+      "run_max_joint_movement_m": 0.375
+    },
+    {
+      "file": "MON_04_Boar_VolumeV3.glb",
+      "bones": 23,
+      "animated_clips": 13,
+      "run_max_joint_movement_m": 0.24966
+    },
+    {
+      "file": "NPC_Common_VolumeV3.glb",
+      "bones": 23,
+      "animated_clips": 15,
+      "run_max_joint_movement_m": 0.26486
+    },
+    {
+      "file": "PLAYER_AshWayfarer.glb",
+      "bones": 23,
+      "animated_clips": 14,
+      "run_max_joint_movement_m": 0.40225
+    }
+  ],
+  "npc_parts": 27,
+  "npc_bind_matrices_match": true,
+  "model_ids_no_collisions": true,
+  "environment_models": 23,
+  "animation_count": 94,
+  "files": [
+    {
+      "file": "Characters/MON_00_Husk_VolumeV3.glb",
+      "vertices": 3888,
+      "triangles": 1913,
+      "depth_m": 0.46326,
+      "animations": 13
+    },
+    {
+      "file": "Characters/MON_01_Goblin_VolumeV3.glb",
+      "vertices": 3311,
+      "triangles": 1656,
+      "depth_m": 0.49129,
+      "animations": 13
+    },
+    {
+      "file": "Characters/MON_02_Ogre_VolumeV3.glb",
+      "vertices": 3909,
+      "triangles": 1984,
+      "depth_m": 0.87445,
+      "animations": 13
+    },
+    {
+      "file": "Characters/MON_03_Hound_VolumeV3.glb",
+      "vertices": 4485,
+      "triangles": 2188,
+      "depth_m": 3.14353,
+      "animations": 13
+    },
+    {
+      "file": "Characters/MON_04_Boar_VolumeV3.glb",
+      "vertices": 4466,
+      "triangles": 2234,
+      "depth_m": 3.13966,
+      "animations": 13
+    },
+    {
+      "file": "Characters/NPC_Common_VolumeV3.glb",
+      "vertices": 4702,
+      "triangles": 2440,
+      "depth_m": 0.58101,
+      "animations": 15
+    },
+    {
+      "file": "Characters/PLAYER_AshWayfarer.glb",
+      "vertices": 10424,
+      "triangles": 4590,
+      "depth_m": 0.60531,
+      "animations": 14
+    },
+    {
+      "file": "Meshes/BLD_V3_Chapel_Apse.glb",
+      "vertices": 10981,
+      "triangles": 5592,
+      "depth_m": 4.91677,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/BLD_V3_Croft_Thatched.glb",
+      "vertices": 8448,
+      "triangles": 4012,
+      "depth_m": 3.288,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/BLD_V3_Farmstead_LWing.glb",
+      "vertices": 8456,
+      "triangles": 3988,
+      "depth_m": 3.96049,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/BLD_V3_Forge_LeanTo.glb",
+      "vertices": 5462,
+      "triangles": 2780,
+      "depth_m": 4.07706,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/BLD_V3_Inn_Coaching.glb",
+      "vertices": 9457,
+      "triangles": 4780,
+      "depth_m": 4.08391,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/BLD_V3_Jetty_Townhouse.glb",
+      "vertices": 6354,
+      "triangles": 3228,
+      "depth_m": 3.343,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/BLD_V3_Longhouse_Hipped.glb",
+      "vertices": 9651,
+      "triangles": 4328,
+      "depth_m": 5.72304,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/BLD_V3_River_StiltHouse.glb",
+      "vertices": 3832,
+      "triangles": 1964,
+      "depth_m": 3.443,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/BLD_V3_Tower_Round.glb",
+      "vertices": 2431,
+      "triangles": 1224,
+      "depth_m": 2.66754,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Fern_Arch.glb",
+      "vertices": 2873,
+      "triangles": 1056,
+      "depth_m": 1.09169,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Flower_Blue.glb",
+      "vertices": 2632,
+      "triangles": 1044,
+      "depth_m": 0.5578,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Fungi_Cluster.glb",
+      "vertices": 792,
+      "triangles": 384,
+      "depth_m": 0.41326,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Heather_Patch.glb",
+      "vertices": 3313,
+      "triangles": 1476,
+      "depth_m": 0.72349,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Hedge_Bramble.glb",
+      "vertices": 2128,
+      "triangles": 1028,
+      "depth_m": 0.79827,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Log_Fallen.glb",
+      "vertices": 742,
+      "triangles": 412,
+      "depth_m": 0.66095,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Rock_Basalt.glb",
+      "vertices": 628,
+      "triangles": 220,
+      "depth_m": 1.042,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Rock_CreekPebbles.glb",
+      "vertices": 1776,
+      "triangles": 624,
+      "depth_m": 1.0957,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Rock_MossCluster.glb",
+      "vertices": 1272,
+      "triangles": 448,
+      "depth_m": 0.99122,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Sedge_Clump.glb",
+      "vertices": 772,
+      "triangles": 336,
+      "depth_m": 0.59134,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Tree_BirchGrove.glb",
+      "vertices": 4280,
+      "triangles": 2196,
+      "depth_m": 1.94236,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Tree_PollardAlder.glb",
+      "vertices": 1316,
+      "triangles": 676,
+      "depth_m": 2.08632,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Tree_SplitOak.glb",
+      "vertices": 1501,
+      "triangles": 816,
+      "depth_m": 2.49691,
+      "animations": 0
+    },
+    {
+      "file": "Meshes/NAT_V3_Tree_WindPine.glb",
+      "vertices": 864,
+      "triangles": 356,
+      "depth_m": 1.95228,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Back_00_Cloak_VolumeV3.glb",
+      "vertices": 286,
+      "triangles": 116,
+      "depth_m": 0.539,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Back_01_Quiver_VolumeV3.glb",
+      "vertices": 456,
+      "triangles": 372,
+      "depth_m": 0.2124,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Back_02_Satchel_VolumeV3.glb",
+      "vertices": 144,
+      "triangles": 112,
+      "depth_m": 0.35988,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Back_03_Apron_VolumeV3.glb",
+      "vertices": 312,
+      "triangles": 136,
+      "depth_m": 0.10514,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Body_00_Male_VolumeV3.glb",
+      "vertices": 1079,
+      "triangles": 576,
+      "depth_m": 0.28686,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Body_01_Female_VolumeV3.glb",
+      "vertices": 1091,
+      "triangles": 576,
+      "depth_m": 0.28686,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hair_00_Short_VolumeV3.glb",
+      "vertices": 248,
+      "triangles": 136,
+      "depth_m": 0.55759,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hair_01_Long_VolumeV3.glb",
+      "vertices": 448,
+      "triangles": 352,
+      "depth_m": 0.51474,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hair_02_Braid_VolumeV3.glb",
+      "vertices": 796,
+      "triangles": 340,
+      "depth_m": 0.53289,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hair_03_Crop_VolumeV3.glb",
+      "vertices": 120,
+      "triangles": 56,
+      "depth_m": 0.48227,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hand_00_Sword_VolumeV3.glb",
+      "vertices": 146,
+      "triangles": 120,
+      "depth_m": 0.05951,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hand_01_Bow_VolumeV3.glb",
+      "vertices": 372,
+      "triangles": 224,
+      "depth_m": 0.0685,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hand_02_Staff_VolumeV3.glb",
+      "vertices": 212,
+      "triangles": 140,
+      "depth_m": 0.10673,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hand_03_Axe_VolumeV3.glb",
+      "vertices": 125,
+      "triangles": 112,
+      "depth_m": 0.1107,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Hand_04_Lantern_VolumeV3.glb",
+      "vertices": 244,
+      "triangles": 184,
+      "depth_m": 0.2214,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Head_00_Male_VolumeV3.glb",
+      "vertices": 546,
+      "triangles": 292,
+      "depth_m": 0.55119,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Head_01_Female_VolumeV3.glb",
+      "vertices": 550,
+      "triangles": 292,
+      "depth_m": 0.55119,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Headwear_00_Hood_VolumeV3.glb",
+      "vertices": 288,
+      "triangles": 224,
+      "depth_m": 0.55213,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Headwear_01_Helmet_VolumeV3.glb",
+      "vertices": 216,
+      "triangles": 144,
+      "depth_m": 0.57969,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Headwear_02_Cap_VolumeV3.glb",
+      "vertices": 144,
+      "triangles": 72,
+      "depth_m": 0.51442,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Legs_00_Trousers_VolumeV3.glb",
+      "vertices": 1440,
+      "triangles": 688,
+      "depth_m": 0.34765,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Legs_01_Greaves_VolumeV3.glb",
+      "vertices": 1664,
+      "triangles": 808,
+      "depth_m": 0.34765,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Legs_02_RangerBoots_VolumeV3.glb",
+      "vertices": 1440,
+      "triangles": 688,
+      "depth_m": 0.34765,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Torso_00_Tunic_VolumeV3.glb",
+      "vertices": 580,
+      "triangles": 328,
+      "depth_m": 0.43505,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Torso_01_Armor_VolumeV3.glb",
+      "vertices": 1019,
+      "triangles": 508,
+      "depth_m": 0.4786,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Torso_02_Ranger_VolumeV3.glb",
+      "vertices": 580,
+      "triangles": 348,
+      "depth_m": 0.47122,
+      "animations": 0
+    },
+    {
+      "file": "NPC_Parts/NPC_Torso_03_Robe_VolumeV3.glb",
+      "vertices": 668,
+      "triangles": 428,
+      "depth_m": 0.48915,
+      "animations": 0
+    }
+  ],
+  "game_integration_tested": false,
+  "player_refinement": {
+    "asset_id": "PLAYER_AshWayfarer",
+    "clip_count": 14,
+    "cast_right_wrist_max_bend_degrees": 5.516,
+    "previous_cast_right_wrist_max_bend_degrees": 99.005,
+    "max_joint_separation_m": 2.585254843964796e-07,
+    "max_gait_stance_sole_error_m": 5.049845981375256e-07,
+    "max_loop_boundary_matrix_error": 0.0,
+    "glb_reimported": true,
+    "glb_clip_count": 14,
+    "bind_matrices_match_previous": true,
+    "all_skin_weights_normalized": true,
+    "preview_clip_movement_m": {
+      "Walk": 0.28345,
+      "Run": 0.40225,
+      "Attack_Cast": 0.36315,
+      "Jump": 0.53607
+    },
+    "max_glb_rotation_step_degrees": 20.996
+  }
+}

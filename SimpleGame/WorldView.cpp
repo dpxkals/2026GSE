@@ -50,6 +50,8 @@ void WorldView::Structure(
     SceneRenderer& renderer, Point2 origin, float zoom, Prop prop, int variation)
 {
     // Large landmarks use the enlarged collision footprint in World::PropHalfExtent.
+    int roofVariation = variation / 28;
+    variation %= 7;
     const bool building = prop == Prop::Cottage || prop == Prop::Chapel || prop == Prop::Watchtower;
     zoom *= prop >= Prop::WallX ? 1.0f : building ? 2.2f : 1.3f;
     auto p = [=](float x, float y)
@@ -109,7 +111,7 @@ void WorldView::Structure(
                            {.23f, .34f, .20f, 1},
                            {.31f, .29f, .28f, 1},
                            {.22f, .36f, .40f, 1}};
-    Color roofColor = roofs[variation % 7];
+    Color roofColor = roofs[roofVariation % 7];
     renderer.Ellipse(p(0, 1), 30 * zoom, 13 * zoom, {0.015f, 0.02f, 0.02f, 0.35f});
     switch (prop)
     {

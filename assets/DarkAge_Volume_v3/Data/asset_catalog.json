@@ -1,0 +1,663 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "asset_id": "BLD_V3_Croft_Thatched",
+      "file": "Meshes/BLD_V3_Croft_Thatched.glb",
+      "category": "architecture",
+      "label_ko": "돌담 초가",
+      "triangles": 4012,
+      "bounds_m": [
+        [
+          -1.903,
+          -1.72,
+          0.0
+        ],
+        [
+          1.903,
+          1.568,
+          2.9985
+        ]
+      ],
+      "materials": [
+        "V3_StoneDark",
+        "V3_Mortar",
+        "V3_Stone",
+        "V3_StoneLight",
+        "V3_Thatch",
+        "V3_ThatchLight",
+        "V3_ThatchDark",
+        "V3_Timber",
+        "V3_Plaster",
+        "V3_Wood",
+        "V3_Glass",
+        "V3_Iron",
+        "V3_GoldGlass",
+        "V3_WoodEnd",
+        "V3_Shutter"
+      ]
+    },
+    {
+      "asset_id": "BLD_V3_Jetty_Townhouse",
+      "file": "Meshes/BLD_V3_Jetty_Townhouse.glb",
+      "category": "architecture",
+      "label_ko": "돌출 상층 목조 주택",
+      "triangles": 3228,
+      "bounds_m": [
+        [
+          -1.712,
+          -1.86,
+          0.0
+        ],
+        [
+          1.852,
+          1.483,
+          4.1985
+        ]
+      ],
+      "materials": [
+        "V3_StoneDark",
+        "V3_Mortar",
+        "V3_StoneLight",
+        "V3_Stone",
+        "V3_Lime",
+        "V3_Wood",
+        "V3_Timber",
+        "V3_Tile",
+        "V3_TileLight",
+        "V3_TileDark",
+        "V3_Plaster",
+        "V3_Glass",
+        "V3_Iron",
+        "V3_WoodEnd",
+        "V3_Shutter",
+        "V3_GoldGlass"
+      ]
+    },
+    {
+      "asset_id": "BLD_V3_Farmstead_LWing",
+      "file": "Meshes/BLD_V3_Farmstead_LWing.glb",
+      "category": "architecture",
+      "label_ko": "ㄱ자 농가",
+      "triangles": 3988,
+      "bounds_m": [
+        [
+          -2.497,
+          -2.173,
+          0.0
+        ],
+        [
+          2.323,
+          1.78749,
+          3.09577
+        ]
+      ],
+      "materials": [
+        "V3_StoneDark",
+        "V3_Ochre",
+        "V3_Wood",
+        "V3_Timber",
+        "MAT_Roof",
+        "V3_SlateLight",
+        "V3_SlateDark",
+        "V3_Plaster",
+        "V3_Thatch",
+        "V3_ThatchLight",
+        "V3_ThatchDark",
+        "V3_Stone",
+        "V3_StoneLight",
+        "V3_Glass",
+        "V3_Iron",
+        "V3_GoldGlass",
+        "V3_WoodEnd",
+        "V3_Shutter"
+      ]
+    },
+    {
+      "asset_id": "BLD_V3_Longhouse_Hipped",
+      "file": "Meshes/BLD_V3_Longhouse_Hipped.glb",
+      "category": "architecture",
+      "label_ko": "우진각 지붕 장옥",
+      "triangles": 4328,
+      "bounds_m": [
+        [
+          -1.528,
+          -3.09906,
+          0.0
+        ],
+        [
+          1.528,
+          2.62398,
+          2.9685
+        ]
+      ],
+      "materials": [
+        "V3_StoneDark",
+        "V3_Plaster",
+        "V3_Wood",
+        "V3_Timber",
+        "V3_Thatch",
+        "V3_ThatchDark",
+        "V3_ThatchLight",
+        "V3_StoneLight",
+        "V3_Stone",
+        "V3_Iron",
+        "V3_GoldGlass",
+        "V3_Glass"
+      ]
+    },
+    {
+      "asset_id": "BLD_V3_River_StiltHouse",
+      "file": "Meshes/BLD_V3_River_StiltHouse.glb",
+      "category": "architecture",
+      "label_ko": "강변 수상가옥",
+      "triangles": 1964,
+      "bounds_m": [
+        [
+          -1.727,
+          -1.975,
+          -0.0115
+        ],
+        [
+          1.54,
+          1.468,
+          2.8985
+        ]
+      ],
+      "materials": [
+        "V3_Wood",
+        "V3_StoneDark",
+        "V3_Lime",
+        "V3_Timber",
+        "MAT_Roof",
+        "V3_SlateDark",
+        "V3_SlateLight",
+        "V3_Plaster",
+        "V3_StoneLight",
+        "V3_Stone",
+        "V3_Iron",
+        "V3_GoldGlass",
+        "V3_WoodEnd",
+        "V3_Shutter",
+        "V3_Glass"
+      ]
+    },
+    {
+      "asset_id": "BLD_V3_Forge_LeanTo",
+      "file": "Meshes/BLD_V3_Forge_LeanTo.glb",
+      "category": "architecture",
+      "label_ko": "작업 차양 대장간",
+      "triangles": 2780,
+      "bounds_m": [
+        [
+          -2.177,
+          -2.14906,
+          0.0
+        ],
+        [
+          2.00742,
+          1.928,
+          3.2785
+        ]
+      ],
+      "materials": [
+        "V3_StoneDark",
+        "V3_Mortar",
+        "V3_StoneLight",
+        "V3_Stone",
+        "V3_Tile",
+        "V3_TileLight",
+        "V3_TileDark",
+        "V3_Timber",
+        "V3_Plaster",
+        "V3_Wood",
+        "V3_Glass",
+        "V3_Iron",
+        "V3_GoldGlass",
+        "V3_WoodEnd",
+        "V3_Shutter",
+        "V3_SlateDark"
+      ]
+    },
+    {
+      "asset_id": "BLD_V3_Inn_Coaching",
+      "file": "Meshes/BLD_V3_Inn_Coaching.glb",
+      "category": "architecture",
+      "label_ko": "증축 여관",
+      "triangles": 4780,
+      "bounds_m": [
+        [
+          -2.292,
+          -2.353,
+          0.0
+        ],
+        [
+          2.357,
+          1.73091,
+          4.2885
+        ]
+      ],
+      "materials": [
+        "V3_StoneDark",
+        "V3_Mortar",
+        "V3_StoneLight",
+        "V3_Stone",
+        "V3_Lime",
+        "V3_Wood",
+        "V3_Timber",
+        "V3_Tile",
+        "V3_TileLight",
+        "V3_TileDark",
+        "V3_Ochre",
+        "V3_Plaster",
+        "V3_Glass",
+        "V3_Iron",
+        "V3_GoldGlass",
+        "V3_WoodEnd",
+        "V3_Shutter"
+      ]
+    },
+    {
+      "asset_id": "BLD_V3_Chapel_Apse",
+      "file": "Meshes/BLD_V3_Chapel_Apse.glb",
+      "category": "architecture",
+      "label_ko": "후진이 있는 예배당",
+      "triangles": 5592,
+      "bounds_m": [
+        [
+          -2.20711,
+          -1.99,
+          0.0
+        ],
+        [
+          1.727,
+          2.92677,
+          5.16
+        ]
+      ],
+      "materials": [
+        "V3_StoneDark",
+        "V3_Mortar",
+        "V3_StoneLight",
+        "V3_Stone",
+        "MAT_Roof",
+        "V3_SlateDark",
+        "V3_SlateLight",
+        "V3_Timber",
+        "V3_Plaster",
+        "V3_Wood",
+        "V3_GoldGlass",
+        "V3_Iron"
+      ]
+    },
+    {
+      "asset_id": "BLD_V3_Tower_Round",
+      "file": "Meshes/BLD_V3_Tower_Round.glb",
+      "category": "architecture",
+      "label_ko": "원형 감시탑",
+      "triangles": 1224,
+      "bounds_m": [
+        [
+          -1.11519,
+          -1.41,
+          0.0
+        ],
+        [
+          1.18528,
+          1.25754,
+          4.40532
+        ]
+      ],
+      "materials": [
+        "V3_Stone",
+        "V3_StoneDark",
+        "V3_SlateDark",
+        "MAT_Roof",
+        "V3_Wood",
+        "V3_StoneLight",
+        "V3_Timber",
+        "V3_Iron",
+        "V3_GoldGlass"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Tree_SplitOak",
+      "file": "Meshes/NAT_V3_Tree_SplitOak.glb",
+      "category": "tree",
+      "label_ko": "갈라진 참나무",
+      "triangles": 816,
+      "bounds_m": [
+        [
+          -1.93616,
+          -1.28173,
+          -0.03231
+        ],
+        [
+          1.69225,
+          1.21517,
+          4.0592
+        ]
+      ],
+      "materials": [
+        "V3_Bark",
+        "V3_OakLight",
+        "V3_OakLeaf",
+        "V3_BarkDeep"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Tree_BirchGrove",
+      "file": "Meshes/NAT_V3_Tree_BirchGrove.glb",
+      "category": "tree",
+      "label_ko": "자작나무 군락",
+      "triangles": 2196,
+      "bounds_m": [
+        [
+          -1.38737,
+          -0.62118,
+          -0.00828
+        ],
+        [
+          1.29737,
+          1.32118,
+          3.9572
+        ]
+      ],
+      "materials": [
+        "V3_Birch",
+        "V3_BarkDeep",
+        "V3_OakLight",
+        "V3_OakLeaf"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Tree_WindPine",
+      "file": "Meshes/NAT_V3_Tree_WindPine.glb",
+      "category": "tree",
+      "label_ko": "바람에 휜 소나무",
+      "triangles": 356,
+      "bounds_m": [
+        [
+          -0.95884,
+          -0.90814,
+          -0.00717
+        ],
+        [
+          1.33332,
+          1.04414,
+          4.43
+        ]
+      ],
+      "materials": [
+        "V3_Bark",
+        "V3_FirLeaf",
+        "V3_FirLight"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Tree_PollardAlder",
+      "file": "Meshes/NAT_V3_Tree_PollardAlder.glb",
+      "category": "tree",
+      "label_ko": "물가 오리나무",
+      "triangles": 676,
+      "bounds_m": [
+        [
+          -1.13529,
+          -1.01559,
+          -0.02682
+        ],
+        [
+          1.19413,
+          1.07073,
+          3.13
+        ]
+      ],
+      "materials": [
+        "V3_BarkDeep",
+        "V3_Bark",
+        "V3_OakLight",
+        "V3_OakLeaf"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Fern_Arch",
+      "file": "Meshes/NAT_V3_Fern_Arch.glb",
+      "category": "ground_cover",
+      "label_ko": "부채꼴 고사리",
+      "triangles": 1056,
+      "bounds_m": [
+        [
+          -0.58547,
+          -0.54584,
+          0.00508
+        ],
+        [
+          0.58546,
+          0.54584,
+          0.71653
+        ]
+      ],
+      "materials": [
+        "V3_Fern",
+        "V3_FernLight"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Flower_Blue",
+      "file": "Meshes/NAT_V3_Flower_Blue.glb",
+      "category": "ground_cover",
+      "label_ko": "푸른 들꽃",
+      "triangles": 1044,
+      "bounds_m": [
+        [
+          -0.37971,
+          -0.26562,
+          -0.00407
+        ],
+        [
+          0.47917,
+          0.29218,
+          0.56365
+        ]
+      ],
+      "materials": [
+        "V3_Fern",
+        "V3_FernLight",
+        "V3_FlowerLight",
+        "V3_Flower",
+        "V3_GoldGlass"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Heather_Patch",
+      "file": "Meshes/NAT_V3_Heather_Patch.glb",
+      "category": "ground_cover",
+      "label_ko": "헤더 군락",
+      "triangles": 1476,
+      "bounds_m": [
+        [
+          -0.5636,
+          -0.29241,
+          -0.00504
+        ],
+        [
+          0.44892,
+          0.43109,
+          0.56206
+        ]
+      ],
+      "materials": [
+        "V3_Fern",
+        "V3_FernLight",
+        "V3_HeatherLight",
+        "V3_Heather"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Sedge_Clump",
+      "file": "Meshes/NAT_V3_Sedge_Clump.glb",
+      "category": "ground_cover",
+      "label_ko": "물가 사초",
+      "triangles": 336,
+      "bounds_m": [
+        [
+          -0.42375,
+          -0.20512,
+          0.0
+        ],
+        [
+          0.42972,
+          0.38621,
+          0.87944
+        ]
+      ],
+      "materials": [
+        "V3_Reed",
+        "V3_ReedTop"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Hedge_Bramble",
+      "file": "Meshes/NAT_V3_Hedge_Bramble.glb",
+      "category": "ground_cover",
+      "label_ko": "가시덤불",
+      "triangles": 1028,
+      "bounds_m": [
+        [
+          -0.86412,
+          -0.37422,
+          -0.08888
+        ],
+        [
+          0.88912,
+          0.42405,
+          0.75903
+        ]
+      ],
+      "materials": [
+        "V3_OakLight",
+        "V3_OakLeaf",
+        "V3_HeatherLight"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Fungi_Cluster",
+      "file": "Meshes/NAT_V3_Fungi_Cluster.glb",
+      "category": "ground_cover",
+      "label_ko": "버섯 군락",
+      "triangles": 384,
+      "bounds_m": [
+        [
+          -0.4462,
+          -0.24398,
+          -0.00324
+        ],
+        [
+          0.52126,
+          0.16928,
+          0.43388
+        ]
+      ],
+      "materials": [
+        "V3_Fungus",
+        "V3_FungusDark"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Rock_Basalt",
+      "file": "Meshes/NAT_V3_Rock_Basalt.glb",
+      "category": "ground_prop",
+      "label_ko": "현무암 돌기둥",
+      "triangles": 220,
+      "bounds_m": [
+        [
+          -0.75839,
+          -0.50998,
+          0.0
+        ],
+        [
+          0.80378,
+          0.53202,
+          1.67211
+        ]
+      ],
+      "materials": [
+        "V3_CliffTop",
+        "V3_Cliff"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Rock_MossCluster",
+      "file": "Meshes/NAT_V3_Rock_MossCluster.glb",
+      "category": "ground_prop",
+      "label_ko": "이끼 바위 군락",
+      "triangles": 448,
+      "bounds_m": [
+        [
+          -0.91766,
+          -0.53455,
+          0.0
+        ],
+        [
+          0.85872,
+          0.45667,
+          0.80636
+        ]
+      ],
+      "materials": [
+        "V3_Stone",
+        "V3_Moss"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Rock_CreekPebbles",
+      "file": "Meshes/NAT_V3_Rock_CreekPebbles.glb",
+      "category": "ground_prop",
+      "label_ko": "개울 자갈",
+      "triangles": 624,
+      "bounds_m": [
+        [
+          -0.68417,
+          -0.51053,
+          0.006
+        ],
+        [
+          0.93882,
+          0.58517,
+          0.13044
+        ]
+      ],
+      "materials": [
+        "V3_Stone",
+        "V3_CliffTop",
+        "V3_StoneLight"
+      ]
+    },
+    {
+      "asset_id": "NAT_V3_Log_Fallen",
+      "file": "Meshes/NAT_V3_Log_Fallen.glb",
+      "category": "ground_prop",
+      "label_ko": "쓰러진 고목",
+      "triangles": 412,
+      "bounds_m": [
+        [
+          -1.02731,
+          -0.26387,
+          -0.02147
+        ],
+        [
+          0.96507,
+          0.39708,
+          0.58417
+        ]
+      ],
+      "materials": [
+        "V3_BarkDeep",
+        "V3_WoodEnd",
+        "V3_Timber",
+        "V3_Moss",
+        "V3_Bark"
+      ]
+    }
+  ]
+}

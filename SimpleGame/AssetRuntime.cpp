@@ -794,8 +794,12 @@ struct AssetRuntime::Implementation
         }
         bool restart = hurtTrigger || (attackTrigger && action == attackAction);
         state.action = action;
-        state.player.Play(
-            model, Clip(model, action), now, action == "idle" || action == "walk", 1, restart);
+        state.player.Play(model,
+                          Clip(model, action),
+                          now,
+                          action == "idle" || action == "walk",
+                          action == "walk" ? std::clamp(pose.moveSpeed / 1.8f, .5f, 3.5f) : 1.0f,
+                          restart);
         return state.player.Evaluate(model, now);
     }
 
@@ -826,6 +830,9 @@ struct AssetRuntime::Implementation
             return {};
         }
         const auto& binding = config.at("props").at(PropName(prop));
+        int orientation = (variation / 7) % 4;
+        int roofVariation = variation / 28;
+        variation %= 7;
         std::string id = binding.value("model", std::string{});
         if (binding.contains("variants"))
         {
@@ -854,6 +861,7 @@ struct AssetRuntime::Implementation
         }
         Check(std::isfinite(scale) && scale > 0 && scale <= 10, "Invalid prop scale");
         yaw = binding.value("yaw_degrees", 0.0f) * .01745329252f;
+        yaw += orientation * 1.570796327f;
         Check(std::isfinite(yaw), "Invalid prop rotation");
         if (binding.value("roof_palette", false))
         {
@@ -861,7 +869,7 @@ struct AssetRuntime::Implementation
             const auto& roofs = palette.at("roof");
             Check(!roofs.empty(), "Empty roof palette");
             auto name =
-                roofs.at(size_t((std::max)(0, variation)) % roofs.size()).get<std::string>();
+                roofs.at(size_t((std::max)(0, roofVariation)) % roofs.size()).get<std::string>();
             colors["MAT_Roof"] = palette.at("colors").at(name).get<Models::Vec3>();
         }
         return id;

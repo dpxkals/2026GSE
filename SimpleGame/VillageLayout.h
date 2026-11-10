@@ -35,10 +35,13 @@ struct VillageBuilding
     int x, y;
     Prop prop;
     int home = -1;
+    int orientation = 0;
+    int appearance = -1;
 };
 
 const std::array<VillageSite, VillageCount>& Villages();
 const wchar_t* VillageKindName(VillageKind kind);
+bool VillageFortified(int town);
 bool VillageContains(int town, double x, double y, double margin = 0);
 int VillageAt(WorldPoint point);
 bool VillageRoad(double x, double y);
@@ -49,3 +52,4 @@ const std::vector<VillageBuilding>& VillageBuildings(int town, std::uint64_t see
 WorldPoint VillageHome(int town, int home, std::uint64_t seed);
 WorldPoint VillageHomeDoor(int town, int home, std::uint64_t seed);
 WorldPoint VillageApproach(int town);
+bool VillageStreet(int town, int x, int y, std::uint64_t seed);

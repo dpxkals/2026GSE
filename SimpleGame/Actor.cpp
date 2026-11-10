@@ -36,7 +36,8 @@ ActorPose Actor::Animate(double time, double attackCooldown, double health)
         {
             animationMoving_ *= std::exp(-dt * 9);
         }
-        animationPhase_ = std::fmod(animationPhase_ + dt * 11 * animationMoving_, 6.283185307);
+        animationPhase_ =
+            std::fmod(animationPhase_ + (distance < 3 ? distance : 0) * 7, 6.283185307);
         animationAttack_ = (std::max)(0.0, animationAttack_ - dt);
         animationHurt_ = (std::max)(0.0, animationHurt_ - dt);
         if (health >= 0 && animationHealth_ >= 0 && health < animationHealth_ - .01)
@@ -61,6 +62,7 @@ ActorPose Actor::Animate(double time, double attackCooldown, double health)
     pose.hurt = float(animationHurt_ / .24);
     pose.facing = animationFacing_;
     pose.yaw = animationYaw_;
+    pose.moveSpeed = dt > 0 && distance < 3 ? float(distance / dt) : 0;
     return pose;
 }
 

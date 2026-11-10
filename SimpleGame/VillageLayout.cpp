@@ -4,10 +4,15 @@
 #include <cmath>
 #include <queue>
 #include <stdexcept>
+#include <map>
+#include <set>
 
 namespace
 {
     constexpr int Roads[][2] = {{0, 1}, {0, 2}, {0, 3}, {0, 4}, {1, 5}, {3, 5}, {2, 6}, {4, 6}};
+    std::array<std::set<std::pair<int, int>>, VillageCount> streets;
+    constexpr int DoorX[] = {0, 2, 0, -2};
+    constexpr int DoorY[] = {-2, 0, 2, 0};
 
     std::uint64_t MixLayout(std::uint64_t value)
     {
@@ -50,10 +55,6 @@ bool VillageContains(int town, double x, double y, double margin)
         site.kind == VillageKind::Riverside)
     {
         return dx * dx / (w * w) + dy * dy / (h * h) <= 1;
-    }
-    if (site.kind == VillageKind::Abbey || site.kind == VillageKind::Mining)
-    {
-        return dx / w + dy / h < 1.65;
     }
     return true;
 }
@@ -124,16 +125,19 @@ double VillageHuntingRadius(int town)
     return (std::max)(site.halfWidth, site.halfHeight) + 8.0;
 }
 
+bool VillageFortified(int town)
+{
+    auto kind = Villages().at(town).kind;
+    return kind == VillageKind::Castle || kind == VillageKind::Abbey || kind == VillageKind::Mining;
+}
+
 Prop VillageWall(int town, int x, int y)
 {
     const auto& site = Villages().at(town);
     bool north = y == -site.halfHeight && std::abs(x) <= site.halfWidth;
-    bool south =
-        site.kind == VillageKind::Castle && y == site.halfHeight && std::abs(x) <= site.halfWidth;
-    bool side = site.kind == VillageKind::Castle && std::abs(x) == site.halfWidth &&
-                std::abs(y) <= site.halfHeight;
-    bool fortified = site.kind == VillageKind::Castle || site.kind == VillageKind::Abbey ||
-                     site.kind == VillageKind::Mining;
+    bool south = y == site.halfHeight && std::abs(x) <= site.halfWidth;
+    bool side = std::abs(x) == site.halfWidth && std::abs(y) <= site.halfHeight;
+    bool fortified = VillageFortified(town);
     if (!fortified || (!north && !south && !side))
     {
         return Prop::None;
@@ -143,9 +147,10 @@ Prop VillageWall(int town, int x, int y)
     {
         return Prop::None;
     }
-    return std::abs(along) == 3 || std::abs(x) == site.halfWidth ? Prop::WallTower
-           : side                                                ? Prop::WallY
-                                                                 : Prop::WallX;
+    return std::abs(along) == 3 || (std::abs(x) == site.halfWidth && std::abs(y) == site.halfHeight)
+               ? Prop::WallTower
+           : side ? Prop::WallY
+                  : Prop::WallX;
 }
 
 const std::vector<VillageBuilding>& VillageBuildings(int town, std::uint64_t seed)
@@ -168,11 +173,19 @@ const std::vector<VillageBuilding>& VillageBuildings(int town, std::uint64_t see
             };
 
             std::vector<Candidate> candidates;
-            for (int y : {-21, -15, -9, -3, 3, 9, 15, 21})
+            const auto& site = Villages()[village];
+            for (int y = -site.halfHeight + 4; y <= site.halfHeight - 4; ++y)
             {
-                for (int x : {-21, -15, -9, -3, 3, 9, 15, 21})
+                for (int x = -site.halfWidth + 4; x <= site.halfWidth - 4; ++x)
                 {
-                    const auto& site = Villages()[village];
+                    // Keep gate approaches and a distinct central public space open.
+                    double plazaX = site.kind == VillageKind::Market ? 8 : 5;
+                    double plazaY = site.kind == VillageKind::Abbey ? 8 : 5;
+                    if (std::abs(x) < 4 || std::abs(y) < 4 ||
+                        x * x / (plazaX * plazaX) + y * y / (plazaY * plazaY) < 1)
+                    {
+                        continue;
+                    }
                     bool fits = true;
                     for (int sy : {-2, 2})
                     {
@@ -200,31 +213,126 @@ const std::vector<VillageBuilding>& VillageBuildings(int town, std::uint64_t see
                       {
                           return a.order < b.order;
                       });
-            constexpr int needed = VillageHomeCount + VillageGuideHomes + 3;
-            if (candidates.size() < needed)
+            constexpr int needed = VillageHomeCount + VillageGuideHomes + 5;
+            for (double spacing : {4.5, 4.0})
+            {
+                for (const auto& c : candidates)
+                {
+                    if (plan.size() == needed)
+                    {
+                        break;
+                    }
+                    bool crowded = false;
+                    for (const auto& placed : plan)
+                    {
+                        if (std::hypot(double(c.x - placed.x), double(c.y - placed.y)) < spacing)
+                        {
+                            crowded = true;
+                            break;
+                        }
+                    }
+                    if (crowded)
+                    {
+                        continue;
+                    }
+                    int i = int(plan.size());
+                    Prop prop = Prop::Cottage;
+                    if (i == needed - 3)
+                    {
+                        prop = Villages()[village].kind == VillageKind::Castle ||
+                                       Villages()[village].kind == VillageKind::Mining
+                                   ? Prop::Watchtower
+                                   : Prop::Chapel;
+                    }
+                    if (i == needed - 2)
+                    {
+                        prop = Prop::Well;
+                    }
+                    if (i == needed - 1)
+                    {
+                        prop = Prop::Graves;
+                    }
+                    int direction =
+                        std::abs(c.x) < std::abs(c.y) ? (c.x > 0 ? 3 : 1) : (c.y > 0 ? 0 : 2);
+                    plan.push_back({c.x,
+                                    c.y,
+                                    prop,
+                                    i < VillageHomeCount + VillageGuideHomes ? i : -1,
+                                    direction,
+                                    i == needed - 5   ? 4
+                                    : i == needed - 4 ? 5
+                                                      : -1});
+                    if (plan.size() == needed)
+                    {
+                        break;
+                    }
+                }
+            }
+            if (plan.size() != needed)
             {
                 throw std::runtime_error("Village plan cannot fit all homes");
             }
-            for (int i = 0; i < needed; ++i)
+
+            // Multi-source flood from the main streets routes alleys around building footprints.
+            auto& paths = streets[village];
+            paths.clear();
+            using Cell = std::pair<int, int>;
+            std::set<Cell> blocked;
+            for (const auto& building : plan)
             {
-                const auto& c = candidates[i];
-                Prop prop = Prop::Cottage;
-                if (i == needed - 3)
+                for (int dy = -1; dy <= 1; ++dy)
                 {
-                    prop = Villages()[village].kind == VillageKind::Castle ||
-                                   Villages()[village].kind == VillageKind::Mining
-                               ? Prop::Watchtower
-                               : Prop::Chapel;
+                    for (int dx = -1; dx <= 1; ++dx)
+                    {
+                        blocked.emplace(building.x + dx, building.y + dy);
+                    }
                 }
-                if (i == needed - 2)
+            }
+            std::map<Cell, Cell> previous;
+            std::queue<Cell> queue;
+            for (int y = -site.halfHeight; y <= site.halfHeight; ++y)
+            {
+                for (int x = -site.halfWidth; x <= site.halfWidth; ++x)
                 {
-                    prop = Prop::Well;
+                    if (std::abs(x) <= 1 || std::abs(y) <= 1)
+                    {
+                        Cell cell{x, y};
+                        previous[cell] = cell;
+                        queue.push(cell);
+                        paths.insert(cell);
+                    }
                 }
-                if (i == needed - 1)
+            }
+            constexpr int offsets[][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+            while (!queue.empty())
+            {
+                auto cell = queue.front();
+                queue.pop();
+                for (const auto& offset : offsets)
                 {
-                    prop = Prop::Graves;
+                    Cell next{cell.first + offset[0], cell.second + offset[1]};
+                    if (previous.count(next) || blocked.count(next) ||
+                        !VillageContains(
+                            village, site.center.x + next.first, site.center.y + next.second, 1))
+                    {
+                        continue;
+                    }
+                    previous[next] = cell;
+                    queue.push(next);
                 }
-                plan.push_back({c.x, c.y, prop, i < VillageHomeCount + VillageGuideHomes ? i : -1});
+            }
+            for (const auto& building : plan)
+            {
+                Cell cell{building.x + DoorX[building.orientation],
+                          building.y + DoorY[building.orientation]};
+                if (!previous.count(cell))
+                {
+                    throw std::runtime_error("Village home has no reachable street");
+                }
+                while (paths.insert(cell).second)
+                {
+                    cell = previous.at(cell);
+                }
             }
         }
         cachedSeed = seed;
@@ -243,7 +351,9 @@ WorldPoint VillageHome(int town, int home, std::uint64_t seed)
 WorldPoint VillageHomeDoor(int town, int home, std::uint64_t seed)
 {
     auto point = VillageHome(town, home, seed);
-    point.y += 2.0;
+    int direction = VillageBuildings(town, seed).at(home).orientation;
+    point.x += DoorX[direction];
+    point.y += DoorY[direction];
     return point;
 }
 
@@ -255,4 +365,10 @@ WorldPoint VillageApproach(int town)
     double radius = VillageHuntingRadius(town);
     return {center.x + (neighbor.x - center.x) / distance * radius,
             center.y + (neighbor.y - center.y) / distance * radius};
+}
+
+bool VillageStreet(int town, int x, int y, std::uint64_t seed)
+{
+    VillageBuildings(town, seed);
+    return streets.at(town).count({x, y}) != 0;
 }

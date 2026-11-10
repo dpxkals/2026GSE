@@ -277,11 +277,17 @@ namespace Models
         {
             speed = 1;
         }
-        if (restart || clip != clip_ || loop != loop_ || speed != speed_)
+        if (restart || clip != clip_ || loop != loop_)
         {
             clip_ = clip;
             started_ = now;
             loop_ = loop;
+            speed_ = speed;
+        }
+        else if (speed != speed_)
+        {
+            // Keep the current phase when movement speed changes.
+            started_ = now - (now - started_) * speed_ / speed;
             speed_ = speed;
         }
     }

@@ -139,6 +139,8 @@ namespace
             return;
         }
         Color color{0.19f, 0.25f, 0.20f, 1};
+        bool centralRoad = false;
+        int stoneTown = -1;
         if (tile.ground == Ground::Dirt)
         {
             color = {0.32f, 0.29f, 0.23f, 1};
@@ -146,19 +148,53 @@ namespace
         if (tile.ground == Ground::Stone)
         {
             color = {0.29f, 0.32f, 0.31f, 1};
+            for (int town = 0; town < VillageCount; ++town)
+            {
+                if (VillageFortified(town) && VillageContains(town, x + .5, y + .5, -2))
+                {
+                    stoneTown = town;
+                    auto site = Villages()[town];
+                    centralRoad = std::abs(x + .5 - site.center.x) <= 1 ||
+                                  std::abs(y + .5 - site.center.y) <= 1;
+                    if (centralRoad)
+                    {
+                        color = {.43f, .44f, .41f, 1};
+                    }
+                    break;
+                }
+            }
         }
         if (tile.ground == Ground::Water)
         {
             color = {0.10f, 0.21f, 0.25f, 1};
         }
-        color = Shade(color, 0.90f + tile.variation * 0.025f);
+        // Broad, low-contrast ground patches replace per-tile checkerboard shading.
+        float terrainShade = 1.0f + .025f * float(std::sin(double(x) * .19 + double(y) * .13)) +
+                             .015f * float(std::cos(double(x) * .09 - double(y) * .17));
+        color = Shade(color, terrainShade);
         auto a = Project(double(x), double(y));
         auto b = Project(double(x + 1), double(y));
         auto c = Project(double(x + 1), double(y + 1));
         auto d = Project(double(x), double(y + 1));
         renderer.Quad(a, b, c, d, color);
-        renderer.Line(d, c, 0.7f * zoom, {0.05f, 0.09f, 0.08f, 0.16f});
-        if (tile.ground != Ground::Water && tile.variation % 3 == 0 && tile.prop == Prop::None)
+        if (stoneTown >= 0)
+        {
+            auto site = Villages()[stoneTown];
+            WorldInt lx = x - WorldInt(site.center.x - .5);
+            WorldInt ly = y - WorldInt(site.center.y - .5);
+            // Large slabs, with subtle seams; the three-tile avenue joins all four gates.
+            Color seam = Shade(color, .87f);
+            if (lx % 3 == 0)
+            {
+                renderer.Line(a, d, .6f * zoom, seam);
+            }
+            if (ly % 3 == 0)
+            {
+                renderer.Line(a, b, .6f * zoom, seam);
+            }
+        }
+        if ((tile.ground == Ground::Grass || tile.ground == Ground::Dirt) &&
+            tile.variation % 3 == 0 && tile.prop == Prop::None)
         {
             renderer.Line({center.x - 5 * zoom, center.y + 2 * zoom},
                           {center.x - 3 * zoom, center.y - 2 * zoom},
@@ -1806,7 +1842,7 @@ int main(int argc, char** argv)
         std::filesystem::path(executable).parent_path() / L"Logs",
         "seed=" + std::to_string(world->Seed()) +
             (naturalWorld ? ";mode=Level01_natural_v2" : ";mode=Level01_v1") +
-            ";terrain=v10;art=rig2;props=settlement4;rpg=1;villages=7;citizens=210;window=glfw-3.5.1;swap_interval=" +
+            ";terrain=v14;art=rig2;props=settlement6;rpg=1;villages=7;citizens=210;window=glfw-3.5.1;swap_interval=" +
             std::to_string(swapInterval) + ";frame_limit_ms=" + std::to_string(frameLimitMs));
     levelOne = std::make_unique<LevelOne>(savePath, world->Seed());
     society = std::make_unique<WorldSimulation>(savePath, world->Seed());

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "npc_pack": "LowPoly_DarkAge_v1",
-  "npc_rig_contract": "DarkAge_Rigged_v2/Data/npc_rig_contract.json",
+  "npc_rig_contract": "DarkAge_Volume_v3/Data/npc_rig_contract.json",
   "npc_presets": "Data/npc_presets_210.json",
   "npc_model": "",
   "default_character_scale": 1.1,
-  "default_character_thickness": 1.3,
+  "default_character_thickness": 1.0,
   "animation_aliases": {
     "idle": ["Idle", "idle", "대기"],
     "walk": ["Walk", "walk", "Run", "이동"],
@@ -15,20 +15,20 @@
     "hurt": ["HitReact", "Hit", "Hurt", "hurt", "피격"]
   },
   "roles": {
-    "player": {"recipe": "NPC_PRESET_001"},
+    "player": {"model": "DarkAge_Volume_v3/Characters/PLAYER_AshWayfarer"},
     "warden": {"recipe": "NPC_PRESET_002"},
     "scholar": {"recipe": "NPC_PRESET_003"},
-    "husk": {"model": "DarkAge_Rigged_v2/Characters/MON_00_Husk_Animated"},
-    "hound": {"model": "DarkAge_Rigged_v2/Characters/MON_03_Hound_Animated"},
-    "boss": {"model": "DarkAge_Rigged_v2/Characters/MON_02_Ogre_Animated", "scale": 1.9}
+    "husk": {"model": "DarkAge_Volume_v3/Characters/MON_00_Husk_VolumeV3"},
+    "hound": {"model": "DarkAge_Volume_v3/Characters/MON_03_Hound_VolumeV3"},
+    "boss": {"model": "DarkAge_Volume_v3/Characters/MON_02_Ogre_VolumeV3", "scale": 1.9}
   },
   "props": {
-    "Tree": {"variants": ["NAT_Tree_00_Oak", "NAT_Tree_01_Pine", "NAT_Tree_02_Dead", "NAT_Tree_03_Willow", "NAT_Tree_04_Sapling", "NAT_Tree_05_Stump"], "fit_footprint": true},
-    "Rock": {"variants": ["NAT_Rock_00_Small", "NAT_Rock_01_Boulder", "NAT_Rock_02_Slate", "NAT_Rock_03_Ore", "NAT_Rock_04_Cliff"], "fit_footprint": true},
+    "Tree": {"variants": ["NAT_V3_Tree_SplitOak", "NAT_V3_Tree_WindPine", "NAT_V3_Tree_PollardAlder", "NAT_V3_Tree_BirchGrove"], "fit_footprint": true},
+    "Rock": {"variants": ["NAT_V3_Rock_Basalt", "NAT_V3_Rock_MossCluster", "NAT_V3_Rock_CreekPebbles"], "fit_footprint": true},
     "Ruin": {"model": "ENV_Module_03_Ruin", "fit_footprint": true},
-    "Cottage": {"variants": ["BLD_House_02_Town", "BLD_House_00_Timber", "BLD_House_01_Thatch", "BLD_House_02_Town", "BLD_House_03_Woodland", "BLD_House_00_Timber", "BLD_House_00_Timber"], "fit_footprint": true, "roof_palette": true},
-    "Chapel": {"model": "BLD_Abbey_00_Dawn", "fit_footprint": true, "roof_palette": true},
-    "Watchtower": {"model": "BLD_Keep_00_Ash", "fit_footprint": true, "roof_palette": true},
+    "Cottage": {"variants": ["BLD_V3_Longhouse_Hipped", "BLD_V3_Croft_Thatched", "BLD_V3_Jetty_Townhouse", "BLD_V3_Farmstead_LWing", "BLD_V3_Forge_LeanTo", "BLD_Market_00_Stall", "BLD_V3_Inn_Coaching"], "fit_footprint": true, "roof_palette": true},
+    "Chapel": {"model": "BLD_V3_Chapel_Apse", "fit_footprint": true, "roof_palette": true},
+    "Watchtower": {"model": "BLD_V3_Tower_Round", "fit_footprint": true, "roof_palette": true},
     "Well": {"model": "PRP_00_Well", "fit_footprint": true},
     "Graves": {"model": "PRP_04_Grave", "fit_footprint": true},
     "WallX": {"model": "ENV_Module_00_Wall"},

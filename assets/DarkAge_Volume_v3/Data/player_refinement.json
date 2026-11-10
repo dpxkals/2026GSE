@@ -1,0 +1,20 @@
+{
+  "asset_id": "PLAYER_AshWayfarer",
+  "clip_count": 14,
+  "cast_right_wrist_max_bend_degrees": 5.516,
+  "previous_cast_right_wrist_max_bend_degrees": 99.005,
+  "max_joint_separation_m": 2.585254843964796e-07,
+  "max_gait_stance_sole_error_m": 5.049845981375256e-07,
+  "max_loop_boundary_matrix_error": 0.0,
+  "glb_reimported": true,
+  "glb_clip_count": 14,
+  "bind_matrices_match_previous": true,
+  "all_skin_weights_normalized": true,
+  "preview_clip_movement_m": {
+    "Walk": 0.28345,
+    "Run": 0.40225,
+    "Attack_Cast": 0.36315,
+    "Jump": 0.53607
+  },
+  "max_glb_rotation_step_degrees": 20.996
+}

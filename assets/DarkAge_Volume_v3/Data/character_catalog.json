@@ -1,0 +1,839 @@
+{
+  "schema_version": 3,
+  "characters": [
+    {
+      "asset_id": "MON_00_Husk",
+      "file": "Characters/MON_00_Husk_VolumeV3.glb",
+      "category": "monster",
+      "label_ko": "해골 허스크",
+      "triangles": 1913,
+      "bounds_m": [
+        [
+          -0.4524,
+          -0.25689,
+          0.00153
+        ],
+        [
+          0.50714,
+          0.20638,
+          1.8258
+        ]
+      ],
+      "materials": [
+        "MON_Bone",
+        "MAT_Eye",
+        "MON_Eyes",
+        "MON_BoneDark",
+        "MAT_Cloth",
+        "MAT_Wood",
+        "MAT_IronDark",
+        "V3_BoneShade"
+      ]
+    },
+    {
+      "asset_id": "MON_01_Goblin",
+      "file": "Characters/MON_01_Goblin_VolumeV3.glb",
+      "category": "monster",
+      "label_ko": "고블린 약탈자",
+      "triangles": 1656,
+      "bounds_m": [
+        [
+          -0.50009,
+          -0.25929,
+          0.0
+        ],
+        [
+          0.50009,
+          0.232,
+          1.3528
+        ]
+      ],
+      "materials": [
+        "MAT_Leather",
+        "MON_Goblin",
+        "MAT_Brass",
+        "MON_Eyes",
+        "MON_GoblinDark",
+        "MON_Bone",
+        "MAT_Iron",
+        "MAT_IronDark",
+        "MAT_LeatherLight"
+      ]
+    },
+    {
+      "asset_id": "MON_02_Ogre",
+      "file": "Characters/MON_02_Ogre_VolumeV3.glb",
+      "category": "monster",
+      "label_ko": "돌가죽 오우거",
+      "triangles": 1984,
+      "bounds_m": [
+        [
+          -1.12075,
+          -0.54334,
+          0.0
+        ],
+        [
+          1.16898,
+          0.33112,
+          2.73419
+        ]
+      ],
+      "materials": [
+        "MON_RockHide",
+        "MAT_IronDark",
+        "MON_Crystal",
+        "MON_Eyes",
+        "MAT_StoneDark",
+        "MON_Bone",
+        "MAT_Wood",
+        "MAT_Leather",
+        "V3_StonePlate"
+      ]
+    },
+    {
+      "asset_id": "MON_03_Hound",
+      "file": "Characters/MON_03_Hound_VolumeV3.glb",
+      "category": "monster",
+      "label_ko": "가시 하운드",
+      "triangles": 2188,
+      "bounds_m": [
+        [
+          -0.45097,
+          -1.58788,
+          -0.0
+        ],
+        [
+          0.44491,
+          1.55565,
+          1.82346
+        ]
+      ],
+      "materials": [
+        "MON_Hound",
+        "MAT_Eye",
+        "MON_Eyes",
+        "MON_Bone",
+        "MON_Fur",
+        "MON_BoneDark",
+        "V3_HoundRuff"
+      ]
+    },
+    {
+      "asset_id": "MON_04_Boar",
+      "file": "Characters/MON_04_Boar_VolumeV3.glb",
+      "category": "monster",
+      "label_ko": "황야 멧돼지",
+      "triangles": 2234,
+      "bounds_m": [
+        [
+          -0.62161,
+          -1.58621,
+          -0.0
+        ],
+        [
+          0.5934,
+          1.55345,
+          1.51502
+        ]
+      ],
+      "materials": [
+        "MON_Boar",
+        "MON_Snout",
+        "MON_Eyes",
+        "MON_Bone",
+        "MAT_Eye",
+        "MON_BoneDark",
+        "MAT_Wood",
+        "V3_BoarBristle"
+      ]
+    },
+    {
+      "asset_id": "PLAYER_AshWayfarer",
+      "file": "Characters/PLAYER_AshWayfarer.glb",
+      "category": "player",
+      "label_ko": "잔불 길잡이",
+      "triangles": 4590,
+      "bounds_m": [
+        [
+          -0.51636,
+          -0.2155,
+          0.0
+        ],
+        [
+          0.58768,
+          0.38981,
+          1.7302
+        ]
+      ],
+      "materials": [
+        "V3_CoatShade",
+        "V3_Coat",
+        "V3_Scarf",
+        "V3_Brass",
+        "V3_Leather",
+        "V3_Iron",
+        "V3_LeatherEdge",
+        "V3_Pant",
+        "V3_CoatLight",
+        "V3_Ember",
+        "V3_Skin",
+        "V3_SkinShade",
+        "V3_Eyelid",
+        "V3_EyeCatch",
+        "V3_Iris",
+        "V3_HairLow",
+        "V3_Lips",
+        "V3_HairCrown",
+        "V3_HairPart"
+      ],
+      "geometry_revision": "v3_refined_head"
+    }
+  ],
+  "npc_parts": [
+    {
+      "asset_id": "NPC_Body_00_Male",
+      "file": "NPC_Parts/NPC_Body_00_Male_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "남성 체형",
+      "triangles": 576,
+      "bounds_m": [
+        [
+          -0.51199,
+          -0.14343,
+          0.6
+        ],
+        [
+          0.51199,
+          0.14343,
+          1.3
+        ]
+      ],
+      "materials": [
+        "MAT_Skin"
+      ]
+    },
+    {
+      "asset_id": "NPC_Body_01_Female",
+      "file": "NPC_Parts/NPC_Body_01_Female_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "여성 체형",
+      "triangles": 576,
+      "bounds_m": [
+        [
+          -0.51199,
+          -0.14343,
+          0.6
+        ],
+        [
+          0.51199,
+          0.14343,
+          1.3
+        ]
+      ],
+      "materials": [
+        "MAT_Skin"
+      ]
+    },
+    {
+      "asset_id": "NPC_Head_00_Male",
+      "file": "NPC_Parts/NPC_Head_00_Male_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "남성 얼굴",
+      "triangles": 292,
+      "bounds_m": [
+        [
+          -0.2846,
+          -0.31088,
+          1.2
+        ],
+        [
+          0.2846,
+          0.24031,
+          1.8
+        ]
+      ],
+      "materials": [
+        "MAT_Skin",
+        "MAT_Eye",
+        "MAT_Hair",
+        "MAT_Scar"
+      ]
+    },
+    {
+      "asset_id": "NPC_Head_01_Female",
+      "file": "NPC_Parts/NPC_Head_01_Female_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "여성 얼굴",
+      "triangles": 292,
+      "bounds_m": [
+        [
+          -0.2846,
+          -0.31088,
+          1.2
+        ],
+        [
+          0.2846,
+          0.24031,
+          1.8
+        ]
+      ],
+      "materials": [
+        "MAT_Skin",
+        "MAT_Eye",
+        "MAT_Hair",
+        "MAT_Scar"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hair_00_Short",
+      "file": "NPC_Parts/NPC_Hair_00_Short_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "짧은 머리",
+      "triangles": 136,
+      "bounds_m": [
+        [
+          -0.23744,
+          -0.28746,
+          1.48
+        ],
+        [
+          0.23744,
+          0.27013,
+          1.823
+        ]
+      ],
+      "materials": [
+        "MAT_Hair"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hair_01_Long",
+      "file": "NPC_Parts/NPC_Hair_01_Long_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "긴 머리",
+      "triangles": 352,
+      "bounds_m": [
+        [
+          -0.29364,
+          -0.21213,
+          1.13
+        ],
+        [
+          0.29364,
+          0.3026,
+          1.823
+        ]
+      ],
+      "materials": [
+        "MAT_Hair"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hair_02_Braid",
+      "file": "NPC_Parts/NPC_Hair_02_Braid_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "땋은 머리",
+      "triangles": 340,
+      "bounds_m": [
+        [
+          -0.23744,
+          -0.21213,
+          1.033
+        ],
+        [
+          0.23744,
+          0.32076,
+          1.823
+        ]
+      ],
+      "materials": [
+        "MAT_Hair",
+        "MAT_Brass"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hair_03_Crop",
+      "file": "NPC_Parts/NPC_Hair_03_Crop_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "아주 짧은 머리",
+      "triangles": 56,
+      "bounds_m": [
+        [
+          -0.23744,
+          -0.21213,
+          1.58
+        ],
+        [
+          0.23744,
+          0.27013,
+          1.823
+        ]
+      ],
+      "materials": [
+        "MAT_Hair"
+      ]
+    },
+    {
+      "asset_id": "NPC_Torso_00_Tunic",
+      "file": "NPC_Parts/NPC_Torso_00_Tunic_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "평민 튜닉",
+      "triangles": 328,
+      "bounds_m": [
+        [
+          -0.41115,
+          -0.23558,
+          0.57
+        ],
+        [
+          0.41115,
+          0.19947,
+          1.205
+        ]
+      ],
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Linen",
+        "MAT_ClothLight",
+        "MAT_WoodLight"
+      ]
+    },
+    {
+      "asset_id": "NPC_Torso_01_Armor",
+      "file": "NPC_Parts/NPC_Torso_01_Armor_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "판금 갑옷",
+      "triangles": 508,
+      "bounds_m": [
+        [
+          -0.51124,
+          -0.27305,
+          0.57
+        ],
+        [
+          0.51124,
+          0.20555,
+          1.21305
+        ]
+      ],
+      "materials": [
+        "MAT_Iron",
+        "MAT_IronDark",
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Linen"
+      ]
+    },
+    {
+      "asset_id": "NPC_Torso_02_Ranger",
+      "file": "NPC_Parts/NPC_Torso_02_Ranger_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "궁수 가죽옷",
+      "triangles": 348,
+      "bounds_m": [
+        [
+          -0.41115,
+          -0.27176,
+          0.57
+        ],
+        [
+          0.41115,
+          0.19947,
+          1.205
+        ]
+      ],
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Linen",
+        "MAT_LeatherLight",
+        "MAT_ClothLight"
+      ]
+    },
+    {
+      "asset_id": "NPC_Torso_03_Robe",
+      "file": "NPC_Parts/NPC_Torso_03_Robe_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "수도사 로브",
+      "triangles": 428,
+      "bounds_m": [
+        [
+          -0.41115,
+          -0.26035,
+          0.18
+        ],
+        [
+          0.41115,
+          0.2288,
+          1.205
+        ]
+      ],
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Linen"
+      ]
+    },
+    {
+      "asset_id": "NPC_Legs_00_Trousers",
+      "file": "NPC_Parts/NPC_Legs_00_Trousers_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "바지와 장화",
+      "triangles": 688,
+      "bounds_m": [
+        [
+          -0.22099,
+          -0.219,
+          0.0
+        ],
+        [
+          0.22099,
+          0.12865,
+          0.615
+        ]
+      ],
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_LeatherLight",
+        "MAT_IronDark"
+      ]
+    },
+    {
+      "asset_id": "NPC_Legs_01_Greaves",
+      "file": "NPC_Parts/NPC_Legs_01_Greaves_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "갑옷 다리",
+      "triangles": 808,
+      "bounds_m": [
+        [
+          -0.22099,
+          -0.219,
+          0.0
+        ],
+        [
+          0.22099,
+          0.12865,
+          0.615
+        ]
+      ],
+      "materials": [
+        "MAT_IronDark",
+        "MAT_Iron",
+        "MAT_Leather"
+      ]
+    },
+    {
+      "asset_id": "NPC_Legs_02_RangerBoots",
+      "file": "NPC_Parts/NPC_Legs_02_RangerBoots_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "궁수 바지와 긴 장화",
+      "triangles": 688,
+      "bounds_m": [
+        [
+          -0.22099,
+          -0.219,
+          0.0
+        ],
+        [
+          0.22099,
+          0.12865,
+          0.615
+        ]
+      ],
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_LeatherLight",
+        "MAT_IronDark"
+      ]
+    },
+    {
+      "asset_id": "NPC_Back_00_Cloak",
+      "file": "NPC_Parts/NPC_Back_00_Cloak_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "짧은 망토",
+      "triangles": 116,
+      "bounds_m": [
+        [
+          -0.3,
+          -0.173,
+          0.2622
+        ],
+        [
+          0.3,
+          0.366,
+          1.17559
+        ]
+      ],
+      "materials": [
+        "MAT_Cloth",
+        "MAT_Leather",
+        "MAT_Brass"
+      ]
+    },
+    {
+      "asset_id": "NPC_Back_01_Quiver",
+      "file": "NPC_Parts/NPC_Back_01_Quiver_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "화살통",
+      "triangles": 372,
+      "bounds_m": [
+        [
+          0.03,
+          0.1711,
+          0.72
+        ],
+        [
+          0.21,
+          0.3835,
+          1.34
+        ]
+      ],
+      "materials": [
+        "MAT_Leather",
+        "MAT_WoodLight",
+        "MAT_Linen"
+      ]
+    },
+    {
+      "asset_id": "NPC_Back_02_Satchel",
+      "file": "NPC_Parts/NPC_Back_02_Satchel_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "어깨 가방",
+      "triangles": 112,
+      "bounds_m": [
+        [
+          -0.21742,
+          -0.26548,
+          0.55
+        ],
+        [
+          0.37,
+          0.0944,
+          1.15792
+        ]
+      ],
+      "materials": [
+        "MAT_LeatherLight",
+        "MAT_Leather",
+        "MAT_Brass"
+      ]
+    },
+    {
+      "asset_id": "NPC_Back_03_Apron",
+      "file": "NPC_Parts/NPC_Back_03_Apron_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "작업 앞치마",
+      "triangles": 136,
+      "bounds_m": [
+        [
+          -0.225,
+          -0.2975,
+          0.3222
+        ],
+        [
+          0.225,
+          -0.19236,
+          1.1
+        ]
+      ],
+      "materials": [
+        "MAT_ClothLight",
+        "MAT_Leather",
+        "MAT_LeatherLight"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hand_00_Sword",
+      "file": "NPC_Parts/NPC_Hand_00_Sword_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "단검이 아닌 짧은 검",
+      "triangles": 120,
+      "bounds_m": [
+        [
+          0.335,
+          -0.10765,
+          0.53
+        ],
+        [
+          0.585,
+          -0.04814,
+          1.43
+        ]
+      ],
+      "materials": [
+        "MAT_Leather",
+        "MAT_Brass",
+        "MAT_Iron"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hand_01_Bow",
+      "file": "NPC_Parts/NPC_Hand_01_Bow_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "활",
+      "triangles": 224,
+      "bounds_m": [
+        [
+          0.29375,
+          -0.10815,
+          0.1715
+        ],
+        [
+          0.49661,
+          -0.03965,
+          1.2485
+        ]
+      ],
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Linen",
+        "MAT_Leather"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hand_02_Staff",
+      "file": "NPC_Parts/NPC_Hand_02_Staff_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "잔흔 지팡이",
+      "triangles": 140,
+      "bounds_m": [
+        [
+          0.37,
+          -0.12726,
+          0.05
+        ],
+        [
+          0.51201,
+          -0.02054,
+          1.64
+        ]
+      ],
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Soul",
+        "MAT_Brass"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hand_03_Axe",
+      "file": "NPC_Parts/NPC_Hand_03_Axe_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "도끼",
+      "triangles": 112,
+      "bounds_m": [
+        [
+          0.43,
+          -0.13225,
+          0.35
+        ],
+        [
+          0.74,
+          -0.02155,
+          1.22
+        ]
+      ],
+      "materials": [
+        "MAT_WoodLight",
+        "MAT_Iron"
+      ]
+    },
+    {
+      "asset_id": "NPC_Hand_04_Lantern",
+      "file": "NPC_Parts/NPC_Hand_04_Lantern_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "손등불",
+      "triangles": 184,
+      "bounds_m": [
+        [
+          0.36,
+          -0.1876,
+          0.335
+        ],
+        [
+          0.56,
+          0.0338,
+          0.7
+        ]
+      ],
+      "materials": [
+        "MAT_IronDark",
+        "MAT_Ember"
+      ]
+    },
+    {
+      "asset_id": "NPC_Headwear_00_Hood",
+      "file": "NPC_Parts/NPC_Headwear_00_Hood_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "천 후드",
+      "triangles": 224,
+      "bounds_m": [
+        [
+          -0.33446,
+          -0.23893,
+          1.23243
+        ],
+        [
+          0.33446,
+          0.3132,
+          1.88
+        ]
+      ],
+      "materials": [
+        "MAT_Cloth"
+      ]
+    },
+    {
+      "asset_id": "NPC_Headwear_01_Helmet",
+      "file": "NPC_Parts/NPC_Headwear_01_Helmet_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "철제 투구",
+      "triangles": 144,
+      "bounds_m": [
+        [
+          -0.2745,
+          -0.30616,
+          1.385
+        ],
+        [
+          0.2745,
+          0.27354,
+          1.86
+        ]
+      ],
+      "materials": [
+        "MAT_Iron",
+        "MAT_Brass",
+        "MAT_IronDark"
+      ]
+    },
+    {
+      "asset_id": "NPC_Headwear_02_Cap",
+      "file": "NPC_Parts/NPC_Headwear_02_Cap_VolumeV3.glb",
+      "category": "npc_part",
+      "label_ko": "천 모자",
+      "triangles": 72,
+      "bounds_m": [
+        [
+          -0.25684,
+          -0.23401,
+          1.66
+        ],
+        [
+          0.25684,
+          0.28041,
+          1.86
+        ]
+      ],
+      "materials": [
+        "MAT_Cloth",
+        "MAT_LeatherLight"
+      ]
+    }
+  ]
+}

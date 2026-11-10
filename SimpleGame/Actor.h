@@ -16,6 +16,7 @@ struct ActorPose
     float stride = 0, breath = 0, attack = 0, hurt = 0;
     float facing = 1, moving = 0, phase = 0, work = 0;
     float yaw = 1.570796327f;
+    float moveSpeed = 0;
 };
 
 enum class RenderLayer
