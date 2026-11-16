@@ -115,6 +115,7 @@ struct Projectile
     bool hostile = false;
     std::uint64_t runtimeId = 0;
     std::uint64_t npcTarget = 0;
+    std::uint64_t enemyTarget = 0;
 };
 
 struct FloatingNumber

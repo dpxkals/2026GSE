@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>잿빛 세계 · 월드 관측소</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header>
+    <div><p class="eyebrow">GSE / WORLD OBSERVATORY</p><h1>잿빛 세계 <span>관측소</span></h1></div>
+    <div class="connection"><span id="status" role="status" aria-live="polite">연결 중</span><small id="freshness">게임의 JSON 메시지를 기다리는 중</small></div>
+  </header>
+  <main>
+    <div id="warning" class="warning" role="status">게임을 실행하고 새 빌드의 스냅샷을 기다려 주세요. 이 화면에는 예시 수치가 표시되지 않습니다.</div>
+    <section id="summary" class="metrics" aria-label="월드 집계"></section>
+    <div class="section-title"><h2>마을 현황</h2><span>소속 주민과 현재 체류 인원을 구분합니다</span></div>
+    <section id="villages" class="villages" aria-label="마을별 상태"><div class="empty">아직 수신한 마을 정보가 없습니다.</div></section>
+    <section class="overview">
+      <article class="panel"><div class="section-title"><h2>월드 위치</h2><span>● 주민 · ◆ 몬스터 · □ 마을 · ✚ 플레이어</span></div><canvas id="map" width="900" height="300" aria-label="NPC와 몬스터의 현재 위치 지도"></canvas><p class="subtle">등록된 개체의 좌표를 자동 맞춤 표시합니다. 지형 지도는 아닙니다.</p></article>
+      <article class="panel"><div class="section-title"><h2>최근 마을 소식</h2><span>최대 5건</span></div><ul id="news"><li>수신 대기 중</li></ul><div id="meta" class="subtle"></div></article>
+    </section>
+    <section class="panel">
+      <div class="section-title"><h2>NPC 관찰</h2><span id="result-count">0명</span></div>
+      <div class="filters">
+        <label>이름 / ID<input id="search" type="search" placeholder="주민 이름 검색" autocomplete="off"></label>
+        <label>유형<select id="kind"><option value="">전체 NPC</option value="citizen">동적 주민</option><option value="resident">안내 주민</option><option value="soul">영혼 NPC</option></select></label>
+        <label>소속 마을<select id="village"><option value="">전체 마을</option></select></label>
+        <label>상태<select id="life"><option value="">전체 상태</option><option value="alive">존재 / 생존</option><option value="dead">사망 / 교체 대기</option><option value="hostile">적대</option></select></label>
+        <label>정렬<select id="sort"><option value="name">이름</option><option value="gold">금화 많은 순</option><option value="hp">체력 비율 낮은 순</option><option value="insight">깨달음 높은 순</option></select></label>
+        <button id="download" disabled>현재 JSON 저장</button>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>NPC / 유형</th><th>성향 · 현재 행동</th><th>소속 / 현재 위치</th><th>체력 · 레벨</th><th>금화 / 재료</th><th>깨달음</th><th>갱신 / 상태</th></tr></thead><tbody id="npcs"><tr><td colspan="7" class="empty">게임 데이터 수신 대기 중</td></tr></tbody></table></div>
+      <div class="pagination"><button id="prev">이전</button><span id="page">1 / 1</span><button id="next">다음</button><span class="subtle">30명씩 표시 · NPC 이름을 눌러 상세 정보 열기</span></div>
+    </section>
+    <section id="detail" class="panel" hidden aria-label="선택한 NPC 상세 정보"></section>
+    <footer>읽기 전용 · 1초 간격 JSON / SSE · 외부 서비스 및 CDN 없음<br><span id="source">데이터 경로 대기 중</span></footer>
+  </main>
+</body>
+</html>

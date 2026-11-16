@@ -6,6 +6,12 @@
 #include <cmath>
 #include <queue>
 
+namespace
+{
+    constexpr double AutoShotSpeed = 22.0;
+    constexpr double AutoShotExtraTravel = 3.0;
+}
+
 bool LevelOne::Move(double dx, double dy, const World& world, const NpcSystem& npcs)
 {
     auto* actor = scene_.Find("gameplay/player");
@@ -71,12 +77,15 @@ void LevelOne::AutoFire(const World& world)
         {
             if (shotTimer_ <= 0)
             {
-                double distance =
-                    (std::max)(0.001, Gameplay::Distance(player_.position, npc.position));
+                const double distance = Gameplay::Distance(player_.position, npc.position);
+                const double directionX =
+                    distance < 0.001 ? 1.0 : (npc.position.x - player_.position.x) / distance;
+                const double directionY =
+                    distance < 0.001 ? 0.0 : (npc.position.y - player_.position.y) / distance;
                 Projectile shot{player_.position,
-                                (npc.position.x - player_.position.x) / distance * 12,
-                                (npc.position.y - player_.position.y) / distance * 12,
-                                player_.AttackRange(),
+                                directionX * AutoShotSpeed,
+                                directionY * AutoShotSpeed,
+                                player_.AttackRange() + AutoShotExtraTravel,
                                 player_.Damage(),
                                 false};
                 shot.npcTarget = npc.id;
@@ -118,12 +127,14 @@ void LevelOne::AutoFire(const World& world)
         nearest < 0.001 ? 1.0 : (target->position.x - player_.position.x) / distance;
     double directionY =
         nearest < 0.001 ? 0.0 : (target->position.y - player_.position.y) / distance;
-    projectiles_.push_back({player_.position,
-                            directionX * 12.0,
-                            directionY * 12.0,
-                            player_.AttackRange(),
-                            player_.Damage(),
-                            false});
+    Projectile shot{player_.position,
+                    directionX * AutoShotSpeed,
+                    directionY * AutoShotSpeed,
+                    player_.AttackRange() + AutoShotExtraTravel,
+                    player_.Damage(),
+                    false};
+    shot.enemyTarget = target->id;
+    projectiles_.push_back(shot);
     shotTimer_ = player_.ShotCooldown();
     ++life_.shots;
 }

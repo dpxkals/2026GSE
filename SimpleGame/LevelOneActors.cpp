@@ -283,6 +283,34 @@ void LevelOne::StepProjectile(std::uint64_t id, double dt)
     {
         return;
     }
+    std::optional<WorldPoint> targetPosition;
+    if (shot->npcTarget && simulation_)
+    {
+        if (const auto* npc = simulation_->Find(shot->npcTarget); npc && npc->health > 0.0)
+        {
+            targetPosition = npc->position;
+        }
+    }
+    else if (shot->enemyTarget)
+    {
+        if (const auto* enemy = FindEnemy(shot->enemyTarget); enemy && enemy->health > 0.0)
+        {
+            targetPosition = enemy->position;
+        }
+    }
+    if (targetPosition)
+    {
+        const double dx = targetPosition->x - shot->position.x;
+        const double dy = targetPosition->y - shot->position.y;
+        const double distance = std::hypot(dx, dy);
+        const double speed = std::hypot(shot->velocityX, shot->velocityY);
+        if (distance > 0.001)
+        {
+            shot->velocityX = dx / distance * speed;
+            shot->velocityY = dy / distance * speed;
+        }
+    }
+
     Gameplay::ProjectileServices services{
         *activeWorld_,
         player_.position,

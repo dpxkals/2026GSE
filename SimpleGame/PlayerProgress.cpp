@@ -37,7 +37,7 @@ double PlayerProgress::PickupRange() const
 
 double PlayerProgress::AttackRange() const
 {
-    return 6.0;
+    return 9.0;
 }
 
 double PlayerProgress::IncomingDamage(double amount) const
