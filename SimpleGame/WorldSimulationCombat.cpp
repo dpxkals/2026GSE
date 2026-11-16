@@ -9,15 +9,24 @@
 
 const Citizen* WorldSimulation::NearbyTrader(WorldPoint player) const
 {
+    const int town = VillageAt(player);
+    if (!error_.empty() || town < 0)
+    {
+        return nullptr;
+    }
     const Citizen* best = nullptr;
     double distance = 3.5;
     for (const auto& npc : people_)
     {
-        if (!CanTrade(npc.id, player))
+        if (npc.health <= 0 || npc.hostility > 0)
         {
             continue;
         }
-        double d = Gameplay::Distance(player, npc.position);
+        const double d = Gameplay::Distance(player, npc.position);
+        if (!(d <= 3.5) || VillageAt(npc.position) != town)
+        {
+            continue;
+        }
         if (npc.id == selected_)
         {
             return &npc;

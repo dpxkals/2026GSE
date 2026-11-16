@@ -59,17 +59,17 @@ std::vector<int> RpgPanel::Entries(const LevelOne& level) const
 
 void RpgPanel::Key(unsigned char key, LevelOne& level, WorldSimulation& society)
 {
-    if (key == 27 || key == '\t' || key == 'q')
+    if (key == 27 || key == '\t' || key == 'q' || (merchant_ && key == 'f'))
     {
         Close();
         return;
     }
     if (key >= '1' && key <= '3')
     {
-        int mode = key - '0';
-        if (mode != 2 || merchant_)
+        const int mode = key - '0';
+        if (merchant_ ? mode <= 2 : mode != 2)
         {
-            mode_ = mode;
+            mode_ = merchant_ ? 3 - mode : mode;
             selected_ = page_ = 0;
         }
         return;
@@ -111,7 +111,7 @@ void RpgPanel::Key(unsigned char key, LevelOne& level, WorldSimulation& society)
     {
         level.ClaimQuest(id);
     }
-    if (mode_ == 1 && (key == '\r' || key == 'e'))
+    if (mode_ == 1 && !merchant_ && (key == '\r' || key == 'e'))
     {
         level.UseItem(id);
     }
@@ -119,7 +119,7 @@ void RpgPanel::Key(unsigned char key, LevelOne& level, WorldSimulation& society)
     {
         level.BuyItem(id, merchant_);
     }
-    if (mode_ == 1 && key == 'x' && merchant_)
+    if (mode_ == 1 && merchant_ && (key == 'x' || key == '\r'))
     {
         level.SellItem(id, merchant_);
     }
@@ -135,11 +135,11 @@ void RpgPanel::Click(int x, int y, int width, int height, LevelOne& level, World
     rows_ = p.rows;
     if (y >= p.y + 57 && y <= p.y + 92)
     {
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 2; ++i)
         {
             if (x >= p.x + 18 + i * 125 && x <= p.x + 135 + i * 125)
             {
-                Key(static_cast<unsigned char>('1' + i), level, society);
+                Key(merchant_ || i == 0 ? '1' + i : '3', level, society);
             }
         }
         return;
@@ -169,11 +169,7 @@ void RpgPanel::Click(int x, int y, int width, int height, LevelOne& level, World
     {
         if (x >= p.x + 18 && x <= p.x + 198)
         {
-            Key(mode_ == 2 ? 'b' : 'e', level, society);
-        }
-        if (x >= p.x + 208 && x <= p.x + 388)
-        {
-            Key('x', level, society);
+            Key('\r', level, society);
         }
         if (x >= p.x + 398 && x <= p.x + 578)
         {
@@ -215,7 +211,7 @@ void RpgPanel::Draw(
         r.Rect(0, 0, float(width), float(height), {.02f, .03f, .04f, .98f});
         r.KoreanText(20,
                      30,
-                     L"가방을 보려면 창을 760 × 600 이상으로 늘려주세요.\nTab / Esc 닫기",
+                     L"창을 760 × 600 이상으로 늘려주세요.\nTab / Esc 닫기",
                      Text,
                      18,
                      (std::max)(100, width - 40));
@@ -230,28 +226,30 @@ void RpgPanel::Draw(
     {
         r.KoreanText(x, y, s, c, size, wrap);
     };
-    text(p.x + 20, p.y + 16, L"여행자의 기록  ·  세계 일시정지", Gold, 22, int(p.w) - 280);
+    text(p.x + 20, p.y + 16, merchant_ ? L"상점" : L"여행자의 기록  ·  세계 일시정지", Gold, 22, int(p.w) - 280);
     text(p.x + p.w - 245,
          p.y + 20,
-         L"금화 " + std::to_wstring(society.PlayerGold()) + L"  ·  Tab 닫기",
+         L"금화 " + std::to_wstring(society.PlayerGold()) + (merchant_ ? L"  ·  F 닫기" : L"  ·  Tab 닫기"),
          Text,
          16,
          230);
-    const wchar_t* tabs[] = {L"1  인벤토리", L"2  상점", L"3  퀘스트"};
-    for (int i = 0; i < 3; ++i)
+    const wchar_t* tabs[] = {merchant_ ? L"1  구매" : L"1  인벤토리",
+                             merchant_ ? L"2  판매" : L"3  퀘스트"};
+    for (int i = 0; i < 2; ++i)
     {
+        const int tabMode = merchant_ ? 2 - i : 1 + i * 2;
         r.Rect(p.x + 18 + i * 125,
                p.y + 57,
                117,
                35,
-               mode_ == i + 1 ? Color{.23f, .25f, .20f, 1} : Color{.09f, .12f, .13f, 1});
-        text(p.x + 27 + i * 125, p.y + 63, tabs[i], i == 1 && !merchant_ ? Muted : Gold, 16, 110);
+               mode_ == tabMode ? Color{.23f, .25f, .20f, 1} : Color{.09f, .12f, .13f, 1});
+        text(p.x + 27 + i * 125, p.y + 63, tabs[i], Gold, 16, 110);
     }
     const auto* trader = society.Find(merchant_);
     text(p.x + 20,
          p.y + 103,
          trader ? WorldSimulation::Name(*trader) + L" · 보유 금화 " + std::to_wstring(trader->gold)
-                : L"주민과의 거래는 마을에서 가까이 다가가 T",
+                : L"",
          Muted,
          14,
          int(p.w) - 40);
@@ -294,7 +292,7 @@ void RpgPanel::Draw(
     {
         text(p.x + 28,
              p.y + 148,
-             L"가방이 비어 있습니다.\n몬스터를 처치하거나 퀘스트 보상을 받으세요.",
+             merchant_ ? L"판매할 아이템이 없습니다." : L"가방이 비어 있습니다.",
              Muted,
              16,
              int(p.list) - 40);
@@ -330,20 +328,23 @@ void RpgPanel::Draw(
             {
                 text(p.detail,
                      p.y + 252,
-                     L"구매 " + std::to_wstring(society.ItemPrice(id, merchant_, true)) +
-                         L" / 판매 " + std::to_wstring(society.ItemPrice(id, merchant_, false)) +
+                     std::wstring(mode_ == 2 ? L"구매 " : L"판매 ") +
+                         std::to_wstring(society.ItemPrice(id, merchant_, mode_ == 2)) +
                          L" 금화",
                      Muted,
                      15,
                      wrap);
             }
-            std::wstring equipment = L"현재 착용\n";
-            for (int equipped : level.Rpg().equipped)
+            else if (mode_ == 1)
             {
-                equipment +=
-                    (equipped < 0 ? L"없음" : ItemCatalog()[equipped].name) + std::wstring(L"\n");
+                std::wstring equipment = L"현재 착용\n";
+                for (int equipped : level.Rpg().equipped)
+                {
+                    equipment +=
+                        (equipped < 0 ? L"없음" : ItemCatalog()[equipped].name) + std::wstring(L"\n");
+                }
+                text(p.detail, p.y + 295, equipment, Muted, 15, wrap);
             }
-            text(p.detail, p.y + 295, equipment, Muted, 15, wrap);
         }
     }
     auto button = [&](float x, float y, float w, const std::wstring& label)
@@ -364,11 +365,8 @@ void RpgPanel::Draw(
            180,
            mode_ == 3   ? L"E 보상 받기"
            : mode_ == 2 ? L"B 구매"
+           : merchant_  ? L"X 판매"
                         : L"E 착용 / 해제 / 사용");
-    if (merchant_ && mode_ == 1)
-    {
-        button(p.x + 208, p.y + p.h - 88, 180, L"X 선택 아이템 판매");
-    }
     if (merchant_)
     {
         button(p.x + 398, p.y + p.h - 88, 180, L"M 사냥 재료 판매");

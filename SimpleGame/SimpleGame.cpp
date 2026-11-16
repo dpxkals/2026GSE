@@ -362,6 +362,20 @@ namespace
         }
         if (!Speaking())
         {
+            if (society && society->Error().empty() && levelOne->Error().empty())
+            {
+                if (const auto* trader = society->NearbyTrader(levelOne->Player().position))
+                {
+                    const float panelWidth = (std::min)(440.0f, float(width) - 40);
+                    const float left = (width - panelWidth) * 0.5f;
+                    renderer.Rect(
+                        left, float(height) - 157, panelWidth, 34, {0.04f, 0.065f, 0.07f, 0.94f});
+                    renderer.KoreanText(left + 14, float(height) - 153,
+                                        L"F  " + WorldSimulation::Name(*trader) + L" 상점 열기",
+                                        gold, 18, int(panelWidth) - 28);
+                    return;
+                }
+            }
             TalkTarget npc = GetTalkTarget(false);
             if (npc.Valid())
             {
@@ -457,18 +471,18 @@ namespace
         renderer.Rect(barLeft, float(height) - 84, barWidth, 72, {0.035f, 0.045f, 0.045f, 0.94f});
         renderer.Rect(barLeft, float(height) - 84, barWidth, 1, gold);
         const wchar_t* actions[] = {
-            L"T  거래", L"Y  성장", L"G  습득", L"F  대화", L"P  정지", L"H  도움"};
-        for (int i = 0; i < 6; ++i)
+            L"F  상호작용", L"Y  성장", L"G  습득", L"P  정지", L"H  도움"};
+        for (int i = 0; i < 5; ++i)
         {
-            float x = barLeft + 10 + i * (barWidth - 20) / 6;
+            float x = barLeft + 10 + i * (barWidth - 20) / 5;
             renderer.Rect(
-                x, float(height) - 73, (barWidth - 20) / 6 - 5, 30, {0.12f, 0.13f, 0.115f, 1});
+                x, float(height) - 73, (barWidth - 20) / 5 - 5, 30, {0.12f, 0.13f, 0.115f, 1});
             renderer.KoreanText(
-                x + 8, float(height) - 68, actions[i], ivory, 14, int((barWidth - 20) / 6 - 12));
+                x + 8, float(height) - 68, actions[i], ivory, 14, int((barWidth - 20) / 5 - 12));
         }
         renderer.KoreanText(barLeft + 16,
                             float(height) - 34,
-                            L"WASD 이동 · Tab 가방 · Q 의뢰 · T 상점 · Ctrl+클릭 공격",
+                            L"WASD 이동 · Tab 가방 · Q 의뢰 · Ctrl+클릭 공격",
                             muted,
                             12,
                             int(barWidth) - 32);
@@ -481,8 +495,8 @@ namespace
                 float(height) - 278,
                 L"여행자의 안내\n주민은 경험에 따라 성향이 변합니다. 클릭해서 살펴보세요.\n"
                 L"Ctrl+클릭하면 중립 주민도 공격합니다. 목격자에게 주의하세요.\n"
-                L"마을 주민 근처 T: 상점 · 가방에서 장비 착용/판매 · M 재료 판매\n"
-                L"Y: 경험치 구매 · G: 소지품 습득 · F: 안내 주민과 대화\n"
+                L"F: 가까운 상점 열기 또는 대화 · 상점에서 M 재료 판매\n"
+                L"Y: 경험치 구매 · G: 소지품 습득\n"
                 L"Tab: 인벤토리 · Q: 퀘스트 보상 · 마을 보스 권장 레벨 10\n"
                 L"F8: 개발 정보 · F9: 시드 유지 초기화 · H: 안내 닫기",
                 ivory,
@@ -1207,23 +1221,14 @@ namespace
         {
             return;
         }
-        if (society && (key == 't' || key == 'y' || key == 'g'))
+        if (society && (key == 'y' || key == 'g'))
         {
             if (!society->Error().empty() || !levelOne->Error().empty())
             {
                 return;
             }
-            if (key == 't')
-            {
-                if (const auto* trader = society->NearbyTrader(levelOne->Player().position))
-                {
-                    rpgPanel.Open(2, trader->id);
-                    ClearInput();
-                    return;
-                }
-            }
             std::wstring text = key == 'g' ? society->LootPlayer(levelOne->Player().position)
-                                           : society->TradePlayer(*levelOne, key == 'y');
+                                           : society->TradePlayer(*levelOne, true);
             std::wcout << text << L'\n';
             society->Save();
             levelOne->Save();
@@ -1236,6 +1241,16 @@ namespace
         }
         if (key == 'f')
         {
+            if (society && society->Error().empty() && levelOne->Error().empty())
+            {
+                if (const auto* trader = society->NearbyTrader(levelOne->Player().position))
+                {
+                    rpgPanel.Open(2, trader->id);
+                    showHelp = false;
+                    ClearInput();
+                    return;
+                }
+            }
             if (society)
             {
                 const auto* citizen = society->Find(society->Selected());
@@ -1871,9 +1886,9 @@ int main(int argc, char** argv)
     playerY = cameraY = levelOne->Player().position.y;
     std::wcout << L"World save directory: " << savePath.c_str() << L'\n';
     std::cout
-        << "WASD / arrows: move | F: talk | E: light beacon | wheel / +/-: zoom\n"
+        << "WASD / arrows: move | F: shop or talk | E: light beacon | wheel / +/-: zoom\n"
         << "F1: chunk edges | H: help | Home: origin | Esc: exit\n"
-        << "Left click NPC: inspect | Ctrl+click: PK target | Right click: cancel | T: trade | Y: XP | G: loot\n"
+        << "Left click NPC: inspect | Ctrl+click: PK target | Right click: cancel | Y: XP | G: loot\n"
         << "F8: diagnostics HUD (hidden by default)\n"
         << "F10: reload asset catalog, GLB models, palettes and animation bindings\n"
         << "Monitor: built-in server starts automatically; open the [Monitor HTTP] URL above.\n"
@@ -1881,7 +1896,7 @@ int main(int argc, char** argv)
         << "F2: post on/off | F3: bloom | F4: vignette | F5: edge blur | F6: reset FX\n"
         << "F9: reset play data (confirmation + backup); keep world seed and terrain\n"
         << "[ / ]: exposure down/up (0.1 to 4.0); HDR is tone-mapped to SDR output.\n"
-        << "Tab: inventory/equipment | Q: quests | T: nearby village shop\n"
+        << "Tab: inventory/equipment | Q: quests\n"
         << "Village boss: first in 3 minutes, then 5 minutes after defeat (recommended level 10)\n";
     std::cout << "[Window] frame_limit_ms=" << frameLimitMs
               << " | --vsync: display-paced | --uncapped: no software frame limit\n";
